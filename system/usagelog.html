@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA-NET光 利用明細ビューア</title>
+    <link rel="stylesheet" href="usagelog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <a href="usagelog.html" class="logo-link">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <h1>SAKURA-NET光 利用明細</h1>
+                </div>
+            </a>
+            <div class="header-actions">
+                <button id="export-csv" class="btn-outline">CSV出力</button>
+                <button id="export-xlsx" class="btn-outline">Excel出力</button>
+                <button id="clear-data" class="btn-danger-outline">データを全消去</button>
+                <button id="theme-toggle" class="btn-icon" title="テーマ切り替え">🌓</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- インポートエリアを常設 -->
+            <section id="drop-zone" class="drop-zone compact">
+                <div class="drop-zone-content">
+                    <span class="upload-icon">📁</span>
+                    <p>CSVをドロップして追加してインポート（K1BIZ0R7データ）</p>
+                    <label for="csv-file" class="btn-primary">ファイルを選択してインポート</label>
+                    <input type="file" id="csv-file" accept=".csv" multiple hidden>
+                </div>
+            </section>
+
+            <section id="dashboard" class="dashboard hidden">
+                <div class="month-selector-container card">
+                    <label for="month-select">表示月を選択:</label>
+                    <select id="month-select">
+                        <option value="all">すべて表示 (合算)</option>
+                    </select>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>合計利用料</h3>
+                        <p id="total-cost" class="stat-value">¥0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>契約件数</h3>
+                        <p id="contract-count" class="stat-value">0件</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>明細件数</h3>
+                        <p id="total-count" class="stat-value">0件</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>期間</h3>
+                        <p id="file-date" class="stat-value">-</p>
+                    </div>
+                </div>
+
+                <div class="table-container card">
+                    <div class="table-header">
+                        <div class="table-title">
+                            <h2>利用明細一覧</h2>
+                            <span id="search-summary" class="search-summary hidden"></span>
+                        </div>
+                        <div class="table-actions">
+                            <input type="text" id="search-input" placeholder="CAF番号、氏名、サービス名で検索...">
+                        </div>
+                    </div>
+                    <div class="scrollable-table">
+                        <table id="detail-table">
+                            <thead>
+                                <tr>
+                                    <th class="sortable" data-sort="caf">CAF番号 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="name">氏名 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="providerCode">プロバイダコード <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="serviceCode">サービスコード <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="serviceName">サービス名 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="cost">利用料 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="days">日数 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="billingMonth">請求月 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="startDate">開始日 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="endDate">終了日 <span class="sort-icon">↕</span></th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- データがここに挿入されます -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="file-list-panel" class="file-list-panel hidden">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>読み込み済みファイル</h3>
+                    </div>
+                    <ul id="file-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- SheetJS (XLSX) 読み込み -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="usagelog.js"></script>
+</body>
+
+</html>

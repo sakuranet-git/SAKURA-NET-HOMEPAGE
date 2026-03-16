@@ -1,0 +1,16 @@
+backup/
+*.py
+*.ps1
+*_snapshot_*.html
+date/
+# 機密データ
+system/data/passkeys.json
+system/gw_data/users.json
+system/sakura-ai/chat_data*.json
+system/sakuranethikari_data.json
+system/sakura-ai/config-secret.php
+# 古いバージョンファイル
+*_old
+*_old2
+*_old3
+*.bak

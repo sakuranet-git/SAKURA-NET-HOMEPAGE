@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ブラウザキャッシュを無効にして常に最新版を読み込む -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>SAKURA-NET光 通話明細ビューア</title>
+    <link rel="stylesheet" href="calllog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-left">
+                <a href="calllog.html" class="logo-link">
+                    <div class="logo">
+                        <span class="logo-icon">📊</span>
+                        <h1>SAKURA-NET光 通話明細</h1>
+                    </div>
+                </a>
+                <!-- 同期ランプ（ordersystem.html と同じスタイル） -->
+                <div id="syncIndicator" title="クラウド同期状態">
+                    <span id="syncDot"></span>
+                    <span id="syncLabel">接続中...</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="export-csv" class="btn-outline">CSV出力</button>
+                <button id="export-xlsx" class="btn-outline">Excel出力</button>
+                <button id="clear-data" class="btn-danger-outline">データを全消去</button>
+                <button id="theme-toggle" class="btn-icon" title="テーマ切り替え">🌓</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- インポートエリアを常設 -->
+            <section id="drop-zone" class="drop-zone compact">
+                <div class="drop-zone-content">
+                    <span class="upload-icon">📁</span>
+                    <p>CSVをドロップして追加してインポート（c040R7データ）</p>
+                    <label for="csv-file" class="btn-primary">ファイルを選択</label>
+                    <input type="file" id="csv-file" accept=".csv" multiple hidden>
+                </div>
+            </section>
+
+            <section id="dashboard" class="dashboard hidden">
+                <div class="month-selector-container card">
+                    <label for="month-select">表示月を選択:</label>
+                    <select id="month-select">
+                        <option value="all">すべて表示 (合算)</option>
+                    </select>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>合計通話料</h3>
+                        <p id="total-cost" class="stat-value">¥0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>総通話時間</h3>
+                        <p id="total-duration" class="stat-value">0秒</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>通話件数</h3>
+                        <p id="total-count" class="stat-value">0件</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>期間</h3>
+                        <p id="file-date" class="stat-value">-</p>
+                    </div>
+                </div>
+
+                <div class="table-container card">
+                    <div class="table-header">
+                        <div class="table-title">
+                            <h2>通話明細一覧</h2>
+                            <span id="search-summary" class="search-summary hidden"></span>
+                        </div>
+                        <div class="table-actions">
+                            <input type="text" id="search-input" placeholder="番号、氏名、日付で検索...">
+                        </div>
+                    </div>
+                    <div class="scrollable-table">
+                        <table id="detail-table">
+                            <thead>
+                                <tr>
+                                    <th class="sortable" data-sort="date">通話日 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="fromName">契約者(発信) <span class="sort-icon">↕</span>
+                                    </th>
+                                    <th class="sortable" data-sort="from">発信元番号 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="toName">相手先名称 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="to">着信先番号 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="duration">通話時間 <span class="sort-icon">↕</span></th>
+                                    <th class="sortable" data-sort="cost">通話料金 <span class="sort-icon">↕</span></th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- データがここに挿入されます -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="file-list-panel" class="file-list-panel hidden">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>読み込み済みファイル</h3>
+                    </div>
+                    <ul id="file-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- Firebase SDK (V8) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <!-- Excel出力用ライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="calllog.js"></script>
+</body>
+
+</html>

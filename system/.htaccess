@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# index.php は除外
+RewriteCond %{REQUEST_URI} !index\.php$
+
+# 実際に存在するファイルは許可
+RewriteCond %{REQUEST_FILENAME} -f
+
+# HTMLファイルのみ認証チェック
+RewriteCond %{REQUEST_FILENAME} \.html$
+RewriteCond %{HTTP_COOKIE} !SAKURA_AUTH=verified [NC]
+
+RewriteRule ^ /system/index.php [L]

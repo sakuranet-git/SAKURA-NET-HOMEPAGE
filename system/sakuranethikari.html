@@ -1,0 +1,1350 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA-NET光 申込みリスト管理</title>
+    <style>
+        :root {
+            --primary: #e91e63;
+            --primary-light: #fce4ec;
+            --secondary: #ff4081;
+            --text-main: #333;
+            --bg-body: #fdfafb;
+            --bg-card: #ffffff;
+            --border-color: #f8bbd0;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            flex: 1;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Drag & Drop Zone */
+        .drop-zone {
+            border: 2px dashed var(--primary);
+            border-radius: 12px;
+            background-color: var(--primary-light);
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            background-color: #f8bbd0;
+            border-style: solid;
+        }
+
+        .drop-zone p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .drop-zone .sub-text {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .controls-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(233, 30, 99, 0.4);
+            transition: background 0.3s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .btn.btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn.btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+
+        .btn.active {
+            background-color: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+            border: none;
+            color: white;
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        tr:hover td {
+            background-color: #fff9fb;
+        }
+
+        td {
+            font-size: 13px;
+            color: #555;
+            position: relative;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #e0f7fa;
+            color: #00838f;
+        }
+
+        .status-badge.運用 {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-badge.転用 {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        .modal-header {
+            background: var(--primary-light);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .detail-row {
+            display: flex;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 10px 0;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            width: 140px;
+            font-weight: bold;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            flex: 1;
+            font-size: 15px;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            background: #fafafa;
+        }
+
+        .nav-btn {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Copyable styles */
+        .copyable {
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        body:not(.edit-mode) .copyable:hover {
+            background-color: #fce4ec;
+        }
+
+        body:not(.edit-mode) .copyable:active {
+            transform: scale(0.98);
+        }
+
+        /* Editable styles */
+        body.edit-mode .editable {
+            background-color: #fffde7;
+            /* 薄い黄色で編集可能をアピール */
+            border: 1px dashed #fbc02d;
+            cursor: text;
+        }
+
+        body.edit-mode .editable:focus {
+            outline: 2px solid var(--primary);
+            background-color: #fff;
+        }
+
+        /* 削除ボタン */
+        .delete-btn {
+            color: #f44336;
+            cursor: pointer;
+            font-weight: bold;
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #ffebee;
+            transition: all 0.2s;
+            font-size: 12px;
+            border: 1px solid #ffcdd2;
+        }
+
+        .delete-btn:hover {
+            background: #f44336;
+            color: white;
+            border-color: #f44336;
+        }
+
+        .detail-btn {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #bbdefb;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .detail-btn:hover {
+            background: #bbdefb;
+        }
+
+        /* Toast notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--primary);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>SAKURA-NET光 申込み管理ダッシュボード</h1>
+        <div style="display:flex; align-items:center; gap:16px;">
+            <div id="syncIndicator" style="display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); padding:6px 12px; border-radius:20px;">
+                <div id="syncDot" style="width:8px; height:8px; border-radius:50%; background:#bbb;"></div>
+                <span id="syncLabel" style="font-size:13px; color:rgba(255,255,255,0.9);">接続中...</span>
+            </div>
+            <button id="clearBtn" class="btn"
+                style="background-color: rgba(255,255,255,0.2); box-shadow: none;">データを全件クリア</button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="drop-zone" id="dropZone">
+            <p>ここに K1 XMLファイル または CSVファイル をドロップして追加</p>
+            <div class="sub-text">またはクリックしてファイルを選択（複数選択可） ※データは自動保存されます</div>
+            <input type="file" id="fileInput" multiple accept=".xml,.csv" style="display: none;">
+        </div>
+
+        <div class="controls fade-in" id="controls" style="display: none;">
+            <div>
+                <strong>登録件数:</strong> <span id="recordCount"
+                    style="color: var(--primary); font-size: 18px; font-weight: bold;">0</span> 件
+            </div>
+
+            <div class="controls-right">
+                <button id="addRowBtn" class="btn btn-outline"
+                    style="display: none; border-color: #4CAF50; color: #4CAF50;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    行を追加
+                </button>
+
+                <button id="toggleEditBtn" class="btn btn-outline">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    手動編集モード
+                </button>
+
+                <button id="exportCsvBtn" class="btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Excel用 CSVダウンロード
+                </button>
+            </div>
+        </div>
+
+        <div class="table-container fade-in">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>オーダー種別</th>
+                        <th>回線名</th>
+                        <th>氏名</th>
+                        <th>（カナ）</th>
+                        <th>郵便番号</th>
+                        <th>住所</th>
+                        <th>電話番号1</th>
+                        <th>電話番号2</th>
+                        <th>携帯電話</th>
+                        <th>CAF番号</th>
+                        <th>アクセスキー</th>
+                        <th>承認番号(転用等)</th>
+                        <th>申込日</th>
+                        <th>工事日</th>
+                        <th>詳細</th>
+                        <th class="delete-col">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="emptyRow">
+                        <td colspan="16" class="empty-state">データがありません。XMLファイルをドロップして読み込んでください。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">コピーしました</div>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">詳細情報</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- コンテンツはJSで生成 -->
+            </div>
+            <div class="modal-footer">
+                <button id="prevBtn" class="nav-btn" onclick="navigateModal(-1)">← 前のデータ</button>
+                <button class="btn btn-outline" style="padding: 6px 15px;" onclick="closeModal()">一覧に戻る</button>
+                <button id="nextBtn" class="nav-btn" onclick="navigateModal(1)">次のデータ →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD-IoqRej9KOCWDYy8W7InW3qpu6xxbW8Y",
+            authDomain: "sakura-net-db.firebaseapp.com",
+            projectId: "sakura-net-db",
+            storageBucket: "sakura-net-db.firebasestorage.app",
+            messagingSenderId: "764550859520",
+            appId: "1:764550859520:web:3a009815df3c95aa3041e5"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const dataTableBody = document.querySelector('#dataTable tbody');
+        const emptyRow = document.getElementById('emptyRow');
+        const recordCountSpan = document.getElementById('recordCount');
+        const controls = document.getElementById('controls');
+        const exportCsvBtn = document.getElementById('exportCsvBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const toggleEditBtn = document.getElementById('toggleEditBtn');
+        const addRowBtn = document.getElementById('addRowBtn');
+
+        let records = [];
+        let isEditMode = false;
+        let currentModalIndex = -1; // 現在表示中のデータのインデックス
+
+        // 保存: LocalStorageにオフラインキャッシュとして書き込む
+        function saveToStorage() {
+            try {
+                localStorage.setItem('sakuraNetRecords', JSON.stringify(records));
+            } catch (e) { /* クォータ超過は無視 */ }
+        }
+
+        // ページ読み込み時に実行
+        window.addEventListener('DOMContentLoaded', setupFirestoreSync);
+
+        // モード切替
+        toggleEditBtn.addEventListener('click', () => {
+            isEditMode = !isEditMode;
+            if (isEditMode) {
+                document.body.classList.add('edit-mode');
+                toggleEditBtn.classList.add('active');
+                toggleEditBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg> 編集完了 (保存)';
+                document.querySelector('.delete-col').style.display = 'table-cell';
+                addRowBtn.style.display = 'inline-flex';
+            } else {
+                document.body.classList.remove('edit-mode');
+                toggleEditBtn.classList.remove('active');
+                toggleEditBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> 手動編集モード';
+                // 削除列は常に表示するため none にしない
+                addRowBtn.style.display = 'none';
+
+                // 編集が終わったら再度レンダリングして整える
+                renderTable();
+            }
+        });
+
+        // 画面全体でドロップを受け付ける（誤ってファイルを開いてしまうのを防ぐ）
+        document.body.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.add('dragover');
+        });
+        document.body.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // relatedTargetが無い（画面外にポインタが出た）場合のみハイライトを消す
+            if (!e.relatedTarget) {
+                dropZone.classList.remove('dragover');
+            }
+        });
+        document.body.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer && e.dataTransfer.files.length > 0) {
+                handleFiles(e.dataTransfer.files);
+            }
+        });
+
+        // クリックでのファイル選択
+        dropZone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFiles(e.target.files);
+            }
+            fileInput.value = ''; // Reset
+        });
+
+        clearBtn.addEventListener('click', () => {
+            if (confirm('本当にすべてのデータを完全に消去しますか？\n（Firestoreのデータも削除されます）')) {
+                setSyncStatus('saving');
+                db.collection('hikari_records').get()
+                    .then(snapshot => {
+                        const batch = db.batch();
+                        snapshot.docs.forEach(doc => batch.delete(doc.ref));
+                        return batch.commit();
+                    })
+                    .then(() => {
+                        records = [];
+                        localStorage.removeItem('sakuraNetRecords');
+                        localStorage.removeItem('hikari_fs_migration_done');
+                        renderTable();
+                        setSyncStatus('synced');
+                    })
+                    .catch(err => {
+                        console.error('Firestore全件削除エラー:', err);
+                        setSyncStatus('error');
+                    });
+            }
+        });
+
+        addRowBtn.addEventListener('click', () => {
+            const newRec = {
+                id: String(Date.now()) + Math.random().toString(36).substr(2, 9),
+                so: '', serviceItem: '', name: '新規データ', kana: '', zip: '', address: '', phone1: '', phone2: '', mobile: '', caf: '', key: '', consentNo: '', applied: '', appoint: ''
+            };
+            records.push(newRec);
+            saveRecordToFirestore(newRec);
+            renderTable();
+            showToast('新しい行を追加しました');
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        exportCsvBtn.addEventListener('click', exportToCsv);
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                const fName = file.name.toLowerCase();
+                const fType = file.type.toLowerCase();
+                const isCSV = fName.endsWith('.csv') || fType === 'text/csv' || fType.includes('excel') || fType.includes('csv');
+                const isXML = fName.endsWith('.xml') || fType === 'text/xml' || fType.includes('xml');
+
+                if (isXML) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => processXML(e.target.result);
+                    reader.readAsText(file, "Shift_JIS"); // K1は通常SJIS
+                } else if (isCSV) {
+                    // UTF-8とShift_JISの自動判定
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        let text = e.target.result;
+                        if (text.includes('\uFFFD')) { // 文字化け検知時
+                            const sjisReader = new FileReader();
+                            sjisReader.onload = (e2) => processCSV(e2.target.result, file.name);
+                            sjisReader.readAsText(file, "Shift_JIS");
+                        } else {
+                            processCSV(text, file.name);
+                        }
+                    };
+                    reader.onerror = () => alert("ファイルの読み込み中にエラーが発生しました: " + file.name);
+                    reader.readAsText(file, "UTF-8");
+                } else {
+                    alert('対応していないファイル形式です: ' + file.name);
+                }
+            });
+        }
+
+        function getText(parent, tag) {
+            const el = parent.querySelector(tag);
+            return el ? el.textContent.trim() : "";
+        }
+
+        function formatToDateStr(str) {
+            if (!str || str.length !== 8) return str;
+            return `${str.substring(0, 4)}/${str.substring(4, 6)}/${str.substring(6, 8)}`;
+        }
+
+        function processCSV(csvText, filename = "CSVファイル") {
+            const cleanText = csvText.replace(/^\uFEFF/, ''); // BOM削除
+            const rows = [];
+            let inQuotes = false;
+            let currentStr = "";
+            let currentRow = [];
+
+            for (let i = 0; i < cleanText.length; i++) {
+                const char = cleanText[i];
+                if (char === '"') {
+                    if (inQuotes && cleanText[i + 1] === '"') {
+                        currentStr += '"';
+                        i++; // skip next quote
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (char === ',' && !inQuotes) {
+                    currentRow.push(currentStr);
+                    currentStr = "";
+                } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (char === '\r' && cleanText[i + 1] === '\n') {
+                        i++;
+                    }
+                    if (currentStr !== "" || currentRow.length > 0) {
+                        currentRow.push(currentStr);
+                        rows.push(currentRow);
+                    }
+                    currentRow = [];
+                    currentStr = "";
+                } else {
+                    currentStr += char;
+                }
+            }
+            if (currentStr !== "" || currentRow.length > 0) {
+                currentRow.push(currentStr);
+                rows.push(currentRow);
+            }
+
+            let addedCount = 0;
+            let skippedCount = 0;
+
+            if (rows.length === 0) {
+                alert(`[${filename}] 読み込めるデータ行がありませんでした。空のファイルかもしれません。`);
+                return;
+            }
+
+            if (rows.length > 0) {
+                const header = rows[0].map(h => h.replace(/[\s"　]+/g, '').trim());
+                // オーダー種別や回線名などのカラムのインデックスを見つける（ファジーなマッチング）
+                let headerRowIndex = 0;
+
+                // 動的にヘッダーを判定。氏名、アクセスキーなどのキーワードを探す。
+                if (!header.some(h => h.includes('氏名') || h.includes('CAF'))) {
+                    // もし1行目がヘッダーでなければ、ヘッダー行を探す処理を入れることも可能（省略）
+                }
+
+                if (header.length > 3) {
+                    // 新しいエクセルフォーマットのカラム位置をマッピング
+                    const colMap = {
+                        so: header.findIndex(h => h.includes('オーダー種別')),
+                        serviceItem: header.findIndex(h => h.includes('回線名')),
+                        name: header.findIndex(h => h === '氏名' || h === '（契約者）'),
+                        kana: header.findIndex(h => h.includes('カナ')),
+                        zip: header.findIndex(h => h.includes('郵便番号')),
+                        address: header.findIndex(h => h.includes('住所')),
+                        phone1: header.findIndex(h => (h.includes('電話番号') && !h.includes('TEL2') && !h.includes('モバ')) || h.includes('TEL1') || h === '電話番号1'),
+                        phone2: header.findIndex(h => h.includes('TEL2') || h === '電話番号2'),
+                        mobile: header.findIndex(h => h.includes('携帯') || h.includes('モバ')),
+                        caf: header.findIndex(h => h.includes('CAF')),
+                        key: header.findIndex(h => h.includes('アクセスキー')),
+                        consentNo: header.findIndex(h => h.includes('承認番号') || h.includes('転用')),
+                        applied: header.findIndex(h => h.includes('申込日')),
+                        appoint: header.findIndex(h => h.includes('工事日'))
+                    };
+
+                    for (let i = headerRowIndex + 1; i < rows.length; i++) {
+                        const cols = rows[i];
+                        if (cols.length < 2 || !cols.some(c => c.trim() !== '')) continue; // 空行などをスキップ
+
+                        const getVal = (idx) => idx !== -1 && cols[idx] ? cols[idx] : '';
+                        const so = getVal(colMap.so);
+                        const serviceItem = getVal(colMap.serviceItem);
+                        const name = getVal(colMap.name);
+                        const kana = getVal(colMap.kana);
+                        let zip = getVal(colMap.zip);
+                        let rawAddress = getVal(colMap.address);
+                        let phone1 = getVal(colMap.phone1);
+                        let phone2 = getVal(colMap.phone2);
+                        let mobile = getVal(colMap.mobile);
+                        const caf = getVal(colMap.caf);
+                        const key = getVal(colMap.key);
+                        const consentNo = getVal(colMap.consentNo);
+                        const applied = getVal(colMap.applied);
+                        const appoint = getVal(colMap.appoint);
+
+                        // --- 携帯電話の自動振り分け（050, 060, 070, 080, 090） ---
+                        let allPhones = [phone1, phone2, mobile].filter(p => p.trim() !== '');
+                        phone1 = ''; phone2 = ''; mobile = '';
+                        // 先頭によくある市外局番の数字としてマッチ判定（ハイフン除く）
+                        const isMobile = (p) => /^0[56789]0-?\d{3,4}-?\d{4}$/.test(p.trim()) || /^0[56789]0\d{8}$/.test(p.trim());
+
+                        let mIdx = allPhones.findIndex(isMobile);
+                        if (mIdx !== -1) {
+                            mobile = allPhones[mIdx];
+                            allPhones.splice(mIdx, 1);
+                        }
+                        if (allPhones.length > 0) phone1 = allPhones.shift();
+                        if (allPhones.length > 0) phone2 = allPhones.shift();
+                        // -----------------------------------------------------------
+
+                        // CAF番号が既に存在する場合はスキップする
+                        if (caf && records.some(r => r.caf === caf)) {
+                            skippedCount++;
+                            continue;
+                        }
+
+                        // 住所に郵便番号が含まれている場合の処理
+                        const zipMatch = rawAddress.match(/^(\d{3}-?\d{4})[\s\u3000]*/);
+                        if (zipMatch) {
+                            if (!zip) zip = zipMatch[1];
+                            rawAddress = rawAddress.substring(zipMatch[0].length);
+                        }
+                        const address = rawAddress.replace(/[\s\u3000]+/g, '');
+
+                        if (name || caf || so) {
+                            records.push({
+                                id: Date.now() + Math.random().toString(36).substr(2, 9),
+                                so,
+                                serviceItem,
+                                name,
+                                kana,
+                                zip,
+                                address,
+                                phone1,
+                                phone2,
+                                mobile,
+                                caf,
+                                key,
+                                consentNo,
+                                applied,
+                                appoint
+                            });
+                            addedCount++;
+                        }
+                    }
+                } else {
+                    alert(`[${filename}] ヘッダーの列が少なすぎるため、有効なデータ形式ではないと判断しました。`);
+                    return;
+                }
+            }
+
+            if (addedCount > 0) {
+                saveRecentToFirestore(addedCount);
+                showToast(`[${filename}] ${addedCount}件のデータを追加しました`);
+            } else if (skippedCount > 0) {
+                alert(`[${filename}] 全件が既に登録されているデータ（CAF番号重複）のため追加されませんでした。`);
+            } else {
+                alert(`[${filename}] 読み込める有効なデータが見つかりませんでした。ファイル内の項目名（氏名、CAF番号など）を確認してください。`);
+            }
+            renderTable();
+        }
+
+        function processXML(xmlString) {
+            const safeXmlString = xmlString.replace(/encoding="Windows-31J"/i, 'encoding="utf-8"');
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(safeXmlString, "text/xml");
+
+            const errorNode = xmlDoc.querySelector("parsererror");
+            if (errorNode) {
+                console.error("XMLパースエラー", errorNode);
+                alert("一部のXMLファイルの解析に失敗しました。");
+                return;
+            }
+
+            const dataParts = xmlDoc.querySelectorAll("DataPart");
+            let addedCount = 0;
+            let skippedCount = 0;
+
+            dataParts.forEach(part => {
+                const so = getText(part, "So");
+                // 「運用」の行は不要とのため、スキップ
+                if (so === "運用") return;
+
+                const serviceItem = getText(part, "Serviceitem");
+                const name = getText(part, "Contractorname");
+                const kana = getText(part, "Contractorkname");
+                let zip = getText(part, "Curuserpostcode");
+                let rawAddress = getText(part, "Curuseraddrcode");
+
+                // 住所の先頭に郵便番号（例: 520-0023等）が含まれているかチェック
+                const zipMatch = rawAddress.match(/^(\d{3}-?\d{4})[\s\u3000]*/);
+                if (zipMatch) {
+                    if (!zip) zip = zipMatch[1]; // Curuserpostcode が空の場合はこちらを使用
+                    rawAddress = rawAddress.substring(zipMatch[0].length); // 住所から郵便番号部分を削除
+                }
+
+                // 住所内の全角・半角スペースを除去
+                const address = rawAddress.replace(/[\s\u3000]+/g, '');
+                let phone1 = getText(part, "Contactphone");
+                let phone2 = getText(part, "Contactphone2") || ''; // XMLにTEL2がある場合を想定
+                let mobile = getText(part, "Mobilephone") || ''; // 携帯電話用のタグを想定
+
+                // --- 携帯電話の自動振り分け（050, 060, 070, 080, 090） ---
+                let allPhones = [phone1, phone2, mobile].filter(p => p.trim() !== '');
+                phone1 = ''; phone2 = ''; mobile = '';
+                const isMobile = (p) => /^0[56789]0-?\d{3,4}-?\d{4}$/.test(p.trim()) || /^0[56789]0\d{8}$/.test(p.trim());
+
+                let mIdx = allPhones.findIndex(isMobile);
+                if (mIdx !== -1) {
+                    mobile = allPhones[mIdx];
+                    allPhones.splice(mIdx, 1);
+                }
+                if (allPhones.length > 0) phone1 = allPhones.shift();
+                if (allPhones.length > 0) phone2 = allPhones.shift();
+                // -----------------------------------------------------------
+
+                const caf = getText(part, "Contractcode");
+                const key = getText(part, "Accesskey");
+                const consentNo = getText(part, "Divertconsentno") || getText(part, "Chgconsentno") || getText(part, "Liwdivertconsentno");
+
+                const applied = formatToDateStr(getText(part, "Applieddate"));
+                const appoint = formatToDateStr(getText(part, "Appointdate"));
+
+                if (name || caf) {
+                    // 重複チェック（CAF番号などで判定）
+                    if (caf && records.some(r => r.caf === caf)) {
+                        skippedCount++;
+                        return; // forEachの次の要素へ
+                    }
+
+                    records.push({
+                        id: Date.now() + Math.random().toString(36).substr(2, 9), // ユニークIDを付与
+                        so, serviceItem, name, kana, zip, address, phone1, phone2, mobile, caf, key, consentNo, applied, appoint
+                    });
+                    addedCount++;
+                }
+            });
+
+            if (addedCount > 0) {
+                saveRecentToFirestore(addedCount);
+                showToast(`${addedCount}件のデータを取り込み保存しました`);
+            }
+            if (skippedCount > 0) {
+                setTimeout(() => {
+                    alert(`重複したCAF番号のデータが ${skippedCount}件スキップされました。`);
+                }, 500);
+            }
+            renderTable();
+        }
+
+        function renderTable() {
+            dataTableBody.innerHTML = '';
+            recordCountSpan.textContent = records.length;
+
+            if (records.length === 0) {
+                controls.style.display = 'none';
+                dataTableBody.appendChild(emptyRow);
+                return;
+            }
+
+            controls.style.display = 'flex';
+
+            records.forEach((rec, index) => {
+                const tr = document.createElement('tr');
+
+                // 万が一IDが無い場合は付与
+                if (!rec.id) rec.id = Date.now() + Math.random().toString(36).substr(2, 9);
+
+                tr.setAttribute('data-id', rec.id);
+
+                const soClass = rec.so === '運用' ? '運用' : (rec.so === '転用' ? '転用' : '');
+
+                // セルの生成
+                tr.innerHTML = `
+                    <td onclick="copyText(this)" class="copyable editable" data-field="so" title="${rec.so || ''}" style="max-width:60px; overflow:hidden; text-overflow:ellipsis;">${rec.so || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="serviceItem" title="${rec.serviceItem || ''}" style="max-width:90px; overflow:hidden; text-overflow:ellipsis;">${rec.serviceItem || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="name" title="${rec.name || ''}" style="max-width:70px; overflow:hidden; text-overflow:ellipsis;">${rec.name || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="kana" title="${rec.kana || ''}" style="max-width:70px; overflow:hidden; text-overflow:ellipsis;">${rec.kana || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="zip" title="${rec.zip || ''}">${rec.zip || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="address" title="${rec.address || ''}" style="min-width:180px; max-width:280px; white-space:normal; word-break:break-all;">${rec.address || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="phone1" title="${rec.phone1 || ''}">${rec.phone1 || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="phone2" title="${rec.phone2 || ''}">${rec.phone2 || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="mobile" title="${rec.mobile || ''}">${rec.mobile || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="caf" title="${rec.caf || ''}" style="font-family: monospace; max-width:110px; overflow:hidden; text-overflow:ellipsis;">${rec.caf || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="key" title="${rec.key || ''}" style="font-family: monospace; max-width:110px; overflow:hidden; text-overflow:ellipsis;">${rec.key || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="consentNo" title="${rec.consentNo || ''}" style="max-width:110px; overflow:hidden; text-overflow:ellipsis;">${rec.consentNo || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="applied" title="${rec.applied || ''}">${rec.applied || ''}</td>
+                    <td onclick="copyText(this)" class="copyable editable" data-field="appoint" title="${rec.appoint || ''}">${rec.appoint || ''}</td>
+                    <td><button class="detail-btn" onclick="openModal(${index})">詳細</button></td>
+                    <td class="delete-col">
+                        <span class="delete-btn" style="display:inline-block;" onclick="deleteRow('${rec.id}')">削除</span>
+                    </td>
+                `;
+                dataTableBody.appendChild(tr);
+            });
+
+            // 編集モードのためのイベントリスナーを付与
+            attachEditableEvents();
+        }
+
+        // --- モーダル（詳細表示）の制御 ---
+        function openModal(index) {
+            currentModalIndex = index;
+            updateModalContent();
+            document.getElementById('detailModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        function navigateModal(direction) {
+            const newIndex = currentModalIndex + direction;
+            if (newIndex >= 0 && newIndex < records.length) {
+                currentModalIndex = newIndex;
+                updateModalContent();
+            }
+        }
+
+        function updateModalContent() {
+            const rec = records[currentModalIndex];
+            if (!rec) return;
+
+            // ボタンの状態更新
+            document.getElementById('prevBtn').disabled = (currentModalIndex === 0);
+            document.getElementById('nextBtn').disabled = (currentModalIndex === records.length - 1);
+
+            const fields = [
+                { label: '氏名', value: rec.name },
+                { label: '氏名（カナ）', value: rec.kana },
+                { label: 'オーダー種別', value: rec.so },
+                { label: '回線名', value: rec.serviceItem },
+                { label: '郵便番号', value: rec.zip },
+                { label: '住所', value: rec.address },
+                { label: '電話番号1', value: rec.phone1 },
+                { label: '電話番号2', value: rec.phone2 },
+                { label: '携帯電話', value: rec.mobile },
+                { label: 'CAF番号', value: `<span style="font-family: monospace;">${rec.caf || ''}</span>` },
+                { label: 'アクセスキー', value: `<span style="font-family: monospace;">${rec.key || ''}</span>` },
+                { label: '承認番号(転用等)', value: rec.consentNo },
+                { label: '申込日', value: rec.applied },
+                { label: '工事日', value: rec.appoint }
+            ];
+
+            let html = '';
+            fields.forEach(f => {
+                html += `
+                    <div class="detail-row">
+                        <div class="detail-label">${f.label}</div>
+                        <div class="detail-value">${f.value || '<span style="color:#ccc;">-</span>'}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('modalBody').innerHTML = html;
+        }
+
+        // データの個別削除
+        function deleteRow(id) {
+            if (confirm('この行を削除しますか？')) {
+                records = records.filter(r => r.id !== id);
+                saveToStorage();
+                renderTable();
+                setSyncStatus('saving');
+                db.collection('hikari_records').doc(String(id)).delete()
+                    .then(() => setSyncStatus('synced'))
+                    .catch(err => { console.error('Firestore削除エラー:', err); setSyncStatus('error'); });
+            }
+        }
+
+        // 編集機能のリスナー付与
+        function attachEditableEvents() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(cell => {
+                // 編集モード時のみ contenteditable を true にする
+                cell.setAttribute('contenteditable', isEditMode ? 'true' : 'false');
+
+                // フォーカスが外れた時に値を保存
+                cell.addEventListener('blur', async function () {
+                    if (!isEditMode) return;
+
+                    const field = this.getAttribute('data-field');
+                    const tr = this.closest('tr');
+                    const id = tr.getAttribute('data-id');
+
+                    // DOMのテキストを取得 (改行などは取り除く)
+                    let newValue = this.innerText.trim();
+                    newValue = newValue.replace(/<[^>]*>?/gm, '');
+
+                    // 対象データの更新
+                    const recordIndex = records.findIndex(r => r.id === id);
+                    if (recordIndex > -1 && records[recordIndex][field] !== newValue) {
+                        records[recordIndex][field] = newValue;
+
+                        // 郵便番号が入力・変更された場合に住所を自動取得
+                        if (field === 'zip' && newValue.replace(/-/g, '').length === 7) {
+                            try {
+                                const cleanZip = newValue.replace(/-/g, '');
+                                const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${cleanZip}`);
+                                const data = await response.json();
+                                if (data.status === 200 && data.results) {
+                                    const result = data.results[0];
+                                    const address = `${result.address1}${result.address2}${result.address3}`;
+
+                                    records[recordIndex].address = address;
+                                    // 住所セルを見つけてUIも更新する
+                                    const addressCell = tr.querySelector('[data-field="address"]');
+                                    if (addressCell) addressCell.innerText = address;
+
+                                    showToast('郵便番号から住所を自動入力しました');
+                                }
+                            } catch (e) {
+                                console.error('住所取得APIエラー', e);
+                            }
+                        }
+
+                        // 住所が入力・変更され、かつ郵便番号が空の場合、住所から郵便番号を自動取得
+                        if (field === 'address' && newValue.trim() !== '' && !records[recordIndex].zip) {
+                            try {
+                                const response = await fetch(`https://geoapi.heartrails.com/api/json?method=suggest&matching=fuzzy&keyword=${encodeURIComponent(newValue)}`);
+                                const data = await response.json();
+                                if (data.response && data.response.location && data.response.location.length > 0) {
+                                    const zip = data.response.location[0].postal;
+                                    records[recordIndex].zip = zip;
+
+                                    const zipCell = tr.querySelector('[data-field="zip"]');
+                                    if (zipCell) zipCell.innerText = zip;
+
+                                    showToast('住所から郵便番号を自動入力しました');
+                                }
+                            } catch (e) {
+                                console.error('郵便番号取得APIエラー', e);
+                            }
+                        }
+
+                        saveToStorage();
+                        saveRecordToFirestore(records[recordIndex]);
+                    }
+                });
+            });
+        }
+
+        // コピー機能 (編集モードではない時のみ)
+        function copyText(element) {
+            if (isEditMode) return;
+
+            const text = element.innerText;
+            if (!text) return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('「' + text + '」をコピーしました');
+            }).catch(err => {
+                console.error('コピー失敗:', err);
+                alert('コピーに失敗しました。');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        // ==========================================
+        // Firestore リアルタイム同期
+        // ==========================================
+
+        function setSyncStatus(status) {
+            const dot = document.getElementById('syncDot');
+            const label = document.getElementById('syncLabel');
+            if (!dot || !label) return;
+            if (status === 'synced') {
+                dot.style.background = '#4caf50';
+                label.textContent = '同期済み';
+                label.style.color = 'rgba(255,255,255,0.9)';
+            } else if (status === 'saving') {
+                dot.style.background = '#ff9800';
+                label.textContent = '保存中...';
+                label.style.color = 'rgba(255,255,255,0.9)';
+            } else if (status === 'error') {
+                dot.style.background = '#f44336';
+                label.textContent = 'エラー';
+                label.style.color = 'rgba(255,255,255,0.9)';
+            } else {
+                dot.style.background = '#bbb';
+                label.textContent = '接続中...';
+                label.style.color = 'rgba(255,255,255,0.9)';
+            }
+        }
+
+        function setupFirestoreSync() {
+            setSyncStatus('connecting');
+
+            // localStorageに既存データがあればFirestoreへ移行（初回のみ）
+            const migrationDone = localStorage.getItem('hikari_fs_migration_done');
+            if (!migrationDone) {
+                const saved = localStorage.getItem('sakuraNetRecords');
+                if (saved) {
+                    try {
+                        const oldRecords = JSON.parse(saved);
+                        if (Array.isArray(oldRecords) && oldRecords.length > 0) {
+                            const batch = db.batch();
+                            oldRecords.forEach(rec => {
+                                if (rec.id) {
+                                    batch.set(db.collection('hikari_records').doc(String(rec.id)), rec);
+                                }
+                            });
+                            batch.commit()
+                                .then(() => {
+                                    localStorage.setItem('hikari_fs_migration_done', 'true');
+                                    console.log('localStorageデータをFirestoreへ移行しました:', oldRecords.length + '件');
+                                })
+                                .catch(err => console.error('移行エラー:', err));
+                        } else {
+                            localStorage.setItem('hikari_fs_migration_done', 'true');
+                        }
+                    } catch (e) {
+                        localStorage.setItem('hikari_fs_migration_done', 'true');
+                    }
+                } else {
+                    localStorage.setItem('hikari_fs_migration_done', 'true');
+                }
+            }
+
+            // onSnapshotでリアルタイム同期リスナー設置
+            db.collection('hikari_records')
+                .onSnapshot(
+                    (snapshot) => {
+                        records = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        try {
+                            localStorage.setItem('sakuraNetRecords', JSON.stringify(records));
+                        } catch (e) { /* クォータ超過は無視 */ }
+                        setSyncStatus('synced');
+                        renderTable();
+                    },
+                    (error) => {
+                        console.error('Firestoreリアルタイム同期エラー:', error);
+                        setSyncStatus('error');
+                        // オフラインフォールバック: localStorageから読み込む
+                        const cached = localStorage.getItem('sakuraNetRecords');
+                        if (cached) {
+                            try { records = JSON.parse(cached) || []; } catch (e) { records = []; }
+                            renderTable();
+                        }
+                    }
+                );
+        }
+
+        /** 1件のレコードをFirestoreへ保存する（デバウンス付き） */
+        const firestoreSaveTimers = {};
+        function saveRecordToFirestore(rec) {
+            if (!rec || !rec.id) return;
+            setSyncStatus('saving');
+            clearTimeout(firestoreSaveTimers[rec.id]);
+            firestoreSaveTimers[rec.id] = setTimeout(() => {
+                db.collection('hikari_records').doc(String(rec.id)).set(rec)
+                    .then(() => setSyncStatus('synced'))
+                    .catch(err => {
+                        console.error('Firestore保存エラー:', err);
+                        setSyncStatus('error');
+                    });
+            }, 1000);
+        }
+
+        /** CSV/XML読込時に新規追加分をバッチ保存する */
+        function saveRecentToFirestore(count) {
+            if (count <= 0) return;
+            setSyncStatus('saving');
+            const batch = db.batch();
+            const newRecs = records.slice(-count);
+            newRecs.forEach(rec => {
+                batch.set(db.collection('hikari_records').doc(String(rec.id)), rec);
+            });
+            batch.commit()
+                .then(() => setSyncStatus('synced'))
+                .catch(err => { console.error('Firestoreバッチ保存エラー:', err); setSyncStatus('error'); });
+        }
+
+        function exportToCsv() {
+            if (records.length === 0) return;
+
+            const header = ['オーダー種別', '回線名', '氏名', '氏名（カナ）', '郵便番号', '住所', '電話番号1', '電話番号2', '携帯電話', 'CAF番号', 'アクセスキー', '承認番号(転用等)', '申込日', '工事日'];
+
+            let csvContent = '\uFEFF';
+            csvContent += header.join(',') + '\n';
+
+            records.forEach(rec => {
+                const row = [
+                    rec.so,
+                    rec.serviceItem,
+                    rec.name,
+                    rec.kana,
+                    rec.zip,
+                    rec.address,
+                    rec.phone1,
+                    rec.phone2,
+                    rec.mobile,
+                    rec.caf,
+                    rec.key,
+                    rec.consentNo,
+                    rec.applied,
+                    rec.appoint
+                ];
+                // CSVエスケープ処理
+                const formattedRow = row.map(item => {
+                    let str = String(item || '');
+                    if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+                        str = '"' + str.replace(/"/g, '""') + '"';
+                    }
+                    return str;
+                });
+                csvContent += formattedRow.join(',') + '\n';
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+
+            const now = new Date();
+            const filenameDate = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}`;
+            link.setAttribute("download", `申込みリスト_${filenameDate}.csv`);
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+
+</html>
