@@ -231,9 +231,11 @@
                 color: #fff;
               }
 
-              .status-badge.failure     { background: #e03164; }
-              .status-badge.maintenance { background: #e0a000; }
-              .status-badge.normal      { background: #2ab05a; }
+              .status-badge.failure             { background: #e03164; }
+              .status-badge.maintenance         { background: #e0a000; }
+              .status-badge.maintenance-notice  { background: #8b5cf6; }
+              .status-badge.notice              { background: #3b82f6; }
+              .status-badge.normal              { background: #2ab05a; }
 
               .status-title-text {
                 font-size: 1.05em;
@@ -296,6 +298,8 @@
               <strong style="color: #c82054;">ステータス凡例：</strong>
               <span>🔴 <span class="status-badge failure">障害発生中</span></span>
               <span>🟡 <span class="status-badge maintenance">メンテナンス中</span></span>
+              <span>🔔 <span class="status-badge maintenance-notice">メンテナンス予告</span></span>
+              <span>📢 <span class="status-badge notice">お知らせ</span></span>
               <span>🟢 <span class="status-badge normal">正常稼働 / 復旧完了</span></span>
             </div>
 
@@ -332,9 +336,11 @@
   <script type="text/javascript" src="navigation.js"></script>
   <script>
     const STATUS_MAP = {
-      failure:     { icon: '🔴', label: '障害発生中',     cls: 'failure' },
-      maintenance: { icon: '🟡', label: 'メンテナンス中',  cls: 'maintenance' },
-      normal:      { icon: '🟢', label: '正常稼働 / 復旧完了', cls: 'normal' },
+      failure:            { icon: '🔴', label: '障害発生中',          cls: 'failure' },
+      maintenance:        { icon: '🟡', label: 'メンテナンス中',       cls: 'maintenance' },
+      maintenance_notice: { icon: '🔔', label: 'メンテナンス予告',     cls: 'maintenance-notice' },
+      notice:             { icon: '📢', label: 'お知らせ',             cls: 'notice' },
+      normal:             { icon: '🟢', label: '正常稼働 / 復旧完了',  cls: 'normal' },
     };
 
     function formatDate(str) {
