@@ -1,0 +1,94 @@
+# バックアップ・作業用ファイル
+backup/
+backups/
+date/
+test/
+setup/
+さくらねっと_修正済みHTMLファイル/
+Tetris/
+
+# スクリプト類
+*.py
+*.ps1
+*.bat
+
+# スナップショット・旧バージョン
+*_snapshot_*.html
+*_old.html
+*_old2.html
+*_old3.html
+*.bak
+navigation1.js
+navigation2.js
+navigation3.js
+navigation4.js
+navigation5.js
+navigation6.js
+navigation7.js
+navigation8.js
+navigation9.js
+navigation10.js
+navigation11.js
+navigation12.js
+navigation13.js
+navigation14.js
+navigation15.js
+navigation16.js
+navigation17.js
+navigation18.js
+navigation19.js
+navigation20.js
+navigation21.js
+navigation22.js
+navigation23.js
+navigation24.js
+navigation25.js
+navigation26.js
+navigation27.js
+navigation28.js
+navigation29.js
+navigation30.js
+navigation31.js
+navigation32.js
+navigation33.js
+navigation34.js
+navigation35.js
+navigation36.js
+navigation37.js
+navigation38.js
+navigation39.js
+navigation40.js
+navigation41.js
+navigation42.js
+navigation43.js
+navigation44.js
+navigation45.js
+navigation46.js
+navigation47.js
+navigation48.js
+navigation49.js
+navigation50.js
+navigation51.js
+navigation52.js
+navigation53.js
+navigation54.js
+navigation55.js
+navigation56.js
+
+# ZIPアーカイブ
+*.zip
+
+# テキストバックアップ
+ソースコードバックアップ*.txt
+
+# systemフォルダ（APIキー漏洩防止・各専用リポジトリで管理）
+system/
+
+# sales（機密情報）
+sales/
+
+# posts（大容量）
+posts/
+
+# data（旧バージョンHTML）
+data/

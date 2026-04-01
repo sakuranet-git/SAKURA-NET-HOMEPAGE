@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>障害情報 管理画面 | 株式会社さくらねっと</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      background: #fff0f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── ヘッダー ── */
+    .admin-header {
+      background: linear-gradient(135deg, #c82054, #e03164);
+      color: #fff;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 3px 12px rgba(200,32,84,0.3);
+    }
+
+    .admin-header h1 {
+      margin: 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .admin-header a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.88em;
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+
+    .admin-header a:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── コンテナ ── */
+    .admin-container {
+      max-width: 860px;
+      margin: 30px auto;
+      padding: 0 16px 60px;
+    }
+
+    /* ── セクション共通 ── */
+    .admin-section {
+      background: #fff;
+      border: 1px solid #ffc1d3;
+      border-radius: 12px;
+      padding: 24px 26px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 16px rgba(200,32,84,0.07);
+    }
+
+    .admin-section h2 {
+      color: #c82054;
+      margin: 0 0 20px 0;
+      font-size: 1.1em;
+      border-bottom: 2px dashed #ffc1d3;
+      padding-bottom: 10px;
+    }
+
+    /* ── フォーム ── */
+    .form-row {
+      margin-bottom: 16px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 0.88em;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .form-row input[type="text"],
+    .form-row input[type="date"],
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #ffc1d3;
+      border-radius: 6px;
+      font-size: 0.95em;
+      color: #333;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fffafb;
+    }
+
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: #c82054;
+      box-shadow: 0 0 0 3px rgba(200,32,84,0.12);
+      background: #fff;
+    }
+
+    .form-row textarea { min-height: 100px; resize: vertical; }
+
+    .form-row-inline {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .form-row-inline .form-row { flex: 1 1 180px; }
+
+    /* ── ボタン ── */
+    .btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 24px;
+      border: none;
+      font-size: 0.95em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary   { background: #c82054; color: #fff; }
+    .btn-secondary { background: #fff; color: #c82054; border: 2px solid #ffc1d3; }
+    .btn-danger    { background: #e03164; color: #fff; font-size: 0.82em; padding: 6px 14px; }
+    .btn-edit      { background: #fff; color: #c82054; border: 1px solid #ffc1d3; font-size: 0.82em; padding: 6px 14px; }
+
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── 投稿一覧 ── */
+    .post-list { list-style: none; padding: 0; margin: 0; }
+
+    .post-item {
+      border: 1px solid #ffc1d3;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: #fffafb;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .post-item-icon { font-size: 1.5em; flex-shrink: 0; }
+
+    .post-item-body { flex: 1; min-width: 0; }
+
+    .post-item-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .post-item-date { font-size: 0.8em; color: #999; }
+
+    .post-item-service {
+      background: #fff0f5;
+      color: #c82054;
+      border: 1px solid #ffc1d3;
+      border-radius: 20px;
+      padding: 1px 9px;
+      font-size: 0.76em;
+      font-weight: bold;
+    }
+
+    .status-badge {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 1px 10px;
+      font-size: 0.76em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .status-badge.failure     { background: #e03164; }
+    .status-badge.maintenance { background: #e0a000; }
+    .status-badge.normal      { background: #2ab05a; }
+
+    .post-item-title {
+      font-size: 0.97em;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 4px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .post-item-content {
+      font-size: 0.87em;
+      color: #666;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-item-actions { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+
+    /* ── トースト通知 ── */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    #toast.show { opacity: 1; }
+    #toast.success { background: #2ab05a; }
+    #toast.error   { background: #e03164; }
+
+    /* ── 空状態 ── */
+    .empty-msg {
+      text-align: center;
+      color: #aaa;
+      padding: 30px;
+      font-size: 0.95em;
+    }
+
+    /* ── レスポンシブ ── */
+    @media screen and (max-width: 568px) {
+      .admin-header h1 { font-size: 1em; }
+      .admin-container { padding: 0 10px 50px; }
+      .admin-section { padding: 16px 14px; }
+      .post-item { flex-wrap: wrap; }
+      .post-item-actions { width: 100%; justify-content: flex-start; }
+      .post-item-title { white-space: normal; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="admin-header">
+    <h1>🛠️ 障害・メンテナンス情報 管理</h1>
+    <a href="status.html" target="_blank">公開ページを確認</a>
+  </div>
+
+  <div class="admin-container">
+
+    <!-- 投稿フォーム -->
+    <div class="admin-section" id="form-section">
+      <h2 id="form-title">🌸 新規投稿</h2>
+      <input type="hidden" id="edit-id" value="">
+
+      <div class="form-row">
+        <label for="f-title">タイトル <span style="color:#e03164;">*</span></label>
+        <input type="text" id="f-title" placeholder="例: SAKURA-NET光 接続障害のお知らせ" maxlength="100">
+      </div>
+
+      <div class="form-row-inline">
+        <div class="form-row">
+          <label for="f-service">対象サービス</label>
+          <select id="f-service">
+            <option value="">選択してください</option>
+            <option value="SAKURA-NET光">SAKURA-NET光</option>
+            <option value="SAKURA SYSTEM">SAKURA SYSTEM</option>
+            <option value="SAKURA AI">SAKURA AI</option>
+            <option value="UniFi">UniFi</option>
+            <option value="IP-PBX">IP-PBX</option>
+            <option value="全サービス">全サービス</option>
+            <option value="その他">その他</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="f-status">ステータス <span style="color:#e03164;">*</span></label>
+          <select id="f-status">
+            <option value="failure">🔴 障害発生中</option>
+            <option value="maintenance">🟡 メンテナンス中</option>
+            <option value="normal" selected>🟢 正常稼働 / 復旧完了</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="f-date">投稿日 <span style="color:#e03164;">*</span></label>
+          <input type="date" id="f-date">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="f-content">内容</label>
+        <textarea id="f-content" placeholder="詳細内容を記入してください。復旧状況なども記載できます。"></textarea>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btn-submit" onclick="submitPost()">投稿する</button>
+        <button class="btn btn-secondary" id="btn-cancel" style="display:none;" onclick="cancelEdit()">キャンセル</button>
+      </div>
+    </div>
+
+    <!-- 投稿一覧 -->
+    <div class="admin-section">
+      <h2>📋 投稿一覧</h2>
+      <div id="post-list-container">
+        <div class="empty-msg">読み込み中...</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    const API_URL = 'status_api.php';
+    const STATUS_MAP = {
+      failure:     { icon: '🔴', label: '障害発生中',          cls: 'failure' },
+      maintenance: { icon: '🟡', label: 'メンテナンス中',       cls: 'maintenance' },
+      normal:      { icon: '🟢', label: '正常稼働 / 復旧完了',  cls: 'normal' },
+    };
+
+    let posts = [];
+
+    /* ── 初期化 ── */
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().slice(0, 10);
+      document.getElementById('f-date').value = today;
+      loadPosts();
+    });
+
+    /* ── トースト ── */
+    function showToast(msg, type = '') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = 'show ' + type;
+      setTimeout(() => { t.className = ''; }, 3000);
+    }
+
+    /* ── HTMLエスケープ ── */
+    function esc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* ── 日付フォーマット ── */
+    function fmtDate(str) {
+      if (!str) return '';
+      const d = new Date(str + 'T00:00:00');
+      if (isNaN(d)) return str;
+      return d.getFullYear() + '年' +
+             ('0' + (d.getMonth() + 1)).slice(-2) + '月' +
+             ('0' + d.getDate()).slice(-2) + '日';
+    }
+
+    /* ── 一覧取得 ── */
+    async function loadPosts() {
+      try {
+        const res = await fetch(API_URL);
+        posts = await res.json();
+        renderList();
+      } catch (e) {
+        document.getElementById('post-list-container').innerHTML =
+          '<div class="empty-msg" style="color:#e03164;">データの読み込みに失敗しました。</div>';
+      }
+    }
+
+    /* ── 一覧描画 ── */
+    function renderList() {
+      const container = document.getElementById('post-list-container');
+      if (!posts.length) {
+        container.innerHTML = '<div class="empty-msg">まだ投稿がありません。</div>';
+        return;
+      }
+      const items = posts.map(p => {
+        const sm = STATUS_MAP[p.status] || STATUS_MAP.normal;
+        return `
+          <div class="post-item" id="item-${esc(p.id)}">
+            <div class="post-item-icon">${sm.icon}</div>
+            <div class="post-item-body">
+              <div class="post-item-meta">
+                <span class="post-item-date">${esc(fmtDate(p.date))}</span>
+                ${p.service ? `<span class="post-item-service">${esc(p.service)}</span>` : ''}
+                <span class="status-badge ${sm.cls}">${esc(sm.label)}</span>
+              </div>
+              <p class="post-item-title">${esc(p.title)}</p>
+              <p class="post-item-content">${esc(p.content)}</p>
+            </div>
+            <div class="post-item-actions">
+              <button class="btn btn-edit" onclick="startEdit('${esc(p.id)}')">編集</button>
+              <button class="btn btn-danger" onclick="deletePost('${esc(p.id)}')">削除</button>
+            </div>
+          </div>`;
+      }).join('');
+      container.innerHTML = items;
+    }
+
+    /* ── 投稿・編集送信 ── */
+    async function submitPost() {
+      const id      = document.getElementById('edit-id').value;
+      const title   = document.getElementById('f-title').value.trim();
+      const service = document.getElementById('f-service').value;
+      const status  = document.getElementById('f-status').value;
+      const date    = document.getElementById('f-date').value;
+      const content = document.getElementById('f-content').value.trim();
+
+      if (!title) { showToast('タイトルを入力してください', 'error'); return; }
+      if (!date)  { showToast('投稿日を入力してください',   'error'); return; }
+
+      const password = prompt('パスワードを入力してください:');
+      if (!password) return;
+
+      const action = id ? 'edit' : 'add';
+      const body   = { action, password, title, service, status, date, content };
+      if (id) body.id = id;
+
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = true;
+
+      try {
+        const res  = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const json = await res.json();
+
+        if (res.ok && json.success) {
+          showToast(id ? '更新しました！' : '投稿しました！', 'success');
+          cancelEdit();
+          loadPosts();
+        } else if (res.status === 401) {
+          showToast('パスワードが違います', 'error');
+        } else {
+          showToast('エラーが発生しました: ' + (json.error || ''), 'error');
+        }
+      } catch (e) {
+        showToast('通信エラーが発生しました', 'error');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    /* ── 編集開始 ── */
+    function startEdit(id) {
+      const p = posts.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('edit-id').value       = p.id;
+      document.getElementById('f-title').value       = p.title;
+      document.getElementById('f-service').value     = p.service || '';
+      document.getElementById('f-status').value      = p.status  || 'normal';
+      document.getElementById('f-date').value        = p.date    || '';
+      document.getElementById('f-content').value     = p.content || '';
+      document.getElementById('form-title').textContent = '✏️ 編集中';
+      document.getElementById('btn-submit').textContent = '更新する';
+      document.getElementById('btn-cancel').style.display = 'inline-block';
+      document.getElementById('form-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ── 編集キャンセル ── */
+    function cancelEdit() {
+      document.getElementById('edit-id').value       = '';
+      document.getElementById('f-title').value       = '';
+      document.getElementById('f-service').value     = '';
+      document.getElementById('f-status').value      = 'normal';
+      const today = new Date().toISOString().slice(0, 10);
+      document.getElementById('f-date').value        = today;
+      document.getElementById('f-content').value     = '';
+      document.getElementById('form-title').textContent  = '🌸 新規投稿';
+      document.getElementById('btn-submit').textContent  = '投稿する';
+      document.getElementById('btn-cancel').style.display = 'none';
+    }
+
+    /* ── 削除 ── */
+    async function deletePost(id) {
+      const p = posts.find(x => x.id === id);
+      if (!p) return;
+      if (!confirm(`「${p.title}」を削除しますか？`)) return;
+
+      const password = prompt('パスワードを入力してください:');
+      if (!password) return;
+
+      try {
+        const res  = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'delete', id, password }),
+        });
+        const json = await res.json();
+
+        if (res.ok && json.success) {
+          showToast('削除しました', 'success');
+          loadPosts();
+        } else if (res.status === 401) {
+          showToast('パスワードが違います', 'error');
+        } else {
+          showToast('エラー: ' + (json.error || ''), 'error');
+        }
+      } catch (e) {
+        showToast('通信エラーが発生しました', 'error');
+      }
+    }
+  </script>
+</body>
+
+</html>
