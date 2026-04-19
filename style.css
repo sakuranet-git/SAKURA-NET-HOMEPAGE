@@ -428,7 +428,7 @@
 .sp-site-branding2 .site-description {
   font-size: 1rem;
   font-weight: normal;
-  color: #929292;
+  color: #767676;
 }
 
 .sp-site-navigation {
@@ -878,7 +878,7 @@ screen and (min-width: 569px) {
 
   .sp-site-branding2 .extra>p {
     font-size: 1.3rem;
-    color: #929292;
+    color: #767676;
     text-align: right;
     padding-top: 0px;
     padding-left: 0px;
@@ -1196,7 +1196,7 @@ screen and (min-width: 569px) {
 
   .sp-site-branding2 .extra>p {
     font-size: 1rem;
-    color: #929292;
+    color: #767676;
     text-align: left;
     padding-top: 0px;
     padding-left: 10px;
@@ -1580,7 +1580,7 @@ screen and (min-width: 569px) {
 
   #sp-site-navigation-2>ul>li>a {
     line-height: 1;
-    color: #c76b6b;
+    color: #8c2b47;
     display: block;
   }
 
@@ -1610,12 +1610,12 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-2 li>a:active {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-2 li>a:hover {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
@@ -1642,22 +1642,22 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-2>ul li.current-menu-ancestor>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-2>ul li.current-menu-item>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-2>ul li.current_page_ancestor>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-2>ul li.current_page_item>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 }
@@ -1681,7 +1681,7 @@ screen and (min-width: 569px) {
 }
 
 #breadcrumb-list div a {
-  color: #f0a7a7;
+  color: #c82054;
 }
 
 @media not screen,
@@ -1791,7 +1791,7 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1>ul>li.current-menu-ancestor>a {
-    color: #eb6a6a;
+    color: #c82054;
     background-color: transparent;
     background-image: none;
     background-repeat: repeat;
@@ -1803,7 +1803,7 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1>ul>li.current-menu-item>a {
-    color: #eb6a6a;
+    color: #c82054;
     background-color: transparent;
     background-image: none;
     background-repeat: repeat;
@@ -1815,7 +1815,7 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1>ul>li.current_page_ancestor>a {
-    color: #eb6a6a;
+    color: #c82054;
     background-color: transparent;
     background-image: none;
     background-repeat: repeat;
@@ -1827,7 +1827,7 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1>ul>li.current_page_item>a {
-    color: #eb6a6a;
+    color: #c82054;
     background-color: transparent;
     background-image: none;
     background-repeat: repeat;
@@ -1853,7 +1853,7 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1>ul>li>a:hover {
-    color: #eb6a6a;
+    color: #c82054;
     background-color: transparent;
     background-image: none;
     background-repeat: repeat;
@@ -1883,12 +1883,12 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1 li>a:active {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-1 li>a:hover {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
@@ -1915,22 +1915,22 @@ screen and (min-width: 569px) {
   }
 
   #sp-site-navigation-1>ul li.current-menu-ancestor>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-1>ul li.current-menu-item>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-1>ul li.current_page_ancestor>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 
   #sp-site-navigation-1>ul li.current_page_item>a {
-    color: #c76b6b;
+    color: #8c2b47;
     background-color: #ffd9d9;
   }
 }
@@ -1951,7 +1951,7 @@ screen and (min-width: 569px) {
   font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
   font-weight: bold;
   line-height: 1.5;
-  color: #c76b6b;
+  color: #8c2b47;
   background-color: #ffeaea;
   background-image: url(img/back-title-01.png);
   background-repeat: repeat-x;
@@ -2053,7 +2053,7 @@ screen and (min-width: 569px) {
   font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
   font-weight: bold;
   line-height: 1.5;
-  color: #c76b6b;
+  color: #8c2b47;
   background-color: #ffeaea;
   background-image: url(img/back-title-01.png);
   background-repeat: repeat-x;
@@ -2899,7 +2899,7 @@ screen and (min-width: 569px) {
 #sp-wp-post-list-7>article>footer,
 #sp-wp-post-list-8>article>footer,
 #sp-wp-post-list-9>article>footer {
-  color: #f0a7a7;
+  color: #c82054;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
@@ -3183,7 +3183,7 @@ screen and (min-width: 569px) {
 #sp-wp-post-list-7>article>footer a,
 #sp-wp-post-list-8>article>footer a,
 #sp-wp-post-list-9>article>footer a {
-  color: #f0a7a7;
+  color: #c82054;
 }
 
 #sp-entry-content-1>article>footer span,
@@ -3666,7 +3666,7 @@ screen and (min-width: 569px) {
   font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
   font-weight: bold;
   line-height: 1.5;
-  color: #c76b6b;
+  color: #8c2b47;
   padding-top: 3px;
   padding-left: 19px;
   padding-right: 10px;
@@ -3843,7 +3843,7 @@ screen and (min-width: 569px) {
 #sp-wp-post-list-8>nav a,
 #sp-wp-post-list-9>nav a {
   font-style: italic;
-  color: #f0a7a7;
+  color: #c82054;
   text-decoration: underline;
 }
 
@@ -4168,7 +4168,7 @@ screen and (min-width: 569px) {
 .page-toppage#content #page-content>h2 {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #c76b6b;
+  color: #8c2b47;
   margin-bottom: 20px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
