@@ -1,5 +1,38 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.4] - 2026-04-19 — Phase 2C `/data/` 監査整理（旧HTML・旧CSS・未参照画像・旧スクリプト）
+
+### 🗑 trash 移動（合計 19ファイル / 約 1.13MB 削減）
+- **旧HTML 12本**: `access/company/concept/contact/custom/custom1/index/news/pay/privacy/recruit/service.html`
+  - ルート直下に現役版あり・`/data/` 版は未参照の旧バージョン
+- **スナップショット**: `index_snapshot_20260223.html`（1本）
+- **旧CSS**: `style.css`（ルート直下 `style.css` の旧コピー / 131KB）
+- **未参照画像**: `IMG_6578.PNG`（573KB）/ `img_brand.png`（96KB）/ `udmoromax.png`（76KB）
+  - `pay.html` が参照する `img_brand.png` は `/img/` 側・`/data/` の同名は別物
+- **旧スクリプト**: `apply_responsive.ps1` / `apply_sakura.py`
+
+### ✅ 残置必須（1本）
+- **`/data/status_data.json`** — `status_api.php` が使用中（稼働データ）
+
+### ✅ 安全性検証
+- 全HTML/CSS/JS/PHP で `data/` 参照を grep → **残る参照は `status_data.json` のみ**
+- 本番ファイルの壊れた参照 **0件**
+- trash 移動先: `trash/phase2c_2026-04-19/`（最終削除はユーザーが `rm -rf trash/` で実施）
+
+### 📊 `/data/` 整理後
+- 整理前: 20ファイル / 約 1.2MB
+- 整理後: 1ファイル / 3バイト（`status_data.json` のみ）
+
+### ⚙ 補足
+- 作業用 Python スクリプトは trash へ同梱退避
+- サーバー側への変更なし（今回は**ローカルのみ**の整理）
+- 次タスク: Phase 2B-WebP（残画像最適化・効果小で見送り候補） or Phase 2D/2E（UI承認必要）
+
+### 📤 サーバーアップロード対象
+**なし**（ローカル整理のみ・サーバーは現状維持）
+
+---
+
 ## [v2.9.3] - 2026-04-19 — Phase 2B img/ 大掃除（未参照画像・PDF・ZIP・DOCX整理）
 
 ### 🗑 trash 移動（合計 322ファイル / 約 136.6MB 削減）
