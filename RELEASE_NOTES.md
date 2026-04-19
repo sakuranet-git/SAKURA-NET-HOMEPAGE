@@ -1,5 +1,37 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.3] - 2026-04-19 — Phase 2B img/ 大掃除（未参照画像・PDF・ZIP・DOCX整理）
+
+### 🗑 trash 移動（合計 322ファイル / 約 136.6MB 削減）
+- **重複ヘッダー画像**: `header-main2.png` 〜 `header-main55.png`（54本 / 33.3MB）
+  - 参照中の `header-main.png` は残置（style.cssで使用）
+- **未参照 file*.pdf**: `file3`, `file5`, `file7`, `file8`, `file11`, `file13`〜`file20`, `file23`〜`file200`.pdf（180本 / 91.9MB）
+  - posts/ が参照する `file1, 2, 4, 6, 9, 10, 12, 21, 22`.pdf は残置
+- **画像フォルダ内のZIP**: `img/*.zip`（66本 / 10.4MB）
+- **未参照DOCX**: `file2.docx` 〜 `file23.docx`（22本 / 0.95MB）
+  - posts/ が参照する `file1.docx` は残置
+
+### ✅ 安全性検証
+- 全HTML/CSS/JS で画像参照を grep → **本番ファイルの壊れた参照 0件**
+- 必須ファイル存在確認: `header-main.png` / `logo.png` / `ogp.jpg` / `favicon.ico` / file1-22.pdf / file1.docx すべて OK
+- trash 移動先: `trash/phase2b_2026-04-19/`（最終削除はユーザーが `rm -rf trash/` で実施）
+
+### 📊 img/ 整理後
+- 整理前: 1,803ファイル / 163.5MB
+- 整理後: 1,481ファイル / 約27MB
+- **削減: 約 136.6MB（83%減）**
+
+### ⚙ 補足
+- 誤削除防止のため Tier 1/2 のみ実施（明らかな重複・未参照のみ）
+- Tier 3（その他の未参照PNG/JPG ~50MB）は将来の個別検証時に判断
+- サーバー側への変更なし（今回は**ローカルのみ**の整理）
+- 次タスク: Phase 2C（`/data/` 監査）
+
+### 📤 サーバーアップロード対象
+**なし**（ローカル整理のみ・サーバーは現状維持）
+
+---
+
 ## [v2.9.2] - 2026-04-19 — Phase 2A 不要ファイル整理（ゴミ箱パターン）
 
 ### 🗑 trash 移動（合計 67ファイル / 約 88.9MB 削減）
