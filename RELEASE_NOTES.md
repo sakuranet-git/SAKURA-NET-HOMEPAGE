@@ -1,5 +1,32 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.1] - 2026-04-19 — ロゴ・ファビコン・アプリアイコン配置
+
+### 🎨 ブランド画像アセット配置（Gemini作成）
+- **`img/logo.png`** — 512×512px / RGBA / 246KB（schema.org Organization logo 用・背景透過）
+- **`img/apple-touch-icon.png`** — 180×180px / RGB / 18KB（iOS ホーム追加アイコン・背景 `#fff0f5`）
+- **`favicon.ico`** — 16×16 + 32×32 + 48×48 マルチレイヤー / 6.0KB（ルート直下配置）
+
+### ✅ 検証結果
+- 全9HTMLページの `<link rel="icon">` / `<link rel="apple-touch-icon">` パス整合性OK
+- PIL による ICO レイヤー検証: `[(16,16),(32,32),(48,48)]` 確認済み
+- JSON-LD Organization の `logo` プロパティが参照する `/img/logo.png` 実体配置完了
+  （v2.9.0時点で未配置だった画像アセットが揃い、リッチリザルトの完全適用条件を満たした）
+
+### 📤 サーバーアップロード対象
+| ファイル | サーバーパス |
+|---|---|
+| img/logo.png | `https://sakuranet-co.jp/img/logo.png` |
+| img/apple-touch-icon.png | `https://sakuranet-co.jp/img/apple-touch-icon.png` |
+| favicon.ico | `https://sakuranet-co.jp/favicon.ico` |
+
+### ⚙ 補足
+- 初回納品された `favicon.ico` は 16×16 単一レイヤーだったため Gemini に差し戻し再作成→正式マルチレイヤーで受領
+- バックアップ: `backups/v2.9.1_logo-assets/`（3ファイル）
+- 依頼書: `GEMINI_LOGO_REQUEST.md` / `GEMINI_FAVICON_REDO.md`
+
+---
+
 ## [v2.9.0] - 2026-04-19 — Phase 1 SEO基礎整備
 
 ### 🎯 SEO・構造化データ（全9ページ一括対応）
