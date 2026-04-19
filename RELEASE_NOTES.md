@@ -1,5 +1,24 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.5.1] - 2026-04-20 — hotfix（:focus-visible スコープ修正）
+
+### 🐛 修正
+- `style.css`: v2.9.5 で追加した `:focus-visible` ブロックが `@media screen and (max-width: 568px) { ... }` 内に誤って配置されており、デスクトップ幅（>568px）でキーボードフォーカスリングが表示されない不具合を修正
+- @media の閉じ `}` を追加し、`:focus-visible` ルール群を @media 外へ移動（CSSグローバルスコープで適用）
+
+### 📦 バックアップ
+- `backups/v2.9.5.1_pre-hotfix/style.css`
+
+### 📤 サーバーアップロード対象（1ファイル）
+| ファイル | サーバーパス |
+|---|---|
+| style.css | `https://sakuranet-co.jp/style.css` |
+
+### 🔍 検証方法
+- Chrome DevTools で `?` ボタン Tab 押下 → サクラピンク輪郭（2px solid #c82054）が可視化されることを確認
+
+---
+
 ## [v2.9.5] - 2026-04-20 — Phase 2E-A アクセシビリティ改善（セマンティック化・alt改善・:focus-visible）
 
 ### ♿ a11y 改善 — 3項目（見た目変化なし）

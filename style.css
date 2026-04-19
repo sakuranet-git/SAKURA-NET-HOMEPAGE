@@ -4678,8 +4678,9 @@ screen and (min-width: 569px) {
     right: auto;
     left: 27px;
   }
+}
 
-/* v2.9.5 Phase 2E-A: accessibility — keyboard focus styles */
+/* v2.9.5.1 Phase 2E-A: accessibility — keyboard focus styles (hotfix: moved out of @media) */
 :focus:not(:focus-visible) {
   outline: none;
 }
