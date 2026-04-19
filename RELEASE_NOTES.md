@@ -1,5 +1,62 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.5] - 2026-04-20 — Phase 2E-A アクセシビリティ改善（セマンティック化・alt改善・:focus-visible）
+
+### ♿ a11y 改善 — 3項目（見た目変化なし）
+
+#### ① セマンティック main タグ化（全10HTML）
+- `<div id="content" role="main">` → **`<main id="content">`** へ置換
+  - 対象: `index / company / service / access / contact / recruit / news / concept / privacy / pay`
+  - クラスは全て保持（`.site-content .sp-content .page-xxx`）・CSSへの影響なし
+  - 冗長な `role="main"` 属性を削除（`<main>` タグで暗黙的に付与される）
+
+#### ② alt属性の記述的改善（2HTML / 7箇所）
+- **concept.html**: `alt="CEO"` → `alt="株式会社さくらねっと 代表取締役"`
+- **service.html**: 6箇所の非記述的 alt を具体化
+  - `images` → `PCサポート・トラブル解決`
+  - `service-s01` → `SAKURA-NET Total Security クラウド型ネットワークセキュリティ`
+  - `service-s02` → `年間・月間PC保守契約サービス`
+  - `images` → `法人向けセキュリティSIM`
+  - `download` → `WatchGuard UTMセキュリティ`
+  - `images1` → `UniFi Security Gateway`
+
+#### ③ `:focus-visible` キーボードフォーカススタイル追加（style.css）
+- マウス操作時は非表示・キーボード Tab 操作時のみサクラピンク（`#c82054`）輪郭表示
+- 対象要素: `a / button / input / select / textarea / [tabindex]`
+- 既存 :focus ルールと競合しない設計（`:focus:not(:focus-visible)` で outline:none）
+
+### ✅ 安全性検証
+- 全10HTML のタグ整合性（div/main/header/footer 各 open=close）**完全一致**
+- 旧パターン `<div id="content" role="main">` 残存 **0件**
+- CSS で `div#content` / `div.site-content` セレクタ使用 **0件**（影響なし）
+- 視覚的変化: **なし**（意味タグの置換とalt文言修正・フォーカス時のみ可視）
+
+### 📦 バックアップ
+- `backups/v2.9.5_pre-a11y/`（10HTML + style.css）
+
+### 📤 サーバーアップロード対象（10ファイル）
+| ファイル | サーバーパス |
+|---|---|
+| index.html | `https://sakuranet-co.jp/index.html` |
+| company.html | `https://sakuranet-co.jp/company.html` |
+| service.html | `https://sakuranet-co.jp/service.html` |
+| access.html | `https://sakuranet-co.jp/access.html` |
+| contact.html | `https://sakuranet-co.jp/contact.html` |
+| recruit.html | `https://sakuranet-co.jp/recruit.html` |
+| news.html | `https://sakuranet-co.jp/news.html` |
+| concept.html | `https://sakuranet-co.jp/concept.html` |
+| privacy.html | `https://sakuranet-co.jp/privacy.html` |
+| pay.html | `https://sakuranet-co.jp/pay.html` |
+| style.css | `https://sakuranet-co.jp/style.css` |
+
+### ⚙ 補足
+- Phase 2E-A は「見た目変化なし」スコープのみ実施
+- ④ 色コントラスト検証＋微調整は未実施（要UI承認・Phase 2E-B 候補）
+- `custom.html / custom1.html / status.html / remote.html` はスコープ外（今回未改修）
+- 作業用 Python スクリプト `_a11y_semantic.py` は `trash/phase2e_2026-04-20/` へ退避
+
+---
+
 ## [v2.9.4] - 2026-04-19 — Phase 2C `/data/` 監査整理（旧HTML・旧CSS・未参照画像・旧スクリプト）
 
 ### 🗑 trash 移動（合計 19ファイル / 約 1.13MB 削減）

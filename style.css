@@ -4678,4 +4678,19 @@ screen and (min-width: 569px) {
     right: auto;
     left: 27px;
   }
+
+/* v2.9.5 Phase 2E-A: accessibility — keyboard focus styles */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #c82054;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
 }
