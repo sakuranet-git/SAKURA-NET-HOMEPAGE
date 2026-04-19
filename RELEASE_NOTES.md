@@ -1,5 +1,72 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.8] - 2026-04-20 — Phase 2E-B 本文テキストのAA完全化
+
+### ♿ `#e03164` 本文色をAA基準 (4.5:1) 達成色へ
+
+v2.9.6 で据え置かれていた `#e03164`（白背景で 4.39:1 ≒ AA 4.5 未達）のうち、**本文・段落・リンクなど小テキスト用途のみ** を `#c82054` (5.47:1 ✓) に置換。見出し・アイコン・グラデーション・背景は **意図的に据え置き**。
+
+| 指標 | v2.9.7 | v2.9.8 |
+|---|---|---|
+| 本文 `color: #e03164` | 混在 | **0件** |
+| `#e03164` 残存（非テキスト） | 178 | 109（icon/bg/gradient/heading） |
+| `#e03164` のAA対応テキスト | 未達 | **全達成** |
+
+### 🎯 置換ロジック（自動判定 + 人手レビュー）
+
+| 判定 | 件数 | 対象 |
+|---|---|---|
+| **CHANGE** (#e03164 → #c82054) | **69** | `<p>` / `<a>` / 段落内 `<span>` / CSSルール内の小テキスト |
+| KEEP（アイコン） | ~52 | `<span style="color:#e03164; margin-right:5px">` 絵文字装飾 |
+| KEEP（背景・枠・影） | ~40 | `background` / `border` / `linear-gradient` / `box-shadow` |
+| KEEP（見出し） | ~17 | `<h1>`〜`<h6>` は Large Text 3:1 基準で既に達成 |
+
+### 📂 変更ファイル（13ファイル・69置換）
+
+| ファイル | 置換数 |
+|---|---|
+| index.html | 6 |
+| service.html | 9 |
+| concept.html | 2 |
+| pay.html | 3 |
+| privacy.html | 15 |
+| news.html | 7 |
+| recruit.html | 4 |
+| contact.html | 5 |
+| access.html | 4 |
+| company.html | 5 |
+| status.html | 3 |
+| custom.html | 3 |
+| custom1.html | 3 |
+
+### 🛡️ 安全策
+- プロパティ名でフィルタ（`background*` / `border*` / `gradient` は対象外）
+- 親タグ追跡でマルチライン `<h*>` 開始タグを検出しスキップ
+- アイコンパターン `margin-right: 5px` の絵文字spanはスキップ
+- ローカルで PC/SP + privacy.html を目視確認（崩れなし）
+
+### 📦 バックアップ
+- `backups/v2.9.8_pre-contrast/` に 13HTMLファイルを退避
+
+### 📤 サーバーアップロード対象（13ファイル）
+| ローカル | サーバーパス |
+|---|---|
+| index.html | `/index.html` |
+| service.html | `/service.html` |
+| concept.html | `/concept.html` |
+| pay.html | `/pay.html` |
+| privacy.html | `/privacy.html` |
+| news.html | `/news.html` |
+| recruit.html | `/recruit.html` |
+| contact.html | `/contact.html` |
+| access.html | `/access.html` |
+| company.html | `/company.html` |
+| status.html | `/status.html` |
+| custom.html | `/custom.html` |
+| custom1.html | `/custom1.html` |
+
+---
+
 ## [v2.9.7] - 2026-04-20 — Phase 2D CSS未使用セレクタ削減
 
 ### 🧹 style.css の不要セレクタ一括削除
