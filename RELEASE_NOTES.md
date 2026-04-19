@@ -1,5 +1,28 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.2] - 2026-04-19 — Phase 2A 不要ファイル整理（ゴミ箱パターン）
+
+### 🗑 trash 移動（合計 67ファイル / 約 88.9MB 削減）
+- **古い navigation スクリプト**: `navigation1.js` 〜 `navigation52.js`（52本）
+  - 現役 `navigation.js` / `navigation53.js` は残置（index.html で使用中）
+- **旧SP版ZIP**: `sp21_20200612.zip` / `sp21_20210616.zip` / `sp21_20220706.zip` / `sp21_20250220.zip`（計 約 89MB）
+- **旧スクリプト**: `apply_new_fixes.py` / `apply_new_fixes2.py` / `apply_responsive_all.ps1` / `apply_responsive_all.py` / `apply_safe.ps1` / `apply_safe2.ps1` / `apply_sakura.py` / `run_safe2.ps1` / `update_privacy_sakura.ps1` / `update_privacy_sakura.py`（10本）
+- **スナップショット**: `index_snapshot_20260223.html`（ルート直下の1本）
+
+### ✅ 安全性検証
+- 全9HTML + posts/ + style.css で `navigation[0-9]+\.js` / `sp21_` / `apply_` / `run_safe` / `update_privacy` を grep → **参照0件確認済み**
+- trash 移動先: `trash/phase2a_2026-04-19/`（最終削除はユーザーが `rm -rf trash/` で実施）
+
+### ⚙ 補足
+- ファイル削除ではなく **ゴミ箱パターン**（`mkdir -p trash && mv`）で実施
+- サーバー側への変更なし（今回は**ローカルのみ**の整理）
+- 次タスク: Phase 2B（画像WebP化・lazy loading）
+
+### 📤 サーバーアップロード対象
+**なし**（ローカル整理のみ・サーバーは現状維持）
+
+---
+
 ## [v2.9.1] - 2026-04-19 — ロゴ・ファビコン・アプリアイコン配置
 
 ### 🎨 ブランド画像アセット配置（Gemini作成）

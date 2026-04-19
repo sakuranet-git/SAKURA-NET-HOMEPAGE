@@ -92,3 +92,6 @@ posts/
 
 # data（旧バージョンHTML）
 data/
+
+# ゴミ箱（ユーザー削除前の一時退避）
+trash/
