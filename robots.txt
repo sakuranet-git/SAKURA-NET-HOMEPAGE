@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /system/
+Disallow: /data/
+Disallow: /backup/
+Disallow: /backups/
+Disallow: /trash/
+
+Sitemap: https://sakuranet-co.jp/sitemap.xml
