@@ -1,5 +1,42 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.7] - 2026-04-20 — Phase 2D CSS未使用セレクタ削減
+
+### 🧹 style.css の不要セレクタ一括削除
+
+HPB（IBMホームページビルダー）および WordPress テンプレート由来の未使用セレクタを撤去し、スタイルシートをスリム化。
+
+| 指標 | v2.9.6 | v2.9.7 | 削減 |
+|---|---|---|---|
+| 行数 | 4,695 | **3,467** | **-1,228行（-26.2%）** |
+| サイズ | 127KB | **85KB** | **-41.5KB（-32.7%）** |
+| ルール中括弧 | 380 | 277 | -103ブロック |
+
+### 🗑️ 削除した未使用クラス（35種類）
+- **HPB残骸**: `.hpb-more-entry` / `.hpb-viewtype-content` / `.hpb-viewtype-simple` / `.hpb-viewtype-thumbnail`
+- **WordPress残骸**: `.by-author` / `.cat-links` / `.comments-link` / `.tags-links` / `.sep` / `.nav-next` / `.nav-previous` / `.navigation-post` / `.current-menu-item` / `.current-menu-ancestor` / `.current_page_ancestor` / `.menu-item-has-children`
+- **HPB sp系**: `.sp-button` / `.sp-column` / `.sp-form` / `.sp-list` / `.sp-table` / `.sp-google-map` / `.sp-yahoo-map` / `.sp-item-gallery`
+- **その他**: `.accordion` / `.masonry` / `.grid` / `.searchform` / `.col-title` / `.column-body` / `.column-label` / `.row-title` / `.toggled-on` / `.vertical` / `.item-gallery-thumbnail`
+
+### 🗑️ 削除した未使用ID（7種類）
+`#sp-image-1/3/4`, `#sp-list-1/2/3/4`
+
+### 🛡️ 安全策
+- カンマ連結セレクタは **使用中のセレクタを残し、未使用のみを削除**
+- @media ブロック内部も再帰的に処理
+- 編集前後で brace balance 検証（277/277 一致）
+- ローカル (PC/SP) で表示確認済み
+
+### 📦 バックアップ
+- `backups/v2.9.7_pre-css-cleanup/style.css`
+
+### 📤 サーバーアップロード対象（1ファイル）
+| ファイル | サーバーパス |
+|---|---|
+| style.css | `https://sakuranet-co.jp/style.css` |
+
+---
+
 ## [v2.9.6] - 2026-04-20 — Phase 2E-B アクセシビリティ（色コントラスト改善）
 
 ### ♿ WCAG AA 準拠 — style.css 色コントラスト修正（29箇所）
