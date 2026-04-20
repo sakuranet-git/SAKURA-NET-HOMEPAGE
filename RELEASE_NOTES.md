@@ -1,5 +1,15 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.13] - 2026-04-20 — access.html メタタグ住所誤記修正
+
+### 🔧 access.html の meta description / OGP / Twitter Card 住所を修正
+
+`木川本町4-3-4 5F` → `木川東4-3-34 5F`（3箇所）
+
+**変更箇所:** access.html 行10・行19・行27
+
+---
+
 ## [v2.9.12] - 2026-04-20 — JSON-LD住所誤記修正
 
 ### 🔧 index.html の構造化データ住所を修正
