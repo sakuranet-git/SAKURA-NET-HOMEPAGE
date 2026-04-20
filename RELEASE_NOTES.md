@@ -1,5 +1,18 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.18] - 2026-04-20 — スマホ版強化（Phase 3-C）
+
+### 📱 スマホ固定CTAバー・タップターゲット・ハンバーガー改善
+
+- **C-1**: 全10ページにスマホ下部固定CTAバー追加（電話・フォームボタン）
+- **C-2**: モバイルメニュー展開時のタップターゲット最小44pxに拡大
+- **C-3**: ハンバーガーボタンをブランドカラー（#c82054→#e03164グラデ）にリデザイン
+- `body { padding-bottom: 56px }` をスマホのみ適用し、固定バーへの隠れを防止
+
+**変更ファイル:** style.css / index.html / company.html / service.html / access.html / contact.html / recruit.html / news.html / concept.html / privacy.html / pay.html
+
+---
+
 ## [v2.9.17] - 2026-04-20 — 統一CTAブロック 全ページ展開（Phase 3-B）
 
 ### 📞 CTAブロック pay.html へ追加
