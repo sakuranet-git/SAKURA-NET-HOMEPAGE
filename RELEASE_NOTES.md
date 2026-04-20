@@ -1,5 +1,15 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.12] - 2026-04-20 — JSON-LD住所誤記修正
+
+### 🔧 index.html の構造化データ住所を修正
+
+JSON-LD（Organization・LocalBusiness）の `streetAddress` が「木川本町4-3-4 5F」と誤記されていたため、正しい住所「木川東4-3-34 5F」に修正。本文HTMLは既に正しかったため影響なし。
+
+**変更箇所:** index.html 行50・行69（JSON-LD 2箇所）
+
+---
+
 ## [v2.9.11] - 2026-04-20 — 料金早見表セクション追加（Phase 3-#4B）
 
 ### 💰 service.html に「主要サービス料金早見表」を追加
