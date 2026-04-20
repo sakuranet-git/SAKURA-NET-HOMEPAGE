@@ -1,5 +1,30 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.15] - 2026-04-20 — 画像WebP変換（Phase 2）
+
+### 🖼️ imgをWebP化で大幅軽量化
+
+ffmpegで10枚をWebP変換（quality 85）。元ファイルはimg/に保持。
+
+| 画像 | 変換前 | 変換後 | 削減率 |
+|---|---|---|---|
+| udm-pro-max.png | 76KB | 5KB | -93% |
+| page-0001.jpg | 21KB | 4KB | -79% |
+| service-s01.jpg | 33KB | 8KB | -76% |
+| img_brand.png | 95KB | 42KB | -56% |
+| Airpayqr.JPG | 41KB | 20KB | -50% |
+| rakutenpay.JPG | 36KB | 20KB | -46% |
+| modern_network.png | 34KB | 21KB | -40% |
+| service-s02.jpg | 13KB | 4KB | -66% |
+| images.png | — | 変換済み | — |
+| download.jpg | 12KB | 9KB | -29% |
+
+※`images.jpg`(5KB)・`images1.jpg`(13%のみ)・`download2.jpg`(増加)は変換対象外
+
+**変更ファイル:** index.html / service.html / concept.html / pay.html（src属性変更）
+
+---
+
 ## [v2.9.14] - 2026-04-20 — 全imgタグに lazy loading 追加（Phase 2）
 
 ### ⚡ パフォーマンス改善 — `loading="lazy" decoding="async"` 追加
