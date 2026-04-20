@@ -1,5 +1,18 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.19] - 2026-04-20 — スクロールアニメ（Phase 3-D）
+
+### ✨ IntersectionObserver fade-in アニメーション
+
+- 新規: `scroll-animate.js` — ページ要素が画面内に入ると fade-in + slide-up
+- 対象要素: `.sp-page-title` / `.unified-cta` / `.pricing-summary` / `#hero-flex`
+- `prefers-reduced-motion` 対応（アニメ無効化）
+- `style.css` に `.sa-hidden` / `.sa-visible` クラス追加
+
+**変更ファイル:** scroll-animate.js（新規） / style.css / 全10ページ（script タグ追加）
+
+---
+
 ## [v2.9.18] - 2026-04-20 — スマホ版強化（Phase 3-C）
 
 ### 📱 スマホ固定CTAバー・タップターゲット・ハンバーガー改善

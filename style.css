@@ -3689,6 +3689,25 @@ textarea:focus-visible,
   }
 }
 
+/* ===== Phase 3-D: スクロールアニメ v2.9.19 ===== */
+.sa-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.sa-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .sa-hidden,
+  .sa-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* ===== Phase 3-C: スマホ版強化 v2.9.18 ===== */
 
 /* C-3: ハンバーガーボタン改善 */
