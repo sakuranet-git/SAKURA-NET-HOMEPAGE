@@ -1,5 +1,15 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.21] - 2026-04-20 — フォント・メールリンク修正
+
+### 🔧 修正内容
+- フォントを元のヒラギノ/メイリオ系に戻す（Inter/Noto Sans JP 削除、Google Fonts読み込み除去）
+- `info@sakuranet-co.jp` のmailtoリンクをプレーンテキストに変更
+
+**変更ファイル:** index.html / style.css
+
+---
+
 ## [v2.9.20] - 2026-04-20 — ヒーローリニューアル（Phase 3-E）
 
 ### 🌸 ヒーローセクション刷新（index.html）
