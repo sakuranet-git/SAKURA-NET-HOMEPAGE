@@ -1,5 +1,15 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.17] - 2026-04-20 — 統一CTAブロック 全ページ展開（Phase 3-B）
+
+### 📞 CTAブロック pay.html へ追加
+
+- pay.html にのみ統一CTAブロック（電話・フォーム）を追加（他6ページはv2.9.9済み）
+
+**変更ファイル:** pay.html
+
+---
+
 ## [v2.9.16] - 2026-04-20 — タイポグラフィ刷新 Google Fonts 導入（Phase 3-A）
 
 ### 🔤 Inter + Noto Sans JP 追加
