@@ -103,6 +103,9 @@
   </script><!--[if lt IE 9]>
 <script src="html5.js" type="text/javascript"></script>
 <![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
   <style>
     /* ============================================
@@ -248,7 +251,8 @@
                 href="https://sakuranet-co.jp/remote.html" target="_blank"
                 style="color: #c82054; text-decoration: underline;">遠隔サポートはこちら</a>）</p>
             <p class="address paragraph" style="margin: 5px 0;"><span
-                style="color:#e03164; margin-right: 5px;">✉️</span>E-mail: info@sakuranet-co.jp</p>
+                style="color:#e03164; margin-right: 5px;">✉️</span>E-mail: <a href="mailto:info@sakuranet-co.jp"
+                style="color: #c82054; text-decoration: none;">info@sakuranet-co.jp</a></p>
           </div>
         </div>
       </div>
@@ -327,32 +331,20 @@
             </header>
             <article>
               <div id="page-content" class="sp-part-top sp-block-container">
-                <!-- ヒーローセクション v2.9.20 -->
-                <section id="hero-flex" class="hero-section" aria-label="ファーストビュー">
-                  <div class="hero-petals" aria-hidden="true">
-                    <span class="petal"></span>
-                    <span class="petal"></span>
-                    <span class="petal"></span>
-                    <span class="petal"></span>
-                    <span class="petal"></span>
-                    <span class="petal"></span>
-                    <span class="petal"></span>
-                    <span class="petal"></span>
+                <div id="hero-flex"
+                  style="display: flex; flex-wrap: wrap; align-items: center; gap: 30px; margin: 20px 0 40px;">
+                  <div style="flex: 1 1 300px;">
+                    <p class="large paragraph" style="margin: 0; line-height: 1.8; font-size: 1.15em; color: #333;">
+                      <strong
+                        style="color: #c82054; font-size: 1.25em;">オフィスの通信・防犯・入退室管理を「UniFi」でスマートに一元化。</strong><br><br>
+                      高速回線「SAKURA-NET光」と最新のセキュリティ環境を、ワンストップでご提供します。
+                    </p>
                   </div>
-                  <div class="hero-inner">
-                    <div class="hero-text">
-                      <p class="hero-lead">オフィスの通信・防犯・入退室管理を「UniFi」でスマートに一元化。</p>
-                      <p class="hero-sub">高速回線「SAKURA-NET光」と最新のセキュリティ環境を、ワンストップでご提供します。</p>
-                      <div class="hero-cta">
-                        <a href="contact.html" class="hero-cta-btn hero-cta-primary">無料相談はこちら</a>
-                        <a href="tel:06-7777-2720" class="hero-cta-btn hero-cta-tel">📞 06-7777-2720</a>
-                      </div>
-                    </div>
-                    <div class="hero-image">
-                      <img src="img/modern_network.webp" alt="UniFi ネットワーク・セキュリティ構成図" loading="lazy" decoding="async">
-                    </div>
+                  <div style="flex: 1 1 300px; text-align: center;">
+                    <img src="img/modern_network.webp" alt="UniFi Network and Security" loading="lazy" decoding="async"
+                      style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
                   </div>
-                </section>
+                </div>
 
                 <div
                   style="background-color: #fff4f7; padding: 25px; border-radius: 8px; margin: 30px 0; border: 1px solid #ffc1d3;">
