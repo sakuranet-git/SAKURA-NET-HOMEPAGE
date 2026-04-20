@@ -1,5 +1,17 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.16] - 2026-04-20 — タイポグラフィ刷新 Google Fonts 導入（Phase 3-A）
+
+### 🔤 Inter + Noto Sans JP 追加
+
+- 全10ページに Google Fonts（Inter / Noto Sans JP）を追加
+- style.css body font-family の先頭に `'Inter', 'Noto Sans JP'` を追加
+- 既存のシステムフォント（ヒラギノ・メイリオ等）はフォールバックとして維持
+
+**変更ファイル:** index.html / company.html / service.html / access.html / contact.html / recruit.html / news.html / concept.html / privacy.html / pay.html / style.css
+
+---
+
 ## [v2.9.15] - 2026-04-20 — 画像WebP変換（Phase 2）
 
 ### 🖼️ imgをWebP化で大幅軽量化
