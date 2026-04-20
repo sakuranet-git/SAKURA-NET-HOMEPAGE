@@ -1,5 +1,20 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.14] - 2026-04-20 — 全imgタグに lazy loading 追加（Phase 2）
+
+### ⚡ パフォーマンス改善 — `loading="lazy" decoding="async"` 追加
+
+| ファイル | 追加数 |
+|---|---|
+| index.html | 1枚 |
+| service.html | 7枚 |
+| concept.html | 1枚 |
+| pay.html | 4枚 |
+
+合計13枚。ヒーロー以外の全コンテンツ画像がスクロール時のみ読み込まれるため初期LCPが改善。
+
+---
+
 ## [v2.9.13] - 2026-04-20 — access.html メタタグ住所誤記修正
 
 ### 🔧 access.html の meta description / OGP / Twitter Card 住所を修正
