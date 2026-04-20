@@ -1,5 +1,19 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.20] - 2026-04-20 — ヒーローリニューアル（Phase 3-E）
+
+### 🌸 ヒーローセクション刷新（index.html）
+
+- グラデーション背景（#fff0f5→#fce4ed）＋サクラ花びらアニメ（CSS keyframes）
+- 1次CTAボタン「無料相談はこちら」（ピンクグラデ）＋電話CTA追加
+- キャッチコピーを `hero-lead`（1.3em, bold, #c82054）に強化
+- `prefers-reduced-motion` 対応（花びらアニメ無効化）
+- スマホ対応（CTA幅100%・パディング調整）
+
+**変更ファイル:** index.html / style.css
+
+---
+
 ## [v2.9.19] - 2026-04-20 — スクロールアニメ（Phase 3-D）
 
 ### ✨ IntersectionObserver fade-in アニメーション

@@ -3689,6 +3689,132 @@ textarea:focus-visible,
   }
 }
 
+/* ===== Phase 3-E: ヒーローリニューアル v2.9.20 ===== */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff0f5 0%, #fce4ed 45%, #fff4f7 100%);
+  border-radius: 16px;
+  padding: 52px 36px;
+  margin: 0 0 40px;
+  border: 1px solid #ffd4e0;
+  box-shadow: 0 8px 32px rgba(200, 32, 84, 0.08);
+}
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
+}
+.hero-text {
+  flex: 1 1 300px;
+}
+.hero-lead {
+  margin: 0 0 14px;
+  line-height: 1.6;
+  font-size: 1.3em;
+  color: #c82054;
+  font-weight: 700;
+}
+.hero-sub {
+  margin: 0 0 30px;
+  line-height: 1.8;
+  font-size: 1.05em;
+  color: #444;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1em;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 50px;
+}
+.hero-cta-btn:hover {
+  transform: translateY(-2px);
+}
+.hero-cta-primary {
+  background: linear-gradient(135deg, #c82054, #e03164);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(200, 32, 84, 0.35);
+}
+.hero-cta-primary:hover {
+  box-shadow: 0 8px 24px rgba(200, 32, 84, 0.45);
+}
+.hero-cta-tel {
+  background: #fff;
+  color: #c82054;
+  border: 2px solid #e03164;
+  box-shadow: 0 2px 8px rgba(200, 32, 84, 0.12);
+}
+.hero-cta-tel:hover {
+  box-shadow: 0 6px 16px rgba(200, 32, 84, 0.22);
+}
+.hero-image {
+  flex: 1 1 280px;
+  text-align: center;
+}
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+/* Sakura petals */
+.hero-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.petal {
+  position: absolute;
+  top: -20px;
+  background: rgba(224, 49, 100, 0.18);
+  border-radius: 50% 0 50% 0;
+  animation: sakura-fall linear infinite;
+}
+.petal:nth-child(1) { left:  8%; animation-duration:  9s; animation-delay:  0s;  width:  9px; height:  9px; }
+.petal:nth-child(2) { left: 20%; animation-duration: 11s; animation-delay: -3s;  width:  7px; height:  7px; }
+.petal:nth-child(3) { left: 35%; animation-duration:  8s; animation-delay: -6s;  width: 12px; height: 12px; }
+.petal:nth-child(4) { left: 52%; animation-duration: 10s; animation-delay: -1s;  width:  8px; height:  8px; }
+.petal:nth-child(5) { left: 67%; animation-duration: 12s; animation-delay: -4s;  width: 10px; height: 10px; }
+.petal:nth-child(6) { left: 80%; animation-duration:  7s; animation-delay: -7s;  width:  9px; height:  9px; }
+.petal:nth-child(7) { left: 92%; animation-duration:  9s; animation-delay: -2s;  width: 11px; height: 11px; }
+.petal:nth-child(8) { left: 45%; animation-duration: 13s; animation-delay: -9s;  width:  7px; height:  7px; }
+@keyframes sakura-fall {
+  0%   { transform: translateY(0)     rotate(0deg);   opacity: 0.9; }
+  80%  {                                               opacity: 0.5; }
+  100% { transform: translateY(320px) rotate(480deg); opacity: 0;   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .petal { animation: none; display: none; }
+}
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 32px 20px;
+    border-radius: 12px;
+  }
+  .hero-lead {
+    font-size: 1.1em;
+  }
+  .hero-cta-btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 /* ===== Phase 3-D: スクロールアニメ v2.9.19 ===== */
 .sa-hidden {
   opacity: 0;
