@@ -1,5 +1,45 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.10] - 2026-04-20 — 遠隔サポートリンク一括修正
+
+### 🎯 全13ページの「遠隔サポートはこちら」リンクを自社ページに差し替え
+
+従来の Microsoft Store（Quick Assist）への外部リンクを、自社の遠隔サポート案内ページ `remote.html` に変更。導線を自社内に統一し、利用者が迷わず自社サポート情報に到達できるようにした。
+
+### 🔗 変更内容
+
+| 項目 | 変更前 | 変更後 |
+|---|---|---|
+| URL | `https://apps.microsoft.com/detail/9p7bp5vnwkx5?hl=ja-JP&gl=JP` | `https://sakuranet-co.jp/remote.html` |
+| リンク文言 | 遠隔サポートはこちら | （変更なし） |
+| `target="_blank"` | 維持 | 維持 |
+
+### 📂 変更ファイル（13ページ・各1箇所）
+
+| ファイル | 変更箇所 |
+|---|---|
+| index.html / company.html / concept.html / service.html / access.html / contact.html / recruit.html / news.html / privacy.html / custom.html / custom1.html / pay.html / status.html | ヘッダー会社情報ボックス内の「遠隔サポートはこちら」リンク href のみ |
+
+### ✅ 検証
+
+- 旧URL全件削除確認: `apps.microsoft.com/detail/9p7bp5vnwkx5` → 0件
+- 新URL全件反映確認: `sakuranet-co.jp/remote.html` → 13件（全ページ各1件）
+- `remote.html` ファイル存在確認: ✓
+- 既存レイアウト・デザインに影響なし（href属性のみ置換）
+
+### 🛡️ セーフティ
+
+- バックアップ: `backups/v2.9.10_link-fix/` に全13 HTMLを保存
+- 変更範囲: `href` 属性のみ・他の属性・テキスト・構造は一切変更なし
+
+### 📤 アップロード対象
+
+| ローカルファイル | サーバーパス |
+|---|---|
+| index.html / company.html / concept.html / service.html / access.html / contact.html / recruit.html / news.html / privacy.html / custom.html / custom1.html / pay.html / status.html | `/`（サイトルート） |
+
+---
+
 ## [v2.9.9] - 2026-04-20 — Phase 3-#5 統一CTAブロック追加
 
 ### 🎯 全ページにCTA（Call To Action）ブロックを追加
