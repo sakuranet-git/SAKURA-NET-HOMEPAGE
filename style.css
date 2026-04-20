@@ -3466,3 +3466,116 @@ textarea:focus-visible,
   outline-offset: 2px;
   border-radius: 3px;
 }
+
+/* =========================================
+   Unified CTA Block (v2.9.9)
+   ========================================= */
+.unified-cta {
+  background: linear-gradient(135deg, #fdf2f6 0%, #fff4f7 100%);
+  border-top: 3px solid #ffc1d3;
+  padding: 50px 20px 40px;
+  margin: 0;
+}
+.unified-cta-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.unified-cta-heading {
+  font-size: 1.5em;
+  color: #c82054;
+  margin: 0 0 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.unified-cta-lead {
+  color: #555;
+  font-size: 0.95em;
+  margin: 0 0 28px;
+  line-height: 1.7;
+}
+.unified-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.unified-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px;
+  min-width: 280px;
+  min-height: 48px;
+  background: #ffffff;
+  border: 2px solid #c82054;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #c82054;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(200, 32, 84, 0.08);
+}
+.unified-cta-btn:hover {
+  background: #c82054;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(200, 32, 84, 0.25);
+}
+.unified-cta-btn-icon {
+  font-size: 1.8em;
+  line-height: 1;
+}
+.unified-cta-btn-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 2px;
+}
+.unified-cta-btn-label {
+  font-size: 0.8em;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.unified-cta-btn-value {
+  font-size: 1.25em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.unified-cta-btn-sub {
+  font-size: 0.75em;
+  opacity: 0.75;
+}
+.unified-cta-btn-tel {
+  background: #c82054;
+  color: #ffffff;
+  border-color: #c82054;
+}
+.unified-cta-btn-tel:hover {
+  background: #a51a46;
+  color: #ffffff;
+  border-color: #a51a46;
+}
+
+@media (max-width: 640px) {
+  .unified-cta {
+    padding: 36px 16px 28px;
+  }
+  .unified-cta-heading {
+    font-size: 1.25em;
+  }
+  .unified-cta-lead {
+    font-size: 0.9em;
+    margin-bottom: 22px;
+  }
+  .unified-cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .unified-cta-btn {
+    min-width: unset;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+}

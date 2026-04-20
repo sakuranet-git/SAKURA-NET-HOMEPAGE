@@ -1,5 +1,65 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.9] - 2026-04-20 — Phase 3-#5 統一CTAブロック追加
+
+### 🎯 全ページにCTA（Call To Action）ブロックを追加
+
+問い合わせCVの増加を目的に、主要9ページのフッター直前に統一デザインのCTAブロックを追加。電話とお問い合わせフォームへの導線を明確化。
+
+### 🧩 追加仕様
+
+| 項目 | 内容 |
+|---|---|
+| 配置 | 全9ページ フッター直前（colophonの直前） |
+| 構成 | 2ボタン: 📞 電話 `06-7777-2720` / ✉ お問い合わせフォーム |
+| デザイン | ピンクブランド維持（`#c82054` 主ボタン / `#fdf2f6→#fff4f7` 背景グラデ） |
+| レスポンシブ | SP (≤640px) は縦並び・タップ領域 48px以上 |
+| アクセシビリティ | `aria-labelledby` / `aria-label` / セマンティック `<section>` |
+| ホバー効果 | `translateY(-2px)` + shadow強化（0.2s transition） |
+
+### 📂 変更ファイル
+
+| ファイル | 変更 |
+|---|---|
+| style.css | `.unified-cta` 系 110行 追記（既存スタイル変更なし） |
+| index.html | CTAブロック挿入 |
+| company.html | CTAブロック挿入 |
+| service.html | CTAブロック挿入 |
+| access.html | CTAブロック挿入 |
+| contact.html | CTAブロック挿入 |
+| recruit.html | CTAブロック挿入 |
+| news.html | CTAブロック挿入 |
+| concept.html | CTAブロック挿入 |
+| privacy.html | CTAブロック挿入 |
+
+### ✅ 検証
+
+- ローカル PC（1280×800）: index/contact 崩れなし ✓
+- ローカル SP（390×844）: 縦並び・タップ領域OK ✓
+- ピンクブランド維持・既存UI非破壊 ✓
+
+### 🛡️ セーフティ
+
+- バックアップ: `backups/v2.9.9_pre-cta/`（9HTML + style.css）
+- 作業スクリプト: `trash/phase3-5_2026-04-20/` へ退避
+
+### 📤 アップロード対象
+
+| ローカル | サーバー |
+|---|---|
+| style.css | `/style.css` |
+| index.html | `/index.html` |
+| company.html | `/company.html` |
+| service.html | `/service.html` |
+| access.html | `/access.html` |
+| contact.html | `/contact.html` |
+| recruit.html | `/recruit.html` |
+| news.html | `/news.html` |
+| concept.html | `/concept.html` |
+| privacy.html | `/privacy.html` |
+
+---
+
 ## [v2.9.8] - 2026-04-20 — Phase 2E-B 本文テキストのAA完全化
 
 ### ♿ `#e03164` 本文色をAA基準 (4.5:1) 達成色へ
