@@ -34,9 +34,9 @@
 
 #masthead {
   margin-bottom: 0px;
-  border-top-width: 7px;
+  border-top-width: 3px;
   border-top-style: solid;
-  border-top-color: #fea4a4;
+  border-top-color: rgba(0,0,0,0.1);
 }
 
 #page {
@@ -263,7 +263,7 @@
 }
 
 a {
-  color: #62492a;
+  color: rgba(0,0,0,0.95);
   text-decoration: none;
   outline-width: medium;
   outline-style: none;
@@ -280,9 +280,9 @@ aside {
 
 body {
   font-size: 1.3rem;
-  font-family: 'Inter', 'Noto Sans JP', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Arial, sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  color: #62492a;
+  color: rgba(0,0,0,0.95);
   background-color: #ffffff;
   background-image: none;
   background-repeat: repeat;
@@ -1004,8 +1004,8 @@ screen and (min-width: 569px) {
 }
 
 #sp-block-container-1 {
-  color: #ffffff;
-  background-color: #fea4a4;
+  color: rgba(0,0,0,0.95);
+  background-color: #f6f5f4;
   padding-bottom: 0px;
   clear: both;
 }
@@ -3810,4 +3810,103 @@ textarea:focus-visible,
   body {
     padding-bottom: 56px;
   }
+}
+
+/* ===== Phase 3-G: Notion Design System 適用 v2.9.23 ===== */
+
+:root {
+  --n-blue: #0075de;
+  --n-blue-hover: #005bab;
+  --n-black: rgba(0,0,0,0.95);
+  --n-warm-white: #f6f5f4;
+  --n-border: 1px solid rgba(0,0,0,0.1);
+  --n-gray-2: #615d59;
+  --n-shadow: rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px;
+}
+
+/* --- ベーステキスト --- */
+a:hover { color: var(--n-blue) !important; }
+
+/* --- フッター copyright --- */
+#sp-block-container-1 .copyright { color: var(--n-gray-2) !important; }
+
+/* --- フッターナビ (デスクトップ) --- */
+#sp-site-navigation-2 { background-color: var(--n-warm-white) !important; }
+#sp-site-navigation-2>ul>li>a { color: var(--n-gray-2) !important; }
+#sp-site-navigation-2>ul>li>a:hover { color: var(--n-blue) !important; }
+
+/* --- フッターナビ (モバイル) --- */
+#sp-site-navigation-2 ul li>a { color: var(--n-black) !important; background-color: var(--n-warm-white) !important; border-bottom-color: rgba(0,0,0,0.1) !important; }
+#sp-site-navigation-2 .menu-toggle { background-color: var(--n-warm-white) !important; }
+#sp-site-navigation-2 li>a:hover, #sp-site-navigation-2 li>a:active { color: var(--n-blue) !important; background-color: #ffffff !important; }
+#sp-site-navigation-2>ul li.current_page_item>a { color: var(--n-blue) !important; background-color: #ffffff !important; }
+
+/* --- メインナビ (デスクトップ) --- */
+#sp-site-navigation-1 { border-top-color: rgba(0,0,0,0.1) !important; border-bottom-color: rgba(0,0,0,0.1) !important; }
+#sp-site-navigation-1>ul>li>a { color: rgba(0,0,0,0.85) !important; border-left-color: rgba(0,0,0,0.08) !important; }
+#sp-site-navigation-1>ul>li.current_page_item>a, #sp-site-navigation-1>ul>li>a:hover { color: var(--n-blue) !important; background-color: transparent !important; }
+
+/* --- メインナビ (モバイル) --- */
+#sp-site-navigation-1 ul li>a { color: var(--n-black) !important; background-color: var(--n-warm-white) !important; border-bottom-color: rgba(0,0,0,0.1) !important; }
+#sp-site-navigation-1 .menu-toggle { background-color: var(--n-warm-white) !important; }
+#sp-site-navigation-1 li>a:hover, #sp-site-navigation-1 li>a:active { color: var(--n-blue) !important; background-color: #ffffff !important; }
+#sp-site-navigation-1>ul li.current_page_item>a { color: var(--n-blue) !important; background-color: #ffffff !important; }
+
+/* --- ページタイトル h1 --- */
+#sp-page-title-1>h1 { color: var(--n-black) !important; background-color: var(--n-warm-white) !important; background-image: none !important; }
+.hpb-viewtype-date#sp-wp-post-list-1 { border-color: rgba(0,0,0,0.08) !important; }
+
+/* --- Breadcrumb --- */
+#breadcrumb-list div a { color: var(--n-blue) !important; }
+
+/* --- フォーカスリング --- */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline-color: #097fe8 !important; }
+
+/* --- ニュースカード --- */
+#sp-wp-post-list-1 { border-color: rgba(0,0,0,0.1) !important; box-shadow: var(--n-shadow) !important; }
+#sp-wp-post-list-1 h3 { border-bottom-color: rgba(0,0,0,0.1) !important; border-bottom-style: solid !important; }
+#sp-wp-post-list-1 h3 a { color: var(--n-black) !important; }
+.premium-news-card { border-color: rgba(0,0,0,0.1) !important; box-shadow: var(--n-shadow) !important; }
+.premium-news-card::before { background: var(--n-blue) !important; }
+.premium-news-card:not(.no-link):hover { box-shadow: rgba(0,0,0,0.08) 0px 6px 20px !important; border-color: rgba(0,0,0,0.15) !important; background: var(--n-warm-white) !important; }
+.pnc-date { color: var(--n-blue) !important; }
+.pnc-badge { background: var(--n-blue) !important; box-shadow: 0 2px 5px rgba(0,117,222,0.3) !important; }
+.pnc-arrow { color: rgba(0,0,0,0.2) !important; }
+.premium-news-card:not(.no-link):hover .pnc-title { color: var(--n-blue) !important; }
+.premium-news-card:not(.no-link):hover .pnc-arrow { color: var(--n-blue) !important; }
+#sp-wp-post-list-1 .hpb-more-entry a { background-color: var(--n-blue) !important; border-radius: 4px !important; }
+#sp-wp-post-list-1 .hpb-more-entry a:hover { background-color: var(--n-blue-hover) !important; }
+
+/* --- ステータスバナー --- */
+.status-alert-banner { background: #ffffff !important; border: 1px solid rgba(0,0,0,0.1) !important; border-left: 4px solid var(--n-blue) !important; box-shadow: var(--n-shadow) !important; }
+.status-alert-banner:hover { box-shadow: rgba(0,0,0,0.08) 0px 6px 20px !important; }
+.status-alert-banner .sab-title { color: var(--n-black) !important; }
+.status-alert-banner .sab-arrow { color: var(--n-blue) !important; }
+
+/* --- Unified CTA --- */
+.unified-cta { background: var(--n-warm-white) !important; border-top: var(--n-border) !important; }
+.unified-cta-heading { color: var(--n-black) !important; }
+.unified-cta-btn { border: var(--n-border) !important; color: var(--n-black) !important; box-shadow: var(--n-shadow) !important; }
+.unified-cta-btn:hover { background: var(--n-blue) !important; color: #ffffff !important; border-color: var(--n-blue) !important; box-shadow: 0 4px 12px rgba(0,117,222,0.25) !important; }
+.unified-cta-btn-tel { background: var(--n-blue) !important; color: #ffffff !important; border-color: var(--n-blue) !important; }
+.unified-cta-btn-tel:hover { background: var(--n-blue-hover) !important; border-color: var(--n-blue-hover) !important; }
+
+/* --- Pricing Summary --- */
+.pricing-summary { border-top: var(--n-border) !important; }
+.pricing-summary-heading { color: var(--n-black) !important; }
+.pricing-summary-card { border: var(--n-border) !important; box-shadow: var(--n-shadow) !important; }
+.pricing-summary-card:hover { border-color: rgba(0,0,0,0.18) !important; box-shadow: rgba(0,0,0,0.08) 0px 8px 24px !important; }
+.pricing-summary-card-name { border-bottom-color: rgba(0,0,0,0.1) !important; }
+.pricing-summary-card-price { color: var(--n-blue) !important; }
+.pricing-summary-card-price .tilde { color: var(--n-blue) !important; }
+
+/* --- Mobile CTA Bar --- */
+@media (max-width: 640px) {
+  .mobile-cta-bar { box-shadow: 0 -2px 14px rgba(0,0,0,0.12) !important; }
+  .mobile-cta-bar-tel { background: var(--n-blue) !important; }
+  .mobile-cta-bar-form { background: var(--n-blue-hover) !important; }
+  .sp-site-navigation.button-menu .menu-toggle { background: var(--n-blue) !important; background-image: none !important; box-shadow: 0 2px 8px rgba(0,117,222,0.22) !important; }
+  .sp-site-navigation.button-menu ul.toggled-on { border-color: rgba(0,0,0,0.1) !important; }
+  .sp-site-navigation.button-menu ul.toggled-on li > a { border-bottom-color: rgba(0,0,0,0.08) !important; color: var(--n-black) !important; background-color: #ffffff !important; }
+  .sp-site-navigation.button-menu ul.toggled-on li > a:hover, .sp-site-navigation.button-menu ul.toggled-on li > a:active { background: var(--n-warm-white) !important; color: var(--n-blue) !important; }
 }

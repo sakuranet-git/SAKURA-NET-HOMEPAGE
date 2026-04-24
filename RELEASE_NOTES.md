@@ -1,5 +1,32 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.23] - 2026-04-24 — Phase 3-G: Notion Design System 適用
+
+### 🎨 変更内容
+- **カラーテーマ刷新**: ピンク系 (#c82054) → Notion Blue (#0075de) + 暖色ニュートラル
+- **背景色**: `#fff0f5` / `#fff4f7` → `#ffffff` / `#f6f5f4` (Notion warm white)
+- **ボーダー**: ピンクボーダー → ウィスパーボーダー `1px solid rgba(0,0,0,0.1)`
+- **カード・シャドウ**: Notion 4層シャドウスタック適用
+- **テキスト色**: `rgba(0,0,0,0.95)` warm near-black に統一
+- **CTAボタン**: Notion Blue (#0075de) / hover: #005bab
+- **フォント**: Inter + Noto Sans JP (レンダリング強化・letter-spacing追加)
+- **ハンバーガーメニュー**: ピンク → Notion Blue
+- **モバイルCTAバー**: ピンク → Notion Blue
+- **ニュースカード・ステータスバナー**: Notion Blue アクセント
+- **料金早見表・Unified CTA**: Notion スタイル統一
+- CSS変数 (`--n-blue`, `--n-warm-white`, `--n-shadow` 等) 導入
+
+### 現在の有効フェーズ
+- Phase 3-A 料金サマリー（v2.9.17）
+- Phase 3-B タイポグラフィ（Inter / Noto Sans JP）
+- Phase 3-C スマホ強化（mobile-cta-bar）
+- Phase 3-D スクロールアニメ（scroll-animate.js）
+- **Phase 3-G Notion Design System（v2.9.23）** ← NEW
+
+**変更ファイル:** index.html / style.css
+
+---
+
 ## [v2.9.22] - 2026-04-20 — ロールバック（v2.9.19状態に復元）
 
 ### ⏪ ロールバック内容
