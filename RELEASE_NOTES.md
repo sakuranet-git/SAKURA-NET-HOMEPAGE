@@ -1,6 +1,23 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
-## [v2.9.23] - 2026-04-24 — Phase 3-G: Notion Design System 適用
+## [v2.9.24] - 2026-04-24 — ロールバック（v2.9.22状態に復元）
+
+### ⏪ ロールバック内容
+- **v2.9.23 (Notion Design System適用)** を取り消し
+- index.html / style.css を v2.9.22 状態へ復元
+- 理由：Notion Blue適用によりさくらねっとのピンクブランドが失われた為
+
+### 現在の有効フェーズ
+- Phase 3-A 料金サマリー（v2.9.17）
+- Phase 3-B タイポグラフィ（Inter / Noto Sans JP）
+- Phase 3-C スマホ強化（mobile-cta-bar）
+- Phase 3-D スクロールアニメ（scroll-animate.js）
+
+**変更ファイル:** index.html / style.css
+
+---
+
+## [v2.9.23] - 2026-04-24 — ~~Phase 3-G: Notion Design System 適用~~ ※v2.9.24でロールバック済み
 
 ### 🎨 変更内容
 - **カラーテーマ刷新**: ピンク系 (#c82054) → Notion Blue (#0075de) + 暖色ニュートラル
