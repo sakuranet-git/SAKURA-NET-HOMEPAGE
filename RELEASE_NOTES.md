@@ -1,5 +1,19 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.43] - 2026-04-25 — faq_archive.html に jirei1.html への内部リンク追加
+
+### 🔗 内部導線追加
+- `posts/faq_archive.html` のFAQ一覧下部に「導入事例」ブロックを追加
+- jirei1.html へのリンクボタンを contact CTA の上に配置
+- contact CTA はそのまま維持
+
+### 🗂 バックアップ
+- `backups/v2.9.43_pre-jirei-link/posts/faq_archive.html` に更新前を保存
+
+**変更ファイル:** posts/faq_archive.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.42] - 2026-04-25 — faq_archive.html をプレミアムスタイルに全面更新
 
 ### 🎨 スタイル改善
