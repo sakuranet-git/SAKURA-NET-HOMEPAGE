@@ -1,5 +1,57 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.46] - 2026-04-25 — MIMEYOI デザイン 3ページ横展開（service / contact / company）
+
+### 🎨 デザイン統一
+- `service.html` / `contact.html` / `company.html` に index.html と同じ MIMEYOI カラーシステムを適用
+- CSS変数ブロック（`:root { --sakura: #c97b8d; ... }`）を各ページ `</head>` 直前に追加
+- `body { -webkit-font-smoothing: antialiased; }` 追加
+
+### 🎨 変更内容（全3ページ共通）
+- ヘッダー背景: `#fff0f5` → `#fffdfd`（bg-base）
+- コンテンツヘッダー背景: 同上
+- キャッチフレーズ: `#c82054` → `#c97b8d`、text-shadow 削除
+- 会社情報ボックス: border 2px #ffc1d3 → 1px #ead8dd、box-shadow 削除
+- ナビピル: color `#c82054` → `#c97b8d`、border 2px → 1px #ead8dd、hover bg `#e03164` → `#a85c70`、shadow削除、translateY -3px → -2px
+- ページタイトル背景: `#fff4f7` → `#f8f4f4`、border → #ead8dd
+- H1: `#c82054` → `#2f2a2a`（本文色・落ち着いたトーン）
+- フッター背景: `#fff4f7` → `#f8f4f4`、border-top 3px → 1px #ead8dd
+- フッターcopyright・プライバシーリンク: `#c82054` → `#6f6262`
+
+### 🎨 service.html 固有変更
+- SEO introセクション: bg #fffafb → #f8f4f4、border 2px → 1px #ead8dd、shadow削除
+- サービスカードh3: bg `#c82054` → `#c97b8d`、shadow削除
+- .sakura-card: border #ffc1d3 → #ead8dd、shadow削除、hover border → #c97b8d
+- .sakura-card header: bg `#fff0f5` → `#f8f4f4`、border-bottom dashed #ffc1d3 → #ead8dd
+- .sakura-card h4/a: `#c82054` → `#c97b8d`
+- .sakura-btn: bg `#e03164` → `#a85c70`
+- OEM/UniFi/Mobile/DoRACOON カード: border 2px → 1px #ead8dd、内部アクセントカラー更新
+
+### 🎨 contact.html 固有変更
+- .sakura-dl-container: bg `#fff0f5` → `#f8f4f4`、border → #ead8dd、shadow削除
+- .sakura-dl-title: color `#c82054` → `#c97b8d`、border 2px dashed → 1px
+- .sakura-definition-list dt: color `#c82054` → `#c97b8d`、border → #ead8dd
+- .sakura-info-box: border 2px → 1px #ead8dd、shadow削除
+- サポートチケットボタン: bg `#e03164` → `#a85c70`、shadow削除
+- ハイライトパラグラフ: bg `#fff0f5` → `#f8f4f4`、border-left 5px #ffc1d3 → 4px #ead8dd
+
+### 🎨 company.html 固有変更
+- .sakura-definition-list（グリッド型）: border `#ffc1d3` → `#ead8dd`
+- dt背景: `#fff4f7` → `#f8f4f4`、color `#c82054` → `#c97b8d`
+- 会社概要イントロdiv: bg `#fff4f7` → `#f8f4f4`、border → #ead8dd
+- サブテキスト: `#a08090` → `#6f6262`
+- 沿革コンテナ: bg `#fff4f7` → `#f8f4f4`
+- 届出番号・インボイスリンク: `#c82054` → `#c97b8d`
+
+### 🗂 バックアップ
+- `backups/v2.9.46_pre-mimeyoi-3pages/service.html`
+- `backups/v2.9.46_pre-mimeyoi-3pages/contact.html`
+- `backups/v2.9.46_pre-mimeyoi-3pages/company.html`
+
+**変更ファイル:** service.html / contact.html / company.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.45] - 2026-04-25 — ニュース欄フォールバック修正・news12 をアーカイブに追加
 
 ### 🐛 バグ修正
