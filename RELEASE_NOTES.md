@@ -1,5 +1,38 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.41] - 2026-04-25 — FAQ 5本・導入事例 1本の新規追加
+
+### 📝 変更内容
+- `posts/faq5.html` 新規作成：Q. UniFiの導入費用はどのくらいかかりますか？
+- `posts/faq6.html` 新規作成：Q. SAKURA-NET光の月額料金と回線速度を教えてください
+- `posts/faq7.html` 新規作成：Q. 法人ITサポートはどこまで対応してもらえますか？
+- `posts/faq8.html` 新規作成：Q. リモートで対応してもらえますか？出張費はかかりますか？
+- `posts/faq9.html` 新規作成：Q. 防犯カメラや入退室管理の工事も対応していますか？
+- `posts/jirei1.html` 新規作成：【導入事例】大阪市内の小売業様へUniFiネットワーク＋防犯カメラを一括導入
+- `posts/faq_archive.html` 更新：faq5〜faq9 の5件を一覧に追加
+- `posts/faq4.html` （テストファイル）を trash/ に移動
+
+### 🗂 バックアップ
+- `backups/v2.9.41_pre-faq-jirei/posts/faq_archive.html` に更新前を保存
+
+**変更ファイル:** posts/faq5-faq9.html / posts/jirei1.html / posts/faq_archive.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.40] - 2026-04-25 — FAQ・導入事例のSEO設計書を追加
+
+### 📝 変更内容
+- `SEO_CONTENT_PLAN_FAQ_CASES.md` を新規作成
+- FAQ案、導入事例案、狙う検索テーマ、実装方針、Claude Code向け依頼文を整理
+- 次フェーズのSEO強化の土台として利用できる内容を文書化
+
+### 🗂 バックアップ
+- `backups/v2.9.40/` に `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** SEO_CONTENT_PLAN_FAQ_CASES.md / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.39] - 2026-04-25 — ソリューションカード画像WebP軽量化
 
 ### ⚡ パフォーマンス改善
