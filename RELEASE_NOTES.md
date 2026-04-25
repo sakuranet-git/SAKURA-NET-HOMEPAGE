@@ -1,5 +1,60 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.45] - 2026-04-25 — ニュース欄フォールバック修正・news12 をアーカイブに追加
+
+### 🐛 バグ修正
+- `index.html`: ローカル file:// 表示時に Chrome が fetch をブロックしニュースが非表示になる問題を修正
+  - インライン JSON データ（`<script id="news-inline-data" type="application/json">`）を追加
+  - API・archive fetch 両方が失敗した場合のフォールバックとして最新5件を確実に表示
+- `posts/news_archive.html`: news12（さくらインターネットメンテナンスのお知らせ / 2026-04-01）を追記
+
+### 🗑️ ゴミファイル処理
+- .tmp.* ファイル 25本を trash/ に移動
+
+### 📰 インライン静的ニュースデータ（最新5件）
+1. さくらインターネットメンテナンスのお知らせ - 2026-04-01
+2. SAKURA-NETサービス契約約款（最新版）- 2026-02-22
+3. 臨時休業のお知らせ - 2025-11-01
+4. SAKURA-IPPBX利用開始のお知らせ - 2025-10-01
+5. SAKURA-NET光開始のお知らせ - 2024-11-01
+
+### 🗂 バックアップ
+- `backups/v2.9.45_pre-news-fix/index.html`
+- `backups/v2.9.45_pre-news-fix/posts/news_archive.html`
+
+**変更ファイル:** index.html / posts/news_archive.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.44] - 2026-04-25 — index.html MIMEYOI風「静かな高級感」局所改善
+
+### 🎨 デザイン改善（10項目）
+- CSS変数 `--sakura / --sakura-deep / --sakura-border / --bg-base / --bg-light / --text-main / --text-sub` 追加
+- `body { -webkit-font-smoothing: antialiased; }` によるフォントレンダリング改善
+- `@keyframes fadeUp` 追加・ヒーローセクション（`#hero-flex`）に 0.7s アニメーション適用
+- ヘッダー・contenthead 背景: `#fff0f5` → `#fffdfd`（クリーンホワイト）
+- キャッチフレーズ: `color #c82054` → `#c97b8d`、`text-shadow` 除去
+- 情報ボックス: `border 2px #ffc1d3` → `1px #ead8dd`、`box-shadow` 除去
+- ページタイトル背景: `#fff4f7` → `#f8f4f4`、border → `#ead8dd`
+- H1: `color #c82054` → `#2f2a2a`（ダークテキスト）
+- 課題ボックス: `bg #fff4f7` → `#f8f4f4`、border → `#ead8dd`、h3/CTAテキスト → `#c97b8d`
+- ソリューション見出し: `border-bottom 2px #e03164` → `1px #ead8dd`、`color` → `#c97b8d`
+- ソリューションカード5枚: `border #e0e0e0` → `#ead8dd`、`box-shadow` 除去
+- カード h4 色: `#c82054` → `#c97b8d`（全5枚）
+- ナビ pill ボタン: `border 2px #ffc1d3` → `1px #ead8dd`、色 → `#c97b8d`、hover → `#a85c70`、shadow 除去
+- ニュース欄 CSS: border/shadow/gradient を `#c97b8d/#a85c70/#ead8dd` トーンに統一
+- ステータスアラートバナー: bg `#fff0f5` → `#f8f4f4`、border `2px #ffc1d3` → `1px #ead8dd`、left accent `5px #c82054` → `4px #c97b8d`
+- CTA サブテキスト: `#a08090` → `#6f6262`
+- フッター: bg `#fff4f7` → `#f8f4f4`、`border-top 3px` → `1px #ead8dd`
+- フッター copyright・プライバシーリンク: `#c82054` → `#6f6262`
+
+### 🗂 バックアップ
+- `backups/v2.9.44_pre-mimeyoi/index/index.html` に更新前を保存済み
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.43] - 2026-04-25 — faq_archive.html に jirei1.html への内部リンク追加
 
 ### 🔗 内部導線追加
