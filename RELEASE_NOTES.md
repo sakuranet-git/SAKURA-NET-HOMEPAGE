@@ -1,5 +1,23 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.36] - 2026-04-25 — service.html 営業時間バグ修正・内部導線強化
+
+### 🐛 バグ修正
+- CTAボタンの営業時間 `10:00-17:00` → `10:00-19:00` に修正
+
+### ✨ 改善
+- `href="#"` だった主力サービスカードのリンクを `contact.html` に変更（UniFi・SAKURA-NET光・Mobile・DoRACOON）
+- UniFiネットワーク・セキュリティ機器カードに「ご相談・お見積りはこちら」ボタン追加
+- SAKURA-NET Total IT SUPPORTカードに「ご相談・お見積りはこちら」ボタン追加
+- クラウドUTMカードに「ご相談・お見積りはこちら」ボタン追加
+
+### 🗂 バックアップ
+- `backups/v2.9.36_pre-service-fix/` に `service.html` を保存
+
+**変更ファイル:** service.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.35] - 2026-04-25 — company.html 営業時間バグ修正・信頼材料追加
 
 ### 🐛 バグ修正
