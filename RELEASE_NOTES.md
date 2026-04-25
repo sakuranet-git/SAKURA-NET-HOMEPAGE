@@ -1,5 +1,23 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.39] - 2026-04-25 — ソリューションカード画像WebP軽量化
+
+### ⚡ パフォーマンス改善
+- card_*.png (計2.35MB) → card_*.webp quality82 (計164KB) に変換（約93%削減）
+  - card_sakura_hikari: 581KB → 42KB
+  - card_unifi_network: 639KB → 59KB
+  - card_unifi_protect: 553KB → 33KB
+  - card_unifi_access: 577KB → 30KB
+- index.html の img 参照を .png → .webp に4箇所変更
+- 元の .png ファイルはバックアップとして img/ に保持
+
+### 🗂 バックアップ
+- `backups/v2.9.39_pre-webp-optimize/` に `index.html` を保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md / img/card_*.webp（新規4点）
+
+---
+
 ## [v2.9.38] - 2026-04-25 — index.html ソリューションカード画像統一
 
 ### ✨ 改善
