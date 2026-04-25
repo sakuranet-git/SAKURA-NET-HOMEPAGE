@@ -1,5 +1,25 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.37] - 2026-04-25 — index.html ヒーロー画像差し替え・OGP更新・機器ビジュアル追加
+
+### ✨ 改善
+- ヒーロー画像を `modern_network.webp` → `fv_main_visual.png`（法人オフィス・さくら色テーマ）に差し替え
+- ヒーロー本文下に地域密着テキスト1行追加（大阪淀川区拠点 ／ 法人専門 ／ 2002年創業 ／ 全国リモート対応）
+- UniFi Protectカードに `unifi_equipment_visual.png`（AP+防犯カメラ）を追加
+- OGP・Twitter Card 画像を `ogp.jpg` → `ogp_2026.png` に更新
+
+### 🖼 新規画像（img/に配置）
+- `img/fv_main_visual.png` — ヒーロー用
+- `img/unifi_equipment_visual.png` — UniFi機器ビジュアル用
+- `img/ogp_2026.png` — OGP用
+
+### 🗂 バックアップ
+- `backups/v2.9.37_pre-index-image-update/` に `index.html` を保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.36] - 2026-04-25 — service.html 営業時間バグ修正・内部導線強化
 
 ### 🐛 バグ修正
