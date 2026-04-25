@@ -1,5 +1,21 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.42] - 2026-04-25 — faq_archive.html をプレミアムスタイルに全面更新
+
+### 🎨 スタイル改善
+- `posts/faq_archive.html` を旧テンプレートスタイルから個別FAQページ同等のさくらピンクスタイルに全面書き直し
+- ヘッダー・ナビ・フッターを faq5〜faq9 と統一
+- FAQ一覧を `.faq-item` カード形式（ホバーアニメーション付き）に刷新
+- meta description を追加
+- ページ下部に contact.html へのCTAを追加
+
+### 🗂 バックアップ
+- `backups/v2.9.42_pre-faq-archive-restyle/posts/faq_archive.html` に更新前を保存
+
+**変更ファイル:** posts/faq_archive.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.41] - 2026-04-25 — FAQ 5本・導入事例 1本の新規追加
 
 ### 📝 変更内容
