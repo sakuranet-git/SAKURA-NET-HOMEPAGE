@@ -1,5 +1,141 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.33] - 2026-04-25 — index.html CTA営業時間バグ修正・安心文追加
+
+### 🐛 バグ修正
+- CTAボタンの営業時間が `10:00-17:00` と誤っていたのを `10:00-19:00` に修正（ヘッダーと不一致だった）
+
+### ✨ 改善
+- 統一CTAのlead文末尾に「全国リモート対応も承ります。」を追記
+- CTA内にサブテキスト（法人専門 ／ 完全予約制で丁寧対応 ／ 導入から運用サポートまで一貫対応）を追加
+
+### 🗂 バックアップ
+- `backups/v2.9.33_pre-cta-fix/` に `index.html` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.32] - 2026-04-25 — Claude Code向け次フェーズ指示書を追加
+
+### 📝 変更内容
+- `CLAUDE_CODE_NEXT_PHASE_BRIEF.md` を新規作成
+- 現在の改善状況、崩れやすいポイント、次フェーズの優先順位、Claude Code向け依頼文を整理
+- 「大規模リデザインではなく局所改善」を次フェーズの基本方針として明文化
+
+### 🗂 バックアップ
+- `backups/v2.9.32/` に `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** CLAUDE_CODE_NEXT_PHASE_BRIEF.md / RELEASE_NOTES.md
+
+---
+
+## [v2.9.31] - 2026-04-24 — title / meta description / OGP文言を最終調整
+
+### ✨ 変更内容
+- `index.html` の title / description / OGP / Twitter文言を、UniFi導入・ネットワーク構築・法人ITサポート軸へ調整
+- `contact.html` の meta 文言を `お問い合わせ・ご相談` 軸に整理
+- `company.html` の meta 文言を `企業概要・会社情報` と事業内容が伝わる形へ調整
+- `service.html` の meta 文言を主力サービスが先に伝わる表現へ整理
+
+### 🗂 バックアップ
+- `backups/v2.9.31/` に `index.html` `contact.html` `company.html` `service.html` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** index.html / contact.html / company.html / service.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.30] - 2026-04-24 — サービスページ冒頭の主力訴求を整理
+
+### ✨ 変更内容
+- `service.html` 冒頭の案内文を調整し、主力サービスを `UniFi導入・SAKURA-NET光・防犯カメラ・入退室管理・法人ITサポート` と明確化
+- 対応サービス一覧の順序を整理し、主力サービスが先に伝わるよう調整
+- 既存カード一覧や詳細コンテンツの構造は維持
+
+### 🗂 バックアップ
+- `backups/v2.9.30/` に `service.html` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** service.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.29] - 2026-04-24 — 会社概要ページの冒頭要約を追加
+
+### ✨ 変更内容
+- `company.html` の企業概要一覧の前に、事業内容と強みを伝える要約ボックスを追加
+- 大阪拠点、法人向けネットワーク構築、UniFi導入、防犯、入退室管理、ITサポートを明確化
+- 既存の会社情報・沿革・詳細情報の構造は維持
+
+### 🗂 バックアップ
+- `backups/v2.9.29/` に `company.html` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** company.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.28] - 2026-04-24 — お問い合わせページの新規相談導線を整理
+
+### ✨ 変更内容
+- `contact.html` 冒頭に新規相談向けの案内ボックスを追加
+- `電話・FAX / E-mail` 見出しを `新規ご相談・ご連絡先` へ変更
+- 既存のお客様向け運用案内に見出しを追加し、新規相談向け情報と区別しやすく整理
+- レイアウト構造は維持し、文言中心で改善
+
+### 🗂 バックアップ
+- `backups/v2.9.28/` に `contact.html` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** contact.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.27] - 2026-04-24 — ローカル表示用ニュース欄フォールバック追加
+
+### 🔧 修正内容
+- `index.html` のニュース取得処理を改善
+- 公開環境では従来通り `/system/news_api.php` を使用
+- `file://` 表示や API 失敗時は `posts/news_archive.html` から最新ニュースを抽出して表示
+- ローカル確認時でもトップのニュース・お知らせ欄が表示されるよう対応
+
+### 🗂 バックアップ
+- `backups/v2.9.27/` に `index.html` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
+## [v2.9.26] - 2026-04-24 — 緊急復旧（トップの大規模レイアウト変更を取り消し）
+
+### ⏪ 復旧内容
+- `index.html` `contact.html` `style.css` を `backups/v2.9.25/` ベースへ復旧
+- トップページの大規模レイアウト変更を取り消し、既存の安定レイアウトへ戻し
+- 復旧後、崩れない範囲でトップのH1・ヒーロー文言・CTA文言のみ再調整
+- ニュース欄の初期文言を `ニュース一覧ページ` への案内付きに変更
+
+### 🗂 バックアップ
+- `backups/v2.9.26/` に復旧前の `index.html` `contact.html` `style.css` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** index.html / contact.html / style.css / RELEASE_NOTES.md
+
+---
+
+## [v2.9.25] - 2026-04-24 — トップ訴求・問い合わせ導線・OEM表現改善
+
+### ✨ 変更内容
+- `index.html` を再構成し、トップのH1を `大阪のオフィスIT、すべてをひとつの窓口で。` に変更
+- トップページに `よくある課題` `主要サービス` `選ばれる理由` `導入の流れ` `会社情報` セクションを追加
+- トップのファーストビューに無料相談CTAと会社情報サマリーを追加
+- ニュース欄の初期表示を `読み込み中...` から、ニュース一覧への案内つきプレースホルダへ変更
+- `service.html` のOEMセクションから `○○○` プレースホルダ表現を除去し、公開向け文言へ修正
+- `contact.html` に新規相談向け導線ブロックを追加し、既存顧客向け運用案内と分離
+- `style.css` に暖色ニュートラル + Notionライクな共通クラス群を追加
+
+### 🗂 バックアップ
+- `backups/v2.9.25/` に `index.html` `service.html` `contact.html` `style.css` `RELEASE_NOTES.md` を保存
+
+**変更ファイル:** index.html / service.html / contact.html / style.css / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.24] - 2026-04-24 — ロールバック（v2.9.22状態に復元）
 
 ### ⏪ ロールバック内容
