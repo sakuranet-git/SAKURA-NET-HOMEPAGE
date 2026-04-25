@@ -1,5 +1,29 @@
 # SAKURA-NET プレミアムUI 改修履歴 (RELEASE_NOTES)
 
+## [v2.9.38] - 2026-04-25 — index.html ソリューションカード画像統一
+
+### ✨ 改善
+- 「ソリューション・トピックス」4カードを画像付きで統一
+  - SAKURA-NET光 → `card_sakura_hikari.png`
+  - UniFiネットワーク → `card_unifi_network.png`
+  - UniFi Protect → `card_unifi_protect.png`（下部旧画像を除去し上部に統一）
+  - UniFi Access → `card_unifi_access.png`
+- 全カード `height:160px; object-fit:cover` で高さ・比率を完全統一
+- 負マージン手法でカード上部フラッシュ配置・既存レイアウト崩れなし
+
+### 🖼 新規画像（img/に配置）
+- `img/card_sakura_hikari.png`
+- `img/card_unifi_network.png`
+- `img/card_unifi_protect.png`
+- `img/card_unifi_access.png`
+
+### 🗂 バックアップ
+- `backups/v2.9.38_pre-solution-cards/` に `index.html` を保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
 ## [v2.9.37] - 2026-04-25 — index.html ヒーロー画像差し替え・OGP更新・機器ビジュアル追加
 
 ### ✨ 改善
