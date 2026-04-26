@@ -1,0 +1,6 @@
+﻿<svg width="180" height="30" viewBox="0 0 180 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 24 L14 6 L22 6 L10 24 Z" fill="#a85c70"/>
+    <circle cx="17" cy="18" r="7" fill="#c97b8d"/>
+    <text x="34" y="21" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="16" fill="#2f2a2a" letter-spacing="0.5">SAKURA-NET</text>
+    <text x="146" y="20" font-family="'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif" font-weight="700" font-size="15" fill="#6f6262">光</text>
+</svg>

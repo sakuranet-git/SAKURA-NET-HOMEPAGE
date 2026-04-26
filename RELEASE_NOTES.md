@@ -1,4 +1,42 @@
-﻿## [v2.9.53] - 2026-04-26 - postsフォルダ 文字化け全修復（news1〜6 再作成）
+﻿## [v3.0.0] - 2026-04-26 - MIMEYOI "Quiet Luxury" 全面リデザイン
+
+### 概要
+サイト全体を v2 系から MIMEYOI インスパイアの "Quiet Luxury" デザインへ完全刷新。
+CSS・JS・全ページ（ルート15ページ + posts/40ページ）を統一テンプレートで再構築。
+
+### 新デザインシステム
+- **カラー:** ホワイト基調 / さくらピンク `#c97b8d` アクセント
+- **フォント:** Outfit（英字）/ Noto Sans JP（日本語）
+- **アニメーション:** `c-word` 文字アニメーション + `easeOut cubic-bezier(0.16,1,0.3,1)`
+- **レイアウト:** BEM ライク命名（`l-`/`c-`/`p-`/`js-` プレフィックス）
+
+### 変更ファイル（ルート）
+- `style.css` — 完全書き直し（~650行、CSS変数・ダークCTA・カバーローダー等）
+- `js/main.js` — 新規作成（カバーアニメ・ヘッダー・ワードアニメ・ヒーロースライダー・スクロールアニメ・ナビ画像切替）
+- `index.html` — ヒーロースライダー（3枚）・Solutions・Stats・News・CTA
+- `service.html` — ネットワーク/セキュリティ/クラウド&サポート 3セクション
+- `company.html` — 企業概要テーブル11行 + 沿革14行（JSON-LD Organization）
+- `concept.html` — 経営方針 + 代表メッセージ
+- `access.html` — 地図埋め込み + 交通案内テーブル（JSON-LD Place）
+- `contact.html` — 新規問い合わせ / 既存顧客 / Stripe連携
+- `news.html` — news_api.php fetch 完全保持 + v3 UI
+- `recruit.html` — 募集要項テーブル
+- `pay.html` — 決済画像グリッド + 方法一覧テーブル
+- `custom.html` — 代理店ダークヒーロー + 募集6項目
+- `custom1.html` — サポート概要5セクション（ハラスメント対応方針含む）
+- `privacy.html` — プライバシーポリシー + 特定商取引法テーブル
+- `remote.html` — **変更なし**（RustDesk独立ページ）
+
+### 変更ファイル（posts/ 40ファイル一括）
+- 全ファイルのヘッダー/フッターを v3 テンプレートに置換
+- 記事本文コンテンツ（inline CSS + article/div）は**そのまま保持**
+- `../js/main.js` 参照に統一、旧 `navigation.js` 除去
+
+### バックアップ
+- `backups/v3.0.0_pre-redesign_20260426/` — 69ファイル（リデザイン前フルバックアップ）
+
+---
+## [v2.9.53] - 2026-04-26 - postsフォルダ 文字化け全修復（news1〜6 再作成）
 ### 変更内容
 - `posts/news1.html` 〜 `posts/news6.html` を文字化けのため完全再作成
   - news1: 営業時間内・外の受付について（2020年06月02日）

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
 
   <title>新着情報・FAQ｜株式会社さくらねっと</title>
   <meta name="description" content="株式会社さくらねっとの新着情報・よくあるご質問。サービスアップデート、メンテナンス情報、UniFi・SAKURA-NET光・法人ITに関するFAQを掲載。">
@@ -13,6 +13,7 @@
   <link rel="canonical" href="https://sakuranet-co.jp/news.html">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
 
   <meta property="og:site_name" content="株式会社さくらねっと">
   <meta property="og:title" content="新着情報・FAQ｜株式会社さくらねっと">
@@ -34,696 +35,337 @@
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-8DZV2NE7C1');
-  </script><!--[if lt IE 9]>
-<script src="html5.js" type="text/javascript"></script>
-<![endif]-->
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
   <style>
-    /* スマートフォン向けレスポンシブ修正 */
-    @media screen and (max-width: 568px) {
-
-      html,
-      body {
-        min-width: 0 !important;
-        overflow-x: hidden !important;
-        width: 100% !important;
-        -webkit-text-size-adjust: 100% !important;
-      }
-
-      p,
-      div,
-      a,
-      span,
-      li,
-      dt,
-      dd {
-        word-break: break-word !important;
-        overflow-wrap: break-word !important;
-      }
-
-      #page,
-      #masthead-inner,
-      #main,
-      #colophon-inner,
-      #contenthead {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-      }
-
-      .sp-site-branding2 .site-title {
-        float: none !important;
-        height: auto !important;
-        display: block !important;
-        width: 100% !important;
-        clear: both !important;
-        margin-bottom: 6px !important;
-        text-align: left !important;
-      }
-
-      .sp-site-branding2 .site-description {
-        position: static !important;
-        width: 100% !important;
-        text-align: left !important;
-        font-size: 12px !important;
-        top: auto !important;
-        line-height: 1.5 !important;
-        margin-top: 0 !important;
-        margin-left: 0 !important;
-        margin-bottom: 10px !important;
-        display: block !important;
-        clear: both !important;
-      }
-
-      #sp-site-branding-extra-1 {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        position: static !important;
-        margin-top: 10px !important;
-        font-size: 0.88em !important;
-        clear: both !important;
-      }
-
-      .sp-site-branding2 .extra {
-        width: 100% !important;
-        position: static !important;
-      }
-
-      #menu-mainnav {
-        gap: 6px !important;
-        padding: 8px 0 14px 0 !important;
-      }
-
-      #menu-mainnav .menu-item a {
-        padding: 8px 12px !important;
-        font-size: 0.85em !important;
-      }
+    /* news-card: page-local style */
+    .news-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: box-shadow 0.28s var(--ease-out), transform 0.28s var(--ease-out);
+      margin-bottom: 12px;
     }
-  </style>
-  <style>
-    /* ============================================
-       スマートフォン向けレスポンシブ修正
-       style.css の固定幅 1000px を上書きする
-    ============================================ */
-    @media screen and (max-width: 568px) {
-
-      /* --- 全体コンテナの固定幅を解除 --- */
-      html,
-      body {
-        min-width: 0 !important;
-        overflow-x: hidden !important;
-        width: 100% !important;
-        -webkit-text-size-adjust: 100% !important;
-      }
-
-      p,
-      div,
-      a,
-      span,
-      li,
-      dt,
-      dd {
-        word-break: break-word !important;
-        overflow-wrap: break-word !important;
-      }
-
-      #page,
-      #masthead-inner,
-      #main,
-      #colophon-inner,
-      #contenthead {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-      }
-
-      /* --- ヘッダーレイアウトを縦積みに --- */
-      #sp-site-branding2-1 {
-        padding: 12px !important;
-      }
-
-      /* サイトタイトルのfloatを解除して縦積みにする */
-      .sp-site-branding2 .site-title {
-        float: none !important;
-        height: 60px !important; /* ロゴ表示領域を確保 */
-        background-size: contain !important; /* ロゴを縮小 */
-        background-repeat: no-repeat !important; /* 反復防止 */
-        background-position: left center !important; /* 左寄せ */
-        display: block !important;
-        width: 100% !important;
-        clear: both !important;
-        margin-bottom: 6px !important;
-        text-align: left !important;
-      }
-
-      /* 会社情報ボックスを横幅いっぱいに */
-      #sp-site-branding-extra-1 {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        position: static !important;
-        margin-top: 10px !important;
-        font-size: 0.88em !important;
-        clear: both !important;
-      }
-
-      .sp-site-branding2 .extra {
-        width: 100% !important;
-        position: static !important;
-      }
-
-      .sp-site-branding2 .site-description {
-        position: static !important;
-        width: 100% !important;
-        text-align: left !important;
-        font-size: 11px !important;
-        top: auto !important;
-        line-height: 1.4 !important;
-        margin-top: 2px !important;
-        margin-left: 0 !important;
-        margin-bottom: 8px !important;
-        display: block !important;
-        clear: both !important;
-      }
-
-      /* --- ナビゲーションメニューを折り返し --- */
-      #menu-mainnav {
-        gap: 6px !important;
-        padding: 8px 0 14px 0 !important;
-      }
-
-      #menu-mainnav .menu-item a {
-        padding: 8px 12px !important;
-        font-size: 0.85em !important;
-      }
-      
-      /* --- H1 タイトルのフォントサイズ調整 --- */
-      h1.entry-title {
-        font-size: 1.4em !important;
-      }
-
-      /* --- フッターメニューを折り返し --- */
-      #colophon-inner ul[style*="display: flex"] {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
+    .news-card:hover {
+      box-shadow: var(--shadow-card);
+      transform: translateY(-2px);
+    }
+    .news-card.no-link { cursor: default; pointer-events: none; }
+    .news-card_date {
+      font-family: var(--font-en);
+      font-size: var(--fs-sm);
+      color: var(--color-text-sub);
+      white-space: nowrap;
+      min-width: 100px;
+    }
+    .news-card_badge {
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .news-card_title {
+      flex: 1;
+      font-family: var(--font-jp);
+      font-size: var(--fs-base);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    .news-card:hover .news-card_title { color: var(--color-accent); }
+    .news-card_q {
+      font-family: var(--font-en);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .news-card { flex-wrap: wrap; gap: 8px; }
+      .news-card_date { min-width: auto; }
     }
   </style>
 </head>
 
-<body class="basic2" id="hpb-sp-20-0011-01">
-  <div id="page" class="site">
-    <header id="masthead" class="site-header sp-part-top sp-header2" role="banner" style="background-color: #fff0f5;">
-      <div id="masthead-inner" class="sp-part-top sp-header-inner">
-        <div id="sp-site-branding2-1" class="sp-part-top sp-site-branding2">
-          <div class="site-title sp-part-top sp-site-title"
-            style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px;"><a href="index.html"
-              style="text-decoration: none; color: inherit;">株式会社さくらねっと</a></div>
-          <div class="site-description sp-part-top sp-catchphrase"
-            style="color: #c82054; font-weight: bold; font-size: 0.95em; line-height: 1.6; margin-top: -20px; margin-bottom: 12px; text-shadow: 1px 1px 2px rgba(255,193,211,0.5); display: block; clear: both; margin-left: -20px;">
-            通信・セキュリティ・空間管理を「1画面」で。<br>UniFi×SAKURA-NET光による次世代オフィス環境</div>
-          <div class="extra sp-part-top sp-site-branding-extra" id="sp-site-branding-extra-1"
-            style="background: rgba(255,255,255,0.8); border: 2px solid #ffc1d3; border-radius: 12px; padding: 15px 20px; color: #444; font-size: 0.95em; box-shadow: 0 4px 15px rgba(200,32,84,0.08); display: block; box-sizing: border-box; text-align: left;">
-            <div style="margin-bottom: 10px; border-bottom: 1px dashed #ffc1d3; padding-bottom: 8px;"><i
-                class="character"
-                style="color: #c82054; font-weight: bold; font-style: normal; font-size: 1.1em;">株式会社さくらねっと</i>　<a
-                class="character" href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?"
-                style="color: #c82054; text-decoration: none; font-size: 0.9em; transition: color 0.3s;">（SAKURA-NET
-                Inc.）</a></div>
-            <p class="paragraph" style="margin: 5px 0;"><span
-                style="color:#e03164; margin-right: 5px;">📍</span>〒532-0012 大阪市淀川区木川東4-3-34 5F</p>
-            <p class="address paragraph" style="margin: 5px 0;"><span
-                style="color:#e03164; margin-right: 5px;">🕒</span>営業時間：平日10：00-19：00（<a
-                href="https://select-type.com/rsv/?id=dvJJk68ZE2g" target="_blank"
-                style="color: #c82054; font-weight: bold; text-decoration: underline;">完全予約制</a>）</p>
-            <p class="address paragraph" style="margin: 5px 0;"><span
-                style="color:#e03164; margin-right: 5px;">💻</span>（<a
-                href="https://sakuranet-co.jp/remote.html" target="_blank"
-                style="color: #c82054; text-decoration: underline;">遠隔サポートはこちら</a>）</p>
-            <p class="address paragraph" style="margin: 5px 0;"><span
-                style="color:#e03164; margin-right: 5px;">✉️</span>E-mail: <a href="mailto:info@sakuranet-co.jp"
-                style="color: #c82054; text-decoration: none;">info@sakuranet-co.jp</a></p>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div id="main" class="site-main sp-part-top sp-main">
-      <div id="contenthead" class="sp-part-top sp-content-header"
-        style="background-color: #fff0f5; padding-bottom: 10px;">
-        <nav id="sp-site-navigation-1" class="navigation-main button-menu sp-part-top sp-site-navigation horizontal"
-          role="navigation">
-          <button class="menu-toggle" aria-expanded="false" aria-controls="menu-mainnav">メニュー</button>
-          <div class="screen-reader-text skip-link"><a title="コンテンツへスキップ" href="#content">コンテンツへスキップ</a></div>
-          <style>
-            #menu-mainnav {
-              display: flex !important;
-              flex-wrap: wrap !important;
-              justify-content: center !important;
-              gap: 10px !important;
-              padding: 10px 0 20px 0 !important;
-              list-style: none !important;
-              margin: 0 !important;
-            }
+<body class="is-loading" id="page-news">
 
-            #menu-mainnav .menu-item {
-              margin: 0 !important;
-              padding: 0 !important;
-              display: block !important;
-            }
-
-            #menu-mainnav .menu-item a {
-              display: flex !important;
-              align-items: center !important;
-              justify-content: center !important;
-              background-color: #fff !important;
-              color: #c82054 !important;
-              padding: 10px 18px !important;
-              border-radius: 30px !important;
-              text-decoration: none !important;
-              font-weight: bold !important;
-              font-size: 0.95em !important;
-              border: 2px solid #ffc1d3 !important;
-              transition: all 0.3s ease !important;
-              box-shadow: 0 2px 6px rgba(200, 32, 84, 0.1) !important;
-            }
-
-            #menu-mainnav .menu-item a:hover,
-            #menu-mainnav .menu-item.current_page_item a {
-              background-color: #e03164 !important;
-              color: #fff !important;
-              border-color: #e03164 !important;
-              box-shadow: 0 5px 12px rgba(200, 32, 84, 0.3) !important;
-              transform: translateY(-3px) !important;
-            }
-          </style>
-          <ul id="menu-mainnav">
-            <li class="menu-item"><a href="index.html">トップページ</a>
-            <li class="menu-item"><a href="concept.html">会社方針</a>
-            <li class="menu-item"><a href="company.html">企業概要</a>
-            <li class="menu-item"><a href="service.html">サービス／製品一覧</a>
-            <li class="menu-item current_page_item"><a href="news.html">新着情報・FAQ</a>
-            <li class="menu-item"><a href="recruit.html">採用情報</a>
-            <li class="menu-item"><a href="contact.html">お問い合わせ</a>
-            <li class="menu-item"><a href="access.html">アクセス</a>
-            <li class="menu-item"><a href="custom.html">代理店募集</a>
-            <li class="menu-item"><a href="pay.html">対応お支払い方法</a>
-            <li class="menu-item"><a href="custom1.html">サポート概要</a>
-          </ul>
-        </nav>
-        <div id="breadcrumb-list" itemscope="" itemtype="http://schema.org/BreadcrumbList"
-          class="sp-part-top sp-bread-crumb">
-          <div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item"
-              href="index.html"><span itemprop="name">トップ</span></a>
-            <meta itemprop="position" content="1">
-          </div>
-          <div>›</div>
-          <div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><span
-              itemprop="name">新着情報・FAQ</span>
-            <meta itemprop="position" content="2">
-          </div>
-        </div>
-      </div>
-      <div id="main-inner">
-        <div id="primary" class="content-area">
-          <main id="content" class="site-content sp-part-top sp-content page-news">
-            <header id="sp-page-title-5" class="entry-header sp-part-top sp-page-title"
-              style="background-color: #fff4f7; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ffc1d3;">
-              <h1 class="entry-title" style="color: #c82054; margin: 0; font-weight: bold; text-align: center;">新着情報・FAQ
-              </h1>
-            </header>
-            <style>
-              .sakura-news-section {
-                background-color: #fff0f5;
-                border: 1px solid #ffc1d3;
-                border-radius: 8px;
-                padding: 25px;
-                margin-bottom: 30px;
-                box-shadow: 0 4px 15px rgba(255, 193, 211, 0.2);
-              }
-
-              .sakura-news-title {
-                color: #c82054;
-                border-bottom: 2px dashed #ffc1d3;
-                padding-bottom: 10px;
-                margin-top: 0;
-                font-size: 1.4em;
-              }
-
-              .sakura-news-title a {
-                color: #c82054;
-                text-decoration: none;
-              }
-
-              .sakura-news-title a:hover {
-                text-decoration: underline;
-              }
-
-              /* --- 新デザイン: プレミアムニュースカード --- */
-              .sakura-news-list, #faq-list {
-                margin-top: 15px;
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                padding: 0;
-                list-style: none; /* FAQ用のulリセット */
-              }
-
-              .premium-news-card {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                padding: 18px 22px;
-                background: #ffffff;
-                border: 1px solid #ffe6eb;
-                border-radius: 12px;
-                box-shadow: 0 2px 8px rgba(200, 32, 84, 0.04);
-                text-decoration: none;
-                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-                position: relative;
-                overflow: hidden;
-                cursor: pointer;
-              }
-
-              .premium-news-card.no-link {
-                cursor: default;
-              }
-
-              .premium-news-card::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 5px;
-                background: linear-gradient(to bottom, #ffc1d3, #e03164);
-                transform: scaleY(0);
-                transition: transform 0.3s ease;
-                transform-origin: top;
-              }
-
-              .premium-news-card:not(.no-link):hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 20px rgba(200, 32, 84, 0.12);
-                border-color: #ffc1d3;
-                background: linear-gradient(120deg, #ffffff 0%, #fff4f7 100%);
-              }
-
-              .premium-news-card:not(.no-link):hover::before {
-                transform: scaleY(1);
-              }
-
-              .pnc-date {
-                font-weight: 800;
-                color: #c82054;
-                font-size: 0.9em;
-                min-width: 110px;
-                letter-spacing: 0.5px;
-              }
-
-              .pnc-badge {
-                background: linear-gradient(135deg, #e03164, #c82054);
-                color: white;
-                font-size: 0.75em;
-                padding: 4px 10px;
-                border-radius: 15px;
-                font-weight: bold;
-                margin-right: -5px;
-                box-shadow: 0 2px 5px rgba(200,32,84,0.3);
-                white-space: nowrap;
-              }
-
-              .pnc-badge.faq-badge {
-                background: linear-gradient(135deg, #444, #666);
-              }
-
-              .pnc-title {
-                font-size: 1.1em;
-                color: #333;
-                font-weight: 700;
-                flex: 1;
-                line-height: 1.4;
-              }
-
-              .premium-news-card:not(.no-link):hover .pnc-title {
-                color: #c82054;
-              }
-
-              .pnc-arrow {
-                color: #ffc1d3;
-                font-size: 1.4em;
-                font-weight: bold;
-                transition: transform 0.3s ease, color 0.3s ease;
-                opacity: 0;
-                transform: translateX(-15px);
-              }
-
-              .premium-news-card:not(.no-link):hover .pnc-arrow {
-                color: #c82054;
-                opacity: 1;
-                transform: translateX(0);
-              }
-
-              @media screen and (max-width: 568px) {
-                .premium-news-card {
-                  flex-direction: column;
-                  align-items: flex-start;
-                  gap: 8px;
-                  padding: 16px;
-                }
-                .pnc-date {
-                  min-width: auto;
-                }
-                .pnc-arrow {
-                  display: none;
-                }
-              }
-
-              .sakura-more-btn {
-                display: inline-block;
-                margin-top: 20px;
-                padding: 8px 20px;
-                background-color: #fff;
-                color: #c82054;
-                border: 2px solid #ffc1d3;
-                border-radius: 20px;
-                text-decoration: none;
-                font-weight: bold;
-                font-size: 0.9em;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 6px rgba(200, 32, 84, 0.1);
-              }
-
-              .sakura-more-btn:hover {
-                background-color: #e03164;
-                color: #fff;
-                border-color: #e03164;
-                box-shadow: 0 4px 10px rgba(200, 32, 84, 0.2);
-                transform: translateY(-2px);
-              }
-            </style>
-            <!-- 障害・メンテナンス情報バナー -->
-            <style>
-              .status-alert-banner {
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                background: linear-gradient(90deg, #fff0f5, #fff);
-                border: 2px solid #ffc1d3;
-                border-left: 5px solid #c82054;
-                border-radius: 10px;
-                padding: 14px 20px;
-                margin-bottom: 24px;
-                text-decoration: none;
-                transition: box-shadow 0.25s, transform 0.25s;
-                box-shadow: 0 3px 10px rgba(200,32,84,0.08);
-              }
-              .status-alert-banner:hover {
-                box-shadow: 0 6px 18px rgba(200,32,84,0.18);
-                transform: translateY(-2px);
-                text-decoration: none;
-              }
-              .status-alert-banner .sab-icon { font-size: 1.8em; flex-shrink: 0; }
-              .status-alert-banner .sab-text { flex: 1; }
-              .status-alert-banner .sab-title {
-                font-size: 1em;
-                font-weight: bold;
-                color: #c82054;
-                display: block;
-                margin-bottom: 2px;
-              }
-              .status-alert-banner .sab-desc { font-size: 0.83em; color: #888; }
-              .status-alert-banner .sab-arrow { color: #c82054; font-size: 1.2em; flex-shrink: 0; }
-              @media screen and (max-width: 568px) {
-                .status-alert-banner { padding: 12px 14px; gap: 10px; }
-                .status-alert-banner .sab-icon { font-size: 1.4em; }
-              }
-            </style>
-            <a href="status.html" class="status-alert-banner">
-              <span class="sab-icon">📡</span>
-              <span class="sab-text">
-                <span class="sab-title">障害・メンテナンス情報</span>
-                <span class="sab-desc">SAKURA SYSTEM / SAKURA-NET光 などの最新状況はこちら</span>
-              </span>
-              <span class="sab-arrow">›</span>
-            </a>
-
-            <div id="sp-wp-post-list-4"
-              class="hpb-viewtype-date hpb-posttype-news sp-part-top sp-wp-post-list sakura-news-section">
-              <h3 class="sakura-news-title">🌸 新着情報</h3>
-              <div class="sakura-news-list" id="news-list"><div style="color:#aaa; padding:20px 15px;">読み込み中...</div></div>
-            </div>
-            <div id="sp-wp-post-list-5"
-              class="hpb-viewtype-title hpb-posttype-faq sp-part-top sp-wp-post-list sakura-news-section"
-              style="background-color: #fff4f7;">
-              <h3 class="sakura-news-title">🌸 <a href="posts/faq_archive.html">サポート情報（FAQ）</a></h3>
-              <div style="margin-top: 15px;" id="faq-list">
-                <div style="color:#aaa; padding:10px 0;">読み込み中...</div>
-              </div>
-            </div>
-
-            <script>
-            (async () => {
-              try {
-                const res   = await fetch('/system/news_api.php');
-                const posts = await res.json();
-
-                const news = posts
-                  .filter(p => p.type === 'news')
-                  .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
-                  .slice(0, 5);
-
-                const fmtDate = str => {
-                  if (!str) return '';
-                  const d = new Date(str + 'T00:00:00');
-                  if (isNaN(d)) return str;
-                  return d.getFullYear() + '年' +
-                         ('0'+(d.getMonth()+1)).slice(-2) + '月' +
-                         ('0'+d.getDate()).slice(-2) + '日';
-                };
-
-                const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-
-                const now = new Date();
-                
-                const newsEl = document.getElementById('news-list');
-                if (news.length) {
-                  newsEl.innerHTML = news.map(p => {
-                    const postDate = new Date(p.date + 'T00:00:00');
-                    const isNew = (now - postDate) < (30 * 24 * 60 * 60 * 1000);
-                    const badge = isNew ? `<div class="pnc-badge">NEW</div>` : '';
-                    const arrow = p.url ? `<div class="pnc-arrow">➔</div>` : '';
-                    const tag = p.url ? 'a' : 'div';
-                    const hrefAttr = p.url ? `href="${esc(p.url)}"` : '';
-                    const cls = p.url ? 'premium-news-card' : 'premium-news-card no-link';
-                    
-                    return `
-                      <${tag} ${hrefAttr} class="${cls}">
-                        <div class="pnc-date">${esc(fmtDate(p.date))}</div>
-                        ${badge}
-                        <div class="pnc-title">${esc(p.title)}</div>
-                        ${arrow}
-                      </${tag}>
-                    `;
-                  }).join('');
-                } else {
-                  newsEl.innerHTML = '<div style="color:#aaa;padding:20px 15px;">新着情報はありません</div>';
-                }
-
-                const faqs = posts.filter(p => p.type === 'faq').slice(0, 3);
-                const faqEl = document.getElementById('faq-list');
-                if (faqs.length) {
-                  faqEl.innerHTML = faqs.map(p => {
-                    const arrow = p.url ? `<div class="pnc-arrow">➔</div>` : '';
-                    const tag = p.url ? 'a' : 'div';
-                    const hrefAttr = p.url ? `href="${esc(p.url)}"` : '';
-                    const cls = p.url ? 'premium-news-card' : 'premium-news-card no-link';
-                    
-                    return `
-                      <${tag} ${hrefAttr} class="${cls}" style="padding: 16px 20px;">
-                        <span style="color:#c82054;font-size:1.6em;font-weight:900;margin-right:5px;line-height:1;">Q.</span>
-                        <div class="pnc-title">${esc(p.title)}</div>
-                        ${arrow}
-                      </${tag}>
-                    `;
-                  }).join('');
-                } else {
-                  faqEl.innerHTML = '<div style="color:#aaa;padding:20px 15px;">FAQはありません</div>';
-                }
-              } catch(e) {
-                document.getElementById('news-list').innerHTML = '<dt style="color:#c82054;">データの読み込みに失敗しました</dt>';
-              }
-            })();
-            </script>
-          </main>
-        </div>
-      </div>
-      <div id="sidebar2" style="min-height: 100px" class="sp-part-top sp-sidebar"></div>
+  <!-- Cover Loader -->
+  <div class="l-cover" aria-hidden="true">
+    <div class="_logo">
+      <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;color:#1a1818;">SAKURA<span style="color:#c97b8d;">-NET</span></span>
     </div>
-    <!-- 統一CTAブロック v2.9.9 -->
-    <section class="unified-cta" aria-labelledby="unified-cta-heading">
-      <div class="unified-cta-inner">
-        <h2 id="unified-cta-heading" class="unified-cta-heading">まずはお気軽にご相談ください</h2>
-        <p class="unified-cta-lead">オフィスのIT・ネットワーク・セキュリティのお悩み、<br>SAKURA-NET がワンストップで解決いたします。</p>
-        <div class="unified-cta-buttons">
-          <a href="tel:06-7777-2720" class="unified-cta-btn unified-cta-btn-tel" aria-label="電話でお問い合わせ 06-7777-2720">
-            <span class="unified-cta-btn-icon" aria-hidden="true">&#128222;</span>
-            <span class="unified-cta-btn-text">
-              <span class="unified-cta-btn-label">お電話でのご相談</span>
-              <span class="unified-cta-btn-value">06-7777-2720</span>
-              <span class="unified-cta-btn-sub">平日 10:00-17:00</span>
-            </span>
-          </a>
-          <a href="contact.html" class="unified-cta-btn unified-cta-btn-form" aria-label="お問い合わせフォームへ">
-            <span class="unified-cta-btn-icon" aria-hidden="true">&#9993;&#65039;</span>
-            <span class="unified-cta-btn-text">
-              <span class="unified-cta-btn-label">フォームでのお問い合わせ</span>
-              <span class="unified-cta-btn-value">24時間受付</span>
-              <span class="unified-cta-btn-sub">お気軽にどうぞ</span>
-            </span>
-          </a>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="l-header" role="banner">
+    <div class="l-header_logo">
+      <a href="index.html" aria-label="株式会社さくらねっと トップへ">
+        SAKURA<span style="color:#c97b8d;">-NET</span>
+      </a>
+    </div>
+    <nav class="l-header_list" aria-label="グローバルナビゲーション">
+      <ul style="display:contents;list-style:none;">
+        <li><a href="index.html"><span class="c-word c-word-hover js-word" data-order="0">Home</span></a></li>
+        <li><a href="service.html"><span class="c-word c-word-hover js-word" data-order="1">Services</span></a></li>
+        <li><a href="company.html"><span class="c-word c-word-hover js-word" data-order="2">About</span></a></li>
+        <li class="is-current"><a href="news.html"><span class="c-word c-word-hover js-word" data-order="3">News</span></a></li>
+        <li><a href="contact.html"><span class="c-word c-word-hover js-word" data-order="4">Contact</span></a></li>
+      </ul>
+    </nav>
+    <div class="l-header_contact">
+      <a href="contact.html" style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:#1a1818;padding:10px 20px;border-radius:9999px;display:inline-block;">お問い合わせ</a>
+    </div>
+    <button class="l-header_toggle js-nav-toggle" aria-expanded="false" aria-controls="l-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===== Overlay Navigation ===== -->
+  <div class="l-nav" id="l-nav" role="dialog" aria-modal="true" aria-label="ナビゲーション">
+    <div class="l-nav_main">
+      <nav class="l-nav_gnav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html"
+              data-img="img/service-s1.jpg"
+              data-title="HOME"
+              data-caption="大阪のITをワンストップで">
+              <span class="c-word js-word" data-order="1">HOME</span>
+            </a></li>
+          <li><a href="service.html"
+              data-img="img/service-s2.jpg"
+              data-title="SERVICES"
+              data-caption="ネットワーク・セキュリティ・クラウド">
+              <span class="c-word js-word" data-order="2">SERVICES</span><sup class="c-word js-word" data-order="5">（6）</sup>
+            </a></li>
+          <li><a href="company.html"
+              data-title="ABOUT"
+              data-caption="株式会社さくらねっと">
+              <span class="c-word js-word" data-order="3">ABOUT</span>
+            </a></li>
+          <li><a href="news.html"
+              data-title="NEWS"
+              data-caption="最新情報・FAQ">
+              <span class="c-word js-word" data-order="4">NEWS</span>
+            </a></li>
+          <li><a href="contact.html"
+              data-title="CONTACT"
+              data-caption="完全予約制・遠隔対応可">
+              <span class="c-word js-word" data-order="5">CONTACT</span>
+            </a></li>
+        </ul>
+      </nav>
+      <nav class="l-nav_snav" aria-label="サブメニュー">
+        <a href="recruit.html"><span class="c-word js-word" data-order="6">採用情報</span></a>
+        <a href="custom.html"><span class="c-word js-word" data-order="7">代理店募集</span></a>
+        <a href="custom1.html"><span class="c-word js-word" data-order="8">サポート概要</span></a>
+        <a href="remote.html"><span class="c-word js-word" data-order="9">遠隔サポート</span></a>
+        <a href="pay.html"><span class="c-word js-word" data-order="10">お支払い方法</span></a>
+        <a href="privacy.html"><span class="c-word js-word" data-order="11">プライバシーポリシー</span></a>
+      </nav>
+    </div>
+    <div class="l-nav_image" aria-hidden="true">
+      <img src="img/service-s1.jpg" alt="" loading="lazy">
+      <div class="l-nav_image_info">
+        <h3>NEWS</h3>
+        <p>最新情報・FAQ</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Main ===== -->
+  <main id="content">
+
+    <!-- Page Header -->
+    <div class="c-page-header">
+      <div class="l-inner">
+        <nav class="c-breadcrumb" aria-label="パンくずリスト">
+          <a href="index.html">Home</a>
+          <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+          <span aria-current="page">News &amp; FAQ</span>
+        </nav>
+        <p class="c-page-header_label">News</p>
+        <h1 class="c-page-header_title">News &amp; FAQ</h1>
+        <p class="c-page-header_sub c-page-header_title--jp">新着情報・よくある質問</p>
+      </div>
+    </div>
+
+    <!-- Status Banner + News List -->
+    <section class="c-section" aria-labelledby="news-section">
+      <div class="l-inner">
+
+        <!-- 障害・メンテナンス情報バナー -->
+        <a href="status.html" class="js-anim" aria-label="障害・メンテナンス情報"
+          style="display:flex;align-items:center;gap:14px;background:var(--color-bg-alt);border:1px solid var(--color-border);border-left:4px solid var(--color-accent);border-radius:10px;padding:16px 20px;text-decoration:none;margin-bottom:clamp(24px,4vw,40px);transition:box-shadow 0.28s var(--ease-out);">
+          <span style="font-size:1.6em;flex-shrink:0;" aria-hidden="true">📡</span>
+          <span style="flex:1;">
+            <span style="display:block;font-family:var(--font-jp);font-size:14px;font-weight:500;color:var(--color-text);">障害・メンテナンス情報</span>
+            <span style="font-size:12px;color:var(--color-text-sub);">SAKURA SYSTEM / SAKURA-NET光 などの最新状況はこちら</span>
+          </span>
+          <span style="color:var(--color-text-sub);font-size:18px;" aria-hidden="true">›</span>
+        </a>
+
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Latest</span>
+          <h2 class="c-section_title c-section_title--jp" id="news-section">新着情報</h2>
+        </div>
+
+        <div id="news-list" class="js-anim" style="margin-bottom:clamp(40px,6vw,64px);">
+          <p style="color:var(--color-text-sub);font-size:14px;padding:20px 0;">読み込み中...</p>
+        </div>
+
+        <div class="c-section_head js-anim" style="margin-top:0;">
+          <span class="c-section_label">FAQ</span>
+          <h2 class="c-section_title c-section_title--jp">
+            <a href="posts/faq_archive.html" style="color:inherit;text-decoration:none;">サポート情報（FAQ）</a>
+          </h2>
+        </div>
+
+        <div id="faq-list" class="js-anim">
+          <p style="color:var(--color-text-sub);font-size:14px;padding:20px 0;">読み込み中...</p>
         </div>
       </div>
     </section>
-    <footer id="colophon" class="site-footer sp-part-top sp-footer2" role="contentinfo"
-      style="background-color: #fff4f7; border-top: 3px solid #ffc1d3; padding: 25px 0 15px 0;">
-      <div id="colophon-inner" class="sp-part-top sp-footer-inner" style="text-align: center;">
-        <nav id="sp-site-navigation-2" class="navigation-main sp-part-top sp-site-navigation minimal" role="navigation"
-          aria-label="フッターメニュー">
-          <div class="screen-reader-text skip-link"><a title="コンテンツへスキップ" href="#content">コンテンツへスキップ</a></div>
-          <ul id="menu-mainnav"
-            style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center;">
-            <li class="menu-item"><a href="privacy.html"
-                style="color: #c82054; text-decoration: none; font-size: 0.9em; font-weight: bold;">プライバシーポリシー・特定商取引法に基づく表記</a>
-            </li>
-          </ul>
+
+    <!-- CTA -->
+    <section class="c-section c-section--dark" aria-labelledby="news-cta-title">
+      <div class="l-inner u-text-center">
+        <p class="c-section_label" style="color:#c97b8d;">Contact</p>
+        <h2 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(22px,3.5vw,40px);font-weight:300;color:#fff;margin-bottom:28px;letter-spacing:-0.01em;" id="news-cta-title">
+          まずはお気軽にご相談ください。
+        </h2>
+        <div style="font-family:'Outfit',sans-serif;font-size:clamp(22px,4vw,36px);font-weight:700;color:#fff;margin-bottom:8px;">
+          <a href="tel:0677772720" style="color:inherit;">06-7777-2720</a>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;">平日 10:00–19:00 ／ 完全予約制</p>
+        <a href="contact.html" class="c-button" style="border-color:rgba(255,255,255,0.6);color:#fff;">Webからお問い合わせ</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="l-footer" role="contentinfo">
+    <div class="l-footer_inner">
+      <div class="l-footer_top">
+        <div>
+          <div class="l-footer_logo">SAKURA<span>-NET</span></div>
+          <div class="l-footer_info" style="margin-top:16px;">
+            株式会社さくらねっと<br>
+            〒532-0012 大阪市淀川区木川東4-3-34 5F<br>
+            TEL: <a href="tel:0677772720">06-7777-2720</a>
+            MAIL: <a href="mailto:info@sakuranet-co.jp">info@sakuranet-co.jp</a><br>
+            営業時間: 平日 10:00–19:00（完全予約制）
+          </div>
+        </div>
+        <nav class="l-footer_nav" aria-label="フッターナビゲーション">
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="company.html">About</a>
+          <a href="concept.html">方針</a>
+          <a href="access.html">Access</a>
+          <a href="news.html">News</a>
+          <a href="recruit.html">Recruit</a>
+          <a href="contact.html">Contact</a>
+          <a href="custom.html">代理店</a>
+          <a href="pay.html">お支払い</a>
+          <a href="remote.html">遠隔サポート</a>
+          <a href="privacy.html">Privacy</a>
         </nav>
-        <div id="sp-block-container-1" class="sp-part-top sp-block-container">
-          <p class="copyright paragraph" style="color: #c82054; font-size: 0.85em; margin: 0; letter-spacing: 0.5px;">
-            Copyright &copy; SAKURA-NET Inc., All rights reserved.</p>
+      </div>
+      <div class="l-footer_bottom">
+        <small class="l-footer_copy">&copy; 2024 株式会社さくらねっと All Rights Reserved.</small>
+        <div class="l-footer_links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="contact.html">お問い合わせ</a>
         </div>
       </div>
-    </footer>
-  </div>
-  <script type="text/javascript" src="navigation.js"></script>
-  <!-- スマホ固定CTAバー v2.9.18 -->
-  <div class="mobile-cta-bar" aria-label="クイックアクセス">
-    <a href="tel:06-7777-2720" class="mobile-cta-bar-btn mobile-cta-bar-tel" aria-label="電話する 06-7777-2720">
-      <span class="mobile-cta-bar-icon" aria-hidden="true">&#128222;</span>
-      <span class="mobile-cta-bar-label">電話する</span>
-    </a>
-    <a href="contact.html" class="mobile-cta-bar-btn mobile-cta-bar-form" aria-label="お問い合わせフォームへ">
-      <span class="mobile-cta-bar-icon" aria-hidden="true">&#9993;&#65039;</span>
-      <span class="mobile-cta-bar-label">お問い合わせ</span>
-    </a>
-  </div>
-  <script src="scroll-animate.js"></script>
-</body>
+    </div>
+  </footer>
 
+  <!-- Mobile Fixed CTA -->
+  <div class="l-mobile-cta" aria-label="スマートフォン用クイックアクセス">
+    <a href="tel:0677772720" class="l-mobile-cta_btn l-mobile-cta_btn--tel">
+      <span class="l-mobile-cta_icon" aria-hidden="true">📞</span>
+      <span>電話で問い合わせ</span>
+    </a>
+    <a href="contact.html" class="l-mobile-cta_btn l-mobile-cta_btn--form">
+      <span class="l-mobile-cta_icon" aria-hidden="true">✉</span>
+      <span>Webで問い合わせ</span>
+    </a>
+  </div>
+
+  <script>
+  (async () => {
+    const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const fmtDate = str => {
+      if (!str) return '';
+      const d = new Date(str + 'T00:00:00');
+      if (isNaN(d)) return str;
+      return d.getFullYear() + '年' + ('0'+(d.getMonth()+1)).slice(-2) + '月' + ('0'+d.getDate()).slice(-2) + '日';
+    };
+
+    try {
+      const res   = await fetch('/system/news_api.php');
+      const posts = await res.json();
+      const now   = new Date();
+
+      const news = posts.filter(p => p.type === 'news')
+        .sort((a,b) => (b.date||'').localeCompare(a.date||''))
+        .slice(0, 5);
+
+      const newsEl = document.getElementById('news-list');
+      if (news.length) {
+        newsEl.innerHTML = news.map(p => {
+          const postDate = new Date(p.date + 'T00:00:00');
+          const isNew    = (now - postDate) < (30 * 24 * 60 * 60 * 1000);
+          const badge    = isNew ? `<span class="news-card_badge">NEW</span>` : '';
+          const tag      = p.url ? 'a' : 'div';
+          const href     = p.url ? `href="${esc(p.url)}"` : '';
+          const cls      = 'news-card' + (p.url ? '' : ' no-link');
+          return `<${tag} ${href} class="${cls}">
+            <span class="news-card_date">${esc(fmtDate(p.date))}</span>
+            ${badge}
+            <span class="news-card_title">${esc(p.title)}</span>
+          </${tag}>`;
+        }).join('');
+      } else {
+        newsEl.innerHTML = '<p style="color:var(--color-text-sub);font-size:14px;padding:20px 0;">新着情報はありません</p>';
+      }
+
+      const faqs  = posts.filter(p => p.type === 'faq').slice(0, 5);
+      const faqEl = document.getElementById('faq-list');
+      if (faqs.length) {
+        faqEl.innerHTML = faqs.map(p => {
+          const tag  = p.url ? 'a' : 'div';
+          const href = p.url ? `href="${esc(p.url)}"` : '';
+          const cls  = 'news-card' + (p.url ? '' : ' no-link');
+          return `<${tag} ${href} class="${cls}">
+            <span class="news-card_q" aria-hidden="true">Q.</span>
+            <span class="news-card_title">${esc(p.title)}</span>
+          </${tag}>`;
+        }).join('');
+      } else {
+        faqEl.innerHTML = '<p style="color:var(--color-text-sub);font-size:14px;padding:20px 0;">FAQはありません</p>';
+      }
+    } catch(e) {
+      document.getElementById('news-list').innerHTML =
+        '<p style="color:var(--color-text-sub);font-size:14px;padding:20px 0;">データの読み込みに失敗しました</p>';
+    }
+  })();
+  </script>
+  <script src="js/main.js"></script>
+</body>
 </html>
