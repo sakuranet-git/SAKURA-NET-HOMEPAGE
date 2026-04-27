@@ -1,29 +1,52 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
-
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>障害・メンテナンス情報 | 株式会社さくらねっと</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>障害・メンテナンス情報｜株式会社さくらねっと</title>
+  <meta name="description" content="株式会社さくらねっとの障害・メンテナンス情報。サービスの稼働状況をリアルタイムで確認できます。">
+  <meta name="keywords" content="株式会社さくらねっと,障害情報,メンテナンス,稼働状況">
+
+  <link rel="canonical" href="https://sakuranet-co.jp/status.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <meta property="og:site_name" content="株式会社さくらねっと">
+  <meta property="og:title" content="障害・メンテナンス情報｜株式会社さくらねっと">
+  <meta property="og:description" content="サービスの稼働状況・障害・メンテナンス情報をリアルタイムで確認。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sakuranet-co.jp/status.html">
+  <meta property="og:image" content="https://sakuranet-co.jp/img/ogp.jpg">
+  <meta property="og:locale" content="ja_JP">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="障害・メンテナンス情報｜株式会社さくらねっと">
+  <meta name="twitter:description" content="サービスの稼働状況・障害・メンテナンス情報をリアルタイムで確認。">
+  <meta name="twitter:image" content="https://sakuranet-co.jp/img/ogp.jpg">
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DZV2NE7C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8DZV2NE7C1');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
   <style>
-    :root {
-      --sakura: #c97b8d;
-      --sakura-deep: #a85c70;
-      --sakura-border: #ead8dd;
-      --bg-base: #fffdfd;
-      --bg-light: #f8f4f4;
-      --text-main: #2f2a2a;
-      --text-sub: #8e5f6b;
-    }
-
-    body {
-      -webkit-font-smoothing: antialiased;
-    }
-
+    /* status-card styles */
     .status-legend {
-      background: var(--bg-light);
-      border: 1px solid var(--sakura-border);
+      background: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
       border-radius: 10px;
       padding: 14px 18px;
       margin-bottom: 24px;
@@ -32,11 +55,11 @@
       gap: 14px;
       align-items: center;
       font-size: 0.88em;
-      color: var(--text-main);
+      color: var(--color-text);
     }
 
     .status-legend strong {
-      color: var(--sakura-deep);
+      color: var(--color-accent);
     }
 
     .status-legend span {
@@ -49,10 +72,10 @@
     .status-empty {
       text-align: center;
       padding: 40px 20px;
-      border: 1px solid var(--sakura-border);
+      border: 1px solid var(--color-border);
       border-radius: 12px;
       background: #fff;
-      color: var(--text-sub);
+      color: var(--color-text-sub);
     }
 
     .status-empty-icon {
@@ -62,26 +85,25 @@
     }
 
     .status-loading {
-      color: var(--sakura-deep);
+      color: var(--color-accent);
       font-weight: 600;
     }
 
     .status-card {
       background: #fff;
-      border: 1px solid var(--sakura-border);
+      border: 1px solid var(--color-border);
       border-radius: 12px;
       padding: 18px 20px;
       margin-bottom: 18px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 8px 24px rgba(168, 92, 112, 0.05);
+      transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
     }
 
     .status-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(168, 92, 112, 0.08);
+      box-shadow: var(--shadow-card);
     }
 
     .status-icon {
@@ -104,15 +126,16 @@
     }
 
     .status-date {
+      font-family: var(--font-en);
       font-size: 0.82em;
-      color: #8c8080;
+      color: var(--color-text-sub);
     }
 
     .status-service-tag {
       display: inline-block;
-      background: var(--bg-light);
-      color: var(--sakura-deep);
-      border: 1px solid var(--sakura-border);
+      background: var(--color-bg-alt);
+      color: var(--color-accent);
+      border: 1px solid var(--color-border);
       border-radius: 999px;
       padding: 2px 10px;
       font-size: 0.78em;
@@ -128,297 +151,224 @@
       color: #fff;
     }
 
-    .status-badge.failure {
-      background: #cf5d7a;
-    }
-
-    .status-badge.maintenance {
-      background: #d9a441;
-    }
-
-    .status-badge.maintenance-notice {
-      background: #9a6aa0;
-    }
-
-    .status-badge.notice {
-      background: #7c8fb9;
-    }
-
-    .status-badge.normal {
-      background: #5aa57b;
-    }
+    .status-badge.failure          { background: #cf5d7a; }
+    .status-badge.maintenance      { background: #d9a441; }
+    .status-badge.maintenance-notice { background: #9a6aa0; }
+    .status-badge.notice           { background: #7c8fb9; }
+    .status-badge.normal           { background: #5aa57b; }
 
     .status-title-text {
       font-size: 1.05em;
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--color-text);
       margin: 0 0 6px 0;
     }
 
     .status-content-text {
       font-size: 0.93em;
-      color: #5e5555;
+      color: var(--color-text-sub);
       line-height: 1.8;
       margin: 0;
       white-space: pre-wrap;
     }
 
-    @media screen and (max-width: 568px) {
-      html,
-      body {
-        min-width: 0 !important;
-        overflow-x: hidden !important;
-        width: 100% !important;
-        -webkit-text-size-adjust: 100% !important;
-      }
-
-      p,
-      div,
-      a,
-      span,
-      li,
-      dt,
-      dd {
-        word-break: break-word !important;
-        overflow-wrap: break-word !important;
-      }
-
-      #page,
-      #masthead-inner,
-      #main,
-      #colophon-inner,
-      #contenthead {
-        width: 100% !important;
-        box-sizing: border-box !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-      }
-
-      .sp-site-branding2 .site-title {
-        float: none !important;
-        height: 60px !important;
-        background-size: contain !important;
-        background-repeat: no-repeat !important;
-        background-position: left center !important;
-        display: block !important;
-        width: 100% !important;
-        clear: both !important;
-        margin-bottom: 6px !important;
-        text-align: left !important;
-      }
-
-      #sp-site-branding-extra-1 {
-        display: block !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        position: static !important;
-        margin-top: 10px !important;
-        font-size: 0.88em !important;
-        clear: both !important;
-      }
-
-      .sp-site-branding2 .extra {
-        width: 100% !important;
-        position: static !important;
-      }
-
-      .sp-site-branding2 .site-description {
-        position: static !important;
-        width: 100% !important;
-        text-align: left !important;
-        font-size: 11px !important;
-        top: auto !important;
-        line-height: 1.4 !important;
-        margin-top: 2px !important;
-        margin-left: 0 !important;
-        margin-bottom: 8px !important;
-        display: block !important;
-        clear: both !important;
-      }
-
-      #menu-mainnav {
-        gap: 6px !important;
-        padding: 8px 0 14px 0 !important;
-      }
-
-      #menu-mainnav .menu-item a {
-        padding: 8px 12px !important;
-        font-size: 0.85em !important;
-      }
-
-      h1.entry-title {
-        font-size: 1.4em !important;
-      }
-
+    @media (max-width: 768px) {
       .status-card {
         flex-direction: column;
         gap: 8px;
         padding: 14px;
       }
-
-      .status-icon {
-        font-size: 1.4em;
-      }
-
-      #colophon-inner ul[style*="display: flex"] {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
+      .status-icon { font-size: 1.4em; }
     }
   </style>
 </head>
 
-<body class="basic2" id="hpb-sp-20-0011-01">
-  <div id="page" class="site">
-    <header id="masthead" class="site-header sp-part-top sp-header2" role="banner" style="background-color: #fffdfd;">
-      <div id="masthead-inner" class="sp-part-top sp-header-inner">
-        <div id="sp-site-branding2-1" class="sp-part-top sp-site-branding2">
-          <div class="site-title sp-part-top sp-site-title" style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">
-            <a href="index.html" style="text-decoration: none; color: inherit;">株式会社さくらねっと</a>
-          </div>
-          <div class="site-description sp-part-top sp-catchphrase"
-            style="color: #c97b8d; font-weight: bold; font-size: 0.95em; line-height: 1.6; margin-top: -20px; margin-bottom: 12px; display: block; clear: both; margin-left: -20px;">
-            通信・セキュリティ・空間管理を「1画面」で。<br>UniFi×SAKURA-NET光による次世代オフィス環境
-          </div>
-          <div class="extra sp-part-top sp-site-branding-extra" id="sp-site-branding-extra-1"
-            style="background: rgba(255,255,255,0.88); border: 1px solid #ead8dd; border-radius: 12px; padding: 15px 20px; color: #2f2a2a; font-size: 0.95em; display: block; box-sizing: border-box; text-align: left;">
-            <div style="margin-bottom: 10px; border-bottom: 1px dashed #ffc1d3; padding-bottom: 8px;">
-              <i class="character" style="color: #c97b8d; font-weight: bold; font-style: normal; font-size: 1.1em;">株式会社さくらねっと</i>
-              <a class="character" href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?" style="color: #c97b8d; text-decoration: none; font-size: 0.9em; transition: color 0.3s;">（SAKURA-NET Inc.）</a>
-            </div>
-            <p class="paragraph" style="margin: 5px 0;"><span style="color:#e03164; margin-right: 5px;">📍</span>〒532-0012 大阪市淀川区木川東4-3-34 5F</p>
-            <p class="address paragraph" style="margin: 5px 0;"><span style="color:#e03164; margin-right: 5px;">🕒</span>営業時間：平日10：00-19：00（<a href="https://select-type.com/rsv/?id=dvJJk68ZE2g" target="_blank" style="color: #a85c70; font-weight: bold; text-decoration: underline;">完全予約制</a>）</p>
-            <p class="address paragraph" style="margin: 5px 0;"><span style="color:#e03164; margin-right: 5px;">💻</span>（<a href="https://sakuranet-co.jp/remote.html" target="_blank" style="color: #a85c70; text-decoration: underline;">遠隔サポートはこちら</a>）</p>
-            <p class="address paragraph" style="margin: 5px 0;"><span style="color:#e03164; margin-right: 5px;">✉️</span>E-mail: <a href="mailto:info@sakuranet-co.jp" style="color: #a85c70; text-decoration: none;">info@sakuranet-co.jp</a></p>
-          </div>
-        </div>
-      </div>
-    </header>
+<body class="is-loading" id="page-status">
 
-    <div id="main" class="site-main sp-part-top sp-main">
-      <div id="contenthead" class="sp-part-top sp-content-header" style="background-color: #fffdfd; padding-bottom: 10px;">
-        <nav id="sp-site-navigation-1" class="navigation-main button-menu sp-part-top sp-site-navigation horizontal" role="navigation">
-          <button class="menu-toggle" aria-expanded="false" aria-controls="menu-mainnav">メニュー</button>
-          <div class="screen-reader-text skip-link"><a title="コンテンツへスキップ" href="#content">コンテンツへスキップ</a></div>
-          <style>
-            #menu-mainnav {
-              display: flex !important;
-              flex-wrap: wrap !important;
-              justify-content: center !important;
-              gap: 10px !important;
-              padding: 10px 0 20px 0 !important;
-              list-style: none !important;
-              margin: 0 !important;
-            }
-
-            #menu-mainnav .menu-item {
-              margin: 0 !important;
-              padding: 0 !important;
-              display: block !important;
-            }
-
-            #menu-mainnav .menu-item a {
-              display: flex !important;
-              align-items: center !important;
-              justify-content: center !important;
-              background-color: #fff !important;
-              color: #c97b8d !important;
-              padding: 10px 18px !important;
-              border-radius: 30px !important;
-              text-decoration: none !important;
-              font-weight: bold !important;
-              font-size: 0.95em !important;
-              border: 1px solid #ead8dd !important;
-              transition: all 0.3s ease !important;
-            }
-
-            #menu-mainnav .menu-item a:hover,
-            #menu-mainnav .menu-item.current_page_item a {
-              background-color: #a85c70 !important;
-              color: #fff !important;
-              border-color: #a85c70 !important;
-            }
-          </style>
-          <ul id="menu-mainnav">
-            <li class="menu-item"><a href="index.html">トップページ</a></li>
-            <li class="menu-item"><a href="concept.html">会社方針</a></li>
-            <li class="menu-item"><a href="company.html">企業概要</a></li>
-            <li class="menu-item"><a href="service.html">サービス・主要サービス</a></li>
-            <li class="menu-item current_page_item"><a href="news.html">新着情報・FAQ</a></li>
-            <li class="menu-item"><a href="recruit.html">採用情報</a></li>
-            <li class="menu-item"><a href="contact.html">お問い合わせ</a></li>
-            <li class="menu-item"><a href="access.html">アクセス</a></li>
-            <li class="menu-item"><a href="custom.html">代理店募集</a></li>
-            <li class="menu-item"><a href="pay.html">対応お支払い方法</a></li>
-            <li class="menu-item"><a href="custom1.html">サポート概要</a></li>
-          </ul>
-        </nav>
-        <div id="breadcrumb-list" itemscope="" itemtype="http://schema.org/BreadcrumbList" class="sp-part-top sp-bread-crumb">
-          <div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-            <a itemprop="item" href="index.html"><span itemprop="name">トップ</span></a>
-            <meta itemprop="position" content="1">
-          </div>
-          <div>›</div>
-          <div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-            <span itemprop="name">障害・メンテナンス情報</span>
-            <meta itemprop="position" content="2">
-          </div>
-        </div>
-      </div>
-
-      <div id="main-inner">
-        <div id="primary" class="content-area">
-          <div id="content" class="site-content sp-part-top sp-content page-news" role="main">
-            <header id="sp-page-title-status" class="entry-header sp-part-top sp-page-title"
-              style="background: linear-gradient(180deg, #fffdfd 0%, #f8f4f4 100%); padding: 24px 20px 18px; border-radius: 12px; margin-bottom: 24px; border: 1px solid #ead8dd;">
-              <h1 class="entry-title"
-                style="color: #a85c70; margin: 0; font-family: 'Times New Roman', 'Yu Mincho', 'Hiragino Mincho ProN', serif; font-weight: 600; text-align: center; letter-spacing: 0.16em; font-size: 1.66em; line-height: 1.2; text-transform: uppercase;">
-                Status
-              </h1>
-              <p style="margin: 10px 0 0; text-align: center; color: #8e5f6b; font-size: 0.92em; line-height: 1.7; letter-spacing: 0.08em;">
-                障害・メンテナンス情報
-              </p>
-            </header>
-
-            <div class="status-legend">
-              <strong>ステータス凡例：</strong>
-              <span>🚨 <span class="status-badge failure">障害対応中</span></span>
-              <span>🛠 <span class="status-badge maintenance">メンテナンス中</span></span>
-              <span>📢 <span class="status-badge maintenance-notice">メンテナンス予告</span></span>
-              <span>ℹ️ <span class="status-badge notice">お知らせ</span></span>
-              <span>✅ <span class="status-badge normal">正常稼働 / 軽微対応</span></span>
-            </div>
-
-            <div id="status-list">
-              <div class="status-loading">読み込み中...</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="sidebar2" style="min-height: 100px" class="sp-part-top sp-sidebar"></div>
+  <!-- Cover Loader -->
+  <div class="l-cover" aria-hidden="true">
+    <div class="_logo">
+      <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;color:#1a1818;">SAKURA<span style="color:#c97b8d;">-NET</span></span>
     </div>
-
-    <footer id="colophon" class="site-footer sp-part-top sp-footer2" role="contentinfo"
-      style="background-color: #f8f4f4; border-top: 1px solid #ead8dd; padding: 25px 0 15px 0;">
-      <div id="colophon-inner" class="sp-part-top sp-footer-inner" style="text-align: center;">
-        <nav id="sp-site-navigation-2" class="navigation-main sp-part-top sp-site-navigation minimal" role="navigation" aria-label="フッターメニュー">
-          <div class="screen-reader-text skip-link"><a title="コンテンツへスキップ" href="#content">コンテンツへスキップ</a></div>
-          <ul id="menu-mainnav" style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center;">
-            <li class="menu-item"><a href="privacy.html"
-                style="color: #a85c70; text-decoration: none; font-size: 0.9em; font-weight: bold;">プライバシーポリシー・特定商取引法に基づく表記</a></li>
-          </ul>
-        </nav>
-        <div id="sp-block-container-1" class="sp-part-top sp-block-container">
-          <p class="copyright paragraph" style="color: #6f6262; font-size: 0.85em; margin: 0; letter-spacing: 0.5px;">
-            Copyright &copy; SAKURA-NET Inc., All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
   </div>
 
-  <script type="text/javascript" src="navigation.js"></script>
+  <!-- ===== Header ===== -->
+  <header class="l-header" role="banner">
+    <div class="l-header_logo">
+      <a href="index.html" aria-label="株式会社さくらねっと トップへ">
+        <img src="img/logo_header_light_bg.png" alt="SAKURA-NET" style="height:48px;width:auto;display:block;">
+      </a>
+    </div>
+    <nav class="l-header_list" aria-label="グローバルナビゲーション">
+      <ul style="display:contents;list-style:none;">
+        <li><a href="index.html"><span class="c-word c-word-hover js-word" data-order="0">Home</span></a></li>
+        <li><a href="service.html"><span class="c-word c-word-hover js-word" data-order="1">Services</span></a></li>
+        <li><a href="company.html"><span class="c-word c-word-hover js-word" data-order="2">About</span></a></li>
+        <li><a href="news.html"><span class="c-word c-word-hover js-word" data-order="3">News</span></a></li>
+        <li><a href="contact.html"><span class="c-word c-word-hover js-word" data-order="4">Contact</span></a></li>
+      </ul>
+    </nav>
+    <div class="l-header_contact">
+      <a href="contact.html" style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:#1a1818;padding:10px 20px;border-radius:9999px;display:inline-block;">お問い合わせ</a>
+    </div>
+    <button class="l-header_toggle js-nav-toggle" aria-expanded="false" aria-controls="l-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===== Overlay Navigation ===== -->
+  <div class="l-nav" id="l-nav" role="dialog" aria-modal="true" aria-label="ナビゲーション">
+    <div class="l-nav_main">
+      <nav class="l-nav_gnav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html"
+              data-img="img/service-s1.jpg"
+              data-title="HOME"
+              data-caption="大阪のITをワンストップで">
+              <span class="c-word js-word" data-order="1">HOME</span>
+            </a></li>
+          <li><a href="service.html"
+              data-img="img/service-s2.jpg"
+              data-title="SERVICES"
+              data-caption="ネットワーク・セキュリティ・クラウド">
+              <span class="c-word js-word" data-order="2">SERVICES</span><sup class="c-word js-word" data-order="5">（6）</sup>
+            </a></li>
+          <li><a href="company.html"
+              data-title="ABOUT"
+              data-caption="株式会社さくらねっと">
+              <span class="c-word js-word" data-order="3">ABOUT</span>
+            </a></li>
+          <li><a href="news.html"
+              data-title="NEWS"
+              data-caption="最新情報・FAQ">
+              <span class="c-word js-word" data-order="4">NEWS</span>
+            </a></li>
+          <li><a href="contact.html"
+              data-title="CONTACT"
+              data-caption="完全予約制・遠隔対応可">
+              <span class="c-word js-word" data-order="5">CONTACT</span>
+            </a></li>
+        </ul>
+      </nav>
+      <nav class="l-nav_snav" aria-label="サブメニュー">
+        <a href="recruit.html"><span class="c-word js-word" data-order="6">採用情報</span></a>
+        <a href="custom.html"><span class="c-word js-word" data-order="7">代理店募集</span></a>
+        <a href="custom1.html"><span class="c-word js-word" data-order="8">サポート概要</span></a>
+        <a href="remote.html"><span class="c-word js-word" data-order="9">遠隔サポート</span></a>
+        <a href="pay.html"><span class="c-word js-word" data-order="10">お支払い方法</span></a>
+        <a href="privacy.html"><span class="c-word js-word" data-order="11">プライバシーポリシー</span></a>
+      </nav>
+    </div>
+    <div class="l-nav_image" aria-hidden="true">
+      <img src="img/service-s1.jpg" alt="" loading="lazy">
+      <div class="l-nav_image_info">
+        <h3>STATUS</h3>
+        <p>障害・メンテナンス情報</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Main ===== -->
+  <main id="content">
+
+    <!-- Page Header -->
+    <div class="c-page-header">
+      <div class="l-inner">
+        <nav class="c-breadcrumb" aria-label="パンくずリスト">
+          <a href="index.html">Home</a>
+          <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+          <span aria-current="page">Status</span>
+        </nav>
+        <p class="c-page-header_label">Status</p>
+        <h1 class="c-page-header_title">Status</h1>
+        <p class="c-page-header_sub c-page-header_title--jp">障害・メンテナンス情報</p>
+      </div>
+    </div>
+
+    <!-- Status Section -->
+    <section class="c-section" aria-labelledby="status-heading">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Service Status</span>
+          <h2 class="c-section_title c-section_title--jp" id="status-heading">稼働状況</h2>
+          <p class="c-section_sub">各サービスの障害・メンテナンス情報をリアルタイムで掲載しています。</p>
+        </div>
+
+        <div class="js-anim">
+          <div class="status-legend">
+            <strong>ステータス凡例：</strong>
+            <span>🚨 <span class="status-badge failure">障害対応中</span></span>
+            <span>🛠 <span class="status-badge maintenance">メンテナンス中</span></span>
+            <span>📢 <span class="status-badge maintenance-notice">メンテナンス予告</span></span>
+            <span>ℹ️ <span class="status-badge notice">お知らせ</span></span>
+            <span>✅ <span class="status-badge normal">正常稼働 / 軽微対応</span></span>
+          </div>
+
+          <div id="status-list">
+            <div class="status-loading">読み込み中...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="l-footer" role="contentinfo">
+    <div class="l-footer_inner">
+      <div class="l-footer_top">
+        <div>
+          <div class="l-footer_logo">
+            <img src="img/logo_header_dark_bg.png" alt="SAKURA-NET" style="height:40px;width:auto;">
+            <a href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">SAKURA-NET</a>
+          </div>
+          <div class="l-footer_info" style="margin-top:16px;">
+            株式会社さくらねっと<br>
+            〒532-0012 大阪市淀川区木川東4-3-34 5F<br>
+            TEL: <a href="tel:0677772720">06-7777-2720</a>
+            MAIL: <a href="mailto:info@sakuranet-co.jp">info@sakuranet-co.jp</a><br>
+            営業時間: 平日 10:00–19:00（完全予約制）
+          </div>
+        </div>
+        <nav class="l-footer_nav" aria-label="フッターナビゲーション">
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="company.html">About</a>
+          <a href="concept.html">方針</a>
+          <a href="access.html">Access</a>
+          <a href="news.html">News</a>
+          <a href="recruit.html">Recruit</a>
+          <a href="contact.html">Contact</a>
+          <a href="support.html">SUPPORT</a>
+          <a href="custom.html">代理店</a>
+          <a href="pay.html">お支払い</a>
+          <a href="remote.html">遠隔サポート</a>
+          <a href="https://sakuranet-co.jp/system/index.php">SYSTEM</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="l-footer_bottom">
+        <small class="l-footer_copy">&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</small>
+        <div class="l-footer_links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Fixed CTA -->
+  <div class="l-mobile-cta" aria-label="スマートフォン用クイックアクセス">
+    <a href="tel:0677772720" class="l-mobile-cta_btn l-mobile-cta_btn--tel">
+      <span class="l-mobile-cta_icon" aria-hidden="true">📞</span>
+      <span>電話で問い合わせ</span>
+    </a>
+    <a href="contact.html" class="l-mobile-cta_btn l-mobile-cta_btn--form">
+      <span class="l-mobile-cta_icon" aria-hidden="true">✉</span>
+      <span>Webで問い合わせ</span>
+    </a>
+  </div>
+
   <script>
     const STATUS_MAP = {
       failure: { icon: '🚨', label: '障害対応中', cls: 'failure' },
@@ -480,7 +430,7 @@
         container.innerHTML = html;
       } catch (e) {
         container.innerHTML =
-          '<div class="status-empty" style="color:#a85c70;">' +
+          '<div class="status-empty" style="color:var(--color-accent);">' +
           '<span class="status-empty-icon">⚠️</span>' +
           'データの読み込みに失敗しました。' +
           '</div>';
@@ -489,6 +439,6 @@
 
     loadStatus();
   </script>
+  <script src="js/main.js"></script>
 </body>
-
 </html>

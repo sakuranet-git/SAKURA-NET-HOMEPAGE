@@ -1,4 +1,112 @@
-﻿## [v3.0.0] - 2026-04-26 - MIMEYOI "Quiet Luxury" 全面リデザイン
+﻿## [v3.0.19] - 2026-04-27 - company.html設立月補完・sitemap.xml更新
+
+### 変更内容
+- `company.html` — 設立年「2002年」→「2002年2月」に修正（概要テキスト・テーブル両方）
+- `sitemap.xml` — 全ページのlastmodを `2026-04-27` に更新
+- `sitemap.xml` — 新規5ページを追加登録
+  - sakura-net-hikari.html（priority: 0.8）
+  - unifi-network.html（priority: 0.8）
+  - unifi-security.html（priority: 0.8）
+  - sakura-net-mobile.html（priority: 0.7）
+  - support.html（priority: 0.6）
+
+---
+
+## [v3.0.18] - 2026-04-27 - sakura-net-hikari.html 約款・別料金表セクション追加
+
+### 変更内容
+- `sakura-net-hikari.html` — 「Flow」後にTermsセクションを追加
+  - SAKURA-NET光 サービス約款 → `https://sakuranet-co.jp/img/SAKURA-NET_Hikari_Service_Terms.html`
+  - SAKURA-NET光 別料金表 → `https://sakuranet-co.jp/img/SAKURA-NET_Hikari_Service_Terms_Sub.html`
+
+---
+
+## [v3.0.16] - 2026-04-27 - service.htmlリンク全修正
+
+### 変更内容
+- `service.html` — 全サービスカードのリンク先を正しいページに修正
+
+| サービス | 旧リンク | 新リンク |
+|---|---|---|
+| SAKURA-NET光 | posts/service1.html（Total Security）| sakura-net-hikari.html |
+| UniFiネットワーク | posts/service2.html（PC保守契約）| unifi-network.html |
+| Mobile/SIM | posts/service8.html（SAKURA-NET光）| sakura-net-mobile.html（作成予定）|
+| 防犯カメラ | posts/service4.html（IT教室）| unifi-security.html |
+| 入退室管理 | posts/service5.html（VPS）| unifi-security.html |
+| クラウドUTM | posts/service7.html（IT SUPPORT）| posts/service6.html |
+| クラウドVPS | posts/service6.html（UTM）| posts/service5.html |
+| 法人ITサポート | posts/service3.html（ISP取次）| posts/service7.html |
+
+---
+
+## [v3.0.15] - 2026-04-27 - ヒーロースライドへイラスト追加・サービスカード画像化
+
+### 変更内容
+- `img/hero_cloud.png` — Gemini生成イラスト追加（クラウドインフラ）
+- `img/hero_network.png` — Gemini生成イラスト追加（ITネットワーク抽象）
+- `img/hero_office.png` — Gemini生成イラスト追加（モダンオフィス）
+- `index.html` — ヒーロースライド3枚に右側アクセント画像を追加
+  - スライド1（SAKURA-NET光）: `hero_cloud.png`
+  - スライド2（UniFiネットワーク）: `hero_network.png`
+  - スライド3（セキュリティ）: `hero_office.png`
+- `index.html` — サービスカード5・6のアイコン（☁️・💻）を画像（`hero_cloud.png`/`hero_network.png`）に差し替え
+- `style.css` — ヒーロー画像に `opacity:0.92` + スライド背景色グラデーションフェード追加
+
+---
+
+## [v3.0.6] - 2026-04-26 - 隠しリンク位置修正・SAKURA-NET光リンク修正
+
+### 変更内容
+- `index.html` — フッター社名「株式会社さくらねっと（SAKURA-NET）」の **（SAKURA-NET）** 部分に隠しリンク（`http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?`）を設定（視覚的に同色・同スタイル）
+- `index.html` — SAKURA-NET光「詳しく見る」リンクを `posts/service1.html`（誤）→ `posts/service8.html`（正：ひかり回線サービス）に修正（Solutions セクション・ヒーロースライド両方）
+
+---
+
+## [v3.0.5] - 2026-04-26 - pay.html レイアウト修正
+
+### 変更内容
+- `pay.html` — 決済画像レイアウト修正：`img_brand.png` を1列目（左寄せ）、`download2.jpg` / `Airpayqr.webp` / `rakutenpay.webp` を2列目（左寄せ）に整理
+- `pay.html` — `img_brand.png` の `max-width` を 640px に拡大
+
+---
+
+## [v3.0.4] - 2026-04-26 - フッターロゴ差し替え・隠しリンク追加
+
+### 変更内容
+- 全ルートHTML（13件）・posts/（40件）のフッターロゴをテキスト → `logo_header_dark_bg.png` 画像に差し替え
+- フッターロゴ内に隠しリンク追加（`http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?`）
+
+---
+
+## [v3.0.3] - 2026-04-26 - ヘッダーロゴ画像差し替え
+
+### 変更内容
+- `img/logo_header_light_bg.png` — ヘッダー用ロゴ画像追加（450×60px、白背景用）
+- `img/logo_header_dark_bg.png` — ダーク背景用ロゴ画像追加
+- 全ルートHTML（13件）・posts/（40件）— ヘッダーロゴをテキスト組み合わせ → `logo_header_light_bg.png` 画像に差し替え（height:48px）
+
+---
+
+## [v3.0.2] - 2026-04-26 - ロゴ実装
+
+### 変更内容
+- `img/logo_icon.png` — Gemini作成の新ロゴアイコン追加（512×512 フラット）
+- `img/logo_main.png` — ロゴフルバージョン追加（1200×1200）
+- `img/apple-touch-icon.png` — logo_icon.png から 180×180 に差し替え
+- 全ルートHTMLファイル（13件）— ヘッダーロゴにアイコン画像を追加
+- posts/ 全HTMLファイル（40件）— ヘッダーロゴにアイコン画像を追加（パス: `../img/logo_icon.png`）
+
+---
+
+## [v3.0.1] - 2026-04-26 - バグ修正
+
+### 変更内容
+- `pay.html` — クレジットカード画像を `img_brand.webp`（低画質）→ `img_brand.png`（高画質）に変更
+- `status.html` — v2 旧テンプレートから v3 ヘッダー/フッターへ換装（status-card CSS・API JS は全保持）
+
+---
+
+## [v3.0.0] - 2026-04-26 - MIMEYOI "Quiet Luxury" 全面リデザイン
 
 ### 概要
 サイト全体を v2 系から MIMEYOI インスパイアの "Quiet Luxury" デザインへ完全刷新。
@@ -1063,4 +1171,142 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 - posts配下の news / faq / 導入事例ページへ現行トーンの上書きスタイルを追加
 - 旧ピンクUIのヘッダー・ナビ・見出し・CTA・フッターを本文非破壊で調整
 - news8.html を含む個別記事と news_archive / faq_archive に適用
+
+---
+
+## [v3.0.7] - 2026-04-27 - トップページ詳細導線の新規ページ作成
+### 変更内容
+- トップページの「詳しく見る」リンク先を既存 `posts/service*.html` から専用詳細ページへ変更
+- `sakura-net-hikari.html` を新規作成し、SAKURA-NET光の法人向け光回線・通信導入支援ページを追加
+- `unifi-network.html` を新規作成し、UniFi Cloud Gateway / UniFi Network を意識したネットワーク構築ページを追加
+- `unifi-security.html` を新規作成し、UniFi Protect / UniFi Access を意識した防犯カメラ・入退室管理ページを追加
+- トップページ「提供サービス」内の SAKURA-NET光 / UniFiネットワーク / UniFi Protect / UniFi Access の詳細リンクも新規ページへ統一
+
+### 参照情報
+- Ubiquiti公式サイトおよびHelp Center: Cloud Gateway / UniFi Network / UniFi Protect / UniFi Access
+- MIMEYOI公式サイトおよびデザイン考察記事を参考に、余白・小さめの導線・静かな高級感をBtoB向けに調整
+
+### バックアップ
+- `backups/v3.0.7_pre-detail-pages/` に更新前バックアップを保存
+
+**変更ファイル:** index.html / sakura-net-hikari.html / unifi-network.html / unifi-security.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.8] - 2026-04-27 - 詳細ページへGemini生成画像を追加
+### 変更内容
+- Gemini生成画像をWebP化し、詳細ページ用画像として `img/` に追加
+- `sakura-net-hikari.html` のヒーローにSAKURA-NET光イメージを追加
+- `unifi-network.html` のヒーローと補足パネルにUniFiネットワーク・機器イメージを追加
+- `unifi-security.html` のヒーローとProtect / Accessカードにカメラ・入退室管理イメージを追加
+- MIMEYOI参考の余白感を維持し、画像は主張しすぎないカード型で配置
+
+### 追加画像
+- `img/detail_sakura_net_hikari.webp`
+- `img/detail_unifi_network.webp`
+- `img/detail_unifi_equipment.webp`
+- `img/detail_unifi_protect.webp`
+- `img/detail_unifi_access.webp`
+
+### バックアップ
+- `backups/v3.0.8_pre-detail-images/` に更新前バックアップを保存
+
+**変更ファイル:** sakura-net-hikari.html / unifi-network.html / unifi-security.html / img/detail_*.webp / RELEASE_NOTES.md
+
+---
+
+## [v3.0.9] - 2026-04-27 - トップページ提供サービス画像を詳細ページ画像へ差し替え
+### 変更内容
+- トップページ「提供サービス」の SAKURA-NET光 / UniFiネットワーク / UniFi Protect / UniFi Access のカード画像を `detail_*.webp` に差し替え
+- 既存のカード構造・リンク先は維持し、絵文字アイコン表示から写真ベースのカードへ変更
+- 詳細ページとトップページのビジュアルトーンを統一
+
+### バックアップ
+- `backups/v3.0.9_pre-home-service-images/` に更新前バックアップを保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.13] - 2026-04-27 - SUPPORTページを新規作成
+### 変更内容
+- `custom1.html` のサポート概要を元に、公開導線用の `support.html` を新規作成
+- `support.html` の title / description / canonical / OGP / 構造化データを新規URL向けに整理
+- トップページ下部フッターナビゲーションに `SUPPORT` を追加
+- `support.html` 側のフッターは `SYSTEM` リンクと `© 2026 SAKURA-NET Inc. All Rights Reserved.` 表記に統一
+
+### バックアップ
+- `backups/v3.0.13_pre-support-page/` に更新前バックアップを保存
+
+**変更ファイル:** index.html / support.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.14] - 2026-04-27 - 主要ページのフッターを統一
+### 変更内容
+- 主要公開ページのフッターナビゲーションに `SUPPORT` を追加
+- 主要公開ページのフッターナビゲーションに `SYSTEM` を追加し、`https://sakuranet-co.jp/system/index.php` へリンク
+- 主要公開ページのコピーライトを `© 2026 SAKURA-NET Inc. All Rights Reserved.` へ統一
+- `remote.html` は現行フッター構造が異なるため今回は未変更
+
+### バックアップ
+- `backups/v3.0.14_pre-footer-unify-all-pages/` に更新前バックアップを保存
+
+**変更ファイル:** access.html / company.html / concept.html / contact.html / custom.html / custom1.html / news.html / pay.html / privacy.html / recruit.html / service.html / status.html / sakura-net-hikari.html / unifi-network.html / unifi-security.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.17] - 2026-04-27 - SAKURA-NET Mobile / SIM 詳細ページを新規作成
+### 変更内容
+- `sakura-net-mobile.html` を新規作成
+- SAKURA-NET Mobile / SIM を mineo BiZ 法人向けサービスをベースにしたOEMとして説明
+- 法人スマートフォン、モバイルルーター、M2M・IoT、VPN-SIM、5Gオプション、端末調達相談の対応範囲を整理
+- mineo法人公式の約款・規約に準拠する旨を明記
+- `Service` / `BreadcrumbList` の構造化データを追加
+- `service.html` の Mobile / SIM カード説明を DoRACOON中心に見えない表現へ修正
+
+### 参照元
+- mineo法人 約款・規約一覧: `https://support.mineo.jp/business/agreelist.html`
+
+### バックアップ
+- `backups/v3.0.17_pre-mobile-page/` に更新前バックアップを保存
+
+**変更ファイル:** sakura-net-mobile.html / service.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.12] - 2026-04-27 - トップページコピーライト表記を更新
+### 変更内容
+- `index.html` のコピーライト表記を `© 2026 SAKURA-NET Inc. All Rights Reserved.` へ変更
+
+### バックアップ
+- `backups/v3.0.12_pre-copyright-2026/` に更新前バックアップを保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.10] - 2026-04-27 - 詳細ページ内の写真表示を削除
+### 変更内容
+- `sakura-net-hikari.html` / `unifi-network.html` / `unifi-security.html` から詳細ページ内の写真表示を削除
+- トップページの提供サービス写真カードは維持
+- 詳細ページはテキスト・余白・カード構成中心の静かなレイアウトへ戻し、読みやすさを優先
+- `img/detail_*.webp` はトップページで利用中のため削除せず保持
+
+### バックアップ
+- `backups/v3.0.10_pre-remove-detail-images/` に更新前バックアップを保存
+
+**変更ファイル:** sakura-net-hikari.html / unifi-network.html / unifi-security.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.11] - 2026-04-27 - トップページフッターにSYSTEMリンクを追加
+### 変更内容
+- `index.html` のフッターナビゲーションに `SYSTEM` を追加
+- リンク先を `https://sakuranet-co.jp/system/index.php` に設定
+
+### バックアップ
+- `backups/v3.0.11_pre-footer-system-link/` に更新前バックアップを保存
+
+**変更ファイル:** index.html / RELEASE_NOTES.md
 
