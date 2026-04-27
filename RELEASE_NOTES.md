@@ -1,4 +1,15 @@
-﻿## [v3.0.19] - 2026-04-27 - company.html設立月補完・sitemap.xml更新
+﻿## [v3.0.22] - 2026-04-27 - index.html サービスカード PBX内容に更新
+
+### 変更内容
+- `index.html` — クラウドVPS・IP-PBXカードをSAKURA-PBX・INNOVERA-PBXに変更
+  - タイトル：「クラウドVPS・IP-PBX」→「SAKURA-PBX・INNOVERA-PBX」
+  - タグ：「Cloud」→「Cloud / PBX」
+  - 説明文：「固定電話（ひかり電話・IP-Line）のスマホ内線化・通話録音・IVR対応。クラウドPBXで法人の電話環境をまるごと整えます。」
+  - リンク先：posts/service6.html（変更なし）
+
+---
+
+## [v3.0.19] - 2026-04-27 - company.html設立月補完・sitemap.xml更新
 
 ### 変更内容
 - `company.html` — 設立年「2002年」→「2002年2月」に修正（概要テキスト・テーブル両方）
