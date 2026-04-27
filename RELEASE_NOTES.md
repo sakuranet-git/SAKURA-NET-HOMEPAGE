@@ -1373,6 +1373,22 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.0.27] - 2026-04-27 - contact.html 問い合わせフォーム追加
+### 変更内容
+- `contact.html` の新規ご相談セクションに問い合わせフォームを追加
+- 既存の電話番号、メール、サポートチケット、来店予約導線は削除せず維持
+- フォーム項目を追加: 会社名 / お名前 / メールアドレス / 電話番号 / ご相談内容カテゴリ / お問い合わせ内容 / 個人情報同意
+- `contact_send.php` を新規作成し、必須チェック、メール形式チェック、カテゴリ検証、文字数制限、ハニーポットを実装
+- 送信先を `info@sakuranet-co.jp` に設定
+- `contact_thanks.html` を新規作成
+
+### バックアップ
+- `backups/v3.0.27_pre-contact-form/` に更新前バックアップを保存
+
+**変更ファイル:** contact.html / contact_send.php / contact_thanks.html / RELEASE_NOTES.md
+
+---
+
 ## [v3.0.12] - 2026-04-27 - トップページコピーライト表記を更新
 ### 変更内容
 - `index.html` のコピーライト表記を `© 2026 SAKURA-NET Inc. All Rights Reserved.` へ変更
