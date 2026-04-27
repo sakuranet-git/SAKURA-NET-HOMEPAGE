@@ -1275,6 +1275,41 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.0.20] - 2026-04-27 - SAKURA-PBX / INNOVERA-PBX 詳細ページを再構築
+### 変更内容
+- `posts/service6.html` をクラウドUTMページから、SAKURA-PBX / INNOVERA-PBX の詳細ページへ全面刷新
+- SAKURA-PBX をテレワープOEMとして説明し、ひかり電話のスマホ内線化・固定電話番号の発着信・内線・保留転送・自動応答などを整理
+- INNOVERA-PBX をプロディライト社の国産クラウドPBXとして説明し、全通話録音・IVR・モニタリング・内線通話・音声合成・通話履歴管理・Web管理画面・音声テキスト化を整理
+- 電話応対品質、履歴共有、カスハラ対策にもつながる導入メリットを追加
+- `Service` / `BreadcrumbList` の構造化データを追加
+- `service.html` のクラウドVPS・IP-PBXカードを `posts/service6.html` へ修正
+- `service.html` のクラウドUTM・VPN構築カードがPBXページへ飛ばないよう、リンクを `contact.html` へ修正
+
+### 参照元
+- テレワープ公式サイト: `https://telwarp.co.jp/`
+- INNOVERA公式サイト: `https://innovera.jp/`
+- プロディライト社資料: `20260427_001.pdf` / `20260427_002.pdf` / `20260427_003.pdf`
+
+### バックアップ
+- `backups/v3.0.20_pre-pbx-page/` に更新前バックアップを保存
+
+**変更ファイル:** posts/service6.html / service.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.21] - 2026-04-27 - PBXページの外部参考リンク表示を削除
+### 変更内容
+- `posts/service6.html` の注意書き下に表示していた外部参考リンク3件を削除
+- 削除対象: テレワープ公式サイト / INNOVERA公式サイト / 株式会社プロディライト
+- ページ本文・注意書き・SEOメタ情報は維持
+
+### バックアップ
+- `backups/v3.0.21_pre-remove-pbx-reference-links/` に更新前バックアップを保存
+
+**変更ファイル:** posts/service6.html / RELEASE_NOTES.md
+
+---
+
 ## [v3.0.12] - 2026-04-27 - トップページコピーライト表記を更新
 ### 変更内容
 - `index.html` のコピーライト表記を `© 2026 SAKURA-NET Inc. All Rights Reserved.` へ変更

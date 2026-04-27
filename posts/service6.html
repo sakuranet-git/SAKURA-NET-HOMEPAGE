@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>SAKURA-PBX / INNOVERA-PBX｜法人向けクラウドPBX・IP電話｜株式会社さくらねっと</title>
+  <meta name="description" content="大阪の法人向けクラウドPBX・IP-PBX導入支援。SAKURA-PBX（テレワープOEM）とINNOVERA-PBXにより、固定電話番号のスマホ内線化、通話録音、IVR、Web管理、音声テキスト化まで電話環境を整えます。">
+  <meta name="keywords" content="クラウドPBX,IP-PBX,SAKURA-PBX,テレワープ,INNOVERA,プロディライト,スマホ内線化,通話録音,IVR,大阪 法人電話">
+  <link rel="canonical" href="https://sakuranet-co.jp/posts/service6.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <meta property="og:site_name" content="株式会社さくらねっと">
+  <meta property="og:title" content="SAKURA-PBX / INNOVERA-PBX｜法人向けクラウドPBX・IP電話">
+  <meta property="og:description" content="固定電話をスマホ・PCで使える電話環境へ。SAKURA-PBX（テレワープOEM）とINNOVERA-PBXで、法人の電話業務を整えます。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sakuranet-co.jp/posts/service6.html">
+  <meta property="og:image" content="https://sakuranet-co.jp/img/ogp_2026.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SAKURA-PBX / INNOVERA-PBX｜法人向けクラウドPBX・IP電話">
+  <meta name="twitter:description" content="固定電話番号のスマホ内線化、通話録音、IVR、Web管理、音声テキスト化まで、法人の電話環境を設計します。">
+  <meta name="twitter:image" content="https://sakuranet-co.jp/img/ogp_2026.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "SAKURA-PBX / INNOVERA-PBX 導入支援",
+        "provider": { "@type": "Organization", "name": "株式会社さくらねっと", "url": "https://sakuranet-co.jp/" },
+        "areaServed": { "@type": "Country", "name": "Japan" },
+        "serviceType": "法人向けクラウドPBX・IP-PBX導入支援",
+        "description": "テレワープOEMのSAKURA-PBXおよびプロディライト社INNOVERA-PBXによる法人電話環境の設計・導入支援。"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sakuranet-co.jp/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://sakuranet-co.jp/service.html" },
+          { "@type": "ListItem", "position": 3, "name": "SAKURA-PBX / INNOVERA-PBX", "item": "https://sakuranet-co.jp/posts/service6.html" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DZV2NE7C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8DZV2NE7C1');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .p-pbx-hero {
+      min-height: calc(100vh - 64px);
+      padding: calc(64px + clamp(54px, 8vw, 110px)) 0 clamp(72px, 10vw, 140px);
+      background:
+        radial-gradient(circle at 78% 20%, rgba(201,123,141,.16), transparent 34%),
+        linear-gradient(135deg, #fffdfd 0%, #f8f4f4 58%, #f0e4e8 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .p-pbx-hero::after {
+      content: "";
+      position: absolute;
+      right: -12vw;
+      bottom: -20vw;
+      width: 54vw;
+      height: 54vw;
+      border: 1px solid rgba(201,123,141,.22);
+      border-radius: 50%;
+    }
+    .p-pbx-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      gap: clamp(36px, 7vw, 96px);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .p-pbx-kicker,
+    .p-pbx-card span,
+    .p-pbx-product_tag,
+    .p-pbx-step_num {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+    .p-pbx-title {
+      margin: 20px 0 26px;
+      font-family: var(--font-jp);
+      font-size: clamp(36px, 6.4vw, 76px);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -.045em;
+      color: var(--color-text);
+    }
+    .p-pbx-lead {
+      max-width: 760px;
+      font-size: clamp(15px, 1.45vw, 18px);
+      line-height: 2.05;
+      color: var(--color-text-sub);
+    }
+    .p-pbx-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+    .p-pbx-pill {
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.62);
+      color: var(--color-text-sub);
+      font-size: 12px;
+      letter-spacing: .05em;
+      padding: 9px 14px;
+    }
+    .p-pbx-device {
+      position: relative;
+      min-height: 420px;
+      border: 1px solid var(--color-border);
+      background: rgba(255,255,255,.66);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+    .p-pbx-device::before {
+      content: "";
+      position: absolute;
+      inset: 34px;
+      border: 1px solid rgba(201,123,141,.22);
+      border-radius: 999px;
+      transform: rotate(-18deg);
+    }
+    .p-pbx-phone,
+    .p-pbx-screen,
+    .p-pbx-handset {
+      position: absolute;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 18px 50px rgba(47,42,42,.08);
+    }
+    .p-pbx-screen {
+      right: 44px;
+      top: 72px;
+      width: 250px;
+      height: 168px;
+      border-radius: 18px;
+      padding: 22px;
+    }
+    .p-pbx-screen i,
+    .p-pbx-phone i {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: #ead8dd;
+      margin-bottom: 13px;
+    }
+    .p-pbx-screen i:nth-child(2) { width: 78%; }
+    .p-pbx-screen i:nth-child(3) { width: 56%; background: #c97b8d; opacity: .7; }
+    .p-pbx-phone {
+      left: 58px;
+      bottom: 56px;
+      width: 128px;
+      height: 222px;
+      border-radius: 28px;
+      padding: 28px 20px;
+    }
+    .p-pbx-phone i:nth-child(1) { width: 62%; margin-left: auto; margin-right: auto; }
+    .p-pbx-phone i:nth-child(2),
+    .p-pbx-phone i:nth-child(3),
+    .p-pbx-phone i:nth-child(4) { height: 38px; border-radius: 14px; }
+    .p-pbx-handset {
+      right: 98px;
+      bottom: 84px;
+      width: 158px;
+      height: 58px;
+      border-radius: 999px;
+      transform: rotate(-12deg);
+    }
+    .p-pbx-handset::before,
+    .p-pbx-handset::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #f8f4f4;
+    }
+    .p-pbx-handset::before { left: 15px; }
+    .p-pbx-handset::after { right: 15px; }
+    .p-pbx-grid,
+    .p-pbx-products,
+    .p-pbx-flow {
+      display: grid;
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+    }
+    .p-pbx-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .p-pbx-card,
+    .p-pbx-product,
+    .p-pbx-step {
+      background: #fff;
+      padding: clamp(24px, 4vw, 44px);
+    }
+    .p-pbx-card h3,
+    .p-pbx-product h3,
+    .p-pbx-step h3 {
+      margin: 16px 0 12px;
+      color: var(--color-text);
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 400;
+      line-height: 1.55;
+    }
+    .p-pbx-card p,
+    .p-pbx-product p,
+    .p-pbx-step p,
+    .p-pbx-note p {
+      color: var(--color-text-sub);
+      font-size: 14px;
+      line-height: 2;
+    }
+    .p-pbx-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .p-pbx-product {
+      min-height: 360px;
+      position: relative;
+    }
+    .p-pbx-product h3 {
+      font-size: clamp(25px, 3.4vw, 42px);
+      font-weight: 300;
+      letter-spacing: -.04em;
+    }
+    .p-pbx-product_list {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .p-pbx-product_list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--color-text-sub);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+    .p-pbx-product_list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .9em;
+      width: 8px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+    .p-pbx-flow {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .p-pbx-note {
+      max-width: 860px;
+      border-left: 1px solid var(--color-accent);
+      padding-left: clamp(22px, 3vw, 36px);
+    }
+    @media (max-width: 1000px) {
+      .p-pbx-layout,
+      .p-pbx-products {
+        grid-template-columns: 1fr;
+      }
+      .p-pbx-grid,
+      .p-pbx-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .p-pbx-hero {
+        min-height: auto;
+      }
+      .p-pbx-grid,
+      .p-pbx-flow {
+        grid-template-columns: 1fr;
+      }
+      .p-pbx-device {
+        min-height: 330px;
+      }
+      .p-pbx-screen {
+        right: 22px;
+        top: 52px;
+        width: 210px;
+      }
+      .p-pbx-phone {
+        left: 28px;
+        bottom: 36px;
+      }
+      .p-pbx-handset {
+        right: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body class="is-loading" id="page-pbx">
+
+  <div class="l-cover" aria-hidden="true">
+    <div class="_logo">
+      <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;color:#1a1818;">SAKURA<span style="color:#c97b8d;">-NET</span></span>
+    </div>
+  </div>
+
+  <header class="l-header" role="banner">
+    <div class="l-header_logo">
+      <a href="../index.html" aria-label="株式会社さくらねっと トップへ">
+        <img src="../img/logo_header_light_bg.png" alt="SAKURA-NET" style="height:48px;width:auto;display:block;">
+      </a>
+    </div>
+    <nav class="l-header_list" aria-label="グローバルナビゲーション">
+      <ul style="display:contents;list-style:none;">
+        <li><a href="../index.html"><span class="c-word c-word-hover js-word" data-order="0">Home</span></a></li>
+        <li><a href="../service.html"><span class="c-word c-word-hover js-word" data-order="1">Services</span></a></li>
+        <li><a href="../company.html"><span class="c-word c-word-hover js-word" data-order="2">About</span></a></li>
+        <li><a href="../news.html"><span class="c-word c-word-hover js-word" data-order="3">News</span></a></li>
+        <li><a href="../contact.html"><span class="c-word c-word-hover js-word" data-order="4">Contact</span></a></li>
+      </ul>
+    </nav>
+    <div class="l-header_contact">
+      <a href="../contact.html" style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:#1a1818;padding:10px 20px;border-radius:9999px;display:inline-block;">お問い合わせ</a>
+    </div>
+    <button class="l-header_toggle js-nav-toggle" aria-expanded="false" aria-controls="l-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="l-nav" id="l-nav" role="dialog" aria-modal="true" aria-label="ナビゲーション">
+    <div class="l-nav_main">
+      <nav class="l-nav_gnav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="../index.html" data-img="../img/service-s1.jpg" data-title="HOME" data-caption="大阪のITをワンストップで"><span class="c-word js-word" data-order="1">HOME</span></a></li>
+          <li><a href="../service.html" data-img="../img/service-s2.jpg" data-title="SERVICES" data-caption="ネットワーク・セキュリティ・クラウド"><span class="c-word js-word" data-order="2">SERVICES</span><sup class="c-word js-word" data-order="5">（6）</sup></a></li>
+          <li><a href="../company.html" data-title="ABOUT" data-caption="株式会社さくらねっと"><span class="c-word js-word" data-order="3">ABOUT</span></a></li>
+          <li><a href="../news.html" data-title="NEWS" data-caption="最新情報・FAQ"><span class="c-word js-word" data-order="4">NEWS</span></a></li>
+          <li><a href="../contact.html" data-title="CONTACT" data-caption="完全予約制・遠隔対応可"><span class="c-word js-word" data-order="5">CONTACT</span></a></li>
+        </ul>
+      </nav>
+      <nav class="l-nav_snav" aria-label="サブメニュー">
+        <a href="../recruit.html"><span class="c-word js-word" data-order="6">採用情報</span></a>
+        <a href="../custom.html"><span class="c-word js-word" data-order="7">代理店募集</span></a>
+        <a href="../support.html"><span class="c-word js-word" data-order="8">サポート概要</span></a>
+        <a href="../remote.html"><span class="c-word js-word" data-order="9">遠隔サポート</span></a>
+        <a href="../pay.html"><span class="c-word js-word" data-order="10">お支払い方法</span></a>
+        <a href="../privacy.html"><span class="c-word js-word" data-order="11">プライバシーポリシー</span></a>
+      </nav>
+    </div>
+    <div class="l-nav_image" aria-hidden="true">
+      <img src="../img/service-s2.jpg" alt="" loading="lazy">
+      <div class="l-nav_image_info">
+        <h3>PBX</h3>
+        <p>cloud phone system</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="content">
+    <section class="p-pbx-hero">
+      <div class="l-inner p-pbx-layout">
+        <div>
+          <nav class="c-breadcrumb" aria-label="パンくずリスト">
+            <a href="../index.html">Home</a>
+            <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+            <a href="../service.html">Services</a>
+            <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+            <span aria-current="page">SAKURA-PBX / INNOVERA-PBX</span>
+          </nav>
+          <p class="p-pbx-kicker js-anim">Cloud PBX / IP-PBX</p>
+          <h1 class="p-pbx-title js-anim js-anim-delay-1">会社の電話を、<br>場所に縛られない仕組みへ。</h1>
+          <p class="p-pbx-lead js-anim js-anim-delay-2">
+            SAKURA-PBXは、テレワープをベースにした固定電話番号のスマホ内線化サービスです。
+            INNOVERA-PBXは、スマホ・PC・IP電話機で使えるプロディライト社の国産クラウドPBXです。
+            さくらねっとは、既存電話番号の活用、拠点・在宅勤務、通話録音、IVR、管理画面まで、法人の電話環境をまとめて設計します。
+          </p>
+          <div class="p-pbx-pills js-anim js-anim-delay-3">
+            <span class="p-pbx-pill">SAKURA-PBX</span>
+            <span class="p-pbx-pill">Telewarp OEM</span>
+            <span class="p-pbx-pill">INNOVERA-PBX</span>
+            <span class="p-pbx-pill">Remote Work</span>
+          </div>
+        </div>
+        <div class="p-pbx-device js-anim js-anim-delay-2" aria-hidden="true">
+          <div class="p-pbx-screen"><i></i><i></i><i></i></div>
+          <div class="p-pbx-phone"><i></i><i></i><i></i><i></i></div>
+          <div class="p-pbx-handset"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section" aria-labelledby="pbx-problem-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Problem</span>
+          <h2 class="c-section_title c-section_title--jp" id="pbx-problem-title">電話まわりの不便を、業務設計から見直します。</h2>
+          <p class="c-section_sub">
+            電話は古く見えて、営業・サポート・採用・緊急連絡に直結する重要な業務インフラです。
+            ただ転送するだけではなく、誰が、どこで、どう受けるかまで整理することで、対応漏れと属人化を減らします。
+          </p>
+        </div>
+        <div class="p-pbx-grid">
+          <article class="p-pbx-card js-anim">
+            <span>Remote</span>
+            <h3>外出先・在宅でも会社番号で対応</h3>
+            <p>スマートフォンやPCから会社の電話番号で発着信できる環境を整え、事務所にいない時間の対応力を高めます。</p>
+          </article>
+          <article class="p-pbx-card js-anim js-anim-delay-1">
+            <span>Share</span>
+            <h3>電話対応の履歴を残す</h3>
+            <p>通話履歴や録音を確認できるようにし、言った・言わないのトラブル、引き継ぎ漏れ、担当者依存を減らします。</p>
+          </article>
+          <article class="p-pbx-card js-anim js-anim-delay-2">
+            <span>Flow</span>
+            <h3>IVRで着信を振り分ける</h3>
+            <p>問い合わせ内容に応じて部署や担当へ振り分け、少人数の会社でも電話受付を整理しやすくします。</p>
+          </article>
+          <article class="p-pbx-card js-anim js-anim-delay-3">
+            <span>Care</span>
+            <h3>応対品質とカスハラ対策にも</h3>
+            <p>録音やテキスト化により、応対内容の確認・教育・証跡化を行いやすくし、従業員を守る運用にもつなげます。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section c-section--alt" aria-labelledby="pbx-products-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Lineup</span>
+          <h2 class="c-section_title c-section_title--jp" id="pbx-products-title">用途に合わせて、2つのPBXを使い分けます。</h2>
+        </div>
+        <div class="p-pbx-products">
+          <article class="p-pbx-product js-anim">
+            <p class="p-pbx-product_tag">SAKURA-PBX / Telewarp OEM</p>
+            <h3>今のひかり電話を、スマホでも使えるように。</h3>
+            <p>
+              SAKURA-PBXは、テレワープをベースにした、ひかり電話向けのスマホ内線化サービスです。
+              ホームゲートウェイに専用装置を設置し、スマホアプリで事務所の固定電話番号を発着信できる環境をつくります。
+            </p>
+            <ul class="p-pbx-product_list">
+              <li>既存のひかり電話番号を活かしたい</li>
+              <li>外出先でも会社番号で発信・着信したい</li>
+              <li>内線通話、保留転送、自動応答、留守番電話を使いたい</li>
+              <li>小規模オフィス、店舗、士業、訪問系サービスに向いた構成</li>
+            </ul>
+          </article>
+          <article class="p-pbx-product js-anim js-anim-delay-1">
+            <p class="p-pbx-product_tag">INNOVERA-PBX / Prodelight</p>
+            <h3>電話業務を、クラウドで管理する。</h3>
+            <p>
+              INNOVERA-PBXは、プロディライト社が提供する国産クラウドPBXです。
+              固定電話をスマホ・PC・IP電話機で利用し、通話録音、IVR、モニタリング、Web管理、音声テキスト化などを組み合わせて電話業務を高度化できます。
+            </p>
+            <ul class="p-pbx-product_list">
+              <li>複数拠点・在宅勤務・外出先をまとめたい</li>
+              <li>全通話録音や通話履歴管理を標準的に使いたい</li>
+              <li>IVR、モニタリング、音声合成、音声テキスト化を活用したい</li>
+              <li>Web管理画面で設定や運用を見える化したい</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section" aria-labelledby="pbx-scope-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Support Scope</span>
+          <h2 class="c-section_title c-section_title--jp" id="pbx-scope-title">さくらねっとが支援すること</h2>
+        </div>
+        <div class="p-pbx-grid">
+          <article class="p-pbx-card js-anim">
+            <span>Design</span>
+            <h3>番号・着信フローの整理</h3>
+            <p>代表番号、部署番号、担当者、営業時間外アナウンスなど、現在の電話運用をヒアリングして設計します。</p>
+          </article>
+          <article class="p-pbx-card js-anim js-anim-delay-1">
+            <span>Network</span>
+            <h3>回線・ネットワーク確認</h3>
+            <p>音声品質に影響する回線、ルーター、Wi-Fi、LAN環境も合わせて確認し、必要に応じて改善します。</p>
+          </article>
+          <article class="p-pbx-card js-anim js-anim-delay-2">
+            <span>Setup</span>
+            <h3>端末・アプリ設定</h3>
+            <p>スマホアプリ、PC、IP電話機、内線番号、着信グループなど、利用開始に必要な初期設定を支援します。</p>
+          </article>
+          <article class="p-pbx-card js-anim js-anim-delay-3">
+            <span>Operate</span>
+            <h3>導入後の運用相談</h3>
+            <p>担当者変更、拠点追加、録音・履歴確認、応対フロー見直しなど、導入後の変更にも対応します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section c-section--alt" aria-labelledby="pbx-flow-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Flow</span>
+          <h2 class="c-section_title c-section_title--jp" id="pbx-flow-title">導入の流れ</h2>
+        </div>
+        <div class="p-pbx-flow">
+          <article class="p-pbx-step js-anim">
+            <p class="p-pbx-step_num">01</p>
+            <h3>現状確認</h3>
+            <p>電話番号、回線種別、利用人数、拠点、現在の困りごとを確認します。</p>
+          </article>
+          <article class="p-pbx-step js-anim js-anim-delay-1">
+            <p class="p-pbx-step_num">02</p>
+            <h3>方式選定</h3>
+            <p>SAKURA-PBX、INNOVERA-PBX、または別構成のどれが適するかを判断します。</p>
+          </article>
+          <article class="p-pbx-step js-anim js-anim-delay-2">
+            <p class="p-pbx-step_num">03</p>
+            <h3>設計・見積</h3>
+            <p>必要な端末、アカウント、録音、IVR、ネットワーク調整を整理します。</p>
+          </article>
+          <article class="p-pbx-step js-anim js-anim-delay-3">
+            <p class="p-pbx-step_num">04</p>
+            <h3>設定・導入</h3>
+            <p>機器設置、アプリ設定、発着信テスト、利用者向けの基本説明を行います。</p>
+          </article>
+          <article class="p-pbx-step js-anim js-anim-delay-4">
+            <p class="p-pbx-step_num">05</p>
+            <h3>運用改善</h3>
+            <p>利用開始後の着信ルール変更、担当者追加、応対フロー見直しを支援します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section" aria-labelledby="pbx-note-title">
+      <div class="l-inner">
+        <div class="p-pbx-note js-anim">
+          <span class="c-section_label">Important</span>
+          <h2 class="c-section_title c-section_title--jp" id="pbx-note-title">既存番号・回線条件は、事前確認が必要です。</h2>
+          <p>
+            SAKURA-PBXは、利用中のひかり電話環境やホームゲートウェイ等の条件により利用可否が変わります。
+            INNOVERA-PBXも、番号、回線、端末、ネットワーク構成によって最適な設計が異なります。
+            料金・提供条件・対応機能は、各サービス提供元の最新条件に準拠します。まずは現在の電話環境を確認したうえで、無理のない構成をご提案します。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="c-section c-section--dark">
+      <div class="l-inner l-inner--narrow u-text-center">
+        <p class="c-section_label" style="color:#c97b8d;">Contact</p>
+        <h2 class="c-section_title c-section_title--jp" style="color:#fff;">電話環境の見直しは、現在の番号確認から。</h2>
+        <p class="c-section_sub" style="color:rgba(255,255,255,.68);">
+          既存の固定電話番号、回線、利用人数、在宅勤務の有無を確認し、SAKURA-PBX / INNOVERA-PBX のどちらが適しているか整理します。
+        </p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:34px;">
+          <a href="../contact.html" class="c-button" style="border-color:rgba(255,255,255,.6);color:#fff;">PBXについて相談する</a>
+          <a href="../service.html" class="c-button c-button--no-arrow" style="border-color:rgba(255,255,255,.28);color:#fff;">サービス一覧へ戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="l-footer" role="contentinfo">
+    <div class="l-footer_inner">
+      <div class="l-footer_top">
+        <div>
+          <div class="l-footer_logo">
+            <img src="../img/logo_header_dark_bg.png" alt="SAKURA-NET" style="height:40px;width:auto;">
+            <a href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">SAKURA-NET</a>
+          </div>
+          <div class="l-footer_info" style="margin-top:16px;">
+            株式会社さくらねっと<br>
+            〒532-0012 大阪市淀川区木川東4-3-34 5F<br>
+            TEL: <a href="tel:0677772720">06-7777-2720</a>
+            MAIL: <a href="mailto:info@sakuranet-co.jp">info@sakuranet-co.jp</a><br>
+            営業時間: 平日 10:00-19:00（完全予約制）
+          </div>
+        </div>
+        <nav class="l-footer_nav" aria-label="フッターナビゲーション">
+          <a href="../index.html">Home</a>
+          <a href="../service.html">Services</a>
+          <a href="../company.html">About</a>
+          <a href="../concept.html">方針</a>
+          <a href="../access.html">Access</a>
+          <a href="../news.html">News</a>
+          <a href="../recruit.html">Recruit</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../support.html">SUPPORT</a>
+          <a href="../custom.html">代理店</a>
+          <a href="../pay.html">お支払い</a>
+          <a href="../remote.html">遠隔サポート</a>
+          <a href="https://sakuranet-co.jp/system/index.php">SYSTEM</a>
+          <a href="../privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="l-footer_bottom">
+        <small class="l-footer_copy">&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</small>
+        <div class="l-footer_links">
+          <a href="../privacy.html">プライバシーポリシー</a>
+          <a href="../contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="l-mobile-cta" aria-label="スマートフォン用クイックアクセス">
+    <a href="tel:0677772720" class="l-mobile-cta_btn l-mobile-cta_btn--tel">
+      <span class="l-mobile-cta_icon" aria-hidden="true">TEL</span>
+      <span>電話で問い合わせ</span>
+    </a>
+    <a href="../contact.html" class="l-mobile-cta_btn l-mobile-cta_btn--form">
+      <span class="l-mobile-cta_icon" aria-hidden="true">MAIL</span>
+      <span>Webで問い合わせ</span>
+    </a>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
