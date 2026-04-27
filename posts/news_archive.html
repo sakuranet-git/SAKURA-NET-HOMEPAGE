@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>ニュース | 株式会社さくらねっと</title>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DZV2NE7C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8DZV2NE7C1');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="is-loading" id="page-post">
+
+  <!-- Cover Loader -->
+  <div class="l-cover" aria-hidden="true">
+    <div class="_logo">
+      <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;color:#1a1818;">SAKURA<span style="color:#c97b8d;">-NET</span></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="l-header" role="banner">
+    <div class="l-header_logo">
+      <a href="../index.html" aria-label="株式会社さくらねっと トップへ">
+        <img src="../img/logo_header_light_bg.png" alt="SAKURA-NET" style="height:48px;width:auto;display:block;">
+      </a>
+    </div>
+    <nav class="l-header_list" aria-label="グローバルナビゲーション">
+      <ul style="display:contents;list-style:none;">
+        <li><a href="../index.html"><span class="c-word c-word-hover js-word" data-order="0">Home</span></a></li>
+        <li><a href="../service.html"><span class="c-word c-word-hover js-word" data-order="1">Services</span></a></li>
+        <li><a href="../company.html"><span class="c-word c-word-hover js-word" data-order="2">About</span></a></li>
+        <li><a href="../news.html"><span class="c-word c-word-hover js-word" data-order="3">News</span></a></li>
+        <li><a href="../contact.html"><span class="c-word c-word-hover js-word" data-order="4">Contact</span></a></li>
+      </ul>
+    </nav>
+    <div class="l-header_contact">
+      <a href="../contact.html" style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:#1a1818;padding:10px 20px;border-radius:9999px;display:inline-block;">お問い合わせ</a>
+    </div>
+    <button class="l-header_toggle js-nav-toggle" aria-expanded="false" aria-controls="l-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Overlay Navigation -->
+  <div class="l-nav" id="l-nav" role="dialog" aria-modal="true" aria-label="ナビゲーション">
+    <div class="l-nav_main">
+      <nav class="l-nav_gnav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="../index.html" data-img="../img/service-s1.jpg" data-title="HOME" data-caption="大阪のITをワンストップで">
+              <span class="c-word js-word" data-order="1">HOME</span></a></li>
+          <li><a href="../service.html" data-img="../img/service-s2.jpg" data-title="SERVICES" data-caption="ネットワーク・セキュリティ・クラウド">
+              <span class="c-word js-word" data-order="2">SERVICES</span><sup class="c-word js-word" data-order="5">（6）</sup></a></li>
+          <li><a href="../company.html" data-title="ABOUT" data-caption="株式会社さくらねっと">
+              <span class="c-word js-word" data-order="3">ABOUT</span></a></li>
+          <li><a href="../news.html" data-title="NEWS" data-caption="最新情報・FAQ">
+              <span class="c-word js-word" data-order="4">NEWS</span></a></li>
+          <li><a href="../contact.html" data-title="CONTACT" data-caption="完全予約制・遠隔対応可">
+              <span class="c-word js-word" data-order="5">CONTACT</span></a></li>
+        </ul>
+      </nav>
+      <nav class="l-nav_snav" aria-label="サブメニュー">
+        <a href="../recruit.html"><span class="c-word js-word" data-order="6">採用情報</span></a>
+        <a href="../custom.html"><span class="c-word js-word" data-order="7">代理店募集</span></a>
+        <a href="../custom1.html"><span class="c-word js-word" data-order="8">サポート概要</span></a>
+        <a href="../remote.html"><span class="c-word js-word" data-order="9">遠隔サポート</span></a>
+        <a href="../pay.html"><span class="c-word js-word" data-order="10">お支払い方法</span></a>
+        <a href="../privacy.html"><span class="c-word js-word" data-order="11">プライバシーポリシー</span></a>
+      </nav>
+    </div>
+    <div class="l-nav_image" aria-hidden="true">
+      <img src="../img/service-s1.jpg" alt="" loading="lazy">
+      <div class="l-nav_image_info">
+        <h3>News</h3>
+        <p>新着情報</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main id="content">
+
+    <!-- Page Header -->
+    <div class="c-page-header">
+      <div class="l-inner">
+        <nav class="c-breadcrumb" aria-label="パンくずリスト">
+          <a href="../index.html">Home</a>
+          <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+          <span aria-current="page">News</span>
+        </nav>
+        <p class="c-page-header_label">News</p>
+        <h1 class="c-page-header_title">News</h1>
+        <p class="c-page-header_sub c-page-header_title--jp">新着情報</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <section class="c-section">
+      <div class="l-inner">
+<h3><a href="news_archive.html">ニュース一覧</a></h3>
+              <article>
+                <header>
+                  <h4><a href="news.html">Ubiquiti機器の取り扱い開始</a></h4>
+                </header>
+                <p><img width="150" src="../img/images2.jpg" alt="images2"></p>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-17">
+                  <p class="paragraph">元アップルの技術者が設立したUbiquiti
+                    Networksが、ネットワーク機器市場に新風を吹き込んでいる。シスコを猛追する勢いで北米を中心にシェアを拡大。ついに日本でも正式販売が始まった。</p>
+                  <p class="paragraph">
+                    ネットワークエンジニアが要らない、誰でも使いやすいWi-Fiシステムを作る――。そんなコンセプトを掲げて無線LAN市場で躍進しているベンダーがある。元アップルの技術者であるロバート・ペラ氏が2005年に創業した米Ubiquiti
+                    Networksだ。<br><br>
+                    調査会社Dell'Oroによれば、2017年の法人向け無線LAN市場におけるシェアはシスコシステムズ（29%）に次ぐ2位（17%）。シスコ、HPE
+                    Aruba、Ruckus Wirelessといった競合が横ばいあるいはシェアを落とすなか、4年連続でシェアを拡大している。<br><br>
+                    また、ビジネス領域はWi-Fiに留まらず、ルーター/LANスイッチ、ネットワークカメラなど豊富なラインナップを揃える。ネットワーク全体を効率的に管理できる無償のソフトウェアコントローラと合わせて提供することでユーザーの支持を獲得。最新の決算（8月24日発表）では年間売上10億ドルを突破した。
+                  </p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">「UniFiシリーズ」の特徴<br>
+                    ライセンス費用が不要<br>
+                    ソフトウェアのライセンス費用が不要のため年額のランニングコストがかからずイニシャルコストのみで構築が可能!!<br>
+                    　　　<br>
+                    低価格&amp;高機能<br>
+                    他社ベンダーと比較して超低価格。大規模向けCisco、Arubaとほぼ同等性能。オンプレ/クラウドの両機能のいいとこ取りで、複数拠点の遠隔管理やGUI画面でのかんたん設定が可能<br>
+                    　　　<br>
+                    全米で高いシェア<br>
+                    ユビキティネットワークスは米国で無線AP出荷台数がCiscoに次ぐ第二位のメーカー。高い品質は折り紙付き!!</p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">人気の秘密は「明朗会計」<br>
+                    日本での知名度は低いが、今後は注目が集まりそうだ。<br><br>
+                    これまでは国内に正規代理店がなく、少数のユーザーが並行輸入品を購入して利用している状況だったが、今年4月、海外のネットワーク製品を主に取り扱うソネットが日本総代理店として国内販売を開始した。同社・取締役営業部長の小林康英氏は「かなり反響が大きい。国内販売開始を聞きつけたお客様からの問い合わせが次々来ている」と話す。工場や老人ホーム等への導入もすでに決定しており、今後は店舗やオフィス向けにも提案を進めていく考えだ。小売・飲食店向けにWi-Fiサービスを展開する事業者での採用検討も進んでいるという。
+                  </p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">国内有名メーカーの製品に比べてコストは半分。<br>
+                    ライセンス費は無料!!<br>
+                    Ubiquiti製品が人気を集める理由の第1は「ライセンスフリー」の価格体系にあります。<br>
+                    法人向けネットワーク機器は一般的に、初年度のライセンス費をバンドルして販売し、2年目以降も管理機能等を継続使用する場合にはライセンス費をユーザーが必要です。このライセンス費が、Ubiquiti製品には一切ありません!!
+                    機器を買えば、その後は追加費用なしにずっとフル機能が利用していただけます。</p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">Ubiquiti製品が人気を集める理由の第1は「ライセンスフリー」の価格体系にある。<br><br>
+                    法人向けネットワーク機器は一般的に、初年度のライセンス費をバンドルして販売し、2年目以降も管理機能等を継続使用する場合にはライセンス費をユーザーが支払う。「お客様にとっては納得しにくいコストで、仕方なく払ってきた」このライセンス費が、Ubiquiti製品には一切ない。機器を買えば、その後は追加費用なしにずっとフル機能が利用できるのだ。
+                  </p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">
+                    機器そのものが高いのではと思われがちだが、11ac対応の無線アクセスポイント（AP）の希望小売価格は約3万円、ギガビット対応VPNルーターが約1万円、8ポートのギガビットPoEスイッチが約5万円と低価格だ。「シスコやアルバの同等品に比べて初期投資も半額以下に抑えられる」と小林氏。この“価格破壊”戦略こそ、躍進の最大の要因だ。
+                  </p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">※内容はbusinessnetwork様より転載させて頂きました。</p>
+                </div>
+                <footer>2020年10月29日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news2.html">各種お取次ぎのご案内</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-18">
+                  <p class="paragraph">【電気通信事業法第37条の2条第1項の規定に基づく媒介等の業務届出書について】<br><br>
+                    （届け出番号：G2021907）<br><br><br><br>
+                    【Pay関係】<br><br>
+                    PayPay・auPay・楽天Pay・ALIPay・WeChatPay<br><br>
+                    　<br><br>
+                    【インターネット回線】<br><br>
+                    NTT東日本・NTT西日本（フレッツ光）<br><br>
+                    Softbank光（新規・転用）<br><br>
+                    OCN・au・So-net・@nifty・BIGLOBE（新規・転用）<br><br>
+                    NURO光（東日本・西日本）<br><br><br><br>
+                    【プロバイダー】<br><br>
+                    楽天・yahoo・BIGLOBE・LIVE Aqours（自社プロバイダー）　他<br><br><br><br>
+                    【クラウド型ビジネスフォン】<br><br>
+                    株式会社プロディライト社提供のINNOVERA PBX（IP-PBX)<br><br><br><br>
+                    【UTM・セキュリティ・ルーター】<br><br>
+                    YAMAHA　WatchGuard Sophos　SAXA　他<br><br><br><br>
+                    【次世代ファイヤーウォール】<br><br>
+                    SAKURA-NET Total Security<br><br><br><br>
+                    【オフィス周り】<br><br>
+                    テレワーク一式・コピー機・FAX・各種ネットワーク・防犯カメラ・サーバー・NAS・セキュリティー・スマートキー　勤怠・スケジュール管理システム
+                    他</p>
+                </div>
+                <footer>2020年05月01日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news1.html">営業時間内・外の受付について</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-19">
+                  <p class="paragraph">いつも弊社サービスをご利用いただき、ありがとうございます。 本年の営業は以下の日程となっておりますので、お知らせいたします。<br><br>
+                    --------------------------------------<br><br>
+                    ■営業時間内<br><br>
+                    平日10：00-19：00　（電話受付）<br><br>
+                    06-7777-2720　・　050-8894-2237　までお願いいたします。<br><br>
+                    --------------------------------------<br><br>
+                    ■営業時間外（土日祝等）<br><br>
+                    06-7777-2720（AI対応）までお願いいたします。<br><br>
+                    ※メール対応は受付終了致しました。必ず上記の番号又は営業担当にご連絡いただきますようお願いします。<br><br>
+                    ※※各スタッフの携帯電話対応は営業時間内のみ。営業時間外は原則非対応になります。<br><br><br><br>
+                    AI対応は順次受付してまいりますので、お待ち頂ますようお願いいたします。<br><br>
+                    お急ぎの場合は「至急・急ぎ」等メッセージを入れて頂きますようお願いします。<br><br><br><br>
+                    現在対応数が多くご不便をおかけいたしますが、ご了承くださいますようお願い申し上げます。 それでは今後とも、よろしくお願いいたします。<br><br><br><br>
+                    ■郵便物・お荷物について（セキュリティ対策）：営業担当に発送の連絡（受付番号・荷物の内容・到着予定日時等を必ず伝えてください。<br><br>
+                    メールのみの連絡は不可。弊社が把握又は許可していないお荷物は受け取りできません。<br><br>
+                    そのままご返却対応となりますのでご注意ください。<br></p>
+                </div>
+                <footer>2020年06月12日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news3.html">クラウド型VPS・セキュリティサービスを開始</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-20">
+                  <p class="paragraph">【さくらねっとVPS】</p>
+                  <p class="paragraph">
+                    仮想化技術（VM・ESXi・vSpere・Proxmox）を利用した、1台のさくらねっと専用の物理サーバー上に、仮想サーバー・ゲストOS（Windows・LINUX等)を構築し、専用のプライベートOSと10Gの超高速LAN・強力なセキュアな環境をご提供します。<br>
+                    また、専用サーバーにはSSDプラン・クラウドUTM・定期スナップショット機能（OS・データを丸ごとバックアップし超高速にて復元できます）をオプション追加することができます。<br>
+                    月額550円から低価格を実現したホスティングサービスです。</p>
+                  <p class="paragraph"> </p>
+                  <p class="paragraph">【クラウドUTM（SAKURACloudUTM）】</p>
+                  <p class="paragraph">UTMハードウェアが設置不要で、機器故障もない為、運用コストを抑えられるのが最大な特徴となるサービスです。<br>
+                    ハードウェアUTMと機能はそのままで下記の導入メリットがあります。<br>
+                    ※UTMとは1台に複数のセキュリティ対策の機能が集約された機器です<br>
+                    ファイアウォール機能・IPS（不正侵入防御）機能・アンチウイルス機能<br>
+                    アンチスパム機能・Webフィルタリング機能・アプリケーション制御機能　等<br>
+                    弊社はForitigate・Sophos・SAXA・WatchGuard等複数のUTMを採用しておりますので<br>
+                    お客様の利用環境に応じて導入が可能となっております。</p>
+                  <p class="paragraph">月額2500円からの低価格を実現しているクラウド型セキュリティサービスです。</p>
+                  <p class="paragraph"> </p>
+                </div>
+                <footer>2021年06月16日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news4.html">夏季休業期間のお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-21">
+                  <p class="paragraph">いつもお引き立てをいただき誠にありがとうございます。<br>
+                    弊社では、誠に勝手ながら下記日程を夏季休業とさせていただきたくご連絡させて頂きました。<br><br><br><br>
+                    ■夏季休業期間<br>
+                    2024年8月24日(土)　～　2024年9月1日(日)<br><br><br><br>
+                    休業期間中にいただいたお問合せについては、夏季休業期間後に回答させていただきます。<br>
+                    大変ご不便をおかけいたしますが、何卒ご理解の程お願い申し上げます。</p>
+                  <p class="paragraph">急を要する場合は代表電話（留守電）までご連絡頂ますようお願い申し上げます。</p>
+                </div>
+                <footer>2024年07月01日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news5.html">値段改定のお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-22">
+                  <p class="paragraph">価格改定のお知らせ （2024.6.1より）<br><br><br>
+                    平素は格別のお引き立てを賜り、誠にありがとうございます。 <br><br>
+                    この度、インボイス制度の施行に関しアンケートを取り、ギリギリまで値上げをしない努力をしてまいりました。 <br>
+                    しかしながら、弊社上位店、商流様より強くインボイス取得の要請があり受諾することになりました。 <br><br>
+                    原材料の高騰と原油高に伴う輸送費の高騰、電気代高騰のサーバー運用、調達コストの増加等などを踏まえ、 <br>
+                    誠に不本意ではございますが、弊社と皆様の一部商材・サービス等の取引価格の改定を実施させて頂くこととなりました。 <br><br>
+                    インボイス制度導入による請求書内容の変更及び料金改定が一部ございます。 <br>
+                    改定の詳細はHP・取引中の皆様に、個別で訪問・請求書・メール等でご案内致します。 <br><br>
+                    弊社といたしましても、コストの削減等に引き続き尽力し、今まで以上にサービスの向上を推進していく所存です。 <br>
+                    今後とも弊社サービスをご愛顧賜りますよう謹んでお願い申し上げます。 <br><br><br>
+                    価格改定についての概要 <br><br>
+                    ■請求内訳を非から課税10%へ変更 <br>
+                    ■各種保守サービス <br>
+                    ■インターネット・ISP・SIM・通信費　等 <br>
+                    ■サーバーレンタル・ドメイン <br>
+                    ■クラウドサービス・システムサービス <br></p>
+                </div>
+                <footer>2024年05月10日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news6.html">名称変更のお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-23">
+                  <p class="paragraph">保守契約（簡易・通常）の商品名変更のお知らせ</p>
+                  <p class="paragraph">保守契約の中身が全てSAKURA-NET Total ITへアップグレードが完了しましたので</p>
+                  <p class="paragraph">サービス重複を避けるために「SAKURA-NET Total
+                    IT（LITE・Standard・Pro・MAX）へ変更させて頂きます。契約書の中身に変更はございません。変更を希望される方は担当までメールを送っていただきますようお願い申します。</p>
+                  <p class="paragraph">件名：SAKURA-NET Total IT契約書変更依頼</p>
+                  <p class="paragraph">最新版の約款は<a href="../img/file1.docx" target="_blank"></a><a href="../img/file9.pdf"
+                      target="_blank"><span class="character" style="color : #b6ecfe;">こちら</span></a> になります。</p>
+                  <p class="paragraph"> </p>
+                </div>
+                <footer>2024年07月01日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news7.html">利用規約・約款について</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-24">
+                  <h3 class="character"
+                    style="color: #c82054; font-size: 1.25em; margin: 0 0 15px 0; padding: 10px 15px; border-left: 5px solid #c82054; background: #fff4f7; border-radius: 0 4px 4px 0;">
+                    ◯ ご利用にあたって（基本事項）
+                  </h3>
+                  <p class="paragraph" style="margin-bottom: 30px; line-height: 1.6; padding: 0 10px;">
+                    株式会社さくらねっと（以下総称して当社といいます。）のホームページをご利用される前に、下記をご一読いただき、ご同意の上ご利用くださいますようお願い申し上げます。<br>
+                    ご利用いただいた場合には、下記の条件すべてにご同意いただいたものとみなします。また、各コーナーで別途定める規約がある場合は、そちらも同様にご同意の上ご利用ください。
+                  </p>
+
+                  <h3 class="character"
+                    style="color: #c82054; font-size: 1.25em; margin: 0 0 15px 0; padding: 10px 15px; border-left: 5px solid #c82054; background: #fff4f7; border-radius: 0 4px 4px 0;">
+                    ◯ 利用規約の範囲
+                  </h3>
+                  <div
+                    style="background: #fafafa; border: 1px solid #ffc1d3; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+                    <ol style="margin: 0; padding-left: 1.5em; line-height: 1.8; color: #444;">
+                      <li style="margin-bottom: 10px;">
+                        このお客様利用規約（以下「本規約」）は、当社ホームページを使用した情報提供サービスと、当社が提供する各種インターネットサービス（以下「本サービス」）のご利用に適用されます。</li>
+                      <li style="margin-bottom: 10px;">本規約とは別に、当社が本サービス上に定める各諸規定は、それぞれ本規約の一部を構成するものとします。</li>
+                      <li style="margin-bottom: 10px;">本規約と前項の諸規定の内容が異なる場合は、当該の諸規定の内容が優先して適用されます。</li>
+                      <li style="margin-bottom: 0;"><strong>【お電話のお問い合わせについて】</strong><br>
+                        SAKURA-NET Total IT申込者及び取引先関係者様を除くお客様は、営業担当の携帯電話ではなく代表番号へお掛けくださいますようお願いいたします。</li>
+                    </ol>
+                  </div>
+
+                  <h3 class="character"
+                    style="color: #c82054; font-size: 1.25em; margin: 0 0 15px 0; padding: 10px 15px; border-left: 5px solid #c82054; background: #fff4f7; border-radius: 0 4px 4px 0;">
+                    ◯ 利用規約の変更について
+                  </h3>
+                  <div
+                    style="background: #fafafa; border: 1px solid #ffc1d3; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                    <ul style="list-style: none; margin: 0; padding: 0; line-height: 1.8; color: #444;">
+                      <li style="margin-bottom: 10px; padding-left: 1.5em; text-indent: -1.5em;"><span
+                          style="color: #e03164;">1.
+                        </span>当社はお客様の了解を得ることなく、本規約を変更することがあります。以降の本サービスのご利用条件は、変更後の最新の本規約によるものとします。最新の内容をご確認くださいますようお願い申し上げます。
+                      </li>
+                      <li style="margin-bottom: 0; padding-left: 1.5em; text-indent: -1.5em;"><span
+                          style="color: #e03164;">2. </span>変更後の本規約は、当社が別途定める場合を除き、当社ホームページ上に表示した時点より効力を生じるものとします。</li>
+                    </ul>
+                  </div>
+                </div>
+                <footer>2024年08月30日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news8.html">SAKURA-NET光開始のお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-25">
+                  <div
+                    style="background: #fff4f7; border-left: 5px solid #c82054; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
+                    <p style="margin: 0; font-weight: bold; color: #c82054; font-size: 1.1em;">
+                      自社サービス×光アクセスで最適な通信環境を！
+                    </p>
+                    <p style="margin: 10px 0 0 0; line-height: 1.6;">
+                      NTT東日本・NTT西日本より提供を受けた光回線と、自社サービスを組み合わせた高品質なモデル「SAKURA-NET光」のご案内です。
+                    </p>
+                  </div>
+
+                  <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+                    <li style="margin-bottom: 15px; padding-left: 1.5em; text-indent: -1.5em; line-height: 1.6;">
+                      <span style="color: #e03164; font-weight: bold;">✓
+                        選べる通信プラン：</span><br>ギガタイプ・クロス（10G）タイプ・でんわ特化型タイプなど、用途に合わせた最適なサービスをご用意。
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 1.5em; text-indent: -1.5em; line-height: 1.6;">
+                      <span style="color: #e03164; font-weight: bold;">✓
+                        期間限定・お得な特典：</span><br>YouTubeのプレミアムアカウントを大特価で提供中！
+                    </li>
+                  </ul>
+
+                  <div style="text-align: center; margin: 30px 0;" class="terms-link-buttons">
+                    <style>
+                      .terms-link-buttons a:hover {
+                        transform: translateY(-3px) !important;
+                        box-shadow: 0 6px 15px rgba(200, 32, 84, 0.25) !important;
+                        background: #e03164 !important;
+                        color: #fff !important;
+                      }
+                    </style>
+                    <a href="news11.html"
+                      style="display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 450px; padding: 15px 20px; background: linear-gradient(135deg, #fff0f5 0%, #fff 100%); border: 2px solid #e03164; border-radius: 50px; text-decoration: none; color: #c82054; font-weight: bold; font-size: 1.05em; box-shadow: 0 4px 10px rgba(200,32,84,0.1); transition: all 0.3s ease; box-sizing: border-box;">
+                      📄 約款・プラン・料金表・割引価格等はこちら
+                    </a>
+                  </div>
+
+                  <div
+                    style="font-size: 0.85em; background: #fafafa; border: 1px solid #eee; padding: 15px; border-radius: 4px; color: #666; margin-bottom: 20px;">
+                    <strong style="color: #444;">【注意事項】</strong><br>
+                    ※本サービスの電話機能は、INNOVERA-PBX・FAX機能とひかり電話の併用を推奨しております。<br>
+                    ※詳細は「サービス/製品一覧」ページを御覧ください。
+                  </div>
+                </div>
+                <footer>2024年11月01日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news9.html">SAKURA-IPPBX利用開始のお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-26">
+                  <div
+                    style="background: #fff4f7; border-left: 5px solid #c82054; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
+                    <p style="margin: 0; font-weight: bold; color: #c82054; font-size: 1.1em;">
+                      外出中の電話の取り逃し、もう悩みません！
+                    </p>
+                    <p style="margin: 10px 0 0 0; line-height: 1.6;">
+                      SAKURA-IPPBXは、お使いの「ひかり電話」がお持ちのスマートフォンでそのまま発信・着信できるようになる画期的なサービスです。<br>
+                      <span style="font-size: 0.9em; color: #666;">※NTT東西または光コラボレーション事業者の「ひかり電話」をご契約の方対象</span>
+                    </p>
+                  </div>
+
+                  <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
+                    <li style="margin-bottom: 15px; padding-left: 1.5em; text-indent: -1.5em; line-height: 1.6;">
+                      <span style="color: #e03164; font-weight: bold;">✓
+                        面倒な工事は不要：</span><br>簡単な機器の設置とアプリの設定だけですぐにご利用可能です！
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 1.5em; text-indent: -1.5em; line-height: 1.6;">
+                      <span style="color: #e03164; font-weight: bold;">✓
+                        大事な着信を逃さない：</span><br>固定電話とスマホアプリが同時に鳴り、外出先でも電話を取りこぼしません。
+                    </li>
+                    <li style="margin-bottom: 15px; padding-left: 1.5em; text-indent: -1.5em; line-height: 1.6;">
+                      <span style="color: #e03164; font-weight: bold;">✓
+                        スマホが「持ち運べる子機」に：</span><br>会社にいなくても、スマホアプリから会社の固定電話番号で発信できます。
+                    </li>
+                  </ul>
+
+                  <a style="display: block; text-align: center; margin-bottom: 20px;"><img id="sp-image-8"
+                      src="../img/kikijpg.jpg" class="sp-part-top sp-image"
+                      style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"></a>
+
+                  <div
+                    style="font-size: 0.85em; background: #fafafa; border: 1px solid #eee; padding: 15px; border-radius: 4px; color: #666; margin-bottom: 20px;">
+                    <strong style="color: #444;">【注意事項】</strong><br>
+                    ※1 「ひかり電話 オフィスタイプ/オフィスA（エース）」は対応外となります。<br>
+                    ※2 一部の光コラボレーション事業者のサービス（ホワイト光電話など）では、テレワープがご利用いただけない場合があります。
+                  </div>
+
+                  <a style="display: block; text-align: center; margin-bottom: 20px;"><img id="sp-image-9"
+                      src="../img/network.jpg" class="sp-part-top sp-image"
+                      style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);"></a>
+                  <p class="paragraph"> </p>
+                </div>
+                <footer>2025年10月01日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news10.html">臨時休業のお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-27">
+                  <p class="paragraph">緊急の電気工事が物件管理会社様より通達があり、「停電」が発生することになりました。<br><br>
+                    停電の影響により一部のサーバー・保守管理・メンテナンスサービスが提供できなくなく<br><br>
+                    なる為　2025.12.7まで<span class="character" style="color : #d9554b;">「営業を停止」</span>させて頂くことになりました。<br><br>
+                    ご不便をおかけし大変申し訳ございませんが、何卒ご協力いただきますようお願い申し上げます。すでにアポイントを取らせて頂いているお客様に関しましてはサービス実施致します。<br><br>
+                    詳細は担当営業までご連絡いただきますようお願い申し上げます。<br><br><br><br>
+                    ※SAKURA-NET光・IP-PBXは停電に影響がないため問題なくご利用いただけます。<br></p>
+                </div>
+                <footer>2025年11月01日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news11.html">SAKURA-NETサービス契約約款（最新版）</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-28">
+                  <p class="paragraph" style="margin-bottom: 25px; font-weight: bold; color: #444; text-align: center;">
+                    最新のSAKURA-NET光約款は以下の通りです。</p>
+                  <div
+                    style="display: flex; flex-direction: column; gap: 15px; align-items: center; margin-bottom: 30px;"
+                    class="terms-link-buttons">
+                    <style>
+                      .terms-link-buttons a:hover {
+                        transform: translateY(-3px) !important;
+                        box-shadow: 0 6px 15px rgba(200, 32, 84, 0.25) !important;
+                        background: #e03164 !important;
+                        color: #fff !important;
+                      }
+                    </style>
+                    <a href="../img/SAKURA-NET_Hikari_Service_Terms.html" target="_blank"
+                      style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 450px; padding: 15px 20px; background: linear-gradient(135deg, #fff0f5 0%, #fff 100%); border: 2px solid #e03164; border-radius: 50px; text-decoration: none; color: #c82054; font-weight: bold; font-size: 1.05em; box-shadow: 0 4px 10px rgba(200,32,84,0.1); transition: all 0.3s ease; box-sizing: border-box; text-align: center;">
+                      📄 SAKURA-NET光サービス契約約款
+                    </a>
+                    <a href="../img/SAKURA-NET_Hikari_Service_Terms_Sub.html" target="_blank"
+                      style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 450px; padding: 15px 20px; background: linear-gradient(135deg, #fff0f5 0%, #fff 100%); border: 2px solid #e03164; border-radius: 50px; text-decoration: none; color: #c82054; font-weight: bold; font-size: 1.05em; box-shadow: 0 4px 10px rgba(200,32,84,0.1); transition: all 0.3s ease; box-sizing: border-box; text-align: center;">
+                      📄 SAKURA-NET光サービス契約約款_別紙料金表
+                    </a>
+                  </div>
+                </div>
+                <footer>2026年02月22日</footer>
+              </article>
+              <article>
+                <header>
+                  <h4><a href="news12.html">さくらインターネットメンテナンスのお知らせ</a></h4>
+                </header>
+                <div class="entry-content sp-part-top sp-entry-content" id="sp-entry-content-29">
+                  <p class="paragraph">2026.5.2（土）さくらインターネットのサーバーメンテナンスを実施します。<br><br>
+                    【影響】<br>
+                    ホームページ・メールが一時的に動作が不安定になったり接続に時間がかかる場合はございます。</p>
+                </div>
+                <footer>2026年04月01日</footer>
+              </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="l-footer" role="contentinfo">
+    <div class="l-footer_inner">
+      <div class="l-footer_top">
+        <div>
+          <div class="l-footer_logo">
+            <img src="../img/logo_header_dark_bg.png" alt="SAKURA-NET" style="height:40px;width:auto;">
+            <a href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">SAKURA-NET</a>
+          </div>
+          <div class="l-footer_info" style="margin-top:16px;">
+            株式会社さくらねっと<br>
+            〒532-0012 大阪市淀川区木川東4-3-34 5F<br>
+            TEL: <a href="tel:0677772720">06-7777-2720</a>
+            MAIL: <a href="mailto:info@sakuranet-co.jp">info@sakuranet-co.jp</a><br>
+            営業時間: 平日 10:00–19:00（完全予約制）
+          </div>
+        </div>
+        <nav class="l-footer_nav" aria-label="フッターナビゲーション">
+          <a href="../index.html">Home</a>
+          <a href="../service.html">Services</a>
+          <a href="../company.html">About</a>
+          <a href="../concept.html">方針</a>
+          <a href="../access.html">Access</a>
+          <a href="../news.html">News</a>
+          <a href="../recruit.html">Recruit</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../custom.html">代理店</a>
+          <a href="../pay.html">お支払い</a>
+          <a href="../remote.html">遠隔サポート</a>
+          <a href="../support.html">Support</a>
+          <a href="https://sakuranet-co.jp/system/index.php">SYSTEM</a>
+          <a href="../privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="l-footer_bottom">
+        <small class="l-footer_copy">&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</small>
+        <div class="l-footer_links">
+          <a href="../privacy.html">プライバシーポリシー</a>
+          <a href="../contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Fixed CTA -->
+  <div class="l-mobile-cta" aria-label="スマートフォン用クイックアクセス">
+    <a href="tel:0677772720" class="l-mobile-cta_btn l-mobile-cta_btn--tel">
+      <span class="l-mobile-cta_icon" aria-hidden="true">📞</span>
+      <span>電話で問い合わせ</span>
+    </a>
+    <a href="../contact.html" class="l-mobile-cta_btn l-mobile-cta_btn--form">
+      <span class="l-mobile-cta_icon" aria-hidden="true">✉</span>
+      <span>Webで問い合わせ</span>
+    </a>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

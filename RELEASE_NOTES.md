@@ -1,4 +1,13 @@
-﻿## [v3.0.23] - 2026-04-27 - index.html PBXカード画像差し替え
+﻿## [v3.0.25] - 2026-04-27 - posts/ フッター v3統一（全19ファイル）
+
+### 変更内容
+- `posts/news*.html`（14件）・`posts/news_archive.html`・`posts/service_archive.html`・`posts/product_archive.html`・`posts/faq_archive.html`
+  - フッター著作権：`© 2024 株式会社さくらねっと` → `© 2026 SAKURA-NET Inc. All Rights Reserved.`
+  - フッターナビ：Support・SYSTEMリンクを追加
+
+---
+
+## [v3.0.23] - 2026-04-27 - index.html PBXカード画像差し替え
 
 ### 変更内容
 - `index.html` — SAKURA-PBX・INNOVERA-PBXカードの画像を差し替え
