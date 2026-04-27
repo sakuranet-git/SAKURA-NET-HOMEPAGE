@@ -1,4 +1,13 @@
-﻿## [v3.0.22] - 2026-04-27 - index.html サービスカード PBX内容に更新
+﻿## [v3.0.23] - 2026-04-27 - index.html PBXカード画像差し替え
+
+### 変更内容
+- `index.html` — SAKURA-PBX・INNOVERA-PBXカードの画像を差し替え
+  - 旧：`img/hero_cloud.png`
+  - 新：`img/hero_pbx.png`（Geminiイラスト：クラウドPBX・IP電話・スマホ接続図）
+
+---
+
+## [v3.0.22] - 2026-04-27 - index.html サービスカード PBX内容に更新
 
 ### 変更内容
 - `index.html` — クラウドVPS・IP-PBXカードをSAKURA-PBX・INNOVERA-PBXに変更
