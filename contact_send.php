@@ -132,9 +132,10 @@ MAIL;
 $headers = [];
 $headers[] = 'From: SAKURA-NET Web Form <' . $from . '>';
 $headers[] = 'Reply-To: ' . header_field($name) . ' <' . header_field($email) . '>';
-$headers[] = 'Content-Type: text/plain; charset=UTF-8';
 $headers[] = 'X-Mailer: PHP/' . phpversion();
 
+// mb_send_mail が mb_language('Japanese') に基づき ISO-2022-JP へ自動変換するため
+// Content-Type は mb_send_mail に任せる（手動指定すると文字化けする）
 $sent = mb_send_mail($to, $subject, $body, implode("\r\n", $headers));
 
 if (!$sent) {
