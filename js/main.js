@@ -137,7 +137,7 @@
     var current  = 0;
     var total    = items.length;
     var timer    = null;
-    var INTERVAL = 10000;
+    var INTERVAL = 15000;
 
     function goTo(index) {
       current = (index + total) % total;
