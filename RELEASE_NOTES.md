@@ -1,4 +1,22 @@
-﻿## [v3.0.25] - 2026-04-27 - posts/ フッター v3統一（全19ファイル）
+﻿## [v3.0.26] - 2026-04-27 - CMSとパブリックサイトのニュース連携
+
+### 変更内容
+- `index.html` — トップページのニュースセクションを動的フェッチに変更（静的HTML→API取得）
+  - `GET /system/news_api.php` から最新5件を取得してレンダリング
+  - CMSで投稿した記事が即座にトップページに反映されるようになった
+- `posts/news_view.html` — 新規作成：動的記事ビューアー
+  - URLパラメータ `?id=xxx` でAPIから記事を取得して表示
+  - 静的HTMLファイル不要・CMS編集が即時反映
+- `SAKURA-PORTAL/news_api.php` — addアクションでURL自動生成
+  - URL未入力時に `posts/news_view.html?id={newId}` を自動設定
+  - `publishHtmlPage()` で `news_view.html` URLは静的ファイル生成をスキップ
+- `SAKURA-PORTAL/news_admin.php` — URLフィールドを任意入力に変更
+  - ラベル：「リンクURL（空欄で自動生成）」に変更
+  - 新規投稿時・キャンセル時にURLフィールドを空にリセット
+
+---
+
+## [v3.0.25] - 2026-04-27 - posts/ フッター v3統一（全19ファイル）
 
 ### 変更内容
 - `posts/news*.html`（14件）・`posts/news_archive.html`・`posts/service_archive.html`・`posts/product_archive.html`・`posts/faq_archive.html`

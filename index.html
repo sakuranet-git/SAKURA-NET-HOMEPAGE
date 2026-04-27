@@ -461,52 +461,8 @@
           <h2 class="c-section_title c-section_title--jp" id="news-title">新着情報</h2>
         </div>
 
-        <div class="c-news-list js-anim">
-          <div class="c-news-item">
-            <a href="posts/news12.html">
-              <time class="c-news-item_date" datetime="2026-04-01">2026.04.01</time>
-              <div>
-                <span class="c-news-item_tag">お知らせ</span>
-                <p class="c-news-item_title">さくらインターネットメンテナンスのお知らせ</p>
-              </div>
-            </a>
-          </div>
-          <div class="c-news-item">
-            <a href="posts/news11.html">
-              <time class="c-news-item_date" datetime="2026-02-22">2026.02.22</time>
-              <div>
-                <span class="c-news-item_tag">お知らせ</span>
-                <p class="c-news-item_title">SAKURA-NETサービス契約約款（最新版）</p>
-              </div>
-            </a>
-          </div>
-          <div class="c-news-item">
-            <a href="posts/news10.html">
-              <time class="c-news-item_date" datetime="2025-11-01">2025.11.01</time>
-              <div>
-                <span class="c-news-item_tag">お知らせ</span>
-                <p class="c-news-item_title">臨時休業のお知らせ</p>
-              </div>
-            </a>
-          </div>
-          <div class="c-news-item">
-            <a href="posts/news9.html">
-              <time class="c-news-item_date" datetime="2025-10-01">2025.10.01</time>
-              <div>
-                <span class="c-news-item_tag">新サービス</span>
-                <p class="c-news-item_title">SAKURA-IPPBX利用開始のお知らせ</p>
-              </div>
-            </a>
-          </div>
-          <div class="c-news-item">
-            <a href="posts/news8.html">
-              <time class="c-news-item_date" datetime="2024-11-01">2024.11.01</time>
-              <div>
-                <span class="c-news-item_tag">新サービス</span>
-                <p class="c-news-item_title">SAKURA-NET光開始のお知らせ</p>
-              </div>
-            </a>
-          </div>
+        <div id="home-news-list" class="c-news-list js-anim">
+          <p style="color:#888;font-size:0.95em;padding:20px 0;">読み込み中...</p>
         </div>
 
         <div class="u-text-center u-mt-lg js-anim">
@@ -597,6 +553,48 @@
       <span>Webで問い合わせ</span>
     </a>
   </div>
+
+  <script>
+    (function () {
+      var list = document.getElementById('home-news-list');
+      if (!list) return;
+
+      var kindMap = { notice: 'お知らせ', maintenance: 'メンテナンス', failure: '障害情報', news: 'お知らせ', faq: 'FAQ' };
+
+      fetch('/system/news_api.php')
+        .then(function (r) { return r.json(); })
+        .then(function (posts) {
+          var news = posts.filter(function (p) { return p.type === 'news'; }).slice(0, 5);
+          if (!news.length) { list.innerHTML = '<p style="color:#888;font-size:0.95em;padding:20px 0;">新着情報はありません。</p>'; return; }
+
+          var html = '';
+          news.forEach(function (p) {
+            var dateStr = '';
+            var dateAttr = '';
+            if (p.date) {
+              var pts = p.date.split('-');
+              if (pts.length === 3) {
+                dateStr = pts[0] + '.' + pts[1] + '.' + pts[2];
+                dateAttr = p.date;
+              }
+            }
+            var label = kindMap[p.kind] || kindMap[p.type] || 'お知らせ';
+            var url = p.url || 'news.html';
+            var title = p.title.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+            html += '<div class="c-news-item">' +
+              '<a href="' + url + '">' +
+              (dateStr ? '<time class="c-news-item_date" datetime="' + dateAttr + '">' + dateStr + '</time>' : '') +
+              '<div><span class="c-news-item_tag">' + label + '</span>' +
+              '<p class="c-news-item_title">' + title + '</p></div>' +
+              '</a></div>';
+          });
+          list.innerHTML = html;
+        })
+        .catch(function () {
+          list.innerHTML = '<p style="color:#888;font-size:0.95em;padding:20px 0;">情報の取得に失敗しました。</p>';
+        });
+    })();
+  </script>
 
   <script src="js/main.js"></script>
 </body>
