@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+  <title>SAKURA-SASE｜次世代ゼロトラスト・セキュアリモートアクセス（大阪）｜株式会社さくらねっと</title>
+  <meta name="description" content="UniFi UDM-ProとCloudflare Zero Trustが実現する、圧倒的にセキュアで高速なゼロトラスト・ネットワークアクセス(ZTNA)。ポート開放不要の安全なリモートワーク環境を構築します。">
+  <link rel="canonical" href="https://sakuranet-co.jp/sakura-sase.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta property="og:site_name" content="株式会社さくらねっと">
+  <meta property="og:title" content="SAKURA-SASE｜次世代ゼロトラスト・セキュアリモートアクセス">
+  <meta property="og:description" content="UniFi UDM-Pro × Cloudflare Zero Trustによる次世代SASE。ポート開放不要・フルマネージド運用で法人ネットワークを守ります。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sakuranet-co.jp/sakura-sase.html">
+  <meta property="og:image" content="https://sakuranet-co.jp/img/ogp_2026.png">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- HP ベース CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- SAKURA-SASE ページ固有スタイル（Gemini デザイン要素） -->
+  <style>
+    /* ---- SASE ブランドカラー変数 ---- */
+    :root {
+      --sase-blue: #0075de;
+      --sase-blue-dark: #005bb5;
+      --sase-blue-light: rgba(0, 117, 222, 0.1);
+      --sase-sakura-grad: linear-gradient(135deg, #fdfaf9 0%, #f4e9e8 100%);
+      --sase-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.06);
+      --sase-shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.08);
+      --sase-radius-lg: 24px;
+      --sase-radius-md: 16px;
+    }
+
+    /* ---- Hero ---- */
+    .p-sase-hero {
+      padding-top: calc(64px + clamp(56px, 8vw, 96px));
+      padding-bottom: clamp(64px, 9vw, 112px);
+      background: var(--sase-sakura-grad);
+      position: relative;
+      overflow: hidden;
+    }
+    .p-sase-hero-row {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      min-height: 58vh;
+    }
+    .p-sase-hero-text {
+      flex: 1;
+      max-width: 580px;
+    }
+    .p-sase-hero-visual {
+      flex: 1;
+      position: relative;
+    }
+    .p-sase-hero-img {
+      width: 100%;
+      border-radius: var(--sase-radius-lg);
+      box-shadow: var(--sase-shadow-lg);
+      animation: sase-float 6s ease-in-out infinite;
+      display: block;
+    }
+    @keyframes sase-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-16px); }
+    }
+
+    /* ---- Badge (pill ラベル) ---- */
+    .p-sase-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      background: #fff;
+      color: var(--sase-blue);
+      border-radius: 999px;
+      font-family: var(--font-en), 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* ---- Hero タイポグラフィ ---- */
+    .p-sase-hero-title {
+      font-family: var(--font-jp), 'Noto Sans JP', sans-serif;
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+      color: var(--color-text);
+      margin-bottom: 24px;
+    }
+    .p-sase-hero-title .accent { color: var(--sase-blue); }
+    .p-sase-hero-desc {
+      font-size: clamp(14px, 1.4vw, 17px);
+      color: var(--color-text-sub);
+      line-height: 1.9;
+      margin-bottom: 44px;
+    }
+    .p-sase-hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- ボタン ---- */
+    .p-sase-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .p-sase-btn--primary {
+      background: var(--sase-blue);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(0, 117, 222, 0.28);
+    }
+    .p-sase-btn--primary:hover {
+      background: var(--sase-blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 117, 222, 0.38);
+    }
+    .p-sase-btn--outline {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+    .p-sase-btn--outline:hover {
+      background: rgba(0, 0, 0, 0.03);
+      transform: translateY(-2px);
+    }
+    .p-sase-btn--lg { padding: 16px 40px; font-size: 1rem; }
+
+    /* ---- セクション共通 ---- */
+    .p-sase-sec {
+      padding: clamp(72px, 10vw, 120px) 0;
+    }
+    .p-sase-sec--soft { background: #faf9f8; }
+    .p-sase-sec-head {
+      text-align: center;
+      margin-bottom: clamp(44px, 6vw, 72px);
+    }
+    .p-sase-sec-label {
+      font-family: var(--font-en), 'Outfit', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sase-blue);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .p-sase-sec-title {
+      font-family: var(--font-jp), 'Noto Sans JP', sans-serif;
+      font-size: clamp(24px, 3.2vw, 38px);
+      font-weight: 700;
+      line-height: 1.36;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+      margin-bottom: 14px;
+    }
+    .p-sase-sec-sub {
+      font-size: clamp(14px, 1.2vw, 16px);
+      color: var(--color-text-sub);
+      line-height: 1.85;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ---- Problems（3列カード） ---- */
+    .p-sase-prob-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .p-sase-prob-card {
+      background: #fff;
+      padding: 40px 28px;
+      border-radius: 20px;
+      box-shadow: var(--sase-shadow-md);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease;
+    }
+    .p-sase-prob-card:hover { transform: translateY(-6px); }
+    .p-sase-prob-icon { font-size: 2.4rem; margin-bottom: 18px; }
+    .p-sase-prob-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text);
+    }
+    .p-sase-prob-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-sub);
+      line-height: 1.78;
+    }
+
+    /* ---- Concept（ガラス2列） ---- */
+    .p-sase-concept-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .p-sase-concept-card {
+      padding: 52px 44px;
+      border-radius: var(--sase-radius-lg);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      box-shadow: var(--sase-shadow-md);
+      transition: all 0.4s ease;
+    }
+    .p-sase-concept-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .p-sase-concept-icon {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 26px;
+    }
+    .p-sase-concept-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--sase-blue);
+      margin-bottom: 8px;
+    }
+    .p-sase-concept-subtitle {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 18px;
+    }
+    .p-sase-concept-text {
+      font-size: 0.9375rem;
+      color: var(--color-text-sub);
+      line-height: 1.9;
+    }
+    .p-sase-concept-text strong {
+      color: var(--color-text);
+      background: linear-gradient(transparent 68%, #e8d3d1 68%);
+    }
+
+    /* ---- Features（交互レイアウト） ---- */
+    .p-sase-feat-row {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      margin-bottom: 104px;
+    }
+    .p-sase-feat-row:last-child { margin-bottom: 0; }
+    .p-sase-feat-row--rev { flex-direction: row-reverse; }
+    .p-sase-feat-visual { flex: 1; }
+    .p-sase-feat-img-frame {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      border-radius: var(--sase-radius-lg);
+      padding: 20px;
+      box-shadow: var(--sase-shadow-lg);
+    }
+    .p-sase-feat-img-frame img {
+      border-radius: var(--sase-radius-md);
+      width: 100%;
+      display: block;
+    }
+    .p-sase-feat-content { flex: 1; }
+    .p-sase-feat-label {
+      font-family: var(--font-en), 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sase-blue);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .p-sase-feat-title {
+      font-family: var(--font-jp), 'Noto Sans JP', sans-serif;
+      font-size: clamp(20px, 2.4vw, 30px);
+      font-weight: 700;
+      line-height: 1.38;
+      color: var(--color-text);
+      margin-bottom: 18px;
+    }
+    .p-sase-feat-desc {
+      font-size: clamp(13px, 1.1vw, 15px);
+      color: var(--color-text-sub);
+      line-height: 1.92;
+    }
+
+    /* ---- Benefits（3列カード・ホバーで桜グラデ） ---- */
+    .p-sase-benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .p-sase-benefit-card {
+      background: #fff;
+      padding: 44px 28px;
+      border-radius: 20px;
+      box-shadow: var(--sase-shadow-md);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .p-sase-benefit-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--sase-sakura-grad);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.4s ease;
+    }
+    .p-sase-benefit-card:hover { transform: translateY(-8px); box-shadow: var(--sase-shadow-lg); }
+    .p-sase-benefit-card:hover::before { opacity: 1; }
+    .p-sase-benefit-icon {
+      width: 54px;
+      height: 54px;
+      background: var(--sase-blue-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+    .p-sase-benefit-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text);
+    }
+    .p-sase-benefit-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-sub);
+      line-height: 1.78;
+    }
+
+    /* ---- Specs（ガラスパネル） ---- */
+    .p-sase-specs-panel {
+      max-width: 840px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: var(--sase-radius-lg);
+      padding: clamp(32px, 5vw, 56px);
+      box-shadow: var(--sase-shadow-md);
+    }
+    .p-sase-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .p-sase-spec-label {
+      font-family: var(--font-en), 'Outfit', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sase-blue);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .p-sase-platform-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .p-sase-platform-pill {
+      padding: 7px 14px;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--color-text-sub);
+    }
+    .p-sase-app-row { display: flex; align-items: center; gap: 18px; }
+    .p-sase-app-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--sase-blue);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 700;
+      box-shadow: 0 8px 16px rgba(0, 117, 222, 0.22);
+      flex-shrink: 0;
+    }
+    .p-sase-app-name { font-weight: 700; font-size: 0.9375rem; margin-bottom: 3px; color: var(--color-text); }
+    .p-sase-app-ver { font-size: 0.8rem; color: var(--color-text-sub); }
+
+    /* ---- CTA（ガラスカード on 桜グラデ背景） ---- */
+    .p-sase-cta-wrap {
+      position: relative;
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .p-sase-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--sase-sakura-grad);
+      z-index: 0;
+    }
+    .p-sase-cta-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .p-sase-cta-card {
+      text-align: center;
+      padding: clamp(44px, 6vw, 80px);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      border-radius: var(--sase-radius-lg);
+      box-shadow: var(--sase-shadow-lg);
+    }
+    .p-sase-cta-title {
+      font-family: var(--font-jp), 'Noto Sans JP', sans-serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 14px;
+    }
+    .p-sase-cta-desc {
+      font-size: clamp(14px, 1.2vw, 16px);
+      color: var(--color-text-sub);
+      margin-bottom: 36px;
+      line-height: 1.85;
+    }
+
+    /* ---- レスポンシブ ---- */
+    @media (max-width: 960px) {
+      .p-sase-hero-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 44px;
+        min-height: auto;
+      }
+      .p-sase-hero-text { max-width: 100%; }
+      .p-sase-hero-actions { justify-content: center; }
+      .p-sase-prob-grid,
+      .p-sase-concept-grid,
+      .p-sase-benefit-grid { grid-template-columns: 1fr; }
+      .p-sase-feat-row,
+      .p-sase-feat-row--rev {
+        flex-direction: column;
+        gap: 44px;
+        margin-bottom: 72px;
+      }
+      .p-sase-concept-card { padding: 36px 24px; }
+      .p-sase-specs-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body class="is-loading" id="page-sakura-sase">
+  <div class="l-cover" aria-hidden="true"><div class="_logo"><span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;color:#1a1818;">SAKURA<span style="color:#c97b8d;">-NET</span></span></div></div>
+  <header class="l-header" role="banner">
+    <div class="l-header_logo"><a href="index.html" aria-label="株式会社さくらねっと トップへ"><img src="img/logo_header_light_bg.png" alt="SAKURA-NET" style="height:48px;width:auto;display:block;"></a></div>
+    <nav class="l-header_list" aria-label="グローバルナビゲーション"><ul style="display:contents;list-style:none;"><li><a href="index.html">Home</a></li><li><a href="service.html">Services</a></li><li><a href="company.html">About</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+    <div class="l-header_contact"><a href="contact.html" style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:#1a1818;padding:10px 20px;border-radius:9999px;display:inline-block;">お問い合わせ</a></div>
+    <button class="l-header_toggle js-nav-toggle" aria-expanded="false" aria-controls="l-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+  </header>
+  <div class="l-nav" id="l-nav" role="dialog" aria-modal="true" aria-label="ナビゲーション">
+    <div class="l-nav_main"><nav class="l-nav_gnav" aria-label="メインメニュー"><ul><li><a href="index.html">HOME</a></li><li><a href="service.html">SERVICES</a></li><li><a href="company.html">ABOUT</a></li><li><a href="news.html">NEWS</a></li><li><a href="contact.html">CONTACT</a></li></ul></nav><nav class="l-nav_snav" aria-label="サブメニュー"><a href="recruit.html">採用情報</a><a href="custom.html">代理店募集</a><a href="custom1.html">サポート概要</a><a href="remote.html">遠隔サポート</a><a href="pay.html">お支払い方法</a><a href="privacy.html">プライバシーポリシー</a></nav></div>
+    <div class="l-nav_image" aria-hidden="true"><img src="img/hero_sase.png" alt="" loading="lazy"><div class="l-nav_image_info"><h3>SAKURA-SASE</h3><p>Zero Trust / ZTNA</p></div></div>
+  </div>
+
+  <main id="content">
+
+    <!-- ===== Hero ===== -->
+    <section class="p-sase-hero">
+      <div class="l-inner">
+        <nav class="c-breadcrumb" aria-label="パンくずリスト">
+          <a href="index.html">Home</a>
+          <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+          <a href="service.html">Services</a>
+          <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+          <span aria-current="page">SAKURA-SASE</span>
+        </nav>
+        <div class="p-sase-hero-row">
+          <div class="p-sase-hero-text">
+            <span class="p-sase-badge">Next-Generation ZTNA</span>
+            <h1 class="p-sase-hero-title">社内ネットワークを、<br><span class="accent">もっと安全に、もっと自由に。</span></h1>
+            <p class="p-sase-hero-desc">UniFi UDM-Pro × Cloudflareが実現する次世代セキュア・リモートアクセス。<br>危険なポート開放を一切せず、圧倒的に強固なゼロトラスト環境を構築します。</p>
+            <div class="p-sase-hero-actions">
+              <a href="contact.html" class="p-sase-btn p-sase-btn--primary p-sase-btn--lg">無料トライアルを相談</a>
+              <a href="#features" class="p-sase-btn p-sase-btn--outline p-sase-btn--lg">詳しく見る</a>
+            </div>
+          </div>
+          <div class="p-sase-hero-visual">
+            <img src="img/hero_sase.png" alt="SAKURA-SASE ゼロトラストネットワーク" class="p-sase-hero-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Problems ===== -->
+    <section class="p-sase-sec p-sase-sec--soft">
+      <div class="l-inner">
+        <div class="p-sase-sec-head">
+          <h2 class="p-sase-sec-title">従来型VPNの課題を、<br>SAKURA-SASEが解決します</h2>
+        </div>
+        <div class="p-sase-prob-grid">
+          <div class="p-sase-prob-card">
+            <div class="p-sase-prob-icon">🛡️</div>
+            <h3 class="p-sase-prob-title">ポート開放による脅威</h3>
+            <p class="p-sase-prob-desc">VPN機器の脆弱性を狙った攻撃が増加中。ポートを外部に開けている限り、ランサムウェア等の標的にされるリスクが消えません。</p>
+          </div>
+          <div class="p-sase-prob-card">
+            <div class="p-sase-prob-icon">📉</div>
+            <h3 class="p-sase-prob-title">通信遅延とボトルネック</h3>
+            <p class="p-sase-prob-desc">全社員のトラフィックが本社のVPN機器に集中。回線パンクによるWeb会議の途切れや業務効率の低下が課題です。</p>
+          </div>
+          <div class="p-sase-prob-card">
+            <div class="p-sase-prob-icon">👥</div>
+            <h3 class="p-sase-prob-title">複雑な運用と権限管理</h3>
+            <p class="p-sase-prob-desc">入退社に伴うアカウント管理や、特定のサーバーだけアクセスさせたいといった細やかな制御が困難です。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Concept ===== -->
+    <section id="concept" class="p-sase-sec">
+      <div class="l-inner">
+        <div class="p-sase-sec-head">
+          <span class="p-sase-badge">Security Basics</span>
+          <h2 class="p-sase-sec-title">次世代セキュリティの鍵、<br>「ゼロトラスト」と「SASE」</h2>
+          <p class="p-sase-sec-sub">なぜ今、これまでの対策では不十分なのか。その理由を分かりやすく解説します。</p>
+        </div>
+        <div class="p-sase-concept-grid">
+          <div class="p-sase-concept-card">
+            <span class="p-sase-concept-icon">🛡️</span>
+            <h3 class="p-sase-concept-title">ゼロトラストとは？</h3>
+            <p class="p-sase-concept-subtitle">「何も信頼しない」が、最強の防御</p>
+            <p class="p-sase-concept-text">これまでは「社内は安全、社外は危険」という境界線で守ってきました。しかし、テレワークの普及によりその境界は消滅しました。<br><br><strong>ゼロトラスト</strong>は、社内外を問わず「すべてのアクセスを一度疑い、その都度厳格に認証する」という考え方。SAKURA-SASEは、この最新の哲学を具現化しています。</p>
+          </div>
+          <div class="p-sase-concept-card">
+            <span class="p-sase-concept-icon">☁️</span>
+            <h3 class="p-sase-concept-title">SASE（サシー）とは？</h3>
+            <p class="p-sase-concept-subtitle">ネットワークとセキュリティの完全統合</p>
+            <p class="p-sase-concept-text">Secure Access Service Edgeの略称です。これまでバラバラだった「ネットワークの道筋」と「セキュリティの壁」をクラウド上でひとつに統合したモデルを指します。<br><br>拠点を増やすたびに高い機器を買う必要はありません。クラウドをセキュリティの入り口にすることで、<strong>「どこにいても、一貫した高い安全性」</strong>をスマートに実現できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section id="features" class="p-sase-sec p-sase-sec--soft">
+      <div class="l-inner">
+
+        <!-- Feature 01 -->
+        <div class="p-sase-feat-row">
+          <div class="p-sase-feat-visual">
+            <div class="p-sase-feat-img-frame">
+              <img src="img/detail_sase_managed.png" alt="フルマネージド運用">
+            </div>
+          </div>
+          <div class="p-sase-feat-content">
+            <span class="p-sase-feat-label">Feature 01</span>
+            <h2 class="p-sase-feat-title">専門エンジニアによる<br>フルマネージド運用</h2>
+            <p class="p-sase-feat-desc">日々のネットワーク設計、設定変更、障害対応などをSAKURA-NETの専門エンジニアが代行。社内にIT専門要員がいなくても、常に最適で安全なネットワーク環境を維持できます。運用負荷をゼロにし、コア業務に集中できる環境を提供します。</p>
+          </div>
+        </div>
+
+        <!-- Feature 02 -->
+        <div class="p-sase-feat-row p-sase-feat-row--rev">
+          <div class="p-sase-feat-visual">
+            <div class="p-sase-feat-img-frame">
+              <img src="img/detail_sase_noport.png" alt="完全アウトバウンド通信">
+            </div>
+          </div>
+          <div class="p-sase-feat-content">
+            <span class="p-sase-feat-label">Feature 02</span>
+            <h2 class="p-sase-feat-title">インバウンドポート開放・完全不要</h2>
+            <p class="p-sase-feat-desc">Cloudflare Tunnel技術を活用し、社内からクラウドへの「アウトバウンド通信」のみでセキュアなトンネルを確立。ファイアウォールに穴を開ける必要がないため、外部からの不正スキャンや攻撃を根本から無効化します。「見えないネットワーク」が最高の防御となります。</p>
+          </div>
+        </div>
+
+        <!-- Feature 03 -->
+        <div class="p-sase-feat-row">
+          <div class="p-sase-feat-visual">
+            <div class="p-sase-feat-img-frame">
+              <img src="img/detail_sase_ztna.png" alt="ゼロトラスト認証基盤">
+            </div>
+          </div>
+          <div class="p-sase-feat-content">
+            <span class="p-sase-feat-label">Feature 03</span>
+            <h2 class="p-sase-feat-title">強固なゼロトラスト認証基盤</h2>
+            <p class="p-sase-feat-desc">「一度繋がれば全て見れる」従来型VPNとは決別。SAKURA-SASEは、Microsoft Entra ID（旧Azure AD）やGoogle Workspace等のIdPとシームレスに連携。接続のたびに、ユーザーのアイデンティティ、デバイス証明書、多要素認証（MFA）を評価し、厳格なアクセス制御を実施します。</p>
+          </div>
+        </div>
+
+        <!-- Feature 04 -->
+        <div class="p-sase-feat-row p-sase-feat-row--rev">
+          <div class="p-sase-feat-visual">
+            <div class="p-sase-feat-img-frame">
+              <img src="img/detail_sase_udm.png" alt="UniFi UDM-Proとの統合">
+            </div>
+          </div>
+          <div class="p-sase-feat-content">
+            <span class="p-sase-feat-label">Feature 04</span>
+            <h2 class="p-sase-feat-title">UniFi UDM-Proとのシームレスな統合</h2>
+            <p class="p-sase-feat-desc">SAKURA-NETが提供するUniFiネットワーク環境のポテンシャルを最大化。社内のVLANやルーティングと連携し、特定のグループに所属するユーザーにだけ、特定のサーバー（ファイルサーバーや複合機など）へのアクセスを許可する「マイクロセグメンテーション」を実現します。</p>
+          </div>
+        </div>
+
+        <!-- Feature 05 -->
+        <div class="p-sase-feat-row">
+          <div class="p-sase-feat-visual">
+            <div class="p-sase-feat-img-frame">
+              <img src="img/detail_sase_dashboard.png" alt="SAKURA-SASE 日本語管理ポータル">
+            </div>
+          </div>
+          <div class="p-sase-feat-content">
+            <span class="p-sase-feat-label">Feature 05</span>
+            <h2 class="p-sase-feat-title">直感的な日本語ダッシュボード<br>「SAKURA Security Portal」</h2>
+            <p class="p-sase-feat-desc">Wazuhの強力なセキュリティエンジンをベースにした、完全日本語対応の独自管理ポータルを提供。「今、何が起きているか」を専門知識なしでも直感的に把握できます。脅威の検知状況、端末の健全性、ネットワーク負荷などを美しく可視化し、経営判断を支えるインテリジェンスを提供します。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Benefits ===== -->
+    <section id="benefits" class="p-sase-sec">
+      <div class="l-inner">
+        <div class="p-sase-sec-head">
+          <span class="p-sase-badge">Benefits</span>
+          <h2 class="p-sase-sec-title">導入のメリット</h2>
+          <p class="p-sase-sec-sub">SAKURA-SASEが、企業のネットワークに安心と効率をもたらします。</p>
+        </div>
+        <div class="p-sase-benefit-grid">
+          <div class="p-sase-benefit-card">
+            <div class="p-sase-benefit-icon">🚀</div>
+            <h3 class="p-sase-benefit-title">導入の手軽さ</h3>
+            <p class="p-sase-benefit-desc">ヒアリングシートに記入するだけで、短期間で手軽に次世代ネットワークセキュリティを構築できます。複雑な構築作業はすべてお任せください。</p>
+          </div>
+          <div class="p-sase-benefit-card">
+            <div class="p-sase-benefit-icon">💰</div>
+            <h3 class="p-sase-benefit-title">コスト削減</h3>
+            <p class="p-sase-benefit-desc">初期設定から運用・管理までがサービス費用にオールインワンで含まれています。個別導入に比べ、運用負荷とコストを大幅に抑えることが可能です。</p>
+          </div>
+          <div class="p-sase-benefit-card">
+            <div class="p-sase-benefit-icon">🛡️</div>
+            <h3 class="p-sase-benefit-title">感染拡大の防止</h3>
+            <p class="p-sase-benefit-desc">万が一端末がマルウェアに侵入されても、フラットな社内LANとは異なり、他拠点や重要システムへの「感染を拡げない」アクセス制御が可能です。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Specs ===== -->
+    <section id="specs" class="p-sase-sec p-sase-sec--soft">
+      <div class="l-inner">
+        <div class="p-sase-sec-head">
+          <h2 class="p-sase-sec-title">利用環境・仕様</h2>
+        </div>
+        <div class="p-sase-specs-panel">
+          <div class="p-sase-specs-grid">
+            <div>
+              <span class="p-sase-spec-label">対応OS / プラットフォーム</span>
+              <div class="p-sase-platform-list">
+                <span class="p-sase-platform-pill">Windows</span>
+                <span class="p-sase-platform-pill">macOS</span>
+                <span class="p-sase-platform-pill">iOS / iPadOS</span>
+                <span class="p-sase-platform-pill">Android</span>
+              </div>
+            </div>
+            <div>
+              <span class="p-sase-spec-label">専用クライアントアプリ</span>
+              <div class="p-sase-app-row">
+                <div class="p-sase-app-icon">S</div>
+                <div>
+                  <div class="p-sase-app-name">SAKURA-SASE クライアント</div>
+                  <div class="p-sase-app-ver">Version 2.4.0 (Latest)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="p-sase-cta-wrap">
+      <div class="p-sase-cta-bg" aria-hidden="true"></div>
+      <div class="l-inner p-sase-cta-inner">
+        <div class="p-sase-cta-card">
+          <h2 class="p-sase-cta-title">次世代のセキュリティを、あなたのオフィスにも。</h2>
+          <p class="p-sase-cta-desc">既存のネットワーク環境の調査から導入・保守まで、ワンストップでサポートいたします。</p>
+          <a href="contact.html" class="p-sase-btn p-sase-btn--primary p-sase-btn--lg">導入のご相談はこちら</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="l-footer" role="contentinfo"><div class="l-footer_inner"><div class="l-footer_top"><div><div class="l-footer_logo"><img src="img/logo_header_dark_bg.png" alt="SAKURA-NET" style="height:40px;width:auto;"><a href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">SAKURA-NET</a></div><div class="l-footer_info" style="margin-top:16px;">株式会社さくらねっと<br>〒532-0012 大阪市淀川区木川東4-3-34 5F<br>TEL: <a href="tel:0677772720">06-7777-2720</a> MAIL: <a href="mailto:info@sakuranet-co.jp">info@sakuranet-co.jp</a><br>営業時間: 平日 10:00–19:00（完全予約制）</div></div><nav class="l-footer_nav" aria-label="フッターナビゲーション"><a href="index.html">Home</a><a href="service.html">Services</a><a href="company.html">About</a><a href="concept.html">方針</a><a href="access.html">Access</a><a href="news.html">News</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="support.html">SUPPORT</a><a href="custom.html">代理店</a><a href="pay.html">お支払い</a><a href="remote.html">遠隔サポート</a><a href="https://sakuranet-co.jp/system/index.php">SYSTEM</a><a href="privacy.html">Privacy</a></nav></div><div class="l-footer_bottom"><small class="l-footer_copy">&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</small><div class="l-footer_links"><a href="privacy.html">プライバシーポリシー</a><a href="contact.html">お問い合わせ</a></div></div></div></footer>
+  <div class="l-mobile-cta" aria-label="スマートフォン用クイックアクセス"><a href="tel:0677772720" class="l-mobile-cta_btn l-mobile-cta_btn--tel"><span class="l-mobile-cta_icon" aria-hidden="true">TEL</span><span>電話で問い合わせ</span></a><a href="contact.html" class="l-mobile-cta_btn l-mobile-cta_btn--form"><span class="l-mobile-cta_icon" aria-hidden="true">MAIL</span><span>Webで問い合わせ</span></a></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

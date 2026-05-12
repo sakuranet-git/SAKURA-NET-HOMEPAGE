@@ -1,4 +1,54 @@
-﻿## [v3.0.26] - 2026-04-27 - CMSとパブリックサイトのニュース連携
+﻿## [v3.1.2] - 2026-05-13 - service.html カード画像を実画像に統一
+
+### 変更内容
+- `service.html` — 絵文字アイコンを実画像に切り替え（5枚）
+  - 光回線: 🌐 → `card_sakura_hikari.webp`
+  - UniFi ネットワーク: 📡 → `card_unifi_network.webp`
+  - 防犯カメラ: 📷 → `card_unifi_protect.webp`
+  - 入退室管理: 🔐 → `card_unifi_access.webp`
+  - SAKURA-SASE: 🔒 → `card_sase.png`（v3.1.1で対応済み）
+
+### バックアップ
+- `backups/v3.1.1_pre-card-images/service.html`
+
+---
+
+## [v3.1.1] - 2026-05-13 - sakura-sase.html HP ベース統合・service.html カード修正
+
+### 変更内容
+- `sakura-sase.html` — HP ベース（style.css）読み込み + Gemini デザイン要素をページ固有 CSS で追加
+  - HP の `l-inner` / `l-header` / `l-footer` / `l-mobile-cta` / `main.js` を使用
+  - Gemini のデザイン要素（hero 浮遊アニメ・badge・glass concept cards・feature 交互レイアウト・benefits・specs・glass CTA）を `p-sase-*` クラスで実装
+  - HP の CSS 変数（`--color-text` / `--color-text-sub` / `--color-border` / `--font-en` / `--font-jp`）を参照
+- `service.html` — SAKURA-SASE カードのアイコンを 🔒 絵文字 → `card_sase.png` 実画像に変更
+
+---
+
+## [v3.1.0] - 2026-05-13 - SAKURA-SASE LP新設・サービス導線追加
+
+### 変更内容
+- `sakura-sase.html` — 新規作成：SAKURA-SASE ランディングページ
+  - Gemini設計（SAKURA-SASE v1.0.1）のコンテンツをHP MIMEYOI Quiet Luxuryデザインに完全移植
+  - Hero / Problems / Concept（Zero Trust・SASE解説）/ Features×5 / Benefits / Specs / CTA 構成
+  - `unifi-security.html` テンプレートベース、HP共通 style.css 使用
+  - 画像：`detail_sase_managed.png`, `detail_sase_noport.png`, `detail_sase_ztna.png`, `detail_sase_udm.png`, `detail_sase_dashboard.png` を使用
+- `img/` — SAKURA-SASE 画像7枚追加
+  - `hero_sase.png`, `card_sase.png`, `detail_sase_managed.png`, `detail_sase_noport.png`, `detail_sase_ztna.png`, `detail_sase_udm.png`, `detail_sase_dashboard.png`
+- `service.html` — Securityセクションに SAKURA-SASE カード追加
+  - JSON-LD `@graph` に SAKURA-SASE Service エントリ追加
+  - title・description・keywords に SAKURA-SASE / ZTNA を追記
+- `index.html` — Solutionsセクションに SAKURA-SASE カード追加（7枚目）
+- `sitemap.xml` — `sakura-sase.html` を priority 0.8 で追加（lastmod: 2026-05-13）
+
+### バックアップ
+- `backups/v3.0.26_pre-sakura-sase/`（service.html / index.html / sitemap.xml）
+
+### 参照元
+- `C:\Users\MYPC\Development\gemini\SAKURA-SASE\` v1.0.1（Gemini設計）
+
+---
+
+## [v3.0.26] - 2026-04-27 - CMSとパブリックサイトのニュース連携
 
 ### 変更内容
 - `index.html` — トップページのニュースセクションを動的フェッチに変更（静的HTML→API取得）
@@ -1386,6 +1436,35 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 - `backups/v3.0.27_pre-contact-form/` に更新前バックアップを保存
 
 **変更ファイル:** contact.html / contact_send.php / contact_thanks.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.28] - 2026-05-11 - contact.html さくらインターネット株式会社様との誤問い合わせ注意を追加
+### 変更内容
+- `contact.html` の問い合わせフォーム直前に注意ボックスを追加
+- 当社「株式会社さくらねっと」は「さくらインターネット株式会社」様とは別法人である旨を明記
+- さくらインターネット株式会社様のサーバー・メール・ドメイン・契約内容・障害等は同社公式サポート窓口へ問い合わせるよう案内
+- 同社サービスの設定確認・不具合調査・復旧支援等を当社へ依頼する場合、保守契約外サポートとして有償対応となる可能性がある旨を追記
+- 既存フォーム、電話番号、メール、来店予約、サポートチケット導線は変更なし
+
+### バックアップ
+- `backups/v3.0.28_pre-contact-sakura-internet-notice/` に更新前バックアップを保存
+
+**変更ファイル:** contact.html / RELEASE_NOTES.md
+
+---
+
+## [v3.0.29] - 2026-05-11 - contact.html 誤問い合わせ注意の表示位置を調整
+### 変更内容
+- `contact.html` の「さくらインターネット株式会社」様との誤問い合わせ注意ボックスを移動
+- 移動前: よくあるご相談の直後、問い合わせフォームの直前
+- 移動後: 連絡先テーブル内のサポートチケット案内の直後
+- 注意文の内容、問い合わせフォーム、電話番号、メール、来店予約、サポートチケット導線は変更なし
+
+### バックアップ
+- `backups/v3.0.29_pre-move-sakura-internet-notice/` に更新前バックアップを保存
+
+**変更ファイル:** contact.html / RELEASE_NOTES.md
 
 ---
 
