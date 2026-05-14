@@ -1,4 +1,20 @@
-﻿## [v3.1.2] - 2026-05-13 - service.html カード画像を実画像に統一
+﻿## [v3.1.3] - 2026-05-14 - service.html 全カードをイラスト画像に統一
+
+### 変更内容
+- `service.html` — 残り5枚の絵文字アイコンをイラスト実画像に差し替え
+  - SAKURA-NET Mobile / SIM: 📱 → `card_mobile_sim.png`
+  - クラウドUTM・VPN構築: 🛡️ → `card_utm_vpn.png`
+  - クラウドVPS・IP-PBX: ☁️ → `card_vps_pbx.png`
+  - 法人ITサポート: 💻 → `card_it_support.png`
+  - OEM・ホワイトラベル提供: 🤝 → `card_oem.png`
+- `img/` — イラスト5枚追加（Gemini作成）
+
+### バックアップ
+- `backups/v3.1.2_pre-service-icons/service.html`
+
+---
+
+## [v3.1.2] - 2026-05-13 - service.html カード画像を実画像に統一
 
 ### 変更内容
 - `service.html` — 絵文字アイコンを実画像に切り替え（5枚）
