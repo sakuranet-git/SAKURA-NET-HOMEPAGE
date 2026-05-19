@@ -78,7 +78,9 @@ if (reservation_value('website') !== '') {
     reservation_redirect_error('送信内容を確認できませんでした。');
 }
 
-$preferredDate = reservation_value('preferred_date');
+$preferredDate1 = reservation_value('preferred_date_1');
+$preferredDate2 = reservation_value('preferred_date_2');
+$preferredDate3 = reservation_value('preferred_date_3');
 $timeSlot = reservation_value('time_slot');
 $meetingType = reservation_value('meeting_type');
 $serviceType = reservation_value('service_type');
@@ -89,7 +91,7 @@ $customerPhone = reservation_value('customer_phone');
 $message = reservation_value('message');
 $privacy = reservation_value('privacy');
 
-if ($preferredDate === '' || $timeSlot === '' || $meetingType === '' || $serviceType === '' || $customerName === '' || $customerEmail === '' || $customerPhone === '' || $privacy !== '1') {
+if ($preferredDate1 === '' || $timeSlot === '' || $meetingType === '' || $serviceType === '' || $customerName === '' || $customerEmail === '' || $customerPhone === '' || $privacy !== '1') {
     reservation_redirect_error('必須項目を入力してください。');
 }
 
@@ -98,12 +100,41 @@ if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
 }
 
 $tz = new DateTimeZone('Asia/Tokyo');
-if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $preferredDate)) {
-    reservation_redirect_error('希望日を確認してください。');
+$today = new DateTimeImmutable('today', $tz);
+$dateCandidates = [
+    ['label' => '第一希望', 'value' => $preferredDate1, 'required' => true],
+    ['label' => '第二希望', 'value' => $preferredDate2, 'required' => false],
+    ['label' => '第三希望', 'value' => $preferredDate3, 'required' => false],
+];
+$dateLines = [];
+$primaryDate = '';
+$seenDates = [];
+foreach ($dateCandidates as $c) {
+    $d = trim($c['value']);
+    if ($d === '') {
+        if ($c['required']) {
+            reservation_redirect_error('第一希望日を入力してください。');
+        }
+        continue;
+    }
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $d)) {
+        reservation_redirect_error($c['label'] . '日を確認してください。');
+    }
+    $candidate = new DateTimeImmutable($d . ' 00:00:00', $tz);
+    if ($candidate < $today) {
+        reservation_redirect_error($c['label'] . '日は本日以降を選択してください。');
+    }
+    if (in_array($d, $seenDates, true)) {
+        reservation_redirect_error('希望日が重複しています。別の日を選んでください。');
+    }
+    $seenDates[] = $d;
+    $dateLines[] = $c['label'] . ': ' . $d;
+    if ($primaryDate === '') {
+        $primaryDate = $d;
+    }
 }
-$date = new DateTimeImmutable($preferredDate . ' 00:00:00', $tz);
-if ($date < new DateTimeImmutable('today', $tz)) {
-    reservation_redirect_error('希望日は本日以降を選択してください。');
+if ($primaryDate === '') {
+    reservation_redirect_error('第一希望日を入力してください。');
 }
 
 $slotParts = explode('|', $timeSlot);
@@ -111,15 +142,20 @@ if (count($slotParts) !== 2 || !preg_match('/^\d{2}:\d{2}$/', $slotParts[0]) || 
     reservation_redirect_error('希望時間を確認してください。');
 }
 
-$preferredStart = $preferredDate . 'T' . $slotParts[0] . ':00+09:00';
-$preferredEnd = $preferredDate . 'T' . $slotParts[1] . ':00+09:00';
-$subject = '予約希望: ' . $preferredDate . ' ' . $slotParts[0] . '-' . $slotParts[1] . ' ' . $meetingType;
-$requestBody = implode("\n", array_filter([
-    '相談方法: ' . $meetingType,
-    '相談内容: ' . $serviceType,
-    $company !== '' ? '会社名・屋号: ' . $company : '',
-    $message !== '' ? '補足: ' . $message : '補足: なし',
-]));
+$preferredStart = $primaryDate . 'T' . $slotParts[0] . ':00+09:00';
+$preferredEnd = $primaryDate . 'T' . $slotParts[1] . ':00+09:00';
+$datesLabel = implode(' / ', $seenDates);
+$subject = '予約希望: ' . $datesLabel . ' ' . $slotParts[0] . '-' . $slotParts[1] . ' ' . $meetingType;
+$requestBody = implode("\n", array_filter(array_merge(
+    $dateLines,
+    [
+        '希望時間: ' . $slotParts[0] . '-' . $slotParts[1],
+        '相談方法: ' . $meetingType,
+        '相談内容: ' . $serviceType,
+        $company !== '' ? '会社名・屋号: ' . $company : '',
+        $message !== '' ? '補足: ' . $message : '補足: なし',
+    ]
+)));
 
 $result = reservation_post_to_gas([
     'action' => 'submit_ticket',

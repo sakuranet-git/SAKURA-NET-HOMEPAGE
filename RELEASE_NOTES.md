@@ -1,4 +1,47 @@
-﻿## [v3.1.3] - 2026-05-14 - service.html 全カードをイラスト画像に統一
+﻿## [v3.1.5] - 2026-05-19 - reservation.php 改善・トップ右上 CTA を予約導線化
+
+### 変更内容
+
+**reservation.php**
+- 右上ナビが縦並びになっていた不具合を修正。`<ul>` に `style="display:contents;list-style:none;"` を追加し、index.html などと同じ横並びに統一。
+- 「相談したい内容」セレクトに「リモートサポート」を追加（法人ITサポートの直後）。
+- 「希望日」を 第一希望日（必須）／第二希望日（任意）／第三希望日（任意）の3欄構成に変更。各欄に min=本日 ガード付き。
+
+**reservation_send.php**
+- 3希望日の受け取り・バリデーションに対応（`preferred_date_1` 必須、`preferred_date_2`/`preferred_date_3` 任意）。
+- 各日付に対し本日以降ガード、書式ガード、重複ガードを追加。
+- GAS への送信時 subject と body に全希望日を `第一希望: YYYY-MM-DD` の形式で記録。primary date（第一希望日）を Calendar 用 `preferredStart`/`preferredEnd` として送る。
+
+**index.html**
+- トップ右上ヘッダーの「お問い合わせ」ボタン（→ contact.html）を「予約する」ボタン（→ reservation.php）に変更。reservation.php の右上 CTA と統一。
+
+### バックアップ
+
+- `backups/v3.1.5_pre-reservation-updates/reservation.php`
+- `backups/v3.1.5_pre-reservation-updates/reservation_send.php`
+- `backups/v3.1.5_pre-reservation-updates/index.html`
+
+### Web へのアップロード対象
+
+サーバ（sakuranet-co.jp）の以下 3 ファイルを差し替え:
+
+| ローカルパス | サーバパス |
+|---|---|
+| `reservation.php` | `https://sakuranet-co.jp/reservation.php` |
+| `reservation_send.php` | `https://sakuranet-co.jp/reservation_send.php` |
+| `index.html` | `https://sakuranet-co.jp/index.html` |
+
+外部依存（CDN）の追加なし。`style.css`・`js/main.js` の変更なし。
+
+### 動作確認
+
+- ローカル静的レンダリング（Python http.server + Chrome dev-browser）で PC（1440×900）・スマホ幅（390×800）両方でレイアウト確認済み。
+- PC ヘッダー: SAKURA-NET ロゴ／HOME・SERVICES・ABOUT・NEWS・CONTACT 横並び／右端「予約する」ボタン → reservation.php。
+- フォーム: 第一/第二/第三希望日（縦並び on モバイル、2 カラム on PC）／希望時間／相談方法／相談したい内容（リモートサポート含む）。
+
+---
+
+## [v3.1.3] - 2026-05-14 - service.html 全カードをイラスト画像に統一
 
 ### 変更内容
 - `service.html` — 残り5枚の絵文字アイコンをイラスト実画像に差し替え
