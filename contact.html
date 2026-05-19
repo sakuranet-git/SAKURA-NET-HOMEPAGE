@@ -301,6 +301,13 @@
           <p class="c-section_sub">UniFi導入・ネットワーク構築・防犯カメラ・入退室管理・法人ITサポートのご相談を受け付けております。<br>新規導入のご相談、お見積り、現在のIT環境のお困りごとなど、構想段階からでもお気軽にご連絡ください。</p>
         </div>
 
+        <div class="js-anim" style="background:#fffdfd;border:1px solid var(--color-border);border-left:4px solid var(--color-accent);border-radius:12px;padding:clamp(20px,4vw,34px);margin-bottom:clamp(28px,5vw,42px);">
+          <p style="font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:12px;">Reservation</p>
+          <h3 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(18px,2.4vw,26px);font-weight:400;line-height:1.6;color:var(--color-text);letter-spacing:0;margin-bottom:10px;">来店・オンライン相談の日時を決めたい方へ</h3>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2;color:var(--color-text-sub);margin-bottom:18px;">予約希望日・希望時間を入力する専用ページをご用意しています。日時を決めて相談したい場合は、予約受付ページから送信してください。</p>
+          <a href="reservation.php" class="c-button">予約受付ページへ</a>
+        </div>
+
         <!-- よくあるご相談 -->
         <div class="js-anim" style="background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:12px;padding:clamp(20px,4vw,36px);margin-bottom:clamp(32px,5vw,48px);">
           <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);margin-bottom:16px;">よくあるご相談</p>
@@ -415,6 +422,24 @@
                 </a>
               </td>
             </tr>
+            <tr>
+              <th scope="row">ご注意</th>
+              <td>
+                <div style="background:#fffdfd;border:1px solid var(--color-border);border-left:4px solid var(--color-accent);padding:clamp(18px,3vw,28px);">
+                  <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);margin-bottom:12px;">Before Contact</p>
+                  <h3 style="font-family:'Noto Sans JP',sans-serif;font-size:clamp(17px,2vw,22px);font-weight:400;line-height:1.6;color:var(--color-text);margin-bottom:12px;">さくらインターネット株式会社様へのお問い合わせについて</h3>
+                  <p style="font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2;color:var(--color-text-sub);margin-bottom:10px;">
+                    当社「株式会社さくらねっと」は、レンタルサーバー等を提供されている「さくらインターネット株式会社」様とは別法人です。
+                  </p>
+                  <p style="font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2;color:var(--color-text-sub);margin-bottom:10px;">
+                    さくらインターネット株式会社様のサーバー・メール・ドメイン・契約内容・障害等に関するお問い合わせは、同社の公式サポート窓口へご連絡ください。
+                  </p>
+                  <p style="font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:2;color:var(--color-text);margin:0;">
+                    なお、同社サービスの設定確認・不具合調査・復旧支援等を当社へご依頼いただく場合、当社の保守契約外サポートとして有償対応となる場合があります。内容によっては対応できない場合もございますので、あらかじめご了承ください。
+                  </p>
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -477,8 +502,7 @@
           <a href="tel:0677772720" style="color:inherit;">06-7777-2720</a>
         </div>
         <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:32px;">平日 10:00–19:00 ／ 完全予約制</p>
-        <a href="https://select-type.com/rsv/?id=dvJJk68ZE2g" target="_blank" rel="noopener noreferrer"
-          class="c-button" style="border-color:rgba(255,255,255,0.6);color:#fff;">来店予約（select-type）</a>
+        <a href="reservation.php" class="c-button" style="border-color:rgba(255,255,255,0.6);color:#fff;">来店・オンライン相談を予約</a>
       </div>
     </section>
 
@@ -510,6 +534,7 @@
           <a href="news.html">News</a>
           <a href="recruit.html">Recruit</a>
           <a href="contact.html">Contact</a>
+          <a href="reservation.php">Reservation</a>
           <a href="support.html">SUPPORT</a>
           <a href="custom.html">代理店</a>
           <a href="pay.html">お支払い</a>
@@ -522,6 +547,7 @@
         <small class="l-footer_copy">&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</small>
         <div class="l-footer_links">
           <a href="privacy.html">プライバシーポリシー</a>
+          <a href="reservation.php">予約受付</a>
           <a href="contact.html">お問い合わせ</a>
         </div>
       </div>
@@ -534,8 +560,8 @@
       <span class="l-mobile-cta_icon" aria-hidden="true">📞</span>
       <span>電話で問い合わせ</span>
     </a>
-    <a href="https://select-type.com/rsv/?id=dvJJk68ZE2g" target="_blank" rel="noopener noreferrer" class="l-mobile-cta_btn l-mobile-cta_btn--form">
-      <span class="l-mobile-cta_icon" aria-hidden="true">📅</span>
+    <a href="reservation.php" class="l-mobile-cta_btn l-mobile-cta_btn--form">
+      <span class="l-mobile-cta_icon" aria-hidden="true">予約</span>
       <span>来店予約</span>
     </a>
   </div>

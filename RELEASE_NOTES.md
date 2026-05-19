@@ -1519,3 +1519,16 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 **変更ファイル:** index.html / RELEASE_NOTES.md
 
+## [v3.1.4] - 2026-05-19 - 予約受付ページをHP直下に新設
+
+### 変更内容
+- `reservation.php` — さくらねっとHPデザインに合わせた来店・オンライン相談の予約受付ページを新規作成
+- `reservation_send.php` — 予約フォーム送信内容をGAS Web Appの予約受付APIへ中継するPHPハンドラを新規作成
+- `reservation_thanks.php` — 予約希望の受付完了ページを新規作成
+- `index.html` — トップページCTAの外部予約リンクを `reservation.php` へ変更
+- `contact.html` — 一般問い合わせと予約受付が混ざらないよう、予約専用ページへの案内を追加
+
+### バックアップ
+- `backups/v3.1.4_pre-reservation-page_20260519/`（index.html / contact.html / RELEASE_NOTES.md）
+
+---
