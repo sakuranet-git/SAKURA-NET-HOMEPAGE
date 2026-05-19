@@ -1,4 +1,20 @@
-﻿## [v3.1.6] - 2026-05-19 - contact.html ご注意にセキュリティチェック通知を追加
+﻿## [v3.1.7] - 2026-05-19 - sitemap.xml に予約受付ページを追加
+
+### 変更内容
+
+**sitemap.xml**
+- `https://sakuranet-co.jp/reservation.php` を追加。
+- `contact.html` とトップページの `lastmod` を 2026-05-19 に更新。
+- 既存のトップページ `image:title` がXMLとして壊れていたため、正しい閉じタグ付きの `株式会社さくらねっと` に修正。
+
+### バックアップ
+
+- `backups/v3.1.7_pre-sitemap-reservation_20260519/`（sitemap.xml / RELEASE_NOTES.md）
+
+---
+
+
+## [v3.1.6] - 2026-05-19 - contact.html ご注意にセキュリティチェック通知を追加
 
 ### 変更内容
 
@@ -1603,3 +1619,4 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 - `backups/v3.1.4_pre-reservation-page_20260519/`（index.html / contact.html / RELEASE_NOTES.md）
 
 ---
+
