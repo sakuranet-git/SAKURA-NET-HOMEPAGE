@@ -3,54 +3,6 @@ declare(strict_types=1);
 
 const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyHdtQd3n8BMtpWP9AdOU3ZRphDdTOq24INZkVxWEqOz2_hPSOneYBsfzWAdFIgV0ft/exec';
 
-// SAKURA-BLOOM 連携（同サーバー内）
-const BLOOM_WEBHOOK_URL      = 'https://sakuranet-co.jp/system/SAKURA-BLOOM/reservation_webhook.php';
-const BLOOM_SETTINGS_PATHS   = [
-    '/home/sakuranet/www/system/SAKURA-BLOOM/reservation_settings.json',
-    __DIR__ . '/system/SAKURA-BLOOM/reservation_settings.json',
-    __DIR__ . '/../system/SAKURA-BLOOM/reservation_settings.json',
-];
-
-function reservation_post_to_bloom(array $payload): void
-{
-    $secret = '';
-    foreach (BLOOM_SETTINGS_PATHS as $p) {
-        if (file_exists($p)) {
-            $s = json_decode((string)@file_get_contents($p), true) ?: [];
-            if (!empty($s['webhook_secret'])) { $secret = $s['webhook_secret']; break; }
-        }
-    }
-    if (empty($secret)) return; // シークレット未設定なら何もしない（HP予約は通常通り完了）
-
-    $payload['secret'] = $secret;
-    $body = http_build_query($payload, '', '&', PHP_QUERY_RFC3986);
-
-    if (function_exists('curl_init')) {
-        $ch = curl_init(BLOOM_WEBHOOK_URL);
-        curl_setopt_array($ch, [
-            CURLOPT_POST           => true,
-            CURLOPT_POSTFIELDS     => $body,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_TIMEOUT        => 10,
-            CURLOPT_HTTPHEADER     => ['Content-Type: application/x-www-form-urlencoded'],
-        ]);
-        @curl_exec($ch);
-        curl_close($ch);
-    } else {
-        $context = stream_context_create([
-            'http' => [
-                'method'        => 'POST',
-                'header'        => "Content-Type: application/x-www-form-urlencoded\r\n",
-                'content'       => $body,
-                'timeout'       => 10,
-                'ignore_errors' => true,
-            ],
-        ]);
-        @file_get_contents(BLOOM_WEBHOOK_URL, false, $context);
-    }
-}
-
 function reservation_redirect_error(string $message): void
 {
     header('Location: reservation.php?error=' . rawurlencode($message), true, 303);
@@ -220,16 +172,6 @@ $result = reservation_post_to_gas([
 if (empty($result['ok'])) {
     reservation_redirect_error((string)($result['message'] ?? '予約希望を送信できませんでした。'));
 }
-
-// SAKURA-BLOOM 連携（失敗しても予約処理は継続）
-@reservation_post_to_bloom([
-    'name'    => $customerName,
-    'date'    => $primaryDate,
-    'time'    => $slotParts[0],
-    'menu'    => $serviceType,
-    'contact' => $customerEmail . ' / ' . $customerPhone . ($company !== '' ? ' (' . $company . ')' : ''),
-    'note'    => $message,
-]);
 
 $ticket = '';
 if (isset($result['ticketKey']) && is_string($result['ticketKey'])) {
