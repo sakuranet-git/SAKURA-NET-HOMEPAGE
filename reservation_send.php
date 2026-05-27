@@ -170,32 +170,23 @@ $result = reservation_post_to_gas([
 ]);
 
 // SAKURA-BLOOM 自動取り込み用ログ（独立処理・失敗してもHP予約処理に影響しない）
-// 複数の候補パスを順に試す（さくらインターネットのドキュメントルートに依存しない）
-$bloomCandidates = [
-    __DIR__ . '/system/SAKURA-BLOOM/incoming_reservations.jsonl',
-    __DIR__ . '/../system/SAKURA-BLOOM/incoming_reservations.jsonl',
+@file_put_contents(
     '/home/sakuranet/www/system/SAKURA-BLOOM/incoming_reservations.jsonl',
-];
-$bloomPayload = json_encode([
-    'ts'      => date('c'),
-    'name'    => $customerName,
-    'email'   => $customerEmail,
-    'phone'   => $customerPhone,
-    'company' => $company,
-    'date'    => $primaryDate,
-    'time'    => $slotParts[0] ?? '',
-    'meeting' => $meetingType,
-    'service' => $serviceType,
-    'message' => $message,
-    'ticket'  => $result['ticketKey'] ?? ($result['ticket']['ticketKey'] ?? ''),
-], JSON_UNESCAPED_UNICODE) . "\n";
-foreach ($bloomCandidates as $bloomPath) {
-    $bloomDir = dirname($bloomPath);
-    if (is_dir($bloomDir) && is_writable($bloomDir)) {
-        @file_put_contents($bloomPath, $bloomPayload, FILE_APPEND | LOCK_EX);
-        break;
-    }
-}
+    json_encode([
+        'ts'      => date('c'),
+        'name'    => $customerName,
+        'email'   => $customerEmail,
+        'phone'   => $customerPhone,
+        'company' => $company,
+        'date'    => $primaryDate,
+        'time'    => $slotParts[0] ?? '',
+        'meeting' => $meetingType,
+        'service' => $serviceType,
+        'message' => $message,
+        'ticket'  => $result['ticketKey'] ?? ($result['ticket']['ticketKey'] ?? ''),
+    ], JSON_UNESCAPED_UNICODE) . "\n",
+    FILE_APPEND | LOCK_EX
+);
 
 if (empty($result['ok'])) {
     reservation_redirect_error((string)($result['message'] ?? '予約希望を送信できませんでした。'));
