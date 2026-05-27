@@ -169,6 +169,25 @@ $result = reservation_post_to_gas([
     'requestBody' => $requestBody,
 ]);
 
+// SAKURA-BLOOM 自動取り込み用ログ（独立処理・失敗してもHP予約処理に影響しない）
+@file_put_contents(
+    '/home/sakuranet/www/system/SAKURA-BLOOM/incoming_reservations.jsonl',
+    json_encode([
+        'ts'      => date('c'),
+        'name'    => $customerName,
+        'email'   => $customerEmail,
+        'phone'   => $customerPhone,
+        'company' => $company,
+        'date'    => $primaryDate,
+        'time'    => $slotParts[0] ?? '',
+        'meeting' => $meetingType,
+        'service' => $serviceType,
+        'message' => $message,
+        'ticket'  => $result['ticketKey'] ?? ($result['ticket']['ticketKey'] ?? ''),
+    ], JSON_UNESCAPED_UNICODE) . "\n",
+    FILE_APPEND | LOCK_EX
+);
+
 if (empty($result['ok'])) {
     reservation_redirect_error((string)($result['message'] ?? '予約希望を送信できませんでした。'));
 }
