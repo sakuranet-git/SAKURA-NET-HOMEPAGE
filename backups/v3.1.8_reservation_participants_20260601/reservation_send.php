@@ -83,7 +83,6 @@ $preferredDate2 = reservation_value('preferred_date_2');
 $preferredDate3 = reservation_value('preferred_date_3');
 $timeSlot = reservation_value('time_slot');
 $meetingType = reservation_value('meeting_type');
-$participantCount = reservation_value('participant_count');
 $serviceType = reservation_value('service_type');
 $company = reservation_value('company');
 $customerName = reservation_value('customer_name');
@@ -92,12 +91,8 @@ $customerPhone = reservation_value('customer_phone');
 $message = reservation_value('message');
 $privacy = reservation_value('privacy');
 
-if ($preferredDate1 === '' || $timeSlot === '' || $meetingType === '' || $participantCount === '' || $serviceType === '' || $customerName === '' || $customerEmail === '' || $customerPhone === '' || $privacy !== '1') {
+if ($preferredDate1 === '' || $timeSlot === '' || $meetingType === '' || $serviceType === '' || $customerName === '' || $customerEmail === '' || $customerPhone === '' || $privacy !== '1') {
     reservation_redirect_error('必須項目を入力してください。');
-}
-
-if (!preg_match('/^[1-6]$/', $participantCount)) {
-    reservation_redirect_error('参加人数を確認してください。');
 }
 
 if (!filter_var($customerEmail, FILTER_VALIDATE_EMAIL)) {
@@ -156,7 +151,6 @@ $requestBody = implode("\n", array_filter(array_merge(
     [
         '希望時間: ' . $slotParts[0] . '-' . $slotParts[1],
         '相談方法: ' . $meetingType,
-        '参加人数: ' . $participantCount . ($participantCount === '6' ? '名以上' : '名'),
         '相談内容: ' . $serviceType,
         $company !== '' ? '会社名・屋号: ' . $company : '',
         $message !== '' ? '補足: ' . $message : '補足: なし',
@@ -170,7 +164,6 @@ $result = reservation_post_to_gas([
     'customerName' => $customerName,
     'customerEmail' => $customerEmail,
     'customerPhone' => $customerPhone,
-    'participantCount' => $participantCount,
     'preferredStart' => $preferredStart,
     'preferredEnd' => $preferredEnd,
     'requestBody' => $requestBody,
