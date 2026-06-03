@@ -1647,25 +1647,3 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 | `reservation_send.php` | `https://sakuranet-co.jp/reservation_send.php` |
 
 ---
-## [v3.1.9] - 2026-06-03 - 予約フォームの相談方法を追加
-
-### 変更内容
-
-**reservation.php**
-- 予約フォームの `相談方法` セレクトに以下を追加。
-  - `オンサイトサポート`
-  - `初回診断`
-  - `現地調査`
-
-### バックアップ
-
-- `backups/v3.1.9_reservation_meeting_types_20260603/reservation.php`
-- `backups/v3.1.9_reservation_meeting_types_20260603/RELEASE_NOTES.md`
-
-### Web へのアップロード対象
-
-| ファイル | 配置先 |
-|---|---|
-| `reservation.php` | `https://sakuranet-co.jp/reservation.php` |
-
----
