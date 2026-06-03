@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>SAKURA BLOOM｜LINE公式アカウントを予約・受付・配信・分析まで使える店舗DXツールへ｜株式会社さくらねっと</title>
+  <meta name="description" content="SAKURA BLOOMはLINE公式アカウントをAI受付・予約管理・ステップ配信・顧客分析まで活用できる店舗DXツールです。美容室・整体院・スクール・飲食店・士業など幅広い業種に対応。OEM提供も可能。">
+  <meta name="keywords" content="SAKURA BLOOM,LINE公式アカウント,店舗DX,予約管理,AI受付,ステップ配信,顧客管理,株式会社さくらねっと">
+
+  <link rel="canonical" href="https://sakuranet-co.jp/sakura-bloom.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <meta property="og:site_name" content="株式会社さくらねっと">
+  <meta property="og:title" content="SAKURA BLOOM｜LINE公式アカウントを予約・受付・配信・分析まで使える店舗DXツールへ｜株式会社さくらねっと">
+  <meta property="og:description" content="LINE公式アカウントをAI受付・予約管理・ステップ配信・顧客分析まで活用できる店舗DXツール。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sakuranet-co.jp/sakura-bloom.html">
+  <meta property="og:image" content="https://sakuranet-co.jp/img/ogp_2026.png">
+  <meta property="og:locale" content="ja_JP">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SAKURA BLOOM｜LINE公式アカウントを予約・受付・配信・分析まで使える店舗DXツールへ｜株式会社さくらねっと">
+  <meta name="twitter:description" content="LINE公式アカウントをAI受付・予約管理・ステップ配信・顧客分析まで活用できる店舗DXツール。">
+  <meta name="twitter:image" content="https://sakuranet-co.jp/img/ogp_2026.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "SAKURA BLOOM",
+    "url": "https://sakuranet-co.jp/sakura-bloom.html",
+    "description": "LINE公式アカウントを予約・AI受付・配信・分析まで使える店舗DXツール。",
+    "isPartOf": { "@type": "WebSite", "name": "株式会社さくらねっと", "url": "https://sakuranet-co.jp/" },
+    "provider": { "@type": "LocalBusiness", "name": "株式会社さくらねっと", "telephone": "+81-6-7777-2720", "address": { "@type": "PostalAddress", "addressLocality": "大阪市淀川区", "addressRegion": "大阪府", "postalCode": "532-0012", "streetAddress": "木川東4-3-34 5F", "addressCountry": "JP" } }
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DZV2NE7C1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-8DZV2NE7C1');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== SAKURA BLOOM ページ固有スタイル (bloom- プレフィックス) ===== */
+
+    /* Hero */
+    .bloom-hero {
+      background: linear-gradient(135deg, #f9eef2 0%, #fdf6fa 40%, #eaf9f1 100%);
+      padding: clamp(72px, 12vw, 120px) 0 clamp(56px, 8vw, 96px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bloom-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(229,138,166,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 70%, rgba(6,199,85,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bloom-hero_badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(229,138,166,0.4);
+      border-radius: 9999px;
+      padding: 6px 20px;
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #c97b8d;
+      margin-bottom: 28px;
+    }
+    .bloom-hero_title {
+      font-family: var(--font-en);
+      font-size: clamp(44px, 8vw, 88px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: #1a1818;
+      margin: 0 0 12px;
+    }
+    .bloom-hero_title span.bloom-accent-pink { color: #c97b8d; }
+    .bloom-hero_subtitle {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(13px, 2vw, 17px);
+      font-weight: 400;
+      color: #615d59;
+      margin: 0 0 12px;
+      letter-spacing: .02em;
+    }
+    .bloom-hero_desc {
+      font-size: 14px;
+      color: #a39e98;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.85;
+    }
+    .bloom-hero_actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .bloom-btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #c97b8d;
+      color: #fff;
+      font-family: var(--font-en);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .bloom-btn-primary:hover { background: #b8697a; transform: translateY(-1px); }
+    .bloom-btn-green {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #06c755;
+      color: #fff;
+      font-family: var(--font-en);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .bloom-btn-green:hover { background: #05b04b; transform: translateY(-1px); }
+
+    /* Pain cards */
+    .bloom-pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .bloom-pain-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 24px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .bloom-pain-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .bloom-pain-text {
+      font-size: 14px;
+      color: #1a1818;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* Feature cards */
+    .bloom-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .bloom-feature-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .bloom-feature-card:hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(0,0,0,0.10); }
+    .bloom-feature-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+    .bloom-feature-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1818;
+      margin-bottom: 8px;
+    }
+    .bloom-feature-desc {
+      font-size: 12px;
+      color: #615d59;
+      line-height: 1.75;
+    }
+
+    /* Before/After */
+    .bloom-ba-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .bloom-ba-before, .bloom-ba-after { padding: clamp(24px,4vw,48px); }
+    .bloom-ba-before { background: #f6f5f4; border-right: 1px solid rgba(0,0,0,0.1); }
+    .bloom-ba-after { background: #f0faf5; }
+    .bloom-ba-label {
+      font-family: var(--font-en);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .bloom-ba-before .bloom-ba-label { color: #a39e98; }
+    .bloom-ba-after .bloom-ba-label { color: #06c755; }
+    .bloom-ba-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .bloom-ba-list li { font-size: 14px; color: #1a1818; line-height: 1.65; padding-left: 22px; position: relative; }
+    .bloom-ba-before .bloom-ba-list li::before { content: '✗'; position: absolute; left: 0; color: #d4a0aa; font-size: 12px; top: 2px; }
+    .bloom-ba-after .bloom-ba-list li::before { content: '✓'; position: absolute; left: 0; color: #06c755; font-size: 13px; font-weight: 700; top: 2px; }
+    @media (max-width: 600px) {
+      .bloom-ba-wrap { grid-template-columns: 1fr; }
+      .bloom-ba-before { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); }
+    }
+
+    /* Industry cards */
+    .bloom-industry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .bloom-industry-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .bloom-industry-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .bloom-industry-name { font-size: 14px; font-weight: 700; color: #1a1818; margin-bottom: 8px; }
+    .bloom-industry-use { font-size: 12px; color: #615d59; line-height: 1.75; }
+
+    /* Comparison table */
+    .bloom-table-wrap { overflow-x: auto; margin-top: 40px; }
+    .bloom-compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .bloom-compare-table th, .bloom-compare-table td {
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 14px 18px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .bloom-compare-table th { font-weight: 700; background: #f6f5f4; }
+    .bloom-compare-table th:first-child, .bloom-compare-table td:first-child { text-align: left; }
+    .bloom-compare-table th.bloom-col-bloom { background: linear-gradient(135deg,#fdf0f4,#f0faf5); color: #c97b8d; }
+    .bloom-compare-table .bloom-mark-yes { color: #06c755; font-weight: 700; font-size: 16px; }
+    .bloom-compare-table .bloom-mark-no { color: #d4a0aa; font-size: 16px; }
+    .bloom-compare-table .bloom-mark-partial { color: #e09030; font-size: 14px; }
+    .bloom-compare-table tr:hover td { background: rgba(229,138,166,0.04); }
+
+    /* Plan cards */
+    .bloom-plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .bloom-plan-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 14px;
+      padding: 32px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    }
+    .bloom-plan-card.bloom-plan-featured {
+      border-color: #c97b8d;
+      box-shadow: 0 0 0 2px rgba(201,123,141,0.2), 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .bloom-plan-label {
+      font-family: var(--font-en);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #a39e98;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .bloom-plan-featured .bloom-plan-label { color: #c97b8d; }
+    .bloom-plan-name { font-size: 18px; font-weight: 700; color: #1a1818; margin-bottom: 14px; }
+    .bloom-plan-price { font-family: var(--font-en); font-size: 13px; color: #615d59; margin-bottom: 16px; }
+    .bloom-plan-desc { font-size: 13px; color: #615d59; line-height: 1.8; }
+
+    /* Steps */
+    .bloom-step-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0;
+      margin-top: 40px;
+      counter-reset: bloom-step;
+    }
+    .bloom-step {
+      padding: 28px 24px;
+      border-left: 1px solid rgba(0,0,0,0.08);
+      position: relative;
+      counter-increment: bloom-step;
+    }
+    .bloom-step:first-child { border-left: none; }
+    .bloom-step::before {
+      content: counter(bloom-step, decimal-leading-zero);
+      display: block;
+      font-family: var(--font-en);
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(201,123,141,0.25);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .bloom-step-title { font-size: 15px; font-weight: 700; color: #1a1818; margin-bottom: 8px; }
+    .bloom-step-desc { font-size: 13px; color: #615d59; line-height: 1.75; }
+    @media (max-width: 600px) {
+      .bloom-step { border-left: none; border-top: 1px solid rgba(0,0,0,0.08); padding: 24px 0; }
+      .bloom-step:first-child { border-top: none; }
+    }
+
+    /* FAQ */
+    .bloom-faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 1px; background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+    .bloom-faq-item { background: #fff; }
+    .bloom-faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 22px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1818;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.6;
+    }
+    .bloom-faq-q::before { content: 'Q'; color: #c97b8d; font-family: var(--font-en); font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .bloom-faq-a { padding: 0 24px 22px 24px; font-size: 13px; color: #615d59; line-height: 1.85; padding-left: 48px; }
+    .bloom-faq-a::before { content: 'A　'; color: #06c755; font-family: var(--font-en); font-size: 13px; font-weight: 700; }
+
+    /* Final CTA */
+    .bloom-cta {
+      background: linear-gradient(135deg, #1a1818 0%, #2c1a20 50%, #1a2c20 100%);
+      padding: clamp(56px, 8vw, 96px) 0;
+      text-align: center;
+    }
+    .bloom-cta_title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(20px, 3.5vw, 38px);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+      line-height: 1.55;
+    }
+    .bloom-cta_sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 36px; }
+    .bloom-cta_actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* Accent stripe */
+    .bloom-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, #e58aa6 0%, #06c755 100%);
+    }
+  </style>
+</head>
+
+<body class="is-loading" id="page-bloom">
+  <div class="l-cover" aria-hidden="true">
+    <div class="_logo">
+      <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.02em;color:#1a1818;">SAKURA<span style="color:#c97b8d;">-NET</span></span>
+    </div>
+  </div>
+
+  <header class="l-header" role="banner">
+    <div class="l-header_logo">
+      <a href="index.html" aria-label="株式会社さくらねっと トップへ">
+        <img src="img/logo_header_light_bg.png" alt="SAKURA-NET" style="height:48px;width:auto;display:block;">
+      </a>
+    </div>
+    <nav class="l-header_list" aria-label="グローバルナビゲーション">
+      <ul style="display:contents;list-style:none;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="company.html">About</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="l-header_contact">
+      <a href="contact.html" style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:#1a1818;padding:10px 20px;border-radius:9999px;display:inline-block;">お問い合わせ</a>
+    </div>
+    <button class="l-header_toggle js-nav-toggle" aria-expanded="false" aria-controls="l-nav" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="l-nav" id="l-nav" role="dialog" aria-modal="true" aria-label="ナビゲーション">
+    <div class="l-nav_main">
+      <nav class="l-nav_gnav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="service.html">SERVICES</a></li>
+          <li><a href="company.html">ABOUT</a></li>
+          <li><a href="news.html">NEWS</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+      <nav class="l-nav_snav" aria-label="サブメニュー">
+        <a href="recruit.html">採用情報</a>
+        <a href="custom.html">代理店募集</a>
+        <a href="support.html">SUPPORT</a>
+        <a href="sakura-bloom.html" aria-current="page">SAKURA BLOOM</a>
+        <a href="custom1.html">サポート概要</a>
+        <a href="remote.html">遠隔サポート</a>
+        <a href="pay.html">お支払い方法</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+    <div class="l-nav_image" aria-hidden="true">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#f9eef2,#eaf9f1);display:flex;align-items:center;justify-content:center;font-size:64px;">🌸</div>
+      <div class="l-nav_image_info">
+        <h3>SAKURA BLOOM</h3>
+        <p>LINE公式活用システム</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="content">
+
+    <!-- パンくず -->
+    <div class="c-page-header">
+      <div class="l-inner">
+        <nav class="c-breadcrumb" aria-label="パンくずリスト">
+          <a href="index.html">Home</a>
+          <span class="c-breadcrumb_sep" aria-hidden="true"></span>
+          <span aria-current="page">SAKURA BLOOM</span>
+        </nav>
+        <p class="c-page-header_label">SAKURA BLOOM</p>
+        <h1 class="c-page-header_title">SAKURA BLOOM</h1>
+        <p class="c-page-header_sub c-page-header_title--jp">LINE公式アカウント活用システム</p>
+      </div>
+    </div>
+
+    <div class="bloom-stripe" aria-hidden="true"></div>
+
+    <!-- ===== 1. ファーストビュー ===== -->
+    <section class="bloom-hero" aria-labelledby="bloom-hero-title">
+      <div class="l-inner">
+        <span class="bloom-hero_badge">🌸 LINE Official Account System</span>
+        <h2 class="bloom-hero_title" id="bloom-hero-title">SAKURA<br><span class="bloom-accent-pink">BLOOM</span></h2>
+        <p class="bloom-hero_subtitle">LINE公式アカウントを、予約・AI受付・配信・分析まで使える<br>店舗DXツールへ。</p>
+        <p class="bloom-hero_desc">配信だけで終わっていたLINE公式アカウントを、来店予約・時間外AI受付・顧客管理・ステップ配信・決済まで一体化した業務ツールとして活用できます。</p>
+        <div class="bloom-hero_actions">
+          <a href="contact.html" class="bloom-btn-primary">無料相談はこちら</a>
+          <a href="contact.html" class="bloom-btn-green">💬 デモを見る</a>
+          <a href="contact.html" class="c-button">資料請求</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. こんな悩みありませんか ===== -->
+    <section class="c-section c-section--alt" aria-labelledby="bloom-pain-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Pain Points</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-pain-title">こんな悩みはありませんか？</h2>
+          <p class="c-section_sub">LINE公式アカウントを導入しているのに、うまく活かせていない…そんな声をよくいただきます。</p>
+        </div>
+
+        <div class="bloom-pain-grid js-anim">
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">📣</span>
+            <p class="bloom-pain-text">配信しか使えていない。<br>LINEで予約や受付もしたい。</p>
+          </div>
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">📅</span>
+            <p class="bloom-pain-text">予約が電話・メール・LINE・DM等にバラバラで管理しきれない。</p>
+          </div>
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">🌙</span>
+            <p class="bloom-pain-text">時間外の問い合わせ対応が担当者の負担になっている。</p>
+          </div>
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">🔄</span>
+            <p class="bloom-pain-text">一度来店した顧客へのフォローアップが続かない。</p>
+          </div>
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">📊</span>
+            <p class="bloom-pain-text">顧客の来店履歴・好み・属性が把握できていない。</p>
+          </div>
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">💰</span>
+            <p class="bloom-pain-text">友だち数が増えるほど月額費用が上がるのが心配。</p>
+          </div>
+          <div class="bloom-pain-card">
+            <span class="bloom-pain-icon" aria-hidden="true">😟</span>
+            <p class="bloom-pain-text">自社のスタッフだけで使いこなせるか不安。</p>
+          </div>
+        </div>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">まずは相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. できること ===== -->
+    <section class="c-section" aria-labelledby="bloom-feature-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Features</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-feature-title">SAKURA BLOOMでできること</h2>
+          <p class="c-section_sub">LINE公式アカウントを起点に、店舗に必要な機能を一つにまとめます。</p>
+        </div>
+
+        <div class="bloom-feature-grid js-anim">
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">🤖</span>
+            <p class="bloom-feature-name">AI受付</p>
+            <p class="bloom-feature-desc">時間外・営業時間中を問わず、LINEのトーク画面でAIが自動応答。よくある質問・予約誘導・業種別シナリオに対応。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">📅</span>
+            <p class="bloom-feature-name">LINE予約管理</p>
+            <p class="bloom-feature-desc">LINEのトーク画面から直接来店・予約受付。キャンセル・変更対応も自動化でき、電話対応を大幅に削減。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">🗓️</span>
+            <p class="bloom-feature-name">予約カレンダー</p>
+            <p class="bloom-feature-desc">○△× 形式で空き枠・予約あり・当日確認対応枠を管理。スタッフ単位・ルーム単位でのスケジュール管理が可能。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">💳</span>
+            <p class="bloom-feature-name">決済（Stripe連携）</p>
+            <p class="bloom-feature-desc">LINE上からそのまま前払い・後払い決済に対応。Stripeは原則として導入店舗様のアカウントと接続します。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">📨</span>
+            <p class="bloom-feature-name">ステップ配信</p>
+            <p class="bloom-feature-desc">友だち追加後のタイミングや属性に応じて、自動でメッセージを順次配信。追客・来店促進に活用できます。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">👥</span>
+            <p class="bloom-feature-name">顧客管理</p>
+            <p class="bloom-feature-desc">来店履歴・問い合わせ内容・タグ・メモを蓄積し、よりパーソナルな接客やフォローアップを実現。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">📝</span>
+            <p class="bloom-feature-name">フォーム・アンケート</p>
+            <p class="bloom-feature-desc">LINE上で完結するフォームでアンケート・問診・初回カウンセリング情報を収集。来店前に情報を把握。</p>
+          </div>
+          <div class="bloom-feature-card">
+            <span class="bloom-feature-icon" aria-hidden="true">📈</span>
+            <p class="bloom-feature-name">成果レポート</p>
+            <p class="bloom-feature-desc">ブロック率・予約転換率・配信開封率・売上推移などを可視化。施策の効果を数値で確認できます。</p>
+          </div>
+        </div>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">デモを見たい</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Before/After ===== -->
+    <section class="c-section c-section--alt" aria-labelledby="bloom-ba-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Before / After</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-ba-title">導入後の変化</h2>
+          <p class="c-section_sub">SAKURA BLOOM導入前後で、店舗の業務フローがどう変わるかをご確認ください。</p>
+        </div>
+
+        <div class="bloom-ba-wrap js-anim">
+          <div class="bloom-ba-before">
+            <span class="bloom-ba-label">Before — 導入前</span>
+            <ul class="bloom-ba-list">
+              <li>LINEは配信専用。返信は手動で対応</li>
+              <li>予約は電話・メール・SNS等でバラバラに受付</li>
+              <li>時間外の問い合わせは翌営業日まで放置</li>
+              <li>来店後のフォローアップが属人的で継続しない</li>
+              <li>顧客情報がExcelや紙で管理されており連携できない</li>
+            </ul>
+          </div>
+          <div class="bloom-ba-after">
+            <span class="bloom-ba-label">After — 導入後</span>
+            <ul class="bloom-ba-list">
+              <li>LINEで予約・受付・配信・決済が一元化</li>
+              <li>予約カレンダーで空き状況をリアルタイム管理</li>
+              <li>AIが24時間自動応答。深夜・休日も取りこぼしなし</li>
+              <li>ステップ配信で来店後のフォローを自動継続</li>
+              <li>顧客データが自動蓄積され、より深い接客が可能に</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">どう変わるか相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 5. 業種別の使い方 ===== -->
+    <section class="c-section" aria-labelledby="bloom-industry-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Use Cases</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-industry-title">業種別の使い方</h2>
+          <p class="c-section_sub">業種ごとに最適化したテンプレートとシナリオをご用意しています。</p>
+        </div>
+
+        <div class="bloom-industry-grid js-anim">
+          <div class="bloom-industry-card">
+            <span class="bloom-industry-icon" aria-hidden="true">✂️</span>
+            <p class="bloom-industry-name">美容室・サロン</p>
+            <p class="bloom-industry-use">LINE予約受付・担当スタイリスト指定・施術後フォロー配信・リピート促進クーポン配布。</p>
+          </div>
+          <div class="bloom-industry-card">
+            <span class="bloom-industry-icon" aria-hidden="true">💆</span>
+            <p class="bloom-industry-name">整体・治療院</p>
+            <p class="bloom-industry-use">問診フォーム事前収集・施術枠管理・次回来院リマインダー・休診日の自動返信。</p>
+          </div>
+          <div class="bloom-industry-card">
+            <span class="bloom-industry-icon" aria-hidden="true">🎓</span>
+            <p class="bloom-industry-name">スクール・教室</p>
+            <p class="bloom-industry-use">体験申込受付・入会後のステップ配信・欠席連絡の自動化・発表会案内の一斉配信。</p>
+          </div>
+          <div class="bloom-industry-card">
+            <span class="bloom-industry-icon" aria-hidden="true">🍱</span>
+            <p class="bloom-industry-name">飲食店・テイクアウト</p>
+            <p class="bloom-industry-use">席予約・テイクアウト注文受付・日替わりメニュー配信・混雑時の代替案内。</p>
+          </div>
+          <div class="bloom-industry-card">
+            <span class="bloom-industry-icon" aria-hidden="true">📋</span>
+            <p class="bloom-industry-name">士業・相談業</p>
+            <p class="bloom-industry-use">初回面談予約・FAQ自動応答・相談記録フォーム収集・フォローアップメッセージ配信。</p>
+          </div>
+        </div>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">業種別の事例を相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. 比較表 ===== -->
+    <section class="c-section c-section--alt" aria-labelledby="bloom-compare-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Comparison</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-compare-title">一般的なLINE配信ツールとの違い</h2>
+          <p class="c-section_sub">機能・コスト構造・データ管理の観点で比較しました。特定の他社製品を対象にした比較ではありません。</p>
+        </div>
+
+        <div class="bloom-table-wrap js-anim">
+          <table class="bloom-compare-table" aria-label="SAKURA BLOOMと一般的なLINE配信ツールの機能比較">
+            <thead>
+              <tr>
+                <th scope="col">比較項目</th>
+                <th scope="col">一般的な<br>LINE配信ツール</th>
+                <th scope="col" class="bloom-col-bloom">SAKURA BLOOM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>予約管理（カレンダー連携）</td>
+                <td><span class="bloom-mark-partial" aria-label="ツールによる">△ ツールによる</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>AI受付・自動応答</td>
+                <td><span class="bloom-mark-partial" aria-label="ツールによる">△ 限定的</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>決済連携（Stripe等）</td>
+                <td><span class="bloom-mark-no" aria-label="非対応">✗</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>顧客管理・タグ・メモ</td>
+                <td><span class="bloom-mark-partial" aria-label="基本的なもの">△ 基本的なもの</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>フォーム・問診票収集</td>
+                <td><span class="bloom-mark-partial" aria-label="ツールによる">△ ツールによる</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>成果レポート</td>
+                <td><span class="bloom-mark-partial" aria-label="配信系のみ">△ 配信系のみ</span></td>
+                <td><span class="bloom-mark-yes" aria-label="予約・売上・配信">○ 予約・売上・配信</span></td>
+              </tr>
+              <tr>
+                <td>業種別テンプレート</td>
+                <td><span class="bloom-mark-no" aria-label="非対応">✗</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>友だち数による従量課金</td>
+                <td><span class="bloom-mark-no" aria-label="課金される">✗ 上限超過で課金</span></td>
+                <td><span class="bloom-mark-yes" aria-label="個別見積もり">○ 個別見積もり</span></td>
+              </tr>
+              <tr>
+                <td>OEM・代理店向け提供</td>
+                <td><span class="bloom-mark-no" aria-label="非対応">✗</span></td>
+                <td><span class="bloom-mark-yes" aria-label="対応">○</span></td>
+              </tr>
+              <tr>
+                <td>データ管理（保存先）</td>
+                <td><span class="bloom-mark-partial" aria-label="ベンダー管理">△ ベンダー管理</span></td>
+                <td><span class="bloom-mark-yes" aria-label="顧客データは原則顧客環境へ">○ 原則顧客環境で管理</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px;font-size:12px;color:#a39e98;">※ 機能の詳細・対応範囲はご要件により異なります。比較表は参考情報であり、特定サービスとの優劣を断定するものではありません。</p>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">詳しく比較したい</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. 料金・導入プラン ===== -->
+    <section class="c-section" aria-labelledby="bloom-plan-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Plans</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-plan-title">料金・導入プラン</h2>
+          <p class="c-section_sub">業種・店舗数・必要機能に応じて個別にご提案します。一律の料金表ではなく、過不足なく構成するためのヒアリングを重視しています。</p>
+        </div>
+
+        <div class="bloom-plan-grid js-anim">
+          <div class="bloom-plan-card">
+            <span class="bloom-plan-label">Light</span>
+            <p class="bloom-plan-name">ライト導入</p>
+            <p class="bloom-plan-price">個別見積もり</p>
+            <p class="bloom-plan-desc">AI受付・予約受付・ステップ配信など、必要な機能を絞って導入。操作シンプル・運用コスト最小限でスタートしたい店舗向け。</p>
+          </div>
+          <div class="bloom-plan-card bloom-plan-featured">
+            <span class="bloom-plan-label">Standard</span>
+            <p class="bloom-plan-name">スタンダード導入</p>
+            <p class="bloom-plan-price">個別見積もり</p>
+            <p class="bloom-plan-desc">予約カレンダー・決済・顧客管理・フォーム・レポートを含むフルセット構成。LINE公式アカウントをフル活用したい店舗向け。</p>
+          </div>
+          <div class="bloom-plan-card">
+            <span class="bloom-plan-label">OEM / Agency</span>
+            <p class="bloom-plan-name">OEM・代理店向け</p>
+            <p class="bloom-plan-price">個別見積もり</p>
+            <p class="bloom-plan-desc">複数顧客への展開・ホワイトラベル提供・代理店としての販売を希望する事業者向け。1顧客1環境または1顧客1ディレクトリでの分離構成に対応。</p>
+          </div>
+        </div>
+
+        <p style="margin-top:24px;font-size:13px;color:#a39e98;text-align:center;">既存のLINE公式アカウントをそのままご利用いただけます。新規作成支援も承ります。</p>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">見積もりを相談する</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. 導入の流れ ===== -->
+    <section class="c-section c-section--alt" aria-labelledby="bloom-flow-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">Flow</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-flow-title">導入の流れ</h2>
+          <p class="c-section_sub">相談から本番稼働まで、さくらねっとがステップごとにサポートします。</p>
+        </div>
+
+        <div class="bloom-step-list js-anim">
+          <div class="bloom-step">
+            <p class="bloom-step-title">無料相談</p>
+            <p class="bloom-step-desc">現状の課題・必要な機能・予算感をヒアリング。既存のLINE公式アカウントをお持ちの場合はそのまま活用できます。</p>
+          </div>
+          <div class="bloom-step">
+            <p class="bloom-step-title">設定確認・提案</p>
+            <p class="bloom-step-desc">業種・規模・運用体制に合わせた構成プランと概算をご提案。疑問点をすべて解消してから進みます。</p>
+          </div>
+          <div class="bloom-step">
+            <p class="bloom-step-title">初期設定・テンプレート反映</p>
+            <p class="bloom-step-desc">業種別テンプレートをベースに、シナリオ・フォーム・カレンダー設定を実施。スタッフ向けの操作レクチャーも行います。</p>
+          </div>
+          <div class="bloom-step">
+            <p class="bloom-step-title">テスト運用→本番</p>
+            <p class="bloom-step-desc">テスト期間中に動作確認・微調整を実施。問題がなければ本番切り替え。その後の運用サポートも継続。</p>
+          </div>
+        </div>
+
+        <p style="margin-top:24px;font-size:13px;color:#a39e98;text-align:center;">LINE公式アカウントをお持ちでない場合は、新規作成から支援します。</p>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">相談を申し込む</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. よくある質問 ===== -->
+    <section class="c-section" aria-labelledby="bloom-faq-title">
+      <div class="l-inner">
+        <div class="c-section_head js-anim">
+          <span class="c-section_label">FAQ</span>
+          <h2 class="c-section_title c-section_title--jp" id="bloom-faq-title">よくある質問</h2>
+        </div>
+
+        <div class="bloom-faq-list js-anim">
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">LINE公式アカウントをまだ持っていませんが、導入できますか？</p>
+            <p class="bloom-faq-a">はい、対応可能です。LINE公式アカウントの新規作成から設定まで支援します。すでにお持ちの場合はそのままご利用いただけます。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">現在使っているLINE公式アカウントをそのまま使えますか？</p>
+            <p class="bloom-faq-a">はい、既存のLINE公式アカウントをそのままご利用いただけます。友だち登録済みのユーザーにも影響はありません。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">決済機能を使った場合、売上はどこに入りますか？</p>
+            <p class="bloom-faq-a">原則として、導入店舗様ご自身のStripeアカウントに直接入金されます。さくらねっとが売上を仲介・受領する仕組みではありません。Stripeアカウントをお持ちでない場合は開設をサポートします。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">友だち数が増えると月額費用も上がりますか？</p>
+            <p class="bloom-faq-a">SAKURA BLOOMの利用料は友だち数による従量課金ではなく、導入規模・機能構成に応じた個別見積もりです。友だち数が増えても自動的に費用が上がる仕組みにはなっていません。なお、LINE公式アカウントのメッセージ通数によっては、LINE側の利用料が別途発生する場合があります。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">複数のスタッフで使えますか？</p>
+            <p class="bloom-faq-a">はい、スタッフごとのアカウント設定・権限管理に対応しています。担当者による予約受付や顧客対応の分担が可能です。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">他の店舗や企業に提供する（OEM・代理店）ことはできますか？</p>
+            <p class="bloom-faq-a">はい、OEM・代理店向けの提供形態に対応しています。複数顧客への展開は、1顧客1環境または1顧客1ディレクトリ／サーバーで分離する構成を基本とします。詳細はお問い合わせください。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">顧客の個人情報はどこに保存されますか？</p>
+            <p class="bloom-faq-a">顧客データは原則として導入店舗様の管理環境（指定サーバーまたはクラウドストレージ）に保存します。LINEのトーク内容はLINE社の規約範囲内での取り扱いとなります。保存先・管理方針は導入時に確認・合意の上で設定します。</p>
+          </div>
+          <div class="bloom-faq-item">
+            <p class="bloom-faq-q">複数店舗のLINE公式アカウントが混ざることはありますか？</p>
+            <p class="bloom-faq-a">ありません。SAKURA BLOOMでは店舗ごとにLINE公式アカウント・Webhook・LIFF（LINEのフロントエンド）を分離する構成を採用しています。複数店舗・複数顧客のデータが混在する設計にはなっていません。</p>
+          </div>
+        </div>
+
+        <div class="u-text-center u-mt-lg js-anim">
+          <a href="contact.html" class="c-button">その他の質問はこちら</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 10. 最終CTA ===== -->
+    <section class="bloom-cta" aria-labelledby="bloom-cta-title">
+      <div class="l-inner">
+        <p style="font-family:var(--font-en);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#c97b8d;margin-bottom:20px;">Contact</p>
+        <h2 class="bloom-cta_title" id="bloom-cta-title">
+          配信だけで終わらせず、<br>予約・受付・顧客管理まで。
+        </h2>
+        <p class="bloom-cta_sub">まずはお気軽にご相談ください。ヒアリングのみでも歓迎です。</p>
+        <div class="bloom-cta_actions">
+          <a href="contact.html" class="bloom-btn-primary">相談する</a>
+          <a href="contact.html" class="bloom-btn-green">デモを見たい</a>
+          <a href="contact.html" class="c-button" style="border-color:rgba(255,255,255,0.5);color:#fff;">OEM相談</a>
+        </div>
+        <p style="margin-top:32px;font-size:12px;color:rgba(255,255,255,0.35);">
+          株式会社さくらねっと　〒532-0012 大阪市淀川区木川東4-3-34 5F<br>
+          TEL: <a href="tel:0677772720" style="color:rgba(255,255,255,0.4);">06-7777-2720</a>　平日 10:00–19:00（完全予約制）
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="l-footer" role="contentinfo">
+    <div class="l-footer_inner">
+      <div class="l-footer_top">
+        <div>
+          <div class="l-footer_logo">
+            <img src="img/logo_header_dark_bg.png" alt="SAKURA-NET" style="height:40px;width:auto;">
+            <a href="http://www.sakura-mode.net/cgi-bin/cbag/ag.exe?" aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">SAKURA-NET</a>
+          </div>
+          <div class="l-footer_info" style="margin-top:16px;">
+            株式会社さくらねっと<br>
+            〒532-0012 大阪市淀川区木川東4-3-34 5F<br>
+            TEL: <a href="tel:0677772720">06-7777-2720</a>
+            MAIL: <a href="mailto:info@sakuranet-co.jp">info@sakuranet-co.jp</a><br>
+            営業時間: 平日 10:00–19:00（完全予約制）
+          </div>
+        </div>
+        <nav class="l-footer_nav" aria-label="フッターナビゲーション">
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="company.html">About</a>
+          <a href="concept.html">方針</a>
+          <a href="access.html">Access</a>
+          <a href="news.html">News</a>
+          <a href="recruit.html">Recruit</a>
+          <a href="contact.html">Contact</a>
+          <a href="support.html">SUPPORT</a>
+          <a href="sakura-bloom.html">SAKURA BLOOM</a>
+          <a href="custom.html">代理店</a>
+          <a href="pay.html">お支払い</a>
+          <a href="remote.html">遠隔サポート</a>
+          <a href="https://sakuranet-co.jp/system/index.php">SYSTEM</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+      <div class="l-footer_bottom">
+        <small class="l-footer_copy">&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</small>
+        <div class="l-footer_links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="contact.html">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="l-mobile-cta" aria-label="スマートフォン用クイックアクセス">
+    <a href="tel:0677772720" class="l-mobile-cta_btn l-mobile-cta_btn--tel">
+      <span class="l-mobile-cta_icon" aria-hidden="true">TEL</span>
+      <span>電話で問い合わせ</span>
+    </a>
+    <a href="contact.html" class="l-mobile-cta_btn l-mobile-cta_btn--form">
+      <span class="l-mobile-cta_icon" aria-hidden="true">MAIL</span>
+      <span>Webで問い合わせ</span>
+    </a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

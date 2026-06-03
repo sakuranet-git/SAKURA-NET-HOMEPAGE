@@ -1,4 +1,32 @@
-﻿## [v3.1.7] - 2026-05-19 - sitemap.xml に予約受付ページを追加
+﻿## [v3.2.0] - 2026-06-03 - SAKURA BLOOM 紹介ページ追加
+
+### 変更内容
+
+**sakura-bloom.html**（新規作成）
+- SAKURA BLOOM（LINE公式アカウント活用システム）の紹介ページを新規作成。
+- support.html の骨格（head/header/footer/スクリプト）を雛形に、ページ固有スタイルは `bloom-` プレフィックスで `<style>` 内に完結。style.css は編集なし。
+- 10セクション構成：ファーストビュー(hero) / こんな悩みありませんか / できること(8機能) / Before‐After / 業種別の使い方(5業種) / 比較表 / 料金・導入プラン / 導入の流れ / よくある質問(8件) / 最終CTA
+- 各セクション末尾に contact.html への CTA ボタンを配置。
+- 決済売上は「導入店舗様のStripeアカウントへ直接入金」、LINE公式アカウントは「店舗ごとに Webhook・LIFF で分離」を FAQ に明記。
+- 比較表は他社名を一切記載せず「一般的なLINE配信ツール」表現を使用。
+- 禁止語（他社サービス名）不使用。スマートフォン対応済み。
+
+**index.html**（変更）
+- Services の `c-figure-grid` 内、SAKURA-SASE カード直後に SAKURA BLOOM カードを1枚追加（c-figure 計8枚→計8枚+1枚）。
+- フッター nav に `<a href="sakura-bloom.html">SAKURA BLOOM</a>` を追加（SUPPORT リンクの直後）。
+
+### バックアップ
+
+- `backups/v3.2.0_pre/`（index.html / RELEASE_NOTES.md）
+
+### Webへのアップロード対象
+
+- `sakura-bloom.html`（新規）
+- `index.html`（変更）
+
+---
+
+## [v3.1.7] - 2026-05-19 - sitemap.xml に予約受付ページを追加
 
 ### 変更内容
 
