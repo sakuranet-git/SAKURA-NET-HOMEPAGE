@@ -3,15 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAKURA-NET リモートサポート</title>
-  <!-- SERVER_IP -->
-  <!-- PUBLIC_KEY -->
+  <title>さくらリモート サポート | SAKURA-NET</title>
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "Hiragino Kaku Gothic ProN", "Meiryo", "Yu Gothic", sans-serif;
@@ -20,35 +14,40 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      line-height: 1.7;
     }
 
     header {
       background-color: #e8b4c8;
-      padding: 20px 16px;
+      padding: 24px 16px;
       text-align: center;
     }
-
     header h1 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       color: #fff;
       letter-spacing: 0.05em;
       text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      margin-bottom: 6px;
+    }
+    header p {
+      color: #fff;
+      font-size: 0.95rem;
+      opacity: 0.95;
     }
 
     main {
       flex: 1;
-      max-width: 680px;
+      max-width: 720px;
       width: 100%;
       margin: 0 auto;
-      padding: 32px 16px;
+      padding: 32px 16px 48px;
     }
 
     .lead {
       font-size: 1rem;
-      line-height: 1.8;
       color: #555;
-      margin-bottom: 32px;
-      padding: 16px;
+      margin-bottom: 28px;
+      padding: 18px 20px;
       background-color: #fff;
       border-left: 4px solid #e8b4c8;
       border-radius: 0 8px 8px 0;
@@ -57,65 +56,155 @@
     .steps {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       margin-bottom: 28px;
     }
 
     .step {
       background-color: #fff;
-      border-radius: 12px;
-      padding: 24px 20px;
-      box-shadow: 0 2px 8px rgba(232, 180, 200, 0.18);
+      border-radius: 14px;
+      padding: 24px 22px;
+      box-shadow: 0 2px 10px rgba(232, 180, 200, 0.2);
+    }
+
+    .step-head {
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
     }
 
     .step-number {
       background-color: #e8b4c8;
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: bold;
       border-radius: 50%;
-      min-width: 44px;
-      height: 44px;
+      min-width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .step-content {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .step-text {
-      font-size: 1rem;
-      line-height: 1.7;
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: bold;
       color: #333;
     }
+
+    .step-body { padding-left: 4px; }
+
+    .step-body p { margin-bottom: 12px; }
+    .step-body p:last-child { margin-bottom: 0; }
 
     .download-btn {
       display: inline-block;
       background-color: #e8b4c8;
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: bold;
-      padding: 12px 28px;
-      border-radius: 8px;
+      padding: 14px 32px;
+      border-radius: 10px;
       text-decoration: none;
       text-align: center;
-      transition: background-color 0.2s;
-      box-shadow: 0 2px 6px rgba(232, 180, 200, 0.4);
-      align-self: flex-start;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: 0 3px 8px rgba(232, 180, 200, 0.5);
+      margin: 12px 0 6px;
     }
-
-    .download-btn:hover,
-    .download-btn:focus {
+    .download-btn:hover, .download-btn:focus {
       background-color: #d49ab4;
       outline: none;
+      transform: translateY(-1px);
+    }
+
+    .hint {
+      background-color: #fef3f6;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: #7a5a64;
+      margin-top: 10px;
+    }
+    .hint::before {
+      content: "💡 ";
+      margin-right: 2px;
+    }
+
+    .warning {
+      background-color: #fff4ed;
+      border: 1px solid #ffc89a;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 14px;
+    }
+    .warning-title {
+      font-weight: bold;
+      color: #c46a1d;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .warning-title::before { content: "⚠️ "; margin-right: 2px; }
+    .warning ol {
+      padding-left: 22px;
+      font-size: 0.95rem;
+      color: #5a4634;
+    }
+    .warning ol li { margin-bottom: 4px; }
+    .warning .small {
+      font-size: 0.82rem;
+      color: #888;
+      margin-top: 8px;
+    }
+
+    .password-box {
+      background-color: #f6f0fa;
+      border: 1px dashed #c5a1d9;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+    .password-box code {
+      background-color: #fff;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-family: "Consolas", "Menlo", monospace;
+      font-size: 1.05rem;
+      color: #6a4980;
+      font-weight: bold;
+    }
+
+    .faq {
+      background-color: #fff;
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: 0 2px 10px rgba(232, 180, 200, 0.18);
+      margin-bottom: 24px;
+    }
+    .faq h2 {
+      font-size: 1.05rem;
+      color: #c0668c;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #f6dde6;
+      padding-bottom: 8px;
+    }
+    .faq details {
+      margin-bottom: 8px;
+      padding: 8px 4px;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #444;
+      padding: 4px 0;
+    }
+    .faq summary:hover { color: #c0668c; }
+    .faq details p {
+      padding: 8px 4px 4px 16px;
+      color: #555;
+      font-size: 0.92rem;
     }
 
     .notice {
@@ -124,38 +213,26 @@
       border-radius: 8px;
       padding: 14px 18px;
       font-size: 0.9rem;
-      color: #888;
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .notice::before {
-      content: "ℹ️ ";
+      color: #777;
+      margin-top: 16px;
     }
 
     footer {
       background-color: #e8b4c8;
       text-align: center;
-      padding: 14px 16px;
+      padding: 16px;
       font-size: 0.85rem;
       color: #fff;
     }
 
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.25rem;
-      }
-
-      .step {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
+      header h1 { font-size: 1.35rem; }
+      header p { font-size: 0.85rem; }
+      .step { padding: 20px 18px; }
+      .step-title { font-size: 1.05rem; }
       .download-btn {
         width: 100%;
-        text-align: center;
-        align-self: stretch;
+        padding: 14px 16px;
       }
     }
   </style>
@@ -163,46 +240,108 @@
 <body>
 
   <header>
-    <h1>SAKURA-NET リモートサポート</h1>
+    <h1>さくらリモート サポート</h1>
+    <p>サポートスタッフが画面をご案内するためのソフトです</p>
   </header>
 
   <main>
     <p class="lead">
-      サポートスタッフの指示に従い、以下の手順でソフトウェアをインストールしてください。
+      下の手順1〜4を順番におこなうだけで、サポートを受ける準備ができます。<br>
+      所要時間は1〜2分です。何か困ったら遠慮なくサポートスタッフにお電話でご相談ください。
     </p>
 
     <div class="steps">
 
       <div class="step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <p class="step-text">下のボタンからRustDeskをダウンロードしてインストールしてください。</p>
-          <a class="download-btn" href="https://github.com/rustdesk/rustdesk/releases/download/1.4.6/rustdesk-1.4.6-x86_64.exe">
-            RustDeskをダウンロード
+        <div class="step-head">
+          <div class="step-number">1</div>
+          <div class="step-title">ソフトをダウンロードする</div>
+        </div>
+        <div class="step-body">
+          <p>下のピンクのボタンを押してください。<br>自動的に「さくらリモートセットアップ.exe」というファイルがダウンロードされます。</p>
+          <a class="download-btn" href="SAKURA-Remote-Setup.exe" download="さくらリモートセットアップ.exe">
+            さくらリモートをダウンロード
           </a>
+          <div class="hint">ダウンロードしたファイルは、通常はパソコンの「ダウンロード」フォルダに保存されます。<br>ブラウザの画面上部や下部に「保存しますか？」と出たら「保存」を押してください。</div>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <p class="step-text">次に設定ファイルをダウンロードして実行してください。</p>
-          <a class="download-btn" href="customer-setup.bat" download="customer-setup.bat">
-            設定ファイルをダウンロード
-          </a>
+        <div class="step-head">
+          <div class="step-number">2</div>
+          <div class="step-title">ファイルをダブルクリックする</div>
+        </div>
+        <div class="step-body">
+          <p>ダウンロードした<b>「さくらリモートセットアップ.exe」</b>をダブルクリックします。</p>
+          <div class="hint">「ダウンロード」フォルダを開く方法: キーボードの「Windowsキー + E」でエクスプローラを開き、左側の「ダウンロード」をクリック。</div>
+
+          <div class="warning">
+            <div class="warning-title">青い画面「WindowsによってPCが保護されました」が出たら</div>
+            <ol>
+              <li>表示された画面の中の<b>「詳細情報」</b>という小さい文字をクリック</li>
+              <li>下に出てくる<b>「実行」</b>ボタンを押す</li>
+            </ol>
+            <p class="small">これは未署名ソフト共通の表示で、危険なものではありません。弊社が作成した正規のサポート用プログラムです。</p>
+          </div>
         </div>
       </div>
 
       <div class="step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <p class="step-text">RustDeskが起動したら、IDとパスワードをスタッフにお伝えください。</p>
+        <div class="step-head">
+          <div class="step-number">3</div>
+          <div class="step-title">「はい」をクリックする</div>
+        </div>
+        <div class="step-body">
+          <p>続けて、青い「<b>ユーザーアカウント制御</b>」というウィンドウが表示されます。</p>
+          <p>「このアプリがデバイスに変更を加えることを許可しますか？」と聞かれたら<b>「はい」</b>を押してください。</p>
+          <div class="hint">この確認はWindowsの仕組みで、管理者として実行するためのものです。</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-head">
+          <div class="step-number">4</div>
+          <div class="step-title">完了画面が出るまで待つ</div>
+        </div>
+        <div class="step-body">
+          <p>自動的にインストールが進みます。1〜2分ほどお待ちください。</p>
+          <p>完了すると「<b>SAKURA-Remote</b>」のウィンドウが立ち上がります。これでサポートを受ける準備は完了です。</p>
+          <div class="hint">デスクトップ画面に桜の花のアイコン「SAKURA-Remote」が追加されます。次回からはそのアイコンをクリックすれば起動できます。</div>
+          <p style="margin-top:14px;">あとはサポートスタッフ側で接続を開始しますので、そのままお待ちください。スタッフが操作を始めたら、画面で操作の様子が見られます。</p>
         </div>
       </div>
 
     </div>
 
-    <p class="notice">このソフトウェアはサポート完了後にアンインストールできます。</p>
+    <div class="faq">
+      <h2>よくあるご質問</h2>
+
+      <details>
+        <summary>サポートが終わった後、アンインストールしたいです</summary>
+        <p>「設定」→「アプリ」→「インストールされているアプリ」から「SAKURA-Remote」を選び「アンインストール」を押してください。</p>
+      </details>
+
+      <details>
+        <summary>ボタンを押してもダウンロードが始まりません</summary>
+        <p>ブラウザの設定でダウンロードがブロックされている可能性があります。ブラウザ画面上部の警告メッセージを確認するか、別のブラウザ（Edge / Chrome / Firefox）でお試しください。</p>
+      </details>
+
+      <details>
+        <summary>「詳細情報」のリンクが見つかりません</summary>
+        <p>「WindowsによってPCが保護されました」の画面で、説明文をよく見ると左下に小さく「詳細情報」と書かれています。<br>クリックすると「実行」ボタンが現れます。</p>
+      </details>
+
+      <details>
+        <summary>会社のパソコンで実行できません</summary>
+        <p>会社のセキュリティ設定で実行が制限されている可能性があります。社内の情報システム部門にご相談いただくか、弊社サポートまでお電話ください。</p>
+      </details>
+
+    </div>
+
+    <p class="notice">
+      このソフトはサポート完了後、いつでもアンインストールできます。<br>
+      サポート時以外は通信しませんので、入れたままでも問題ありません。
+    </p>
   </main>
 
   <footer>
