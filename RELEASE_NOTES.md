@@ -1,4 +1,25 @@
-﻿## [v3.2.2] - 2026-06-20 - 遠隔サポートページにMac版を追加
+﻿## [v3.2.3] - 2026-06-20 - Windows版手順にSmart App Control対策を追加
+
+### 変更内容
+
+- `remote.html` のWindows版インストール手順に、スマート アプリ コントロールでインストーラーが開けない場合の案内を追加。
+- `windowsdefender://AppBrowser` を使った「Windowsセキュリティを開く」ボタンを追加。
+- ボタンで開けない場合の手動手順（設定 → プライバシーとセキュリティ → Windows セキュリティ → アプリとブラウザー コントロール → スマート アプリ コントロールの設定）を追記。
+- Windowsの保護機能が一部無効になる注意書きを追記。
+- Windows版・Mac版の既存ダウンロードリンクは維持。
+
+### バックアップ
+
+- `backups/remote_upload_20260620/smart_app_control_before/`
+- `backups/remote_upload_20260620/remote.html.server-before-sac-20260620.html`
+
+### Webへのアップロード対象
+
+- `remote.html`
+
+---
+
+## [v3.2.2] - 2026-06-20 - 遠隔サポートページにMac版を追加
 
 ### 変更内容
 

@@ -144,6 +144,23 @@
       outline: none;
       transform: translateY(-1px);
     }
+    .settings-btn {
+      background: #fff;
+      border: 1px solid #d97fa4;
+      border-radius: 10px;
+      color: #b85f7d;
+      display: inline-block;
+      font-size: .95rem;
+      font-weight: bold;
+      margin: 10px 0 8px;
+      padding: 11px 18px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .settings-btn:hover, .settings-btn:focus {
+      background: #fff7fa;
+      outline: 2px solid rgba(217, 127, 164, .22);
+    }
     .hint {
       background: #fef3f6;
       border-radius: 8px;
@@ -267,6 +284,18 @@
               <div class="warning-title">「WindowsによってPCが保護されました」と表示された場合</div>
               <ol><li><b>「詳細情報」</b>をクリックします。</li><li>表示された<b>「実行」</b>ボタンを押します。</li></ol>
               <p class="small">弊社が作成した正規のサポート用プログラムです。</p>
+            </div>
+            <div class="warning">
+              <div class="warning-title">「スマート アプリ コントロール」で開けない場合</div>
+              <p>一部のWindows 11では、スマート アプリ コントロールによりインストーラーが開けない場合があります。</p>
+              <a class="settings-btn" href="windowsdefender://AppBrowser">Windowsセキュリティを開く</a>
+              <ol>
+                <li>開いた画面で<b>「スマート アプリ コントロールの設定」</b>をクリックします。</li>
+                <li><b>「オフ」</b>を選びます。</li>
+                <li>もう一度<b>「さくらリモートセットアップ.exe」</b>を開きます。</li>
+              </ol>
+              <p class="small">ボタンで開けない場合は、設定 → プライバシーとセキュリティ → Windows セキュリティ → アプリとブラウザー コントロール → スマート アプリ コントロールの設定、の順に進んでください。</p>
+              <p class="small">オフにするとWindowsの保護機能の一部が無効になります。不安な場合はサポートスタッフの案内に従ってください。</p>
             </div>
           </div>
         </div>
