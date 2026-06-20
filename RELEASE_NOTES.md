@@ -1,4 +1,26 @@
-﻿## [v3.2.1] - 2026-06-03 - トップページ SAKURA BLOOM アイコン改善
+﻿## [v3.2.2] - 2026-06-20 - 遠隔サポートページにMac版を追加
+
+### 変更内容
+
+- `remote.html` にWindows / Macの選択ボタンを追加。
+- Mac（Apple Silicon）向け `SAKURA-Remote-1.4.6-mac-aarch64.pkg` を追加。
+- 初心者向けにcontrol+クリック、インストール、権限3項目、再起動、9桁ID確認までを画面順に案内。
+- Intel Macが対象外であることと、サポート窓口への案内を追加。
+- スマートフォンでも読みやすいレスポンシブ表示に対応。
+- Windows版の既存ダウンロードと手順を維持。
+
+### バックアップ
+
+- `backups/remote-mac-20260620/`
+
+### Webへのアップロード対象
+
+- `remote.html`
+- `SAKURA-Remote-1.4.6-mac-aarch64.pkg`
+
+---
+
+## [v3.2.1] - 2026-06-03 - トップページ SAKURA BLOOM アイコン改善
 
 ### 変更内容
 
