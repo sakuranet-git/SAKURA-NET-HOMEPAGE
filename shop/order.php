@@ -9,6 +9,12 @@ function h(string $value): string
 }
 
 $products = checkout_products();
+
+// shop のカードから product_id が渡された場合はその商品を初期選択にする
+$selectedId = (string) ($_GET['product_id'] ?? '');
+if ($selectedId === '' || !isset($products[$selectedId])) {
+    $selectedId = (string) array_key_first($products);
+}
 ?>
 <!doctype html>
 <html lang="ja">
@@ -242,10 +248,9 @@ $products = checkout_products();
 
         <form class="layout" action="create_session.php" method="post">
             <section class="products" aria-label="商品選択">
-                <?php $first = true; ?>
                 <?php foreach ($products as $id => $product): ?>
                     <label class="product-card">
-                        <input type="radio" name="product_id" value="<?php echo h($id); ?>" <?php echo $first ? 'checked' : ''; ?> required>
+                        <input type="radio" name="product_id" value="<?php echo h($id); ?>" <?php echo ((string) $id === $selectedId) ? 'checked' : ''; ?> required>
                         <span>
                             <span class="product-title"><?php echo h($product['name']); ?></span>
                             <span class="product-desc"><?php echo h($product['description']); ?></span>
@@ -255,7 +260,6 @@ $products = checkout_products();
                             <span class="tax">税込</span>
                         </span>
                     </label>
-                    <?php $first = false; ?>
                 <?php endforeach; ?>
             </section>
 
