@@ -46,8 +46,8 @@ $SITE = 'https://sakuranet-co.jp';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAKURA-NET SHOP｜UniFi 正規取扱オンラインショップ</title>
-    <meta name="description" content="株式会社さくらねっとのUniFi正規取扱オンラインショップ。クラウドゲートウェイ・WiFiアクセスポイント等をクレジットカード・コンビニ決済でご購入いただけます。">
+    <title>SAKURA-NET オンラインショップ｜株式会社さくらねっと</title>
+    <meta name="description" content="株式会社さくらねっとのオンラインショップ。サポート・保守サービスと、UniFi（Ubiquiti）正規取扱いのネットワーク機器・カメラ・入退室管理製品を、クレジットカード・コンビニ決済でお求めいただけます。">
     <link rel="icon" href="<?php echo $SITE; ?>/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,6 +194,53 @@ $SITE = 'https://sakuranet-co.jp';
 
         .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
+        .thumb-ph {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #b9c0cc;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            font-size: 22px;
+        }
+
+        .thumb-ph b { color: var(--primary); }
+
+        .catnav {
+            position: sticky;
+            top: 56px;
+            z-index: 15;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: saturate(180%) blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .catnav .wrap {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 11px 0;
+        }
+
+        .catnav a {
+            white-space: nowrap;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+
+        .catnav a:hover { color: var(--text); background: var(--tile); }
+
+        .cat-count { color: var(--muted); font-size: 13px; font-weight: 600; }
+
+        .cat { scroll-margin-top: 116px; }
+
         .card-body { display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; flex: 1; }
 
         .tag {
@@ -297,18 +344,27 @@ $SITE = 'https://sakuranet-co.jp';
 
     <section class="hero">
         <div class="wrap">
-            <div class="eyebrow">UniFi 正規取扱</div>
-            <h1>UniFi オンラインショップ</h1>
-            <p>Ubiquiti UniFi のクラウドゲートウェイ・WiFiアクセスポイントを、株式会社さくらねっとが正規取扱いでお届けします。クレジットカード・コンビニ決済に対応。決済はStripeの安全な画面で行われます。</p>
+            <div class="eyebrow">SAKURA-NET STORE</div>
+            <h1>オンラインショップ</h1>
+            <p>株式会社さくらねっとのサポート・保守サービスと、UniFi（Ubiquiti）正規取扱いのネットワーク機器・カメラ・入退室管理製品をお求めいただけます。クレジットカード・コンビニ決済に対応。決済はStripeの安全な画面で行われます。</p>
         </div>
     </section>
 
+    <nav class="catnav" aria-label="カテゴリ">
+        <div class="wrap">
+            <?php $ni = 0; foreach (array_keys($groups) as $catName): ?>
+                <a href="#cat-<?php echo $ni++; ?>"><?php echo sh($catName); ?></a>
+            <?php endforeach; ?>
+        </div>
+    </nav>
+
     <div id="products">
-        <?php foreach ($groups as $catName => $items): ?>
-            <section class="cat">
+        <?php $ci = 0; foreach ($groups as $catName => $items): ?>
+            <section class="cat" id="cat-<?php echo $ci++; ?>">
                 <div class="wrap">
                     <div class="cat-head">
                         <h2><?php echo sh($catName); ?></h2>
+                        <span class="cat-count"><?php echo count($items); ?> 商品</span>
                     </div>
                     <div class="grid">
                         <?php foreach ($items as $p): ?>
@@ -316,6 +372,8 @@ $SITE = 'https://sakuranet-co.jp';
                                 <div class="thumb">
                                     <?php if ($p['image'] !== ''): ?>
                                         <img src="<?php echo sh($p['image']); ?>" alt="<?php echo sh($p['name']); ?>" loading="lazy">
+                                    <?php else: ?>
+                                        <div class="thumb-ph"><span>SAKURA<b>-NET</b></span></div>
                                     <?php endif; ?>
                                 </div>
                                 <div class="card-body">
