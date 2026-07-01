@@ -95,3 +95,7 @@ data/
 
 # ゴミ箱（ユーザー削除前の一時退避）
 trash/
+
+# shop サブドメイン（Stripe秘密キー・実データ保護）
+shop/config.php
+shop/products.json
