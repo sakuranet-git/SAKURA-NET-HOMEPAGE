@@ -40,7 +40,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>商品管理ログイン | SAKURA-NET Checkout</title>
+    <title>商品管理ログイン | SAKURA-NET Shop</title>
     <style>
         *{box-sizing:border-box}
         body{margin:0;background:#f6f5f4;color:#37352f;font-family:Inter,"Noto Sans JP",sans-serif;line-height:1.7}
@@ -51,6 +51,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
         input{width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:12px;font:inherit}
         button{width:100%;border:0;border-radius:4px;background:#0075de;color:#fff;padding:12px 16px;font:inherit;font-weight:700;cursor:pointer}
         .error{background:#fff1f1;border:1px solid #f0b8b8;border-radius:8px;padding:10px 12px;color:#9b1c1c;margin-bottom:14px}
+        @media(max-width:560px){.page{width:100%;padding:72px 16px}.card{padding:24px 20px}}
     </style>
 </head>
 <body>

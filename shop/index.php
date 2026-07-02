@@ -328,6 +328,10 @@ $SITE = 'https://sakuranet-co.jp';
         footer a:hover { color: var(--text); }
 
         @media (max-width: 560px) {
+            .topbar { align-items: flex-start; flex-wrap: wrap; padding: 12px 16px; }
+            .brand { font-size: 18px; line-height: 1.35; }
+            .topnav { width: 100%; overflow-x: auto; padding-bottom: 2px; }
+            .topnav a { flex: 0 0 auto; padding: 7px 10px; font-size: 12px; }
             .info-row { grid-template-columns: 1fr; gap: 4px; }
         }
     </style>
