@@ -105,5 +105,11 @@ $count = array_sum(array_map(static fn(array $item): int => (int) $item['quantit
             </div>
         <?php endif; ?>
     </main>
-</body>
+<footer style="border-top:1px solid #e6e8ec;margin-top:32px;padding:20px 16px 40px;color:#6a7180;font-size:13px;text-align:center;font-family:Inter,'Noto Sans JP',sans-serif;">
+<a href="tokushoho.html" style="color:#6a7180;text-decoration:none;margin:0 8px;">特定商取引法に基づく表記</a>
+<a href="https://sakuranet-co.jp/company.html" style="color:#6a7180;text-decoration:none;margin:0 8px;">会社概要</a>
+<a href="https://sakuranet-co.jp/privacy.html" style="color:#6a7180;text-decoration:none;margin:0 8px;">プライバシーポリシー</a>
+<a href="https://sakuranet-co.jp/contact.html" style="color:#6a7180;text-decoration:none;margin:0 8px;">お問い合わせ</a>
+</footer>
+    </body>
 </html>
