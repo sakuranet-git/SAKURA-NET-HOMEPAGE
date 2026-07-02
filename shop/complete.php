@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+session_start();
 require_once __DIR__ . '/config.php';
 
 function h(string $value): string
@@ -208,6 +209,10 @@ try {
     }
 } catch (Throwable $e) {
     $errorMessage = $e->getMessage();
+}
+
+if ($errorMessage === '') {
+    $_SESSION['cart'] = [];
 }
 ?>
 <!doctype html>

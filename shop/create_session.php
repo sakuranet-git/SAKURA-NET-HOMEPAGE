@@ -1,11 +1,21 @@
 <?php
 declare(strict_types=1);
 
+session_start();
 require_once __DIR__ . '/config.php';
 
 function checkout_h(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
+function checkout_limit_text(string $value, int $length): string
+{
+    if (function_exists('mb_substr')) {
+        return mb_substr($value, 0, $length);
+    }
+
+    return substr($value, 0, $length);
 }
 
 function checkout_base_url(): string
@@ -18,7 +28,7 @@ function checkout_base_url(): string
     $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $forwardedProto === 'https';
     $scheme = $https ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/system/checkout/create_session.php';
+    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/shop/create_session.php';
     $path = rtrim(str_replace('\\', '/', dirname($scriptName)), '/');
 
     return $scheme . '://' . $host . ($path === '' ? '' : $path);
@@ -89,24 +99,41 @@ function checkout_create_session(array $payload): array
     return $decoded;
 }
 
+function checkout_cart_items(array $products): array
+{
+    $cart = is_array($_SESSION['cart'] ?? null) ? $_SESSION['cart'] : [];
+    $items = [];
+
+    foreach ($cart as $id => $quantity) {
+        $id = (string) $id;
+        $quantity = (int) $quantity;
+        if ($quantity < 1 || !isset($products[$id])) {
+            continue;
+        }
+        $product = $products[$id];
+        $items[] = [
+            'id' => $id,
+            'product' => $product,
+            'quantity' => min(99, $quantity),
+            'subtotal' => (int) $product['amount'] * min(99, $quantity),
+        ];
+    }
+
+    return $items;
+}
+
 function checkout_error_page(string $message): void
 {
     http_response_code(400);
-    echo '<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>決済エラー</title><style>body{font-family:Inter,"Noto Sans JP",sans-serif;background:#f6f5f4;color:#37352f;margin:0;padding:40px}.card{max-width:720px;margin:auto;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:12px;padding:28px}.button{display:inline-block;margin-top:16px;background:#0075de;color:#fff;text-decoration:none;border-radius:4px;padding:10px 14px}</style></head><body><main class="card"><h1>決済画面を作成できませんでした</h1><p>' . checkout_h($message) . '</p><a class="button" href="order.php">申込ページへ戻る</a></main></body></html>';
+    echo '<!doctype html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>決済エラー</title><style>body{font-family:Inter,&quot;Noto Sans JP&quot;,sans-serif;background:#f6f5f4;color:#37352f;margin:0;padding:40px}.card{max-width:720px;margin:auto;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:12px;padding:28px}.button{display:inline-block;margin-top:16px;background:#0075de;color:#fff;text-decoration:none;border-radius:4px;padding:10px 14px}</style></head><body><main class="card"><h1>決済画面を作成できませんでした</h1><p>' . checkout_h($message) . '</p><a class="button" href="cart.php">カートへ戻る</a></main></body></html>';
 }
 
 try {
     checkout_assert_configured();
 
     if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-        header('Location: order.php', true, 303);
+        header('Location: cart.php', true, 303);
         exit;
-    }
-
-    $productId = (string) ($_POST['product_id'] ?? '');
-    $product = checkout_product($productId);
-    if ($product === null) {
-        throw new InvalidArgumentException('商品を選択してください。');
     }
 
     $customerName = trim((string) ($_POST['customer_name'] ?? ''));
@@ -125,32 +152,52 @@ try {
         throw new InvalidArgumentException('電話番号を入力してください。');
     }
 
-    $amount = (int) $product['amount'];
+    $products = checkout_products();
+    $items = checkout_cart_items($products);
+    if ($items === []) {
+        throw new InvalidArgumentException('カートに商品がありません。');
+    }
+
+    $lineItems = [];
+    $total = 0;
+    $summaryParts = [];
+
+    foreach ($items as $item) {
+        $product = $item['product'];
+        $quantity = (int) $item['quantity'];
+        $amount = (int) $product['amount'];
+        $total += (int) $item['subtotal'];
+        $summaryParts[] = $product['name'] . ' x ' . $quantity;
+
+        $lineItems[] = [
+            'quantity' => $quantity,
+            'price_data' => [
+                'currency' => STRIPE_CURRENCY,
+                'unit_amount' => $amount,
+                'product_data' => [
+                    'name' => (string) $product['name'],
+                    'description' => checkout_limit_text((string) $product['description'], 400),
+                ],
+            ],
+        ];
+    }
+
     $baseUrl = checkout_base_url();
+    $summary = checkout_limit_text(implode(' / ', $summaryParts), 480);
 
     $payload = [
         'mode' => 'payment',
-        'payment_method_types' => checkout_payment_method_types($amount),
+        'payment_method_types' => checkout_payment_method_types($total),
         'success_url' => $baseUrl . '/complete.php?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url' => $baseUrl . '/order.php',
+        'cancel_url' => $baseUrl . '/cart.php',
         'customer_email' => $customerEmail,
-        'line_items' => [
-            [
-                'quantity' => 1,
-                'price_data' => [
-                    'currency' => STRIPE_CURRENCY,
-                    'unit_amount' => $amount,
-                    'product_data' => [
-                        'name' => $product['name'],
-                        'description' => $product['description'],
-                    ],
-                ],
-            ],
-        ],
+        'line_items' => $lineItems,
         'metadata' => [
-            'customer_name' => $customerName,
-            'customer_phone' => $customerPhone,
-            'product_id' => $productId,
+            'customer_name' => checkout_limit_text($customerName, 120),
+            'customer_phone' => checkout_limit_text($customerPhone, 120),
+            'items_summary' => $summary,
+            'item_count' => (string) array_sum(array_map(static fn(array $item): int => (int) $item['quantity'], $items)),
+            'cart_total' => (string) $total,
         ],
     ];
 
@@ -165,6 +212,8 @@ try {
         echo json_encode([
             'id' => $session['id'] ?? '',
             'url' => $session['url'],
+            'total' => $total,
+            'line_items_count' => count($lineItems),
             'payment_method_types' => $session['payment_method_types'] ?? $payload['payment_method_types'],
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         exit;
