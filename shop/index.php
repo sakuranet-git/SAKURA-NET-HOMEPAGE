@@ -141,6 +141,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
             <div class="info-row"><strong>キャンセル・返金方針</strong><span>お支払い後のキャンセル・返金は、商品発送前に限り個別に確認いたします。発送後の返金は原則として承っておりません。</span></div>
             <div class="info-row"><strong>引渡し時期</strong><span>決済確認後、在庫確認のうえ発送または個別に納期をご案内いたします。コンビニ決済はご入金確認後の手配となります。</span></div>
             <div class="info-row"><strong>お問い合わせ</strong><span>株式会社さくらねっと / 受付時間 10:00-17:00 / <a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a></span></div>
+            <div class="info-row"><strong>事業者情報</strong><span><a href="tokushoho.html">特定商取引法に基づく表記</a> ／ <a href="<?php echo sh($site); ?>/company.html">会社概要</a></span></div>
         </section>
     </div>
 
@@ -149,6 +150,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
             <span>&copy; <?php echo date('Y'); ?> 株式会社さくらねっと SAKURA-NET SHOP</span>
             <span>
                 <a href="<?php echo sh($site); ?>/">本体サイト</a>
+                <a href="tokushoho.html">特定商取引法に基づく表記</a>
                 <a href="<?php echo sh($site); ?>/company.html">会社概要</a>
                 <a href="<?php echo sh($site); ?>/privacy.html">プライバシー</a>
             </span>

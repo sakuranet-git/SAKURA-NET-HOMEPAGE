@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記｜SAKURA-NET オンラインショップ</title>
+    <meta name="description" content="株式会社さくらねっと オンラインショップ（shop.sakuranet-co.jp）の特定商取引法に基づく表記です。">
+    <link rel="icon" href="https://sakuranet-co.jp/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff; --tile: #f6f6f8; --text: #16181d; --muted: #6a7180;
+            --border: #e6e8ec; --primary: #006fff; --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text);
+            font-family: Inter, "Noto Sans JP", sans-serif; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+        a { color: var(--primary); }
+        .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            padding: 14px clamp(16px, 4vw, 40px); border-bottom: 1px solid var(--border); position: sticky; top: 0;
+            background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(12px); z-index: 10; }
+        .brand { font-weight: 800; letter-spacing: -0.02em; font-size: 18px; text-decoration: none; color: var(--text); }
+        .brand span { color: var(--primary); }
+        .topnav a { text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 9999px; }
+        .topnav a:hover { color: var(--text); background: var(--tile); }
+        .wrap { width: min(920px, calc(100% - 32px)); margin: 0 auto; }
+        .head { padding: clamp(32px, 6vw, 56px) 0 clamp(16px, 3vw, 28px); }
+        .eyebrow { color: var(--primary); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+        h1 { margin: 10px 0 0; font-size: clamp(26px, 5vw, 40px); letter-spacing: -0.03em; }
+        table.spec { width: 100%; border-collapse: collapse; margin: 8px 0 48px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+        table.spec th, table.spec td { text-align: left; vertical-align: top; padding: 16px 18px; border-top: 1px solid var(--border); font-size: 14.5px; }
+        table.spec tr:first-child th, table.spec tr:first-child td { border-top: 0; }
+        table.spec th { width: 34%; background: var(--tile); font-weight: 700; color: var(--text); }
+        table.spec td { color: var(--muted); }
+        table.spec td strong { color: var(--text); }
+        footer { border-top: 1px solid var(--border); padding: 24px 0 48px; color: var(--muted); font-size: 13px; }
+        footer a { color: var(--muted); text-decoration: none; }
+        @media (max-width: 560px) {
+            table.spec th, table.spec td { display: block; width: 100%; }
+            table.spec td { border-top: 0; padding-top: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="index.php">SAKURA-NET <span>SHOP</span></a>
+        <nav class="topnav">
+            <a href="index.php">商品一覧</a>
+            <a href="https://sakuranet-co.jp/">本体サイト</a>
+        </nav>
+    </header>
+
+    <div class="wrap">
+        <div class="head">
+            <div class="eyebrow">Legal</div>
+            <h1>特定商取引法に基づく表記</h1>
+        </div>
+
+        <table class="spec">
+            <tr><th>販売事業者名</th><td><strong>株式会社さくらねっと</strong></td></tr>
+            <tr><th>運営統括責任者</th><td>伏見 彰</td></tr>
+            <tr><th>所在地</th><td>〒532-0012　大阪府大阪市淀川区木川東4-3-34 5F</td></tr>
+            <tr><th>電話番号</th><td>06-7777-2720（受付時間 10:00-17:00）<br><span style="font-size:12px;">お問い合わせは原則メールにて承っております。</span></td></tr>
+            <tr><th>メールアドレス</th><td>akira@sakura-mode.net</td></tr>
+            <tr><th>サポート対応時間</th><td>10:00 - 17:00（土日祝を除く）</td></tr>
+            <tr><th>販売URL</th><td><a href="https://shop.sakuranet-co.jp/">https://shop.sakuranet-co.jp/</a></td></tr>
+            <tr><th>販売価格</th><td>各商品ページに表示する価格（消費税込み）</td></tr>
+            <tr><th>商品代金以外の必要料金</th><td>送料（商品・配送方法により実費を別途ご案内）、コンビニ決済等の決済手数料が発生する場合があります。</td></tr>
+            <tr><th>お支払い方法</th><td>クレジットカード決済／コンビニ決済（決済代行：Stripe）</td></tr>
+            <tr><th>お支払い時期</th><td>クレジットカード：ご注文時に確定します。<br>コンビニ決済：受付番号発行後、表示された支払期限内にコンビニ店頭でお支払いください。</td></tr>
+            <tr><th>商品の引渡し時期・役務提供時期</th><td>決済（コンビニは入金）確認後、在庫を確認のうえ発送、または個別に納期・提供開始日をご案内します。サービス（サポート・保守等）は決済確認後に個別調整のうえ提供を開始します。</td></tr>
+            <tr><th>返品・交換・キャンセル<br>（返品特約）</th><td>お支払い後のキャンセル・返金は、商品発送前またはサービス提供開始前に限り個別に対応いたします。発送後・役務提供開始後の返金は原則として承っておりません。<br>商品に不良・破損・誤配送があった場合は、商品到着後7日以内にメールにてご連絡ください。良品と交換いたします（送料は当社負担）。</td></tr>
+            <tr><th>事業者情報</th><td>会社概要は <a href="https://sakuranet-co.jp/company.html">こちら</a> をご覧ください。</td></tr>
+        </table>
+    </div>
+
+    <footer>
+        <div class="wrap">
+            © 2026 株式会社さくらねっと SAKURA-NET SHOP　/　<a href="https://sakuranet-co.jp/privacy.html">プライバシーポリシー</a>　/　<a href="index.php">商品一覧</a>
+        </div>
+    </footer>
+</body>
+</html>
