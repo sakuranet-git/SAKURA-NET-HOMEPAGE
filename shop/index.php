@@ -140,7 +140,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
             <div class="info-row"><strong>対応決済</strong><span>クレジットカード決済・コンビニ決済（Stripe）。合計金額が30万円を超える場合はカード決済のみになります。</span></div>
             <div class="info-row"><strong>キャンセル・返金方針</strong><span>お支払い後のキャンセル・返金は、商品発送前に限り個別に確認いたします。発送後の返金は原則として承っておりません。</span></div>
             <div class="info-row"><strong>引渡し時期</strong><span>決済確認後、在庫確認のうえ発送または個別に納期をご案内いたします。コンビニ決済はご入金確認後の手配となります。</span></div>
-            <div class="info-row"><strong>お問い合わせ</strong><span>株式会社さくらねっと / 受付時間 10:00-17:00 / <a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a></span></div>
+            <div class="info-row"><strong>お問い合わせ</strong><span>株式会社さくらねっと / 受付時間 平日 10:00-19:00（土日祝 休業） / <a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a></span></div>
             <div class="info-row"><strong>事業者情報</strong><span><a href="tokushoho.html">特定商取引法に基づく表記</a> ／ <a href="<?php echo sh($site); ?>/company.html">会社概要</a></span></div>
         </section>
     </div>

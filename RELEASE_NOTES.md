@@ -1,4 +1,4 @@
-﻿## [v3.2.3] - 2026-06-20 - Windows版手順にSmart App Control対策を追加
+## [v3.2.3] - 2026-06-20 - Windows版手順にSmart App Control対策を追加
 
 ### 変更内容
 
@@ -16,6 +16,177 @@
 ### Webへのアップロード対象
 
 - `remote.html`
+
+---
+
+## [v3.2.0] - 2026-07-06 - Stripe審査指摘対応（特商法・ショップ表記）
+
+### 変更内容
+
+**shop/tokushoho.html**
+- 所在地をStripe申請情報に合わせて `〒532-0012 大阪府大阪市淀川区木川東4丁目3-34-514` に修正。
+- 電話受付時間・サポート対応時間を `平日 10:00-19:00／土日祝 休業` に修正。
+- サポートメール `akira@sakura-mode.net` は維持。
+- Stripe指摘のサブスクリプション/継続サービス向け4項目に対応するため、「継続サービス・年額サービスについて」を追加。
+  - サービス開始月の利用料
+  - 解約手続き
+  - 解約月の利用料
+  - 有料サービス決済後キャンセル
+
+**shop/index.php**
+- ショップTOPの問い合わせ受付時間を `平日 10:00-19:00（土日祝 休業）` に修正。
+
+### バックアップ
+
+- `backups/v_stripe_review_fix_080706_182732/tokushoho.html`
+- `backups/v_stripe_review_fix_080706_182732/index.php`
+- `backups/v_stripe_review_fix_080706_182732/RELEASE_NOTES.md`
+
+### Web へのアップロード対象
+
+| ファイル | 配置先 |
+|---|---|
+| `shop/tokushoho.html` | `https://shop.sakuranet-co.jp/tokushoho.html` |
+| `shop/index.php` | `https://shop.sakuranet-co.jp/index.php` |
+
+---
+
+## [v4.1.0] - 2026-07-02 - ショップ管理画面の商品画像アップロード対応
+
+### 変更内容
+
+**shop/config.php**
+- 商品正規化時に `image` と `category` を保持するよう修正。
+- `checkout_save_products()` 経由の保存で商品画像・カテゴリが消えないよう対応。
+
+**shop/admin/products.php**
+- 商品管理画面に `カテゴリ`、`画像URL`、`画像アップロード` 欄を追加。
+- 既存画像のプレビューを表示。
+- `multipart/form-data` に対応。
+
+**shop/admin/login.php**
+- 商品管理ログイン画面の文字化けを修正。
+- 既存ログイン仕様は維持。
+
+**shop/admin/save.php**
+- 既存商品の `image` / `category` をID単位で引き継ぐ保存処理へ変更。
+- 画像URL直接入力とファイルアップロードの両方に対応。
+- jpg / jpeg / png / webp、5MB以下に制限。
+- 未指定時は既存画像を保持。
+
+**shop/uploads/.htaccess**
+- アップロード先のディレクトリ一覧表示を無効化。
+- PHP系ファイルの実行を拒否。
+
+**shop/index.php**
+- スマホ390px幅で上部ナビが見切れないよう、ヘッダー折り返しを調整。
+
+### バックアップ
+
+- `backups/v4.1_shop_image_upload_before_080702_135827/`
+
+### Web へのアップロード対象
+
+| ファイル | 配置先 |
+|---|---|
+| `shop/config.php` | `https://shop.sakuranet-co.jp/config.php` |
+| `shop/admin/login.php` | `https://shop.sakuranet-co.jp/admin/login.php` |
+| `shop/admin/products.php` | `https://shop.sakuranet-co.jp/admin/products.php` |
+| `shop/admin/save.php` | `https://shop.sakuranet-co.jp/admin/save.php` |
+| `shop/uploads/.htaccess` | `/home/sakura-nets/www/shop/uploads/.htaccess` |
+| `shop/index.php` | `https://shop.sakuranet-co.jp/index.php` |
+
+---
+
+## [v6.0.0] - 2026-07-02 - UniFi JPストア主要ハードウェア商品をショップへ投入
+
+### 変更内容
+
+**shop/products.json**
+- 先頭6件のさくらねっと自社商材を維持したまま、UniFi JPストア掲載商品を公式ストアデータから生成。
+- 対象カテゴリは `Cloud Gateways` / `WiFi` / `Switching` / `Cameras` / `Door Access`。
+- 商品ID、商品名、税込価格、カテゴリ、画像URLを公式ストアの埋め込みデータから取得。
+- 画像URLは `images.svc.ui.com` 形式、`q=75&w=640` に統一。
+
+### 商品数
+
+- 総商品数: 195件
+- さくらねっと自社商材: 6件
+- UniFi商品: 189件
+
+### カテゴリ別内訳
+
+- サポート・保守: 3件
+- 回線・サービス: 3件
+- Cloud Gateways: 11件
+- WiFi: 22件
+- Switching: 43件
+- Cameras: 83件
+- Door Access: 30件
+
+### バックアップ
+
+- `backups/v6.0_unifi_products_before_080702_142657/products.json`
+- `backups/v6.0_unifi_products_before_080702_142657/RELEASE_NOTES.md`
+
+### Web へのアップロード対象
+
+| ファイル | 配置先 |
+|---|---|
+| `shop/products.json` | `https://shop.sakuranet-co.jp/products.json` |
+| `RELEASE_NOTES.md` | `https://sakuranet-co.jp/RELEASE_NOTES.md` |
+
+---
+
+## [v7.0.0] - 2026-07-02 - ショップにカート機能を実装
+
+### 変更内容
+
+**shop/index.php**
+- 商品カードの導線を単品購入から `カートに追加` へ変更。
+- ヘッダーに `カート（件数）` を追加。
+- 文字化けしていたショップ文言をUTF-8の日本語表示へ整理。
+
+**shop/cart.php**
+- カートページを新規作成。
+- `$_SESSION['cart'] = [product_id => quantity]` でカート状態を保持。
+- 数量変更、削除、カートを空にする、合計金額表示に対応。
+
+**shop/order.php**
+- 単一商品選択ページから、カート内容確認＋お客様情報入力ページへ再設計。
+
+**shop/create_session.php**
+- 単一 `product_id` 前提から、カート内商品の複数明細 `line_items` 対応へ変更。
+- カート合計金額で決済方法を判定。30万円超はカードのみ、30万円以下はカード・コンビニ。
+- metadata に氏名、電話番号、商品明細概要、商品点数、カート合計を保存。
+
+**shop/complete.php**
+- 決済完了画面を正常表示できた場合に、セッション内カートを空にする処理を追加。
+- 既存のコンビニ受付番号・支払い案内URL表示ロジックは維持。
+
+### バックアップ
+
+- `backups/v7.0_cart_before_080702_144632/`
+
+### Web へのアップロード対象
+
+| ファイル | 配置先 |
+|---|---|
+| `shop/index.php` | `https://shop.sakuranet-co.jp/index.php` |
+| `shop/cart.php` | `https://shop.sakuranet-co.jp/cart.php` |
+| `shop/order.php` | `https://shop.sakuranet-co.jp/order.php` |
+| `shop/create_session.php` | `https://shop.sakuranet-co.jp/create_session.php` |
+| `shop/complete.php` | `https://shop.sakuranet-co.jp/complete.php` |
+| `RELEASE_NOTES.md` | `https://sakuranet-co.jp/RELEASE_NOTES.md` |
+
+### 検証
+
+- PHP構文確認OK。
+- UTF-8 BOMなし。
+- 複数商品追加、数量変更、削除、空カート表示OK。
+- Stripe Checkout Sessionの複数明細作成OK。
+- 30万円以下は `card,konbini`、30万円超は `card` のみ。
+- complete.php到達後にカートが空になることを確認。
 
 ---
 
