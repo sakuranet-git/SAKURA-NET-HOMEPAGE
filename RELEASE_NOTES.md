@@ -32,12 +32,16 @@
 
 **pay.html**
 - お問い合わせ欄の受付時間を `平日 10:00-19:00（土日祝 休業）` に修正。
+- 「事業者情報」欄のリンクを、特商法表記 `privacy.html#tokushoho` と会社概要 `company.html` に分離。
+  - 会社概要ページを「特定商取引法に基づく表記」と誤認されるリスクを解消。
 
 ### バックアップ
 
 - `backups/v_stripe_privacy_fix_080707_144401/privacy.html`
 - `backups/v_stripe_privacy_fix_080707_144401/pay.html`
 - `backups/v_stripe_privacy_fix_080707_144401/RELEASE_NOTES.md`
+- `backups/v_stripe_pay_link_fix_080707_144858/pay.html`
+- `backups/v_stripe_pay_link_fix_080707_144858/RELEASE_NOTES.md`
 
 ### Web へのアップロード対象
 
