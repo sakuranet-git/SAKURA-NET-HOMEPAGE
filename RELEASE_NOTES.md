@@ -19,6 +19,35 @@
 
 ---
 
+## [v3.2.1] - 2026-07-07 - Stripe追加指摘対応（申請URL側の特商法表記）
+
+### 変更内容
+
+**privacy.html**
+- Stripe申請URL側 `https://sakuranet-co.jp/privacy` に含まれる「特定商取引法に基づく表記」を更新。
+- 旧所在地 `大阪府大阪市淀川区木川東4-3-34 5F` を、申請情報に合わせて `〒532-0012 大阪府大阪市淀川区木川東4丁目3-34-514` に修正。
+- サポート対応時間を `平日 10:00-19:00／土日祝 休業` に統一。
+- サポートメールを `akira@sakura-mode.net` に統一。
+- 支払い方法、30万円超のコンビニ決済制限、役務提供時期、継続サービス・年額サービス、返品特約をショップ特商法と同等内容へ更新。
+
+**pay.html**
+- お問い合わせ欄の受付時間を `平日 10:00-19:00（土日祝 休業）` に修正。
+
+### バックアップ
+
+- `backups/v_stripe_privacy_fix_080707_144401/privacy.html`
+- `backups/v_stripe_privacy_fix_080707_144401/pay.html`
+- `backups/v_stripe_privacy_fix_080707_144401/RELEASE_NOTES.md`
+
+### Web へのアップロード対象
+
+| ファイル | 配置先 |
+|---|---|
+| `privacy.html` | `https://sakuranet-co.jp/privacy.html` / `https://sakuranet-co.jp/privacy` |
+| `pay.html` | `https://sakuranet-co.jp/pay.html` |
+
+---
+
 ## [v3.2.0] - 2026-07-06 - Stripe審査指摘対応（特商法・ショップ表記）
 
 ### 変更内容
