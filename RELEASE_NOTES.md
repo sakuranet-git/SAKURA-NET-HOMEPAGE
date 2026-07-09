@@ -19,6 +19,33 @@
 
 ---
 
+## [v3.2.5] - 2026-07-09 - Stripe再申請前 v11 指摘修正
+
+### 変更内容
+
+**shop/index.php**
+- ショップTOPのお問い合わせ受付時間を `平日 10:00-17:00（土日祝 休業）` に修正。
+- Stripe申請情報との整合性を優先し、ショップ内の19:00表記を解消。
+
+**shop/tokushoho.html**
+- Claude Code側で反映済みだった電話番号・サポート対応時間の `10:00-17:00` 表記を維持。
+- 「継続サービス・年額サービスについて」に、都度払いであり自動継続課金ではない旨を追記。
+
+### バックアップ
+
+- `backups/v_stripe_v11_fix_080709_125045/shop/index.php`
+- `backups/v_stripe_v11_fix_080709_125045/shop/tokushoho.html`
+- `backups/v_stripe_v11_fix_080709_125045/RELEASE_NOTES.md`
+
+### Web へのアップロード対象
+
+| ファイル | 配置先 |
+|---|---|
+| `shop/index.php` | `https://shop.sakuranet-co.jp/index.php` |
+| `shop/tokushoho.html` | `https://shop.sakuranet-co.jp/tokushoho.html` |
+
+---
+
 ## [v3.2.3] - 2026-07-09 - お問い合わせページに電話AI受付の注意文を追加
 
 ### 変更内容
