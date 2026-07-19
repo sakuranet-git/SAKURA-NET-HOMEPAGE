@@ -43,6 +43,28 @@
       margin-bottom: 24px;
       padding: 18px 20px;
     }
+    .update-info {
+      background: #fff;
+      border: 1px solid #efd0dc;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(232, 180, 200, .16);
+      color: #555;
+      margin-bottom: 24px;
+      padding: 18px 20px;
+    }
+    .update-info h2 {
+      color: #9f5875;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    .update-info dl {
+      display: grid;
+      grid-template-columns: 8em 1fr;
+      gap: 4px 10px;
+      margin-bottom: 10px;
+    }
+    .update-info dt { color: #777; font-weight: bold; }
+    .update-info ul { padding-left: 1.2em; }
     .os-question {
       font-size: 1.15rem;
       font-weight: bold;
@@ -249,7 +271,6 @@
       お使いのパソコンに合う手順を選び、上から順番に進めてください。<br>
       わからない画面が出たときは、そのまま閉じずにサポートスタッフへお電話ください。
     </p>
-
     <div class="step" style="background-color:#fef3f6; border-left:4px solid #c0668c; margin-bottom:24px;">
       <div class="step-head">
         <div class="step-number" style="background-color:#c0668c;">!</div>
@@ -262,6 +283,21 @@
       </div>
     </div>
 
+    <section class="update-info" aria-label="SAKURA-Remoteの更新情報">
+      <h2>SAKURA-Remote 最新版・更新情報</h2>
+      <dl>
+        <dt>最新版</dt><dd>Windows版 2.4.5（RustDesk 1.4.9 取り込み版）</dd>
+        <dt>公開日時</dt><dd>2026年7月11日 19:00</dd>
+        <dt>対象</dt><dd>Windows 10 / 11 x64</dd>
+      </dl>
+      <p>主な更新内容:</p>
+      <ul>
+        <li>2.3.1から更新できない端末を、自動更新タスク経由で2.4.5へ上げるための互換性対応</li>
+        <li>2.4.5以降は修正済みの「アップデートを確認」ボタンを利用可能</li>
+        <li>RustDesk 1.4.9取り込み版を維持</li>
+        <li>SAKURA-NET専用サーバー・公開鍵の焼き込みを確認済み</li>
+      </ul>
+    </section>
     <p class="os-question">どちらのパソコンをお使いですか？</p>
     <nav class="os-chooser" aria-label="パソコンの種類を選択">
       <a class="os-choice" href="#windows">
