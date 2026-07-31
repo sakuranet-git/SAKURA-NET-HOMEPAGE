@@ -1,3 +1,21 @@
+## [v3.2.5] - 2026-07-31 - Windows公式署名クライアントへ切替
+
+### 変更内容
+
+- Windows版のリンクをRustDesk公式署名済みクライアント1.4.6へ変更。
+- 配布ファイル名にSAKURA専用サーバーと公開鍵を設定し、初回起動時に自動反映。
+- 発行元`PURSLANE`の確認手順と、RustDesk画面からのインストール手順へ更新。
+- Smart App ControlなどWindowsのセキュリティ機能を無効にする案内を撤去。
+- 旧カスタム版「さくらリモート」は設定を引き継げないため、上書きせずサポート案内で入れ替えるよう修正。
+- 公式RustDeskで接続確認が表示された場合の「受け入れる」操作を追記。
+- 変更前バックアップ: `backups/v3.2.5-official-client-pre_20260729/`
+- Claude Codeレビュー修正前バックアップ: `backups/v3.2.6-claude-review-fix-pre_20260731/`
+- Claude Code再レビュー: `GO`（重大指摘なし）。
+- 本番アップロード前の公開HTML: `backups/v3.2.5-live-predeploy_20260731/remote.html`
+- 本番公開対象: `remote.html`、設定済みRustDesk公式EXE。
+- 公開EXE: 24,252,504バイト、SHA-256 `422CE31131E6537EA4F611EBF4A4D1804F28A6F58C83AA05065071C5958F1551`、署名`Valid`、発行元`PURSLANE`。
+- 公開URLからの保存名、HTML一致、PC・モバイル表示、コンソールエラー0件を確認。
+
 ## [v3.2.3] - 2026-06-20 - Windows版手順にSmart App Control対策を追加
 
 ### 変更内容

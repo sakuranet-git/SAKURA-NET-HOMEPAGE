@@ -274,29 +274,26 @@
     <div class="step" style="background-color:#fef3f6; border-left:4px solid #c0668c; margin-bottom:24px;">
       <div class="step-head">
         <div class="step-number" style="background-color:#c0668c;">!</div>
-        <div class="step-title">既にインストール済みの方へ</div>
+        <div class="step-title">以前「さくらリモート」をご利用の方へ</div>
       </div>
       <div class="step-body">
-        <p>新しいバージョンが出た場合は、もう一度下のダウンロードボタンを押して<b>上書きインストール</b>してください。</p>
-        <p>接続ID・パスワードなどの<b>設定はそのまま引き継がれます</b>ので、何度押しても問題ありません。</p>
-        <p style="font-size:0.85rem; color:#888;">※ 古いバージョンには自動更新機能がないため、お手数ですが定期的にこのページからダウンロードしてください。</p>
+        <p>以前の<b>「さくらリモート」</b>と今回のRustDeskは設定が別管理です。ご自身で上書きせず、先にサポートスタッフへお電話ください。</p>
+        <p style="font-size:0.85rem; color:#888;">※ サポートスタッフの案内に沿って、旧バージョンからの入れ替えを行います。</p>
       </div>
     </div>
 
     <section class="update-info" aria-label="SAKURA-Remoteの更新情報">
       <h2>SAKURA-Remote 最新版・更新情報</h2>
       <dl>
-        <dt>最新版</dt><dd>Windows版 2.4.6（RustDesk 1.4.9 取り込み版）</dd>
-        <dt>公開日時</dt><dd>2026年7月20日 02:30</dd>
+        <dt>最新版</dt><dd>Windows版 RustDesk 1.4.6（公式署名・SAKURA接続設定済み）</dd>
+        <dt>公開日時</dt><dd>2026年7月29日</dd>
         <dt>対象</dt><dd>Windows 10 / 11 x64</dd>
       </dl>
       <p>主な更新内容:</p>
       <ul>
-        <li>アップデート確認画面に公開日時と更新内容を表示</li>
-        <li>更新後のバージョン・概要・内容を端末ログとレジストリに保存</li>
-        <li>version.jsonに更新内容の項目を追加</li>
-        <li>RustDesk 1.4.9取り込み版を維持</li>
-        <li>SAKURA-NET専用サーバー・公開鍵の焼き込みを確認済み</li>
+        <li>RustDesk公式のデジタル署名付きWindows版へ切り替え</li>
+        <li>SAKURA専用サーバー・公開鍵を設定済み</li>
+        <li>Windowsのセキュリティ機能を無効にせず利用可能</li>
       </ul>
     </section>
     <p class="os-question">どちらのパソコンをお使いですか？</p>
@@ -320,44 +317,38 @@
         <div class="step">
           <div class="step-head"><div class="step-number">1</div><div class="step-title">ソフトをダウンロードする</div></div>
           <div class="step-body">
-            <p>下のピンクのボタンを押してください。「さくらリモートセットアップ.exe」がダウンロードされます。</p>
-            <a class="download-btn" href="SAKURA-Remote-Setup.exe" download="さくらリモートセットアップ.exe">Windows版をダウンロード</a>
-            <div class="hint">ファイルは通常「ダウンロード」フォルダに保存されます。「保存しますか？」と表示されたら「保存」を押してください。</div>
+            <p>下のピンクのボタンを押してください。SAKURA接続設定済みのRustDesk公式ファイルがダウンロードされます。</p>
+            <a class="download-btn" href="rustdesk-host=116.58.164.244,key=CiBjNf1UarFy7pU5OhHoAVQUG0wvvOLriqycc4PMPd8=.exe" download>Windows版をダウンロード</a>
+            <div class="hint">ファイル名は接続設定を含むため長く表示されます。名前を変更せず、そのまま「ダウンロード」フォルダへ保存してください。</div>
           </div>
         </div>
         <div class="step">
           <div class="step-head"><div class="step-number">2</div><div class="step-title">ダウンロードしたファイルを開く</div></div>
           <div class="step-body">
-            <p><b>「さくらリモートセットアップ.exe」</b>をダブルクリックします。</p>
+            <p>名前が<b>「rustdesk-host=」</b>で始まるファイルをダブルクリックします。</p>
             <div class="hint">見つからない場合は、キーボードの「Windowsキー + E」を押し、左側の「ダウンロード」をクリックしてください。</div>
             <div class="warning">
-              <div class="warning-title">「WindowsによってPCが保護されました」と表示された場合</div>
-              <ol><li><b>「詳細情報」</b>をクリックします。</li><li>表示された<b>「実行」</b>ボタンを押します。</li></ol>
-              <p class="small">弊社が作成した正規のサポート用プログラムです。</p>
+              <div class="warning-title">実行前に発行元を確認してください</div>
+              <p>Windowsの確認画面では、発行元が<b>「PURSLANE」</b>であることを確認してから実行してください。</p>
+              <p class="small">RustDesk公式のデジタル署名付きプログラムです。</p>
             </div>
             <div class="warning">
-              <div class="warning-title">「スマート アプリ コントロール」で開けない場合</div>
-              <p>一部のWindows 11では、スマート アプリ コントロールによりインストーラーが開けない場合があります。</p>
-              <a class="settings-btn" href="windowsdefender://AppBrowser">Windowsセキュリティを開く</a>
-              <ol>
-                <li>開いた画面で<b>「スマート アプリ コントロールの設定」</b>をクリックします。</li>
-                <li><b>「オフ」</b>を選びます。</li>
-                <li>もう一度<b>「さくらリモートセットアップ.exe」</b>を開きます。</li>
-              </ol>
-              <p class="small">ボタンで開けない場合は、設定 → プライバシーとセキュリティ → Windows セキュリティ → アプリとブラウザー コントロール → スマート アプリ コントロールの設定、の順に進んでください。</p>
-              <p class="small">オフにするとWindowsの保護機能の一部が無効になります。不安な場合はサポートスタッフの案内に従ってください。</p>
+              <div class="warning-title">セキュリティにより保存・実行できない場合</div>
+              <p>Windowsや会社のセキュリティ設定により、ダウンロードまたは実行が止められる場合があります。</p>
+              <p>セキュリティ機能はオフにしないでください。発行元が「PURSLANE」と表示されない場合は実行しないでください。</p>
+              <p class="small">会社のパソコンで管理者によりブロックされた場合は、社内の情報システム担当者による許可が必要です。</p>
             </div>
           </div>
         </div>
         <div class="step">
-          <div class="step-head"><div class="step-number">3</div><div class="step-title">「はい」をクリックする</div></div>
-          <div class="step-body"><p>「このアプリがデバイスに変更を加えることを許可しますか？」と聞かれたら、<b>「はい」</b>を押してください。</p></div>
+          <div class="step-head"><div class="step-number">3</div><div class="step-title">RustDeskをインストールする</div></div>
+          <div class="step-body"><p>RustDeskの画面で<b>「インストール」</b>を押します。「このアプリがデバイスに変更を加えることを許可しますか？」と聞かれたら、発行元を確認して<b>「はい」</b>を押してください。</p></div>
         </div>
         <div class="step">
           <div class="step-head"><div class="step-number">4</div><div class="step-title">完了するまで待つ</div></div>
           <div class="step-body">
             <p>自動的にインストールが進みます。1〜2分ほどお待ちください。</p>
-            <div class="done-box"><b>「SAKURA-Remote」</b>の画面が開いたら準備完了です。そのままサポートスタッフの案内をお待ちください。</div>
+            <div class="done-box"><b>RustDesk</b>の画面に接続IDが表示されたら準備完了です。サポートから接続の確認が表示されたら、内容を確認して<b>「受け入れる」</b>を押してください。</div>
           </div>
         </div>
       </div>
