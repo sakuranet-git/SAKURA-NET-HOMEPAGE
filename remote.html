@@ -244,6 +244,23 @@
       font-size: .9rem;
       padding: 14px 18px;
     }
+    .code-signing-policy {
+      background: #fff;
+      border: 1px solid #efd0dc;
+      border-radius: 10px;
+      color: #555;
+      font-size: .85rem;
+      line-height: 1.75;
+      margin-top: 20px;
+      padding: 18px 20px;
+    }
+    .code-signing-policy h2 {
+      color: #9f5875;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .code-signing-policy ul { padding-left: 1.2em; }
+    .code-signing-policy a { color: #9f5875; }
     footer {
       background: #e8b4c8;
       color: #fff;
@@ -420,6 +437,18 @@
       SAKURA-Remote（さくらリモート）は、サポートスタッフがお客様の許可なく勝手に操作を始めるものではありません。<br>
       アンインストールをご希望の場合は、残っているサービスも含めて削除方法をご案内しますので、サポートスタッフへご連絡ください。
     </p>
+    <section class="code-signing-policy" id="code-signing-policy" aria-labelledby="code-signing-policy-title">
+      <h2 id="code-signing-policy-title">Code signing policy</h2>
+      <p>SAKURA-NET-RemoteのWindows配布物は、公開ソースと承認済みの自動ビルドから生成された正式リリースだけをコード署名します。署名要求はリリースごとに担当者が承認し、SHA-256、ビルド元コミット、CI実行番号を記録します。本ポリシーはSignPath Foundationの承認後に署名される配布物へ適用します。</p>
+      <p lang="en">Free code signing provided by SignPath.io, certificate by SignPath Foundation.</p>
+      <ul>
+        <li>Committers and reviewers: <a href="https://github.com/sakuranet-git" rel="noopener noreferrer">SAKURA-NET GitHub maintainer</a></li>
+        <li>Approvers: <a href="https://github.com/sakuranet-git" rel="noopener noreferrer">SAKURA-NET GitHub maintainer</a></li>
+        <li>Source repository: <a href="https://github.com/sakuranet-git/SAKURA-NET-Remote" rel="noopener noreferrer">SAKURA-NET-Remote</a></li>
+        <li>Privacy policy: <a href="privacy.html">プライバシーポリシー</a></li>
+      </ul>
+      <p>利用者またはインストール・操作を行う方が明示的に要求した接続、中継通信、更新確認を除き、端末情報を登録目的で外部サービスへ送信しません。</p>
+    </section>
   </main>
   <footer>&copy; 2026 SAKURA-NET Inc.</footer>
 </body>
