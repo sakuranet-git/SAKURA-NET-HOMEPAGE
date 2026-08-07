@@ -2113,6 +2113,22 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.2.9] - 2026-08-07 - トップページMobileカード画像を既存素材へ修正
+
+### 変更内容
+- `index.html` の `SAKURA-NET Mobile / SIM` カード画像を、簡易SVGから既存素材 `img/card_mobile_sim.png` へ差し替え。
+- 申込種別の `貸し出し` 追加とトップページ導線は維持。
+
+### バックアップ
+- `backups/v3.2.9_mobile_card_image_fix_0807135359/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `index.html` | `/home/sakura-nets/www/index.html` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容
