@@ -2090,3 +2090,23 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 | `apply/sakura-net-hikari.html` | `/home/sakura-nets/www/apply/sakura-net-hikari.html` |
 | `apply/sakura-net-hikari_send.php` | `/home/sakura-nets/www/apply/sakura-net-hikari_send.php` |
 | `sakura-net-hikari.html` | `/home/sakura-nets/www/sakura-net-hikari.html` |
+
+---
+
+## [v3.2.7] - 2026-08-07 - SAKURA-NET Mobile / SIM 申込ページを新規作成
+
+### 変更内容
+- `apply/sakura-net-mobile.html` を新規作成し、SAKURA-NET Mobile / SIMの法人向け申込フォームを追加。
+- `apply/sakura-net-mobile_send.php` を新規作成し、申込内容・mineo法人約款確認・OEM提供条件確認・送信元情報をメール送信する処理を追加。
+- `sakura-net-mobile.html` の最下部CTAに `Mobile / SIMを申し込む` 導線を追加。
+- mineo法人 約款・規約一覧、SAKURA-NET Mobile提供条件、プライバシーポリシーへの確認・同意チェックを申込フローに組み込み。
+
+### バックアップ
+- `backups/v3.2.7_apply_mobile_080807_133215/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `apply/sakura-net-mobile.html` | `/home/sakura-nets/www/apply/sakura-net-mobile.html` |
+| `apply/sakura-net-mobile_send.php` | `/home/sakura-nets/www/apply/sakura-net-mobile_send.php` |
+| `sakura-net-mobile.html` | `/home/sakura-nets/www/sakura-net-mobile.html` |
