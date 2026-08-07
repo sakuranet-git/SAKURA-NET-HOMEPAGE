@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="format-detection" content="telephone=no">
+  <title>SAKURA-NET光 お申し込み｜株式会社さくらねっと</title>
+  <meta name="description" content="SAKURA-NET光の法人向けお申し込みページです。約款・別料金表をご確認のうえ、設置先情報やご希望内容を送信できます。">
+  <link rel="canonical" href="https://sakuranet-co.jp/apply/sakura-net-hikari.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    :root{--apply-bg:#fffdfd;--apply-bg-soft:#f8f4f4;--apply-text:#2f2a2a;--apply-muted:#6f6262;--apply-accent:#c97b8d;--apply-accent-deep:#a85c70;--apply-border:#ead8dd}
+    body{background:linear-gradient(180deg,#fffdfd 0%,#f8f4f4 100%);color:var(--apply-text);font-family:"Outfit","Noto Sans JP",sans-serif}
+    .apply-page{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:34px 0 80px}
+    .apply-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0 42px}
+    .apply-logo img{height:46px;width:auto;display:block}
+    .apply-nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+    .apply-nav a{color:var(--apply-muted);text-decoration:none}.apply-nav a:hover{color:var(--apply-accent-deep)}
+    .apply-hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:clamp(32px,6vw,72px);align-items:center;padding:clamp(36px,7vw,86px) 0 clamp(42px,8vw,96px)}
+    .apply-kicker{margin:0 0 18px;color:var(--apply-accent);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+    .apply-title{margin:0;color:var(--apply-text);font-family:"Noto Sans JP",sans-serif;font-size:clamp(34px,6vw,72px);font-weight:300;letter-spacing:-.05em;line-height:1.16}
+    .apply-lead{max-width:720px;margin:26px 0 0;color:var(--apply-muted);font-size:clamp(15px,1.5vw,18px);line-height:2}
+    .apply-panel{border:1px solid var(--apply-border);background:rgba(255,255,255,.78);padding:clamp(24px,4vw,42px)}
+    .apply-panel h2{margin:0 0 18px;font-size:22px;font-weight:400;line-height:1.55}
+    .apply-panel p,.apply-panel li{color:var(--apply-muted);font-size:14px;line-height:1.9}
+    .apply-panel ul{display:grid;gap:10px;margin:20px 0 0;padding:0;list-style:none}.apply-panel li{position:relative;padding-left:20px}.apply-panel li::before{content:"";position:absolute;left:0;top:.85em;width:8px;height:1px;background:var(--apply-accent)}
+    .apply-section{padding:clamp(34px,6vw,72px) 0}.apply-section-head{margin-bottom:clamp(24px,4vw,42px)}.apply-section-head h2{margin:8px 0 0;font-size:clamp(24px,4vw,42px);font-weight:300;line-height:1.35}
+    .apply-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--apply-border);background:var(--apply-border)}
+    .apply-term-card{min-height:170px;padding:28px;background:#fff;color:var(--apply-text);text-decoration:none;transition:background .25s ease,color .25s ease}.apply-term-card:hover{background:var(--apply-bg-soft);color:var(--apply-accent-deep)}
+    .apply-term-card span{display:block;margin-bottom:18px;color:var(--apply-accent);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}.apply-term-card strong{display:block;font-size:18px;font-weight:400;line-height:1.55}
+    .apply-form{border:1px solid var(--apply-border);background:#fff;padding:clamp(24px,5vw,56px)}
+    .apply-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.apply-field{display:grid;gap:9px}.apply-field--full{grid-column:1 / -1}
+    .apply-field label,.apply-check label{color:var(--apply-text);font-size:13px;font-weight:500;line-height:1.7}.required{margin-left:6px;color:var(--apply-accent-deep);font-size:11px}
+    .apply-field input,.apply-field select,.apply-field textarea{width:100%;border:1px solid var(--apply-border);border-radius:0;background:#fffdfd;color:var(--apply-text);font:inherit;padding:13px 14px}.apply-field textarea{min-height:150px;resize:vertical}
+    .apply-field input:focus,.apply-field select:focus,.apply-field textarea:focus{outline:3px solid rgba(201,123,141,.14);border-color:var(--apply-accent)}
+    .apply-checks{display:grid;gap:13px;margin-top:28px;padding:22px;background:var(--apply-bg-soft);border:1px solid var(--apply-border)}.apply-check label{display:flex;gap:12px;align-items:flex-start;color:var(--apply-muted)}.apply-check input{width:18px;height:18px;margin-top:.2em;accent-color:var(--apply-accent-deep);flex:0 0 auto}
+    .apply-honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.apply-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
+    .apply-submit,.apply-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:1px solid var(--apply-accent-deep);background:var(--apply-accent-deep);color:#fff;padding:13px 26px;text-decoration:none;font:inherit;font-size:13px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:opacity .25s ease}.apply-submit:hover,.apply-button:hover{opacity:.9}.apply-button--ghost{background:transparent;color:var(--apply-accent-deep)}
+    .apply-help{margin:0;color:var(--apply-muted);font-size:13px;line-height:1.8}.apply-footer{border-top:1px solid var(--apply-border);padding-top:28px;color:var(--apply-muted);font-size:13px;line-height:1.8}
+    @media (max-width:900px){.apply-hero,.apply-terms,.apply-form-grid{grid-template-columns:1fr}.apply-header{align-items:flex-start;flex-direction:column}}@media (max-width:520px){.apply-page{width:min(100% - 24px,1120px);padding-bottom:48px}.apply-actions{align-items:stretch;flex-direction:column}.apply-submit,.apply-button{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="apply-page">
+    <header class="apply-header">
+      <a class="apply-logo" href="../index.html" aria-label="株式会社さくらねっと トップへ"><img src="../img/logo_header_light_bg.png" alt="SAKURA-NET"></a>
+      <nav class="apply-nav" aria-label="申込ページナビゲーション"><a href="../sakura-net-hikari.html">SAKURA-NET光</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></nav>
+    </header>
+    <main>
+      <section class="apply-hero">
+        <div>
+          <p class="apply-kicker">SAKURA-NET Hikari Application</p>
+          <h1 class="apply-title">SAKURA-NET光<br>お申し込み</h1>
+          <p class="apply-lead">法人向け光回線の新規お申し込み・転用・事業者変更・設置先確認を受け付けます。送信前にサービス約款、別料金表、プライバシーポリシーをご確認ください。</p>
+        </div>
+        <aside class="apply-panel" aria-label="申込前の確認">
+          <h2>お申し込み前に確認します。</h2>
+          <p>回線種別や提供可否、工事内容、料金は設置先住所・既存契約・建物状況により変わります。本フォーム送信後、当社で内容を確認し、必要に応じてご連絡します。</p>
+          <ul><li>正式な契約開始日は、当社確認後のご案内に基づきます。</li><li>工事費・月額料金・オプションは約款および別料金表をご確認ください。</li><li>不明点がある場合は、申込ではなく事前相談として送信できます。</li></ul>
+        </aside>
+      </section>
+      <section class="apply-section" aria-labelledby="terms-title">
+        <div class="apply-section-head"><p class="apply-kicker">Terms</p><h2 id="terms-title">約款・料金表・個人情報の確認</h2></div>
+        <div class="apply-terms">
+          <a class="apply-term-card" href="../img/SAKURA-NET_Hikari_Service_Terms.html" target="_blank" rel="noopener"><span>Terms 01</span><strong>SAKURA-NET光 サービス約款</strong></a>
+          <a class="apply-term-card" href="../img/SAKURA-NET_Hikari_Service_Terms_Sub.html" target="_blank" rel="noopener"><span>Terms 02</span><strong>SAKURA-NET光 別料金表</strong></a>
+          <a class="apply-term-card" href="../privacy.html" target="_blank" rel="noopener"><span>Policy</span><strong>プライバシーポリシー</strong></a>
+        </div>
+      </section>
+      <section class="apply-section" aria-labelledby="form-title">
+        <div class="apply-section-head"><p class="apply-kicker">Application Form</p><h2 id="form-title">申込内容を入力してください</h2></div>
+        <form class="apply-form" action="sakura-net-hikari_send.php" method="post" autocomplete="on">
+          <div class="apply-form-grid">
+            <div class="apply-field"><label for="company">会社名・屋号<span class="required">必須</span></label><input type="text" id="company" name="company" required maxlength="120" autocomplete="organization"></div>
+            <div class="apply-field"><label for="name">ご担当者名<span class="required">必須</span></label><input type="text" id="name" name="name" required maxlength="80" autocomplete="name"></div>
+            <div class="apply-field"><label for="email">メールアドレス<span class="required">必須</span></label><input type="email" id="email" name="email" required maxlength="160" autocomplete="email"></div>
+            <div class="apply-field"><label for="tel">電話番号<span class="required">必須</span></label><input type="tel" id="tel" name="tel" required maxlength="40" autocomplete="tel"></div>
+            <div class="apply-field apply-field--full"><label for="install_address">設置先住所<span class="required">必須</span></label><input type="text" id="install_address" name="install_address" required maxlength="220" autocomplete="street-address" placeholder="郵便番号・都道府県・市区町村・番地・建物名までご記入ください"></div>
+            <div class="apply-field"><label for="application_type">申込種別<span class="required">必須</span></label><select id="application_type" name="application_type" required><option value="">選択してください</option><option value="新規申込">新規申込</option><option value="転用">転用</option><option value="事業者変更">事業者変更</option><option value="増設・移転">増設・移転</option><option value="事前相談">事前相談</option></select></div>
+            <div class="apply-field"><label for="preferred_timing">希望時期<span class="required">必須</span></label><select id="preferred_timing" name="preferred_timing" required><option value="">選択してください</option><option value="できるだけ早く">できるだけ早く</option><option value="1か月以内">1か月以内</option><option value="2〜3か月以内">2〜3か月以内</option><option value="時期未定">時期未定</option></select></div>
+            <div class="apply-field apply-field--full"><label for="current_line">現在の回線・利用状況</label><input type="text" id="current_line" name="current_line" maxlength="220" placeholder="例：フレッツ光利用中、移転先で新規開通、既存回線なし など"></div>
+            <div class="apply-field apply-field--full"><label for="message">ご希望内容・備考<span class="required">必須</span></label><textarea id="message" name="message" required maxlength="3000" placeholder="利用人数、必要なWi-Fi・LAN設定、固定IP、電話・VPN・防犯カメラとの連携など、分かる範囲でご記入ください。"></textarea></div>
+            <div class="apply-field apply-honeypot" aria-hidden="true"><label for="website">Webサイト</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          </div>
+          <div class="apply-checks" aria-label="同意事項">
+            <div class="apply-check"><label><input type="checkbox" name="agree_terms" value="1" required><span>SAKURA-NET光 サービス約款を確認し、内容に同意します。<span class="required">必須</span></span></label></div>
+            <div class="apply-check"><label><input type="checkbox" name="agree_price" value="1" required><span>SAKURA-NET光 別料金表を確認し、料金・工事費・手数料等の条件を理解しました。<span class="required">必須</span></span></label></div>
+            <div class="apply-check"><label><input type="checkbox" name="agree_privacy" value="1" required><span>プライバシーポリシーを確認し、申込内容を確認・連絡・契約手続きのために送信することに同意します。<span class="required">必須</span></span></label></div>
+          </div>
+          <div class="apply-actions"><button class="apply-submit" type="submit">申込内容を送信する</button><a class="apply-button apply-button--ghost" href="../sakura-net-hikari.html">サービスページへ戻る</a><p class="apply-help">送信後、通常1〜2営業日以内に担当より確認のご連絡を行います。</p></div>
+        </form>
+      </section>
+    </main>
+    <footer class="apply-footer">株式会社さくらねっと<br>〒532-0012 大阪市淀川区木川東4-3-34 5F<br>TEL: 06-7777-2720 / MAIL: info@sakuranet-co.jp<br>&copy; 2026 SAKURA-NET Inc. All Rights Reserved.</footer>
+  </div>
+</body>
+</html>

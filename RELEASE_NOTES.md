@@ -2072,3 +2072,21 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 | `reservation.php` | `https://sakuranet-co.jp/reservation.php` |
 
 ---
+
+## [v3.2.6] - 2026-08-07 - SAKURA-NET光 申込ページを新規作成
+
+### 変更内容
+- `apply/sakura-net-hikari.html` を新規作成し、SAKURA-NET光の法人向け申込フォームを追加。
+- `apply/sakura-net-hikari_send.php` を新規作成し、申込内容・約款同意・送信元情報をメール送信する処理を追加。
+- `sakura-net-hikari.html` の最下部CTAに `SAKURA-NET光を申し込む` 導線を追加。
+- サービス約款、別料金表、プライバシーポリシーへの確認・同意チェックを申込フローに組み込み。
+
+### バックアップ
+- `backups/v3.2.6_apply_hikari_080807_131439/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `apply/sakura-net-hikari.html` | `/home/sakura-nets/www/apply/sakura-net-hikari.html` |
+| `apply/sakura-net-hikari_send.php` | `/home/sakura-nets/www/apply/sakura-net-hikari_send.php` |
+| `sakura-net-hikari.html` | `/home/sakura-nets/www/sakura-net-hikari.html` |
