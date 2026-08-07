@@ -80,7 +80,7 @@ $agreeMineoTerms = field('agree_mineo_terms');
 $agreeServiceNotice = field('agree_service_notice');
 $agreePrivacy = field('agree_privacy');
 
-$allowedTypes = ['新規申込', '台数追加', '端末・SIM変更', 'VPN-SIM相談', 'M2M・IoT相談', '事前相談'];
+$allowedTypes = ['新規申込', '台数追加', '貸し出し', '端末・SIM変更', 'VPN-SIM相談', 'M2M・IoT相談', '事前相談'];
 $allowedCounts = ['1回線', '2〜5回線', '6〜10回線', '11〜30回線', '31回線以上', '未定'];
 $allowedUseCases = ['社用スマートフォン', 'モバイルルーター', 'M2M・IoT機器', 'バックアップ回線', '閉域・VPN用途', 'その他'];
 $allowedTiming = ['できるだけ早く', '1か月以内', '2〜3か月以内', '時期未定'];

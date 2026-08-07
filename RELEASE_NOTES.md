@@ -2110,3 +2110,23 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 | `apply/sakura-net-mobile.html` | `/home/sakura-nets/www/apply/sakura-net-mobile.html` |
 | `apply/sakura-net-mobile_send.php` | `/home/sakura-nets/www/apply/sakura-net-mobile_send.php` |
 | `sakura-net-mobile.html` | `/home/sakura-nets/www/sakura-net-mobile.html` |
+
+---
+
+## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
+
+### 変更内容
+- `apply/sakura-net-mobile.html` の申込種別に `貸し出し` を追加。
+- `apply/sakura-net-mobile_send.php` の許可リストにも `貸し出し` を追加し、フォーム表示と送信処理を一致。
+- `index.html` の提供サービスへ `SAKURA-NET Mobile / SIM` カードを追加し、サービス一覧を経由しなくてもトップページから到達できる導線を追加。
+- トップページのdescription/keywords/OGP/Twitter/JSON-LD説明へ `SAKURA-NET Mobile` を追記。
+
+### バックアップ
+- `backups/v3.2.8_mobile_lending_top_0807134405/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `index.html` | `/home/sakura-nets/www/index.html` |
+| `apply/sakura-net-mobile.html` | `/home/sakura-nets/www/apply/sakura-net-mobile.html` |
+| `apply/sakura-net-mobile_send.php` | `/home/sakura-nets/www/apply/sakura-net-mobile_send.php` |
