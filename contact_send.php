@@ -23,6 +23,118 @@ function header_field(string $value): string
     return trim(str_replace(["\r", "\n"], '', $value));
 }
 
+function client_ip(): string
+{
+    return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+}
+
+function config_value(string $name, string $default = ''): string
+{
+    return defined($name) ? (string) constant($name) : $default;
+}
+
+function verify_form_token(string $token, string $signature): bool
+{
+    $secret = config_value('CONTACT_FORM_HMAC_SECRET');
+    if ($secret === '' || $token === '' || $signature === '') {
+        return false;
+    }
+
+    $expected = hash_hmac('sha256', $token, $secret);
+    if (!hash_equals($expected, $signature)) {
+        return false;
+    }
+
+    $parts = explode(':', $token, 2);
+    if (count($parts) !== 2 || !ctype_digit($parts[0])) {
+        return false;
+    }
+
+    $issuedAt = (int) $parts[0];
+    $age = time() - $issuedAt;
+
+    return $age >= 3 && $age <= 7200;
+}
+
+function rate_limit_key(string $ip): string
+{
+    return hash('sha256', $ip);
+}
+
+function check_rate_limit(string $ip): bool
+{
+    $dir = config_value('CONTACT_RATE_LIMIT_DIR', sys_get_temp_dir() . '/sakura_contact_security');
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+    }
+
+    $file = rtrim($dir, '/\\') . '/' . rate_limit_key($ip) . '.json';
+    $now = time();
+    $windowSeconds = 600;
+    $maxAttempts = 6;
+    $attempts = [];
+
+    $handle = fopen($file, 'c+');
+    if ($handle === false) {
+        return true;
+    }
+
+    flock($handle, LOCK_EX);
+    $raw = stream_get_contents($handle);
+    if (is_string($raw) && $raw !== '') {
+        $decoded = json_decode($raw, true);
+        if (is_array($decoded)) {
+            $attempts = array_values(array_filter($decoded, static fn ($ts): bool => is_int($ts) && $ts > $now - $windowSeconds));
+        }
+    }
+
+    $attempts[] = $now;
+    ftruncate($handle, 0);
+    rewind($handle);
+    fwrite($handle, json_encode($attempts));
+    fflush($handle);
+    flock($handle, LOCK_UN);
+    fclose($handle);
+
+    return count($attempts) <= $maxAttempts;
+}
+
+function verify_turnstile(string $token, string $ip): bool
+{
+    $secret = config_value('CONTACT_TURNSTILE_SECRET_KEY');
+    if ($secret === '') {
+        return true;
+    }
+
+    if ($token === '' || strlen($token) > 2048) {
+        return false;
+    }
+
+    $payload = http_build_query([
+        'secret' => $secret,
+        'response' => $token,
+        'remoteip' => $ip,
+    ], '', '&');
+
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => "Content-Type: application/x-www-form-urlencoded\r\n",
+            'content' => $payload,
+            'timeout' => 8,
+        ],
+    ]);
+
+    $response = @file_get_contents('https://challenges.cloudflare.com/turnstile/v0/siteverify', false, $context);
+    if (!is_string($response) || $response === '') {
+        return false;
+    }
+
+    $result = json_decode($response, true);
+
+    return is_array($result) && ($result['success'] ?? false) === true;
+}
+
 function render_error(string $message): never
 {
     http_response_code(400);
@@ -57,9 +169,31 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+$configPath = __DIR__ . '/contact_security_config.php';
+if (is_file($configPath)) {
+    require $configPath;
+}
+
 if (field('website') !== '') {
     header('Location: contact_thanks.html');
     exit;
+}
+
+$ip = client_ip();
+$formToken = field('form_token');
+$formTokenSig = field('form_token_sig');
+$turnstileToken = field('cf-turnstile-response');
+
+if (!check_rate_limit($ip)) {
+    render_error('短時間に送信が集中しています。恐れ入りますが、時間を置いて再度お試しください。');
+}
+
+if (!verify_form_token($formToken, $formTokenSig)) {
+    render_error('Bot対策チェックに失敗しました。ページを再読み込みしてから、数秒待って再度送信してください。');
+}
+
+if (!verify_turnstile($turnstileToken, $ip)) {
+    render_error('Bot対策チェックに失敗しました。チェック完了後に再度送信してください。');
 }
 
 $company = field('company');

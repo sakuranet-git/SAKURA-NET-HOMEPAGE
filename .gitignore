@@ -99,3 +99,6 @@ trash/
 # shop サブドメイン（Stripe秘密キー・実データ保護）
 shop/config.php
 shop/products.json
+
+# contact form security secrets
+contact_security_config.php

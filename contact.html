@@ -177,6 +177,23 @@
       height: 1px;
       overflow: hidden;
     }
+    .p-contact-form_security {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .p-contact-form_security-note {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--color-text-sub);
+    }
+    .p-contact-form_turnstile {
+      min-height: 0;
+    }
+    .p-contact-form_turnstile:empty {
+      display: none;
+    }
     @media (max-width: 760px) {
       .p-contact-form_head,
       .p-contact-form_grid {
@@ -385,6 +402,12 @@
             <div class="p-contact-form_field p-contact-form_field--full p-contact-form_honeypot" aria-hidden="true">
               <label for="website">Webサイト</label>
               <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" id="form_token" name="form_token" value="">
+            <input type="hidden" id="form_token_sig" name="form_token_sig" value="">
+            <div class="p-contact-form_field p-contact-form_field--full p-contact-form_security">
+              <div id="contact-turnstile" class="p-contact-form_turnstile" aria-label="Bot対策チェック"></div>
+              <p class="p-contact-form_security-note" id="contact-security-status">Bot対策のため、フォーム保護情報を確認しています。</p>
             </div>
             <div class="p-contact-form_field p-contact-form_field--full">
               <label class="p-contact-form_privacy">
@@ -599,6 +622,79 @@
     </a>
   </div>
 
+  <script src="contact_turnstile_config.php"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('contact-form');
+      var tokenInput = document.getElementById('form_token');
+      var sigInput = document.getElementById('form_token_sig');
+      var status = document.getElementById('contact-security-status');
+      var turnstileContainer = document.getElementById('contact-turnstile');
+      var submitButton = form ? form.querySelector('button[type="submit"]') : null;
+
+      function setStatus(message) {
+        if (status) {
+          status.textContent = message;
+        }
+      }
+
+      function refreshFormToken() {
+        if (!form || !tokenInput || !sigInput) {
+          return;
+        }
+        fetch('contact_token.php', { cache: 'no-store', credentials: 'same-origin' })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error('token');
+            }
+            return response.json();
+          })
+          .then(function (data) {
+            if (!data || !data.ok || !data.token || !data.signature) {
+              throw new Error('token');
+            }
+            tokenInput.value = data.token;
+            sigInput.value = data.signature;
+            setStatus(window.SAKURA_TURNSTILE_SITE_KEY ? 'Bot対策チェックを完了してから送信してください。' : 'Bot対策チェック済みです。');
+          })
+          .catch(function () {
+            setStatus('Bot対策情報の取得に失敗しました。ページを再読み込みしてください。');
+            if (submitButton) {
+              submitButton.disabled = true;
+            }
+          });
+      }
+
+      window.sakuraTurnstileReady = function () {
+        if (!turnstileContainer || !window.SAKURA_TURNSTILE_SITE_KEY || !window.turnstile) {
+          if (turnstileContainer) {
+            turnstileContainer.hidden = true;
+          }
+          return;
+        }
+        turnstileContainer.hidden = false;
+        window.turnstile.render('#contact-turnstile', {
+          sitekey: window.SAKURA_TURNSTILE_SITE_KEY,
+          theme: 'light',
+          callback: function () {
+            setStatus('Bot対策チェック済みです。');
+          },
+          'expired-callback': function () {
+            setStatus('Bot対策チェックの有効期限が切れました。再度チェックしてください。');
+          },
+          'error-callback': function () {
+            setStatus('Bot対策チェックに失敗しました。時間を置いて再度お試しください。');
+          }
+        });
+      };
+
+      if (turnstileContainer) {
+        turnstileContainer.hidden = true;
+      }
+      refreshFormToken();
+    }());
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=sakuraTurnstileReady" async defer></script>
   <script src="js/main.js"></script>
 </body>
 </html>

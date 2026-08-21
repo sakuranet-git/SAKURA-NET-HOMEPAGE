@@ -2129,6 +2129,30 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.0] - 2026-08-21 - お問い合わせフォームBot対策強化
+
+### 変更内容
+- `contact.html` にフォーム保護トークン取得処理とCloudflare Turnstile表示枠を追加。
+- `contact_send.php` にサーバー側の署名トークン検証、送信時間チェック、IPベースの簡易レート制限、Turnstile Siteverify検証の受け口を追加。
+- `contact_token.php` を新規追加し、静的HTMLフォーム向けの署名付きワンタイム風トークンを発行。
+- `contact_turnstile_config.php` を新規追加し、Cloudflare Turnstileの公開site keyを設定ファイルから安全に配信できるようにした。
+- `contact_security_config.php` を新規追加し、フォーム保護用HMAC秘密鍵とTurnstileキーをGit管理外で保持。
+- `.gitignore` に `contact_security_config.php` を追加し、秘密情報がGitHubへ入らないようにした。
+
+### バックアップ
+- `backups/v3.3.0_contact_bot_protection_0821101248/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `contact.html` | `/home/sakura-nets/www/contact.html` |
+| `contact_send.php` | `/home/sakura-nets/www/contact_send.php` |
+| `contact_token.php` | `/home/sakura-nets/www/contact_token.php` |
+| `contact_turnstile_config.php` | `/home/sakura-nets/www/contact_turnstile_config.php` |
+| `contact_security_config.php` | `/home/sakura-nets/www/contact_security_config.php` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容
