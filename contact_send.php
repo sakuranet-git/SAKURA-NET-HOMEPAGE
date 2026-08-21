@@ -64,8 +64,8 @@ function rate_limit_key(string $ip): string
 function check_rate_limit(string $ip): bool
 {
     $dir = config_value('CONTACT_RATE_LIMIT_DIR', sys_get_temp_dir() . '/sakura_contact_security');
-    if (!is_dir($dir)) {
-        mkdir($dir, 0755, true);
+    if (!is_dir($dir) && !@mkdir($dir, 0755, true) && !is_dir($dir)) {
+        return true;
     }
 
     $file = rtrim($dir, '/\\') . '/' . rate_limit_key($ip) . '.json';
