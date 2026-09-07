@@ -164,6 +164,10 @@ try {
 
     foreach ($items as $item) {
         $product = $item['product'];
+        if (!checkout_is_product_available($product)) {
+            throw new InvalidArgumentException('在庫切れまたは近日入荷の商品が含まれています。カートを確認してください: ' . (string) $product['name']);
+        }
+
         $quantity = (int) $item['quantity'];
         $amount = (int) $product['amount'];
         $total += (int) $item['subtotal'];

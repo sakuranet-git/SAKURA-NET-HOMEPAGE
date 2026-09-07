@@ -51,11 +51,12 @@ function h(string $value): string
         table{width:100%;border-collapse:collapse;min-width:1280px}
         th,td{border-bottom:1px solid rgba(0,0,0,.1);padding:10px;vertical-align:top;text-align:left}
         th{font-size:12px;color:#615d59;white-space:nowrap}
-        input,textarea{width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:9px;font:inherit;background:#fff}
+        input,textarea,select{width:100%;box-sizing:border-box;border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:9px;font:inherit;background:#fff}
         input[type="file"]{padding:7px;background:#fafafa}
         textarea{min-height:72px;resize:vertical}
         .amount{max-width:120px}
         .category{min-width:150px}
+        .status{min-width:130px}
         .image-url{min-width:220px}
         .delete{width:auto}
         .thumb{width:88px;height:64px;border:1px solid rgba(0,0,0,.1);border-radius:8px;background:#f6f5f4;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;color:#615d59;font-size:12px}
@@ -96,6 +97,7 @@ function h(string $value): string
                         <th>説明</th>
                         <th>金額</th>
                         <th>カテゴリ</th>
+                        <th>在庫</th>
                         <th>画像</th>
                         <th>削除</th>
                     </tr>
@@ -111,6 +113,14 @@ function h(string $value): string
                             <td><textarea name="products[<?php echo $index; ?>][description]"><?php echo h((string) $product['description']); ?></textarea></td>
                             <td><input class="amount" name="products[<?php echo $index; ?>][amount]" type="number" min="1" step="1" value="<?php echo h((string) $product['amount']); ?>" required></td>
                             <td><input class="category" list="category-list" name="products[<?php echo $index; ?>][category]" value="<?php echo h((string) ($product['category'] ?? 'Products')); ?>"></td>
+                            <td>
+                                <select class="status" name="products[<?php echo $index; ?>][status]">
+                                    <?php $status = checkout_normalize_stock_status((string) ($product['status'] ?? 'Available')); ?>
+                                    <option value="Available" <?php echo $status === 'Available' ? 'selected' : ''; ?>>Available</option>
+                                    <option value="SoldOut" <?php echo $status === 'SoldOut' ? 'selected' : ''; ?>>SoldOut</option>
+                                    <option value="ComingSoon" <?php echo $status === 'ComingSoon' ? 'selected' : ''; ?>>ComingSoon</option>
+                                </select>
+                            </td>
                             <td>
                                 <div class="thumb">
                                     <?php if ($image !== ''): ?>
@@ -133,6 +143,13 @@ function h(string $value): string
                         <td><textarea name="products[<?php echo $index; ?>][description]" placeholder="説明"></textarea></td>
                         <td><input class="amount" name="products[<?php echo $index; ?>][amount]" type="number" min="1" step="1" placeholder="3000"></td>
                         <td><input class="category" list="category-list" name="products[<?php echo $index; ?>][category]" placeholder="カテゴリ"></td>
+                        <td>
+                            <select class="status" name="products[<?php echo $index; ?>][status]">
+                                <option value="Available" selected>Available</option>
+                                <option value="SoldOut">SoldOut</option>
+                                <option value="ComingSoon">ComingSoon</option>
+                            </select>
+                        </td>
                         <td>
                             <div class="thumb">New</div>
                             <input class="image-url" name="products[<?php echo $index; ?>][image]" type="text" placeholder="uploads/example.webp または https://...">

@@ -24,6 +24,15 @@ function cart_count(): int
     return $count;
 }
 
+function stock_label(array $product): string
+{
+    return match (checkout_normalize_stock_status((string) ($product['status'] ?? 'Available'))) {
+        'SoldOut' => '在庫切れ',
+        'ComingSoon' => '近日入荷',
+        default => '在庫あり',
+    };
+}
+
 $products = array_values(checkout_products());
 $groups = [];
 foreach ($products as $product) {
@@ -61,8 +70,8 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .cat{padding:clamp(24px,4vw,40px) 0;scroll-margin-top:116px}.cat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}.cat-head h2{margin:0;font-size:clamp(20px,3vw,28px);letter-spacing:-.02em}.cat-count{color:var(--muted);font-size:13px;font-weight:600}
         .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}.card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease}.card:hover{border-color:#d3d7de;box-shadow:0 12px 30px rgba(16,24,40,.08);transform:translateY(-3px)}
         .thumb{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:var(--tile);padding:22px}.thumb img{max-width:100%;max-height:100%;object-fit:contain}.thumb-ph{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#b9c0cc;font-weight:800;letter-spacing:-.02em;font-size:22px}.thumb-ph b{color:var(--primary)}
-        .card-body{display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;flex:1}.tag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--primary);background:rgba(0,111,255,.08);padding:3px 10px;border-radius:9999px}.card h3{margin:2px 0 0;font-size:17px;letter-spacing:-.01em}.card p{margin:0;color:var(--muted);font-size:13.5px;flex:1}.price-row{display:flex;align-items:baseline;gap:6px;margin-top:6px}.price{font-size:22px;font-weight:800;letter-spacing:-.03em}.tax{font-size:12px;font-weight:500;color:var(--muted)}
-        .cart-form{margin-top:12px;display:grid;grid-template-columns:82px 1fr;gap:8px}.qty{width:100%;border:1px solid var(--border);border-radius:8px;padding:11px 10px;font:inherit}.buy{border:0;text-align:center;text-decoration:none;background:var(--primary);color:#fff;font-weight:700;font-size:14px;padding:12px 16px;border-radius:8px;cursor:pointer;transition:background .18s ease}.buy:hover{background:var(--primary-dark)}
+        .card-body{display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;flex:1}.tag-row{display:flex;flex-wrap:wrap;gap:6px}.tag,.stock{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:9999px}.tag{color:var(--primary);background:rgba(0,111,255,.08)}.stock{color:#18794e;background:#eaf7ef}.stock.is-out{color:#9b1c1c;background:#fff1f1}.stock.is-soon{color:#8a5a00;background:#fff6df}.card h3{margin:2px 0 0;font-size:17px;letter-spacing:-.01em}.card p{margin:0;color:var(--muted);font-size:13.5px;flex:1}.price-row{display:flex;align-items:baseline;gap:6px;margin-top:6px}.price{font-size:22px;font-weight:800;letter-spacing:-.03em}.tax{font-size:12px;font-weight:500;color:var(--muted)}
+        .cart-form{margin-top:12px;display:grid;grid-template-columns:82px 1fr;gap:8px}.qty{width:100%;border:1px solid var(--border);border-radius:8px;padding:11px 10px;font:inherit}.buy{border:0;text-align:center;text-decoration:none;background:var(--primary);color:#fff;font-weight:700;font-size:14px;padding:12px 16px;border-radius:8px;cursor:pointer;transition:background .18s ease}.buy:hover{background:var(--primary-dark)}.buy[disabled],.qty[disabled]{cursor:not-allowed;opacity:.55}.buy[disabled]{background:#aeb6c3}
         .info{margin:clamp(32px,5vw,56px) 0;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(20px,3vw,32px);background:var(--tile)}.info h2{margin:0 0 16px;font-size:20px;letter-spacing:-.02em}.info-row{display:grid;grid-template-columns:minmax(120px,.32fr) 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:14px}.info-row:first-of-type{border-top:0}.info-row strong{color:var(--text)}.info-row span{color:var(--muted)}.info-row a{color:var(--primary);text-decoration:none}
         footer{border-top:1px solid var(--border);padding:28px 0 48px;color:var(--muted);font-size:13px}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}footer a{color:var(--muted);text-decoration:none}
         @media(max-width:560px){.topbar{align-items:flex-start;flex-wrap:wrap;padding:12px 16px}.brand{font-size:18px;line-height:1.35}.topnav{width:100%;overflow-x:auto;padding-bottom:2px}.topnav a{flex:0 0 auto;padding:7px 10px;font-size:12px}.recommend-head{align-items:flex-start;flex-direction:column}.recommend-grid{grid-template-columns:1fr}.cart-form{grid-template-columns:76px 1fr}.info-row{grid-template-columns:1fr;gap:4px}}
@@ -136,6 +145,8 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                     </div>
                     <div class="grid">
                         <?php foreach ($items as $product): ?>
+                            <?php $available = checkout_is_product_available($product); ?>
+                            <?php $stockStatus = checkout_normalize_stock_status((string) ($product['status'] ?? 'Available')); ?>
                             <article class="card">
                                 <div class="thumb">
                                     <?php if ((string) $product['image'] !== ''): ?>
@@ -145,7 +156,10 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                                     <?php endif; ?>
                                 </div>
                                 <div class="card-body">
-                                    <span class="tag"><?php echo sh((string) $product['category']); ?></span>
+                                    <div class="tag-row">
+                                        <span class="tag"><?php echo sh((string) $product['category']); ?></span>
+                                        <span class="stock <?php echo $stockStatus === 'SoldOut' ? 'is-out' : ($stockStatus === 'ComingSoon' ? 'is-soon' : ''); ?>"><?php echo sh(stock_label($product)); ?></span>
+                                    </div>
                                     <h3><?php echo sh((string) $product['name']); ?></h3>
                                     <p><?php echo sh((string) $product['description']); ?></p>
                                     <div class="price-row">
@@ -154,8 +168,8 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                                     <form class="cart-form" action="cart.php" method="post">
                                         <input type="hidden" name="action" value="add">
                                         <input type="hidden" name="product_id" value="<?php echo sh((string) $product['id']); ?>">
-                                        <input class="qty" type="number" name="quantity" min="1" max="99" value="1" aria-label="数量">
-                                        <button class="buy" type="submit">カートに追加</button>
+                                        <input class="qty" type="number" name="quantity" min="1" max="99" value="1" aria-label="数量" <?php echo $available ? '' : 'disabled'; ?>>
+                                        <button class="buy" type="submit" <?php echo $available ? '' : 'disabled'; ?>><?php echo $available ? 'カートに追加' : '購入できません'; ?></button>
                                     </form>
                                 </div>
                             </article>

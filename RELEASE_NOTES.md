@@ -2197,6 +2197,33 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.4] - 2026-09-07 - UniFi JPストア価格・在庫同期
+
+### 変更内容
+- `shop/products.json` のUniFi商品をJPストア公式5カテゴリ（Cloud Gateways / WiFi / Switching / Cameras / Door Access）に同期。
+- 自社商材6件を先頭に維持し、UniFi商品を189件から196件へ更新。
+- 追加商品7件を反映し、JPストアから消えた商品がないことを確認。
+- UniFi商品の金額をJPストアの `VAT & Surcharge incl.` 相当の表示金額へ同期。
+- `Available / SoldOut / ComingSoon` の在庫ステータスを保持し、SHOPトップ・カート・購入手続き・決済API・管理画面保存で扱えるようにした。
+- `SoldOut / ComingSoon` の商品はSHOPトップでカート投入不可、カート・購入手続き・決済APIでも購入不可にした。
+
+### バックアップ
+- `backups/v3.3.4_jp_store_sync_0907160242/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/products.json` | `/home/sakura-nets/www/shop/products.json` |
+| `shop/index.php` | `/home/sakura-nets/www/shop/index.php` |
+| `shop/cart.php` | `/home/sakura-nets/www/shop/cart.php` |
+| `shop/order.php` | `/home/sakura-nets/www/shop/order.php` |
+| `shop/create_session.php` | `/home/sakura-nets/www/shop/create_session.php` |
+| `shop/config.php` | `/home/sakura-nets/www/shop/config.php` |
+| `shop/admin/products.php` | `/home/sakura-nets/www/shop/admin/products.php` |
+| `shop/admin/save.php` | `/home/sakura-nets/www/shop/admin/save.php` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容

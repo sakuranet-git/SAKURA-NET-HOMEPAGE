@@ -135,6 +135,7 @@ try {
         $amountRaw = trim((string) ($row['amount'] ?? ''));
         $category = trim((string) ($row['category'] ?? ''));
         $imageInput = trim((string) ($row['image'] ?? ''));
+        $status = checkout_normalize_stock_status((string) ($row['status'] ?? 'Available'));
         $hasUpload = checkout_uploaded_product_file($index) !== null;
 
         if ($id === '' && $name === '' && $description === '' && $amountRaw === '' && $category === '' && $imageInput === '' && !$hasUpload) {
@@ -181,6 +182,7 @@ try {
             'amount' => (int) $amount,
             'category' => $category !== '' ? $category : 'Products',
             'image' => $image,
+            'status' => $status,
         ];
     }
 
