@@ -56,6 +56,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .hero{padding:clamp(40px,7vw,72px) 0 clamp(24px,4vw,36px)}.eyebrow{color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.hero h1{margin:12px 0 14px;font-size:clamp(30px,6vw,54px);letter-spacing:-.04em;line-height:1.1}.hero p{max-width:720px;margin:0;color:var(--muted);font-size:clamp(15px,2vw,17px)}
         .notice{margin-top:20px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,111,255,.2);background:rgba(0,111,255,.07);color:var(--primary);border-radius:9999px;padding:9px 14px;font-weight:700;font-size:13px}
         .member-note{margin-top:22px;max-width:820px;border:1px solid rgba(0,111,255,.18);background:linear-gradient(135deg,rgba(0,111,255,.07),rgba(255,255,255,.88));border-radius:var(--radius);padding:16px 18px;color:var(--muted);font-size:14px}.member-note strong{display:block;color:var(--text);font-size:15px;margin-bottom:4px}.member-note a{color:var(--primary);text-decoration:none;font-weight:700}
+        .recommend{padding:0 0 clamp(22px,4vw,36px)}.recommend-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}.recommend-head h2{margin:0;font-size:clamp(18px,2.5vw,24px);letter-spacing:-.02em}.recommend-head p{margin:0;color:var(--muted);font-size:13px}.recommend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.recommend-card{position:relative;display:grid;gap:10px;min-height:160px;border:1px solid var(--border);border-radius:var(--radius);padding:22px;background:#fff;text-decoration:none;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.recommend-card::after{content:"";position:absolute;right:-34px;top:-42px;width:150px;height:150px;border-radius:9999px;background:rgba(0,111,255,.07)}.recommend-card:hover{transform:translateY(-2px);border-color:rgba(0,111,255,.28);box-shadow:0 12px 30px rgba(16,24,40,.07)}.recommend-card span{position:relative;color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.recommend-card strong{position:relative;font-size:22px;line-height:1.35;letter-spacing:-.03em}.recommend-card p{position:relative;margin:0;color:var(--muted);font-size:13.5px;max-width:520px}.recommend-link{position:relative;margin-top:auto;color:var(--primary);font-size:13px;font-weight:800}
         .catnav{position:sticky;top:56px;z-index:15;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}.catnav .wrap{display:flex;gap:8px;overflow-x:auto;padding:11px 0}.catnav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;padding:7px 14px;border-radius:9999px;border:1px solid var(--border)}.catnav a:hover{color:var(--text);background:var(--tile)}
         .cat{padding:clamp(24px,4vw,40px) 0;scroll-margin-top:116px}.cat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}.cat-head h2{margin:0;font-size:clamp(20px,3vw,28px);letter-spacing:-.02em}.cat-count{color:var(--muted);font-size:13px;font-weight:600}
         .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}.card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease}.card:hover{border-color:#d3d7de;box-shadow:0 12px 30px rgba(16,24,40,.08);transform:translateY(-3px)}
@@ -64,7 +65,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .cart-form{margin-top:12px;display:grid;grid-template-columns:82px 1fr;gap:8px}.qty{width:100%;border:1px solid var(--border);border-radius:8px;padding:11px 10px;font:inherit}.buy{border:0;text-align:center;text-decoration:none;background:var(--primary);color:#fff;font-weight:700;font-size:14px;padding:12px 16px;border-radius:8px;cursor:pointer;transition:background .18s ease}.buy:hover{background:var(--primary-dark)}
         .info{margin:clamp(32px,5vw,56px) 0;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(20px,3vw,32px);background:var(--tile)}.info h2{margin:0 0 16px;font-size:20px;letter-spacing:-.02em}.info-row{display:grid;grid-template-columns:minmax(120px,.32fr) 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:14px}.info-row:first-of-type{border-top:0}.info-row strong{color:var(--text)}.info-row span{color:var(--muted)}.info-row a{color:var(--primary);text-decoration:none}
         footer{border-top:1px solid var(--border);padding:28px 0 48px;color:var(--muted);font-size:13px}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}footer a{color:var(--muted);text-decoration:none}
-        @media(max-width:560px){.topbar{align-items:flex-start;flex-wrap:wrap;padding:12px 16px}.brand{font-size:18px;line-height:1.35}.topnav{width:100%;overflow-x:auto;padding-bottom:2px}.topnav a{flex:0 0 auto;padding:7px 10px;font-size:12px}.cart-form{grid-template-columns:76px 1fr}.info-row{grid-template-columns:1fr;gap:4px}}
+        @media(max-width:560px){.topbar{align-items:flex-start;flex-wrap:wrap;padding:12px 16px}.brand{font-size:18px;line-height:1.35}.topnav{width:100%;overflow-x:auto;padding-bottom:2px}.topnav a{flex:0 0 auto;padding:7px 10px;font-size:12px}.recommend-head{align-items:flex-start;flex-direction:column}.recommend-grid{grid-template-columns:1fr}.cart-form{grid-template-columns:76px 1fr}.info-row{grid-template-columns:1fr;gap:4px}}
     </style>
 </head>
 <body>
@@ -88,6 +89,32 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                 本ショップは、さくらねっとサービスをご利用中、または当社よりご案内を受けた法人のお客様向けのオンライン決済ページです。初めてのお客様は、購入前に<a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a>よりご相談ください。
             </div>
             <?php if ($added): ?><div class="notice">カートに追加しました。右上のカートから内容を確認できます。</div><?php endif; ?>
+        </div>
+    </section>
+
+    <section class="recommend" aria-labelledby="recommend-title">
+        <div class="wrap">
+            <div class="recommend-head">
+                <div>
+                    <div class="eyebrow">Recommended Services</div>
+                    <h2 id="recommend-title">まずはこちらのサービスがおすすめです</h2>
+                </div>
+                <p>回線・モバイルの相談や初期費用のお支払いに。</p>
+            </div>
+            <div class="recommend-grid">
+                <a class="recommend-card" href="<?php echo sh($site); ?>/sakura-net-hikari.html">
+                    <span>Fiber Internet</span>
+                    <strong>SAKURA-NET光</strong>
+                    <p>法人向けの高速光回線。開通相談、初期費用、ネットワーク構築まで一括でご相談いただけます。</p>
+                    <em class="recommend-link">サービス詳細を見る</em>
+                </a>
+                <a class="recommend-card" href="<?php echo sh($site); ?>/sakura-net-mobile.html">
+                    <span>Mobile / SIM</span>
+                    <strong>SAKURA-NET Mobile / SIM</strong>
+                    <p>社用スマートフォン、モバイルルーター、M2M/IoT、VPN-SIMなど法人モバイル回線の導入を支援します。</p>
+                    <em class="recommend-link">サービス詳細を見る</em>
+                </a>
+            </div>
         </div>
     </section>
 

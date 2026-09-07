@@ -2181,6 +2181,22 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.3] - 2026-09-07 - SHOPトップにおすすめサービス導線を追加
+
+### 変更内容
+- `shop/index.php` のヒーロー下、カテゴリナビ上に `SAKURA-NET光` と `SAKURA-NET Mobile / SIM` のおすすめ2カード導線を追加。
+- 既存の注意書き、商品一覧、カート、商品データは維持。
+
+### バックアップ
+- `backups/v3.3.3_shop_recommended_services_0907154636/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/index.php` | `/home/sakura-nets/www/shop/index.php` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容
