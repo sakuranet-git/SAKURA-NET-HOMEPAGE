@@ -55,6 +55,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
         .hero{padding:clamp(40px,7vw,72px) 0 clamp(24px,4vw,36px)}.eyebrow{color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.hero h1{margin:12px 0 14px;font-size:clamp(30px,6vw,54px);letter-spacing:-.04em;line-height:1.1}.hero p{max-width:720px;margin:0;color:var(--muted);font-size:clamp(15px,2vw,17px)}
         .notice{margin-top:20px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,111,255,.2);background:rgba(0,111,255,.07);color:var(--primary);border-radius:9999px;padding:9px 14px;font-weight:700;font-size:13px}
+        .member-note{margin-top:22px;max-width:820px;border:1px solid rgba(0,111,255,.18);background:linear-gradient(135deg,rgba(0,111,255,.07),rgba(255,255,255,.88));border-radius:var(--radius);padding:16px 18px;color:var(--muted);font-size:14px}.member-note strong{display:block;color:var(--text);font-size:15px;margin-bottom:4px}.member-note a{color:var(--primary);text-decoration:none;font-weight:700}
         .catnav{position:sticky;top:56px;z-index:15;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--border)}.catnav .wrap{display:flex;gap:8px;overflow-x:auto;padding:11px 0}.catnav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;padding:7px 14px;border-radius:9999px;border:1px solid var(--border)}.catnav a:hover{color:var(--text);background:var(--tile)}
         .cat{padding:clamp(24px,4vw,40px) 0;scroll-margin-top:116px}.cat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}.cat-head h2{margin:0;font-size:clamp(20px,3vw,28px);letter-spacing:-.02em}.cat-count{color:var(--muted);font-size:13px;font-weight:600}
         .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}.card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease}.card:hover{border-color:#d3d7de;box-shadow:0 12px 30px rgba(16,24,40,.08);transform:translateY(-3px)}
@@ -82,6 +83,10 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
             <div class="eyebrow">SAKURA-NET STORE</div>
             <h1>オンラインショップ</h1>
             <p>株式会社さくらねっとのサポート・保守サービスと、UniFi正規取扱いネットワーク機器をまとめて購入できます。複数商品をカートに入れて、Stripeの安全な画面で決済できます。</p>
+            <div class="member-note" role="note">
+                <strong>ご利用対象について</strong>
+                本ショップは、さくらねっとサービスをご利用中、または当社よりご案内を受けた法人のお客様向けのオンライン決済ページです。初めてのお客様は、購入前に<a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a>よりご相談ください。
+            </div>
             <?php if ($added): ?><div class="notice">カートに追加しました。右上のカートから内容を確認できます。</div><?php endif; ?>
         </div>
     </section>
