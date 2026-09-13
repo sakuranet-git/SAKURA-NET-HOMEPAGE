@@ -2224,6 +2224,28 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.5] - 2026-09-13 - SHOP既存顧客・取引先専用ガード追加
+
+### 変更内容
+- `shop/order.php` の購入手続きフォームへ、既存顧客・取引先確認欄を追加。
+- 契約者名、契約ID、請求書番号、当社担当者名などの確認情報入力と、既存顧客・取引先であることのチェックを必須化。
+- `shop/create_session.php` で確認情報・確認チェックがないPOSTを拒否し、Stripe Checkout Sessionを作成しないサーバー側ガードを追加。
+- `shop/index.php` と `shop/cart.php` に、SHOPがさくらねっとサービス利用中または当社案内済み法人のお客様専用である旨を追記。
+- 商品データ、カートデータ、Stripeキー、在庫ステータス、管理画面には変更なし。
+
+### バックアップ
+- `backups/v3.3.5_shop_member_guard_0913164237/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/index.php` | `/home/sakura-nets/www/shop/index.php` |
+| `shop/cart.php` | `/home/sakura-nets/www/shop/cart.php` |
+| `shop/order.php` | `/home/sakura-nets/www/shop/order.php` |
+| `shop/create_session.php` | `/home/sakura-nets/www/shop/create_session.php` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容

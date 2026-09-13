@@ -57,7 +57,7 @@ foreach ($items as $item) {
         *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);color:var(--text);font-family:Inter,"Noto Sans JP",sans-serif;line-height:1.7}.page{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:44px 0 72px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}.brand{text-decoration:none;font-weight:800;font-size:18px}.brand span{color:var(--primary)}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px}.nav a:hover{background:#fff;color:var(--text)}
         .eyebrow{color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}h1{margin:10px 0;font-size:clamp(30px,6vw,48px);letter-spacing:-.04em;line-height:1.1}.lead{margin:0;color:var(--muted)}
         .layout{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start;margin-top:24px}.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}.summary{padding:20px}.summary h2,.form-card h2{margin:0 0 16px;font-size:20px}.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:13px 0;border-top:1px solid var(--border)}.item:first-of-type{border-top:0}.item-name{font-weight:800;overflow-wrap:anywhere}.item-meta{color:var(--muted);font-size:13px}.item-subtotal{font-weight:900;white-space:nowrap}.total{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--border);padding-top:16px;margin-top:12px;font-size:22px;font-weight:900}.alert{margin-top:14px;border:1px solid #f0c8cf;background:#fff1f1;color:#9b1c1c;border-radius:10px;padding:10px 12px;font-size:13px;font-weight:700}
-        .form-card{padding:22px}label.field{display:grid;gap:8px;margin-bottom:14px;color:var(--muted);font-size:13px;font-weight:800}input[type=text],input[type=email],input[type=tel]{width:100%;border:1px solid var(--border);border-radius:8px;padding:12px 13px;color:var(--text);font:inherit;background:#fff}input:focus{border-color:rgba(0,111,255,.45);outline:3px solid rgba(0,111,255,.12)}.button{display:inline-flex;align-items:center;justify-content:center;width:100%;border:0;border-radius:8px;background:var(--primary);color:#fff;text-decoration:none;padding:13px 16px;font:inherit;font-weight:800;cursor:pointer}.button:hover{background:var(--primary-dark)}.button.secondary{background:#fff;color:var(--text);border:1px solid var(--border);margin-top:10px}.button[disabled]{cursor:not-allowed;opacity:.55;background:#aeb6c3}.notice{margin-top:14px;color:var(--muted);font-size:13px}.empty{margin-top:24px;padding:28px}.empty p{color:var(--muted)}
+        .form-card{padding:22px}label.field{display:grid;gap:8px;margin-bottom:14px;color:var(--muted);font-size:13px;font-weight:800}input[type=text],input[type=email],input[type=tel]{width:100%;border:1px solid var(--border);border-radius:8px;padding:12px 13px;color:var(--text);font:inherit;background:#fff}input:focus{border-color:rgba(0,111,255,.45);outline:3px solid rgba(0,111,255,.12)}.member-panel{margin:18px 0;border:1px solid rgba(0,111,255,.2);background:rgba(0,111,255,.06);border-radius:12px;padding:14px}.member-panel strong{display:block;margin-bottom:4px;color:var(--text);font-size:14px}.member-panel p{margin:0 0 12px;color:var(--muted);font-size:13px}.check-field{display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;color:var(--text);font-size:13px;font-weight:800}.check-field input{margin-top:4px;inline-size:18px;block-size:18px;flex:0 0 auto}.button{display:inline-flex;align-items:center;justify-content:center;width:100%;border:0;border-radius:8px;background:var(--primary);color:#fff;text-decoration:none;padding:13px 16px;font:inherit;font-weight:800;cursor:pointer}.button:hover{background:var(--primary-dark)}.button.secondary{background:#fff;color:var(--text);border:1px solid var(--border);margin-top:10px}.button[disabled]{cursor:not-allowed;opacity:.55;background:#aeb6c3}.notice{margin-top:14px;color:var(--muted);font-size:13px}.empty{margin-top:24px;padding:28px}.empty p{color:var(--muted)}
         @media(max-width:820px){.layout{grid-template-columns:1fr}.top{display:block}.nav{margin-top:10px}}@media(max-width:520px){.page{width:min(100% - 24px,1080px);padding-top:28px}.item{grid-template-columns:1fr}.item-subtotal{text-align:left}}
     </style>
 </head>
@@ -74,7 +74,7 @@ foreach ($items as $item) {
         <section>
             <div class="eyebrow">Checkout</div>
             <h1>購入手続き</h1>
-            <p class="lead">ご注文内容を確認し、お客様情報を入力してください。次の画面でStripeの安全な決済ページへ移動します。</p>
+            <p class="lead">ご注文内容を確認し、お客様情報を入力してください。本ショップは、さくらねっとサービスをご利用中、または当社より案内を受けたお客様専用です。</p>
         </section>
 
         <?php if ($items === []): ?>
@@ -107,6 +107,12 @@ foreach ($items as $item) {
                     <label class="field">氏名<input type="text" name="customer_name" autocomplete="name" required></label>
                     <label class="field">メールアドレス<input type="email" name="customer_email" autocomplete="email" required></label>
                     <label class="field">電話番号<input type="tel" name="customer_phone" autocomplete="tel" required></label>
+                    <div class="member-panel">
+                        <strong>既存顧客・取引先確認</strong>
+                        <p>契約者名、契約ID、請求書番号、当社担当者名など、さくらねっととのお取引を確認できる情報を入力してください。確認できないご注文はキャンセルとなる場合があります。</p>
+                        <label class="field">確認情報<input type="text" name="customer_reference" autocomplete="off" placeholder="例：契約者名 / 請求書番号 / 当社担当者名" required></label>
+                        <label class="check-field"><input type="checkbox" name="customer_confirm" value="1" required><span>私は、さくらねっとサービスを利用中、または当社より案内を受けた既存顧客・取引先です。</span></label>
+                    </div>
                     <button class="button" type="submit" <?php echo $hasUnavailable ? 'disabled' : ''; ?>>決済画面へ進む</button>
                     <div class="notice">合計30万円を超える場合、コンビニ決済は表示されずカード決済のみになります。</div>
                 </form>

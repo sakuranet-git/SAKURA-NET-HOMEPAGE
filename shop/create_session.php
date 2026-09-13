@@ -139,6 +139,8 @@ try {
     $customerName = trim((string) ($_POST['customer_name'] ?? ''));
     $customerEmail = trim((string) ($_POST['customer_email'] ?? ''));
     $customerPhone = trim((string) ($_POST['customer_phone'] ?? ''));
+    $customerReference = trim((string) ($_POST['customer_reference'] ?? ''));
+    $customerConfirm = (string) ($_POST['customer_confirm'] ?? '') === '1';
 
     if ($customerName === '') {
         throw new InvalidArgumentException('氏名を入力してください。');
@@ -150,6 +152,14 @@ try {
 
     if ($customerPhone === '') {
         throw new InvalidArgumentException('電話番号を入力してください。');
+    }
+
+    if ($customerReference === '') {
+        throw new InvalidArgumentException('既存顧客・取引先確認情報を入力してください。初めてのお客様は、購入前にお問い合わせフォームよりご相談ください。');
+    }
+
+    if (!$customerConfirm) {
+        throw new InvalidArgumentException('既存顧客・取引先であることの確認に同意してください。初めてのお客様は、購入前にお問い合わせフォームよりご相談ください。');
     }
 
     $products = checkout_products();
@@ -199,6 +209,8 @@ try {
         'metadata' => [
             'customer_name' => checkout_limit_text($customerName, 120),
             'customer_phone' => checkout_limit_text($customerPhone, 120),
+            'customer_reference' => checkout_limit_text($customerReference, 180),
+            'member_purchase_confirmed' => 'yes',
             'items_summary' => $summary,
             'item_count' => (string) array_sum(array_map(static fn(array $item): int => (int) $item['quantity'], $items)),
             'cart_total' => (string) $total,
