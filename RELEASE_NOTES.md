@@ -2353,3 +2353,24 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 | `index.html` | `/home/sakura-nets/www/index.html` |
 | `apply/sakura-net-mobile.html` | `/home/sakura-nets/www/apply/sakura-net-mobile.html` |
 | `apply/sakura-net-mobile_send.php` | `/home/sakura-nets/www/apply/sakura-net-mobile_send.php` |
+
+---
+
+## [v3.4.0] - 2026-09-13 - SHOP Stripe本番キー切替
+
+### 変更内容
+- `shop/config.php` のStripeシークレットキーを本番キーへ切替。
+- `shop/config.php` はGit管理対象外のため、秘密キーはGitHubへpushしない。
+- WinSCPで本番 `/home/sakura-nets/www/shop/config.php` へ1ファイルのみ反映し、再ダウンロードしたファイルのSHA256一致を確認。
+- 本番SHOPでサポート・保守カテゴリ商品のStripe Checkout Session作成とStripe Checkout画面遷移を確認。
+- サポート・保守カテゴリ以外の商品がカートに入らないことを確認。
+- 検証用注文履歴 `live-precheck@sakura-mode.net` は検証後に削除し、`shop/data/orders.json` を空配列へ復元。
+- `shop/data/orders.json` の外部アクセスが403になることを確認。
+
+### バックアップ
+- `backups/v3.4.0_live_key_switch_0913172846/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/config.php` | `/home/sakura-nets/www/shop/config.php` |
