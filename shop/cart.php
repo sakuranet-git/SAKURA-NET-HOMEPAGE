@@ -169,7 +169,7 @@ $updated = (string) ($_GET['updated'] ?? '') === '1';
             <div class="eyebrow">Shopping Cart</div>
             <h1>カート</h1>
             <p class="lead">数量を確認して、まとめて購入手続きへ進めます。</p>
-            <div class="member-note"><strong>既存顧客・取引先専用</strong>購入手続きでは、契約者名・請求書番号など、さくらねっととのお取引を確認できる情報の入力が必要です。</div>
+            <div class="member-note"><strong>既存顧客・取引先専用</strong>購入手続きでは、契約者名・請求書番号など、さくらねっととのお取引を確認できる情報の入力が必要です。確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。</div>
             <?php if ($updated): ?><div class="notice">カートを更新しました。</div><?php endif; ?>
         </section>
 

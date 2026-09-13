@@ -95,7 +95,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
             <p>株式会社さくらねっとのサポート・保守サービスと、UniFi正規取扱いネットワーク機器をまとめて購入できます。複数商品をカートに入れて、Stripeの安全な画面で決済できます。</p>
             <div class="member-note" role="note">
                 <strong>ご利用対象について</strong>
-                本ショップは、さくらねっとサービスをご利用中、または当社よりご案内を受けた法人のお客様専用のオンライン決済ページです。購入手続きでは契約者名・請求書番号などのお取引確認情報が必要です。初めてのお客様は、購入前に<a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a>よりご相談ください。
+                本ショップは、さくらねっとサービスをご利用中、または当社よりご案内を受けた法人のお客様・お取引先様専用のオンライン決済ページです。購入手続きでは契約者名・請求書番号などのお取引確認情報が必要です。初めてのお客様は、購入前に<a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a>よりご相談ください。
             </div>
             <?php if ($added): ?><div class="notice">カートに追加しました。右上のカートから内容を確認できます。</div><?php endif; ?>
         </div>
@@ -184,8 +184,8 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         <section class="info">
             <h2>お買い物・決済について</h2>
             <div class="info-row"><strong>対応決済</strong><span>クレジットカード決済・コンビニ決済（Stripe）。合計金額が30万円を超える場合はカード決済のみになります。</span></div>
-            <div class="info-row"><strong>ご利用対象</strong><span>さくらねっとサービスをご利用中、または当社より案内を受けた法人のお客様専用です。確認できないご注文はキャンセルとなる場合があります。</span></div>
-            <div class="info-row"><strong>キャンセル・返金方針</strong><span>お支払い後のキャンセル・返金は、商品発送前に限り個別に確認いたします。発送後の返金は原則として承っておりません。</span></div>
+            <div class="info-row"><strong>ご利用対象</strong><span>さくらねっとサービスをご利用中、または当社より案内を受けた法人のお客様・お取引先様専用です。お取引を確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。</span></div>
+            <div class="info-row"><strong>キャンセル・返金方針</strong><span>お支払い後のキャンセル・返金は、商品発送前またはサービス提供開始前に限り個別に確認いたします。発送後・役務提供開始後の返金は原則として承っておりません。</span></div>
             <div class="info-row"><strong>引渡し時期</strong><span>決済確認後、在庫確認のうえ発送または個別に納期をご案内いたします。コンビニ決済はご入金確認後の手配となります。</span></div>
             <div class="info-row"><strong>お問い合わせ</strong><span>株式会社さくらねっと / 受付時間 平日 10:00-17:00（土日祝 休業） / <a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a></span></div>
             <div class="info-row"><strong>事業者情報</strong><span><a href="tokushoho.html">特定商取引法に基づく表記</a> ／ <a href="<?php echo sh($site); ?>/company.html">会社概要</a></span></div>

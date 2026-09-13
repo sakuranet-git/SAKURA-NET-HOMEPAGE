@@ -2246,6 +2246,27 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.6] - 2026-09-13 - SHOP法的表記と購入制限文言の整合
+
+### 変更内容
+- `shop/tokushoho.html` に、SHOPのご利用対象（既存顧客・取引先専用）と、お取引確認ができない注文の扱いを追記。
+- 返品特約を「商品発送前またはサービス提供開始前」「商品発送後・役務提供開始後」の区分が分かる表記へ整理。
+- `shop/index.php`、`shop/cart.php`、`shop/order.php` のご利用対象・キャンセル文言を特商法ページと整合。
+- 商品データ、決済キー、カート機能、Stripe Checkout Session作成処理には変更なし。
+
+### バックアップ
+- `backups/v3.3.6_shop_legal_alignment_0913165157/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/index.php` | `/home/sakura-nets/www/shop/index.php` |
+| `shop/cart.php` | `/home/sakura-nets/www/shop/cart.php` |
+| `shop/order.php` | `/home/sakura-nets/www/shop/order.php` |
+| `shop/tokushoho.html` | `/home/sakura-nets/www/shop/tokushoho.html` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容

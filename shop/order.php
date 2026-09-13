@@ -109,7 +109,7 @@ foreach ($items as $item) {
                     <label class="field">電話番号<input type="tel" name="customer_phone" autocomplete="tel" required></label>
                     <div class="member-panel">
                         <strong>既存顧客・取引先確認</strong>
-                        <p>契約者名、契約ID、請求書番号、当社担当者名など、さくらねっととのお取引を確認できる情報を入力してください。確認できないご注文はキャンセルとなる場合があります。</p>
+                        <p>契約者名、契約ID、請求書番号、当社担当者名など、さくらねっととのお取引を確認できる情報を入力してください。確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。</p>
                         <label class="field">確認情報<input type="text" name="customer_reference" autocomplete="off" placeholder="例：契約者名 / 請求書番号 / 当社担当者名" required></label>
                         <label class="check-field"><input type="checkbox" name="customer_confirm" value="1" required><span>私は、さくらねっとサービスを利用中、または当社より案内を受けた既存顧客・取引先です。</span></label>
                     </div>
