@@ -122,6 +122,79 @@ function checkout_cart_items(array $products): array
     return $items;
 }
 
+function checkout_orders_dir(): string
+{
+    return __DIR__ . '/data';
+}
+
+function checkout_orders_path(): string
+{
+    return checkout_orders_dir() . '/orders.json';
+}
+
+function checkout_generate_order_id(): string
+{
+    return 'SN' . date('Ymd-His') . '-' . strtoupper(bin2hex(random_bytes(3)));
+}
+
+function checkout_ensure_orders_storage(): void
+{
+    $dir = checkout_orders_dir();
+    if (!is_dir($dir) && !mkdir($dir, 0755, true)) {
+        throw new RuntimeException('Order data directory could not be created.');
+    }
+
+    $htaccess = $dir . '/.htaccess';
+    if (!is_file($htaccess)) {
+        file_put_contents($htaccess, "Require all denied\n", LOCK_EX);
+    }
+
+    $path = checkout_orders_path();
+    if (!is_file($path)) {
+        file_put_contents($path, "[]\n", LOCK_EX);
+    }
+}
+
+function checkout_save_order_record(array $record): void
+{
+    checkout_ensure_orders_storage();
+
+    $path = checkout_orders_path();
+    $handle = fopen($path, 'c+');
+    if ($handle === false) {
+        throw new RuntimeException('Order history could not be opened.');
+    }
+
+    try {
+        if (!flock($handle, LOCK_EX)) {
+            throw new RuntimeException('Order history could not be locked.');
+        }
+
+        $contents = stream_get_contents($handle);
+        $orders = [];
+        if (is_string($contents) && trim($contents) !== '') {
+            $decoded = json_decode($contents, true);
+            if (is_array($decoded)) {
+                $orders = array_is_list($decoded) ? $decoded : array_values($decoded);
+            }
+        }
+
+        $orders[] = $record;
+        $json = json_encode($orders, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+        if ($json === false) {
+            throw new RuntimeException('Order history could not be encoded.');
+        }
+
+        ftruncate($handle, 0);
+        rewind($handle);
+        fwrite($handle, $json . PHP_EOL);
+        fflush($handle);
+        flock($handle, LOCK_UN);
+    } finally {
+        fclose($handle);
+    }
+}
+
 function checkout_error_page(string $message): void
 {
     http_response_code(400);
@@ -198,6 +271,7 @@ try {
 
     $baseUrl = checkout_base_url();
     $summary = checkout_limit_text(implode(' / ', $summaryParts), 480);
+    $orderId = checkout_generate_order_id();
 
     $payload = [
         'mode' => 'payment',
@@ -207,6 +281,7 @@ try {
         'customer_email' => $customerEmail,
         'line_items' => $lineItems,
         'metadata' => [
+            'order_id' => $orderId,
             'customer_name' => checkout_limit_text($customerName, 120),
             'customer_phone' => checkout_limit_text($customerPhone, 120),
             'customer_reference' => checkout_limit_text($customerReference, 180),
@@ -221,6 +296,36 @@ try {
     if (empty($session['url'])) {
         throw new RuntimeException('Stripe Checkout URL was not returned.');
     }
+
+    checkout_save_order_record([
+        'order_id' => $orderId,
+        'created_at' => date(DATE_ATOM),
+        'stripe_session_id' => (string) ($session['id'] ?? ''),
+        'stripe_payment_intent' => (string) ($session['payment_intent'] ?? ''),
+        'checkout_status' => (string) ($session['status'] ?? 'created'),
+        'payment_status' => (string) ($session['payment_status'] ?? 'created'),
+        'customer' => [
+            'name' => checkout_limit_text($customerName, 120),
+            'email' => checkout_limit_text($customerEmail, 180),
+            'phone' => checkout_limit_text($customerPhone, 120),
+            'reference' => checkout_limit_text($customerReference, 180),
+        ],
+        'items' => array_map(static function (array $item): array {
+            $product = $item['product'];
+            return [
+                'id' => (string) $item['id'],
+                'name' => (string) $product['name'],
+                'quantity' => (int) $item['quantity'],
+                'unit_amount' => (int) $product['amount'],
+                'subtotal' => (int) $item['subtotal'],
+            ];
+        }, $items),
+        'total' => $total,
+        'currency' => STRIPE_CURRENCY,
+        'payment_method_types' => $session['payment_method_types'] ?? $payload['payment_method_types'],
+        'member_purchase_confirmed' => true,
+        'notes' => '',
+    ]);
 
     $accept = $_SERVER['HTTP_ACCEPT'] ?? '';
     if (stripos($accept, 'application/json') !== false) {

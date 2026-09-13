@@ -75,7 +75,7 @@ function h(string $value): string
                 <h1>商品管理</h1>
                 <div class="sub">保存後、申込ページとショップ画面へ即時反映されます。画像はURL入力またはファイルアップロードに対応しています。</div>
             </div>
-            <div><a href="../order.php" target="_blank" rel="noopener">申込ページを開く</a> / <a href="../index.php" target="_blank" rel="noopener">ショップを見る</a> / <a href="login.php?logout=1">ログアウト</a></div>
+            <div><a href="orders.php">注文履歴</a> / <a href="../order.php" target="_blank" rel="noopener">申込ページを開く</a> / <a href="../index.php" target="_blank" rel="noopener">ショップを見る</a> / <a href="login.php?logout=1">ログアウト</a></div>
         </div>
 
         <?php if ($message !== ''): ?><div class="notice ok"><?php echo h($message); ?></div><?php endif; ?>

@@ -2286,6 +2286,32 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.8] - 2026-09-13 - SHOP注文履歴保存と管理画面追加
+
+### 変更内容
+- `shop/create_session.php` でStripe Checkout Session作成成功後、SHOP側の注文控えを `shop/data/orders.json` へ保存する処理を追加。
+- 注文番号、作成日時、Stripe Session ID、PaymentIntent、購入者情報、既存顧客確認情報、商品明細、合計金額、利用可能決済方法を保存。
+- Stripe metadata に `order_id` を追加し、Stripe側とSHOP側の注文控えを照合できるようにした。
+- `shop/admin/orders.php` を新規作成し、既存の管理ログイン後に注文履歴を読み取り専用で確認できるようにした。
+- `shop/admin/products.php` に注文履歴へのリンクを追加。
+- `shop/data/.htaccess` を追加し、注文データの外部閲覧を禁止。
+- `.gitignore` に `shop/data/orders.json` を追加し、実注文データをGit管理対象外にした。
+- Stripeキー、商品データ、決済金額、既存カート処理には変更なし。
+
+### バックアップ
+- `backups/v3.3.8_shop_order_history_0913170256/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/create_session.php` | `/home/sakura-nets/www/shop/create_session.php` |
+| `shop/admin/orders.php` | `/home/sakura-nets/www/shop/admin/orders.php` |
+| `shop/admin/products.php` | `/home/sakura-nets/www/shop/admin/products.php` |
+| `shop/data/.htaccess` | `/home/sakura-nets/www/shop/data/.htaccess` |
+| `shop/data/orders.json` | `/home/sakura-nets/www/shop/data/orders.json` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容
