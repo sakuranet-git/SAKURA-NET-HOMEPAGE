@@ -186,6 +186,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
             <div class="info-row"><strong>対応決済</strong><span>クレジットカード決済・コンビニ決済（Stripe）。合計金額が30万円を超える場合はカード決済のみになります。</span></div>
             <div class="info-row"><strong>ご利用対象</strong><span>さくらねっとサービスをご利用中、または当社より案内を受けた法人のお客様・お取引先様専用です。お取引を確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。</span></div>
             <div class="info-row"><strong>キャンセル・返金方針</strong><span>お支払い後のキャンセル・返金は、商品発送前またはサービス提供開始前に限り個別に確認いたします。発送後・役務提供開始後の返金は原則として承っておりません。</span></div>
+            <div class="info-row"><strong>機器保証</strong><span>UniFi等の機器本体の製品保証は、メーカーまたはメーカー保証制度（UI Care等）の条件に基づく対応となります。さくらねっと独自の機器本体保証は、別途書面で明示した場合を除き付与しておりません。</span></div>
             <div class="info-row"><strong>引渡し時期</strong><span>決済確認後、在庫確認のうえ発送または個別に納期をご案内いたします。コンビニ決済はご入金確認後の手配となります。</span></div>
             <div class="info-row"><strong>お問い合わせ</strong><span>株式会社さくらねっと / 受付時間 平日 10:00-17:00（土日祝 休業） / <a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a></span></div>
             <div class="info-row"><strong>事業者情報</strong><span><a href="tokushoho.html">特定商取引法に基づく表記</a> ／ <a href="<?php echo sh($site); ?>/company.html">会社概要</a></span></div>

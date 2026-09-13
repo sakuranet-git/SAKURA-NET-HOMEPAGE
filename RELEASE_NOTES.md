@@ -2267,6 +2267,25 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.7] - 2026-09-13 - SHOP機器製品保証の明記
+
+### 変更内容
+- `shop/tokushoho.html` に、UniFi等の機器本体の製品保証はメーカーまたはメーカー保証制度（UI Care等）の条件に基づく旨を追記。
+- さくらねっと独自の機器本体保証は、別途書面で明示した場合を除き付与しない旨を明記。
+- `shop/index.php` の購入前説明にも同趣旨の「機器保証」行を追加。
+- 返品特約、決済処理、商品データ、Stripeキーには変更なし。
+
+### バックアップ
+- `backups/v3.3.7_shop_product_warranty_0913165645/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/index.php` | `/home/sakura-nets/www/shop/index.php` |
+| `shop/tokushoho.html` | `/home/sakura-nets/www/shop/tokushoho.html` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容
