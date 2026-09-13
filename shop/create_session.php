@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 session_start();
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/checkout_rules.php';
 
 function checkout_h(string $value): string
 {
@@ -249,6 +250,10 @@ try {
         $product = $item['product'];
         if (!checkout_is_product_available($product)) {
             throw new InvalidArgumentException('在庫切れまたは近日入荷の商品が含まれています。カートを確認してください: ' . (string) $product['name']);
+        }
+
+        if (!shop_is_checkout_enabled_product($product)) {
+            throw new InvalidArgumentException('オンライン決済対象外の商品が含まれています。' . shop_checkout_limited_message() . ': ' . (string) $product['name']);
         }
 
         $quantity = (int) $item['quantity'];

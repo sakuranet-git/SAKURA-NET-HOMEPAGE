@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 session_start();
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/checkout_rules.php';
 
 function h(string $value): string
 {
@@ -36,7 +37,7 @@ $total = array_sum(array_map(static fn(array $item): int => (int) $item['subtota
 $count = array_sum(array_map(static fn(array $item): int => (int) $item['quantity'], $items));
 $hasUnavailable = false;
 foreach ($items as $item) {
-    if (!checkout_is_product_available($item['product'])) {
+    if (!checkout_is_product_available($item['product']) || !shop_is_checkout_enabled_product($item['product'])) {
         $hasUnavailable = true;
         break;
     }
@@ -74,7 +75,7 @@ foreach ($items as $item) {
         <section>
             <div class="eyebrow">Checkout</div>
             <h1>購入手続き</h1>
-            <p class="lead">ご注文内容を確認し、お客様情報を入力してください。本ショップは、さくらねっとサービスをご利用中、または当社より案内を受けたお客様専用です。</p>
+            <p class="lead">ご注文内容を確認し、お客様情報を入力してください。本ショップのオンライン決済はサポート・保守カテゴリのみ対応しています。</p>
         </section>
 
         <?php if ($items === []): ?>
@@ -98,7 +99,7 @@ foreach ($items as $item) {
                         </div>
                     <?php endforeach; ?>
                     <div class="total"><span>合計</span><span><?php echo number_format((int) $total); ?>円</span></div>
-                    <?php if ($hasUnavailable): ?><div class="alert">在庫切れ・近日入荷の商品が含まれています。カートへ戻って対象商品を削除してください。</div><?php endif; ?>
+                    <?php if ($hasUnavailable): ?><div class="alert">在庫切れ・近日入荷・オンライン決済対象外の商品が含まれています。カートへ戻って対象商品を削除してください。</div><?php endif; ?>
                     <a class="button secondary" href="cart.php">カートへ戻る</a>
                 </section>
 

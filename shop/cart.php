@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 session_start();
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/checkout_rules.php';
 
 function h(string $value): string
 {
@@ -60,7 +61,7 @@ function cart_total(array $items): int
 function cart_has_unavailable(array $items): bool
 {
     foreach ($items as $item) {
-        if (!checkout_is_product_available($item['product'])) {
+        if (!checkout_is_product_available($item['product']) || !shop_is_checkout_enabled_product($item['product'])) {
             return true;
         }
     }
@@ -86,7 +87,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     if ($action === 'add') {
         $id = (string) ($_POST['product_id'] ?? '');
         $quantity = max(1, min(99, (int) ($_POST['quantity'] ?? 1)));
-        if (isset($products[$id]) && checkout_is_product_available($products[$id])) {
+        if (isset($products[$id]) && checkout_is_product_available($products[$id]) && shop_is_checkout_enabled_product($products[$id])) {
             $cart[$id] = min(99, ((int) ($cart[$id] ?? 0)) + $quantity);
             cart_set($cart);
         }
@@ -101,7 +102,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             foreach ($submitted as $id => $quantity) {
                 $id = (string) $id;
                 $quantity = (int) $quantity;
-                if ($quantity >= 1 && $quantity <= 99 && isset($products[$id]) && checkout_is_product_available($products[$id])) {
+                if ($quantity >= 1 && $quantity <= 99 && isset($products[$id]) && checkout_is_product_available($products[$id]) && shop_is_checkout_enabled_product($products[$id])) {
                     $next[$id] = $quantity;
                 }
             }
@@ -169,7 +170,7 @@ $updated = (string) ($_GET['updated'] ?? '') === '1';
             <div class="eyebrow">Shopping Cart</div>
             <h1>カート</h1>
             <p class="lead">数量を確認して、まとめて購入手続きへ進めます。</p>
-            <div class="member-note"><strong>既存顧客・取引先専用</strong>購入手続きでは、契約者名・請求書番号など、さくらねっととのお取引を確認できる情報の入力が必要です。確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。</div>
+            <div class="member-note"><strong>既存顧客・取引先専用</strong>購入手続きでは、契約者名・請求書番号など、さくらねっととのお取引を確認できる情報の入力が必要です。確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。<?php echo h(shop_checkout_limited_message()); ?></div>
             <?php if ($updated): ?><div class="notice">カートを更新しました。</div><?php endif; ?>
         </section>
 
@@ -214,7 +215,7 @@ $updated = (string) ($_GET['updated'] ?? '') === '1';
                     <div class="sum-row"><span>商品点数</span><strong><?php echo $count; ?>点</strong></div>
                     <div class="sum-row total"><span>合計</span><strong><?php echo number_format($total); ?>円</strong></div>
                     <p class="lead">合計30万円を超える場合、決済方法はカードのみになります。</p>
-                    <?php if ($hasUnavailable): ?><div class="alert">在庫切れ・近日入荷の商品が含まれています。削除してから購入手続きへ進んでください。</div><?php endif; ?>
+                    <?php if ($hasUnavailable): ?><div class="alert">在庫切れ・近日入荷・オンライン決済対象外の商品が含まれています。削除してから購入手続きへ進んでください。</div><?php endif; ?>
                     <div class="actions">
                         <a class="button <?php echo $hasUnavailable ? 'disabled' : ''; ?>" href="order.php">レジに進む</a>
                         <a class="button secondary" href="index.php">買い物を続ける</a>

@@ -2312,6 +2312,30 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 
 ---
 
+## [v3.3.9] - 2026-09-13 - SHOP本番決済対象をサポート・保守カテゴリに限定
+
+### 変更内容
+- `shop/checkout_rules.php` を新規作成し、オンライン決済対象カテゴリを `サポート・保守` のみに定義。
+- `shop/index.php` でサポート・保守カテゴリのみ「カートに追加」を表示し、その他カテゴリは「見積・相談する」導線へ変更。
+- `shop/cart.php` でサポート・保守以外の商品をカート投入・数量更新対象外にし、既存セッションに残っている場合もレジへ進めないようにした。
+- `shop/order.php` でオンライン決済対象外商品を含む場合は購入手続きボタンを無効化。
+- `shop/create_session.php` でサポート・保守以外の商品を含むPOSTを拒否し、Stripe Checkout Sessionを作成しないサーバー側ガードを追加。
+- 商品データ、注文履歴、Stripeキー、管理画面ログイン情報には変更なし。
+
+### バックアップ
+- `backups/v3.3.9_support_only_checkout_0913171009/`
+
+### Webアップロード対象
+| ファイル | 配置先 |
+|---|---|
+| `shop/checkout_rules.php` | `/home/sakura-nets/www/shop/checkout_rules.php` |
+| `shop/index.php` | `/home/sakura-nets/www/shop/index.php` |
+| `shop/cart.php` | `/home/sakura-nets/www/shop/cart.php` |
+| `shop/order.php` | `/home/sakura-nets/www/shop/order.php` |
+| `shop/create_session.php` | `/home/sakura-nets/www/shop/create_session.php` |
+
+---
+
 ## [v3.2.8] - 2026-08-07 - Mobile貸し出し申込とトップページ導線追加
 
 ### 変更内容

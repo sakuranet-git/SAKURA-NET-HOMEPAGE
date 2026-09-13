@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 session_start();
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/checkout_rules.php';
 
 function sh(string $value): string
 {
@@ -71,7 +72,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}.card{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;transition:box-shadow .2s ease,transform .2s ease,border-color .2s ease}.card:hover{border-color:#d3d7de;box-shadow:0 12px 30px rgba(16,24,40,.08);transform:translateY(-3px)}
         .thumb{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:var(--tile);padding:22px}.thumb img{max-width:100%;max-height:100%;object-fit:contain}.thumb-ph{display:flex;align-items:center;justify-content:center;width:100%;height:100%;color:#b9c0cc;font-weight:800;letter-spacing:-.02em;font-size:22px}.thumb-ph b{color:var(--primary)}
         .card-body{display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;flex:1}.tag-row{display:flex;flex-wrap:wrap;gap:6px}.tag,.stock{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:9999px}.tag{color:var(--primary);background:rgba(0,111,255,.08)}.stock{color:#18794e;background:#eaf7ef}.stock.is-out{color:#9b1c1c;background:#fff1f1}.stock.is-soon{color:#8a5a00;background:#fff6df}.card h3{margin:2px 0 0;font-size:17px;letter-spacing:-.01em}.card p{margin:0;color:var(--muted);font-size:13.5px;flex:1}.price-row{display:flex;align-items:baseline;gap:6px;margin-top:6px}.price{font-size:22px;font-weight:800;letter-spacing:-.03em}.tax{font-size:12px;font-weight:500;color:var(--muted)}
-        .cart-form{margin-top:12px;display:grid;grid-template-columns:82px 1fr;gap:8px}.qty{width:100%;border:1px solid var(--border);border-radius:8px;padding:11px 10px;font:inherit}.buy{border:0;text-align:center;text-decoration:none;background:var(--primary);color:#fff;font-weight:700;font-size:14px;padding:12px 16px;border-radius:8px;cursor:pointer;transition:background .18s ease}.buy:hover{background:var(--primary-dark)}.buy[disabled],.qty[disabled]{cursor:not-allowed;opacity:.55}.buy[disabled]{background:#aeb6c3}
+        .cart-form{margin-top:12px;display:grid;grid-template-columns:82px 1fr;gap:8px}.cart-form.is-quote{grid-template-columns:1fr}.qty{width:100%;border:1px solid var(--border);border-radius:8px;padding:11px 10px;font:inherit}.buy{border:0;text-align:center;text-decoration:none;background:var(--primary);color:#fff;font-weight:700;font-size:14px;padding:12px 16px;border-radius:8px;cursor:pointer;transition:background .18s ease}.buy:hover{background:var(--primary-dark)}.buy[disabled],.qty[disabled]{cursor:not-allowed;opacity:.55}.buy[disabled]{background:#aeb6c3}.buy.quote{display:block;background:#fff;color:var(--primary);border:1px solid rgba(0,111,255,.28)}.buy.quote:hover{background:rgba(0,111,255,.07)}
         .info{margin:clamp(32px,5vw,56px) 0;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(20px,3vw,32px);background:var(--tile)}.info h2{margin:0 0 16px;font-size:20px;letter-spacing:-.02em}.info-row{display:grid;grid-template-columns:minmax(120px,.32fr) 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:14px}.info-row:first-of-type{border-top:0}.info-row strong{color:var(--text)}.info-row span{color:var(--muted)}.info-row a{color:var(--primary);text-decoration:none}
         footer{border-top:1px solid var(--border);padding:28px 0 48px;color:var(--muted);font-size:13px}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}footer a{color:var(--muted);text-decoration:none}
         @media(max-width:560px){.topbar{align-items:flex-start;flex-wrap:wrap;padding:12px 16px}.brand{font-size:18px;line-height:1.35}.topnav{width:100%;overflow-x:auto;padding-bottom:2px}.topnav a{flex:0 0 auto;padding:7px 10px;font-size:12px}.recommend-head{align-items:flex-start;flex-direction:column}.recommend-grid{grid-template-columns:1fr}.cart-form{grid-template-columns:76px 1fr}.info-row{grid-template-columns:1fr;gap:4px}}
@@ -92,10 +93,14 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         <div class="wrap">
             <div class="eyebrow">SAKURA-NET STORE</div>
             <h1>オンラインショップ</h1>
-            <p>株式会社さくらねっとのサポート・保守サービスと、UniFi正規取扱いネットワーク機器をまとめて購入できます。複数商品をカートに入れて、Stripeの安全な画面で決済できます。</p>
+            <p>株式会社さくらねっとのサポート・保守サービスをオンライン決済できます。UniFi機器・回線・その他商品は、お問い合わせ後にお見積り・納期・保証条件をご案内します。</p>
             <div class="member-note" role="note">
                 <strong>ご利用対象について</strong>
                 本ショップは、さくらねっとサービスをご利用中、または当社よりご案内を受けた法人のお客様・お取引先様専用のオンライン決済ページです。購入手続きでは契約者名・請求書番号などのお取引確認情報が必要です。初めてのお客様は、購入前に<a href="<?php echo sh($site); ?>/contact.html">お問い合わせフォーム</a>よりご相談ください。
+            </div>
+            <div class="member-note" role="note">
+                <strong>オンライン決済対象について</strong>
+                <?php echo sh(shop_checkout_limited_message()); ?>
             </div>
             <?php if ($added): ?><div class="notice">カートに追加しました。右上のカートから内容を確認できます。</div><?php endif; ?>
         </div>
@@ -146,6 +151,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                     <div class="grid">
                         <?php foreach ($items as $product): ?>
                             <?php $available = checkout_is_product_available($product); ?>
+                            <?php $checkoutEnabled = shop_is_checkout_enabled_product($product); ?>
                             <?php $stockStatus = checkout_normalize_stock_status((string) ($product['status'] ?? 'Available')); ?>
                             <article class="card">
                                 <div class="thumb">
@@ -165,12 +171,18 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                                     <div class="price-row">
                                         <span class="price"><?php echo number_format((int) $product['amount']); ?>円 <span class="tax">税込</span></span>
                                     </div>
-                                    <form class="cart-form" action="cart.php" method="post">
-                                        <input type="hidden" name="action" value="add">
-                                        <input type="hidden" name="product_id" value="<?php echo sh((string) $product['id']); ?>">
-                                        <input class="qty" type="number" name="quantity" min="1" max="99" value="1" aria-label="数量" <?php echo $available ? '' : 'disabled'; ?>>
-                                        <button class="buy" type="submit" <?php echo $available ? '' : 'disabled'; ?>><?php echo $available ? 'カートに追加' : '購入できません'; ?></button>
-                                    </form>
+                                    <?php if ($checkoutEnabled): ?>
+                                        <form class="cart-form" action="cart.php" method="post">
+                                            <input type="hidden" name="action" value="add">
+                                            <input type="hidden" name="product_id" value="<?php echo sh((string) $product['id']); ?>">
+                                            <input class="qty" type="number" name="quantity" min="1" max="99" value="1" aria-label="数量" <?php echo $available ? '' : 'disabled'; ?>>
+                                            <button class="buy" type="submit" <?php echo $available ? '' : 'disabled'; ?>><?php echo $available ? 'カートに追加' : '購入できません'; ?></button>
+                                        </form>
+                                    <?php else: ?>
+                                        <div class="cart-form is-quote">
+                                            <a class="buy quote" href="<?php echo sh($site); ?>/contact.html">見積・相談する</a>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </article>
                         <?php endforeach; ?>
@@ -184,6 +196,7 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         <section class="info">
             <h2>お買い物・決済について</h2>
             <div class="info-row"><strong>対応決済</strong><span>クレジットカード決済・コンビニ決済（Stripe）。合計金額が30万円を超える場合はカード決済のみになります。</span></div>
+            <div class="info-row"><strong>オンライン決済対象</strong><span><?php echo sh(shop_checkout_limited_message()); ?></span></div>
             <div class="info-row"><strong>ご利用対象</strong><span>さくらねっとサービスをご利用中、または当社より案内を受けた法人のお客様・お取引先様専用です。お取引を確認できないご注文、対象外のお客様によるご注文はキャンセルまたは返金対応となる場合があります。</span></div>
             <div class="info-row"><strong>キャンセル・返金方針</strong><span>お支払い後のキャンセル・返金は、商品発送前またはサービス提供開始前に限り個別に確認いたします。発送後・役務提供開始後の返金は原則として承っておりません。</span></div>
             <div class="info-row"><strong>機器保証</strong><span>UniFi等の機器本体の製品保証は、メーカーまたはメーカー保証制度（UI Care等）の条件に基づく対応となります。さくらねっと独自の機器本体保証は、別途書面で明示した場合を除き付与しておりません。</span></div>
