@@ -1,3 +1,23 @@
+## [v3.2.9] - 2026-09-17 - Windows版ZIP代替ダウンロード追加
+
+### 変更内容
+
+- 既存のWindows版EXEダウンロードボタンを維持し、GitHub ReleaseのZIP版への追加リンクを`remote.html`に設置。
+- ZIP内のEXEは現行HP配布版2.4.6をそのまま格納し、アプリ機能・インストーラー設定・EXEのバイト列は変更していない。
+- ZIP展開前後のEXE SHA-256: `73D71DCFD0ADF819DE04874F7DF5C71A089F5B46FA51FCE9D12410D16BF16715`。
+- 既存の2.4.9検証用Releaseと他のHPファイルは変更していない。
+
+### バックアップ
+
+- `backups/v3.2.9-github-zip-pre_20260917/remote.html`
+- `backups/v3.2.9-github-zip-pre_20260917/RELEASE_NOTES.md`
+
+### Webへのアップロード対象
+
+- `remote.html`のみ
+
+---
+
 ## [v3.2.8] - 2026-07-31 - SAKURA-Remoteコード署名申請準備
 
 ### 変更内容
