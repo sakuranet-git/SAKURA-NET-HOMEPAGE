@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/reservation_business_days.php';
+
 const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyHdtQd3n8BMtpWP9AdOU3ZRphDdTOq24INZkVxWEqOz2_hPSOneYBsfzWAdFIgV0ft/exec';
 
 function reservation_redirect_error(string $message): void
@@ -125,9 +127,16 @@ foreach ($dateCandidates as $c) {
     if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $d)) {
         reservation_redirect_error($c['label'] . '日を確認してください。');
     }
-    $candidate = new DateTimeImmutable($d . ' 00:00:00', $tz);
+    $candidate = reservation_parse_date($d, $tz);
+    if ($candidate === null) {
+        reservation_redirect_error($c['label'] . '日を確認してください。');
+    }
     if ($candidate < $today) {
         reservation_redirect_error($c['label'] . '日は本日以降を選択してください。');
+    }
+    $closedReason = reservation_closed_date_reason($candidate);
+    if ($closedReason !== null) {
+        reservation_redirect_error($c['label'] . '日は' . $closedReason . 'のため通常予約を受け付けていません。平日を選択してください。土日祝の特別対応はお問い合わせページから事前にご相談ください。');
     }
     if (in_array($d, $seenDates, true)) {
         reservation_redirect_error('希望日が重複しています。別の日を選んでください。');

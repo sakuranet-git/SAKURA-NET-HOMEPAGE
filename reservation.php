@@ -1,6 +1,13 @@
 <?php
+require_once __DIR__ . '/reservation_business_days.php';
+
 $today = (new DateTimeImmutable('today', new DateTimeZone('Asia/Tokyo')))->format('Y-m-d');
 $error = isset($_GET['error']) ? trim((string)$_GET['error']) : '';
+$holidayDates = [];
+$currentYear = (int)substr($today, 0, 4);
+for ($year = $currentYear; $year <= $currentYear + 5; $year++) {
+    $holidayDates = array_merge($holidayDates, array_keys(reservation_japanese_holidays($year)));
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -34,6 +41,9 @@ $error = isset($_GET['error']) ? trim((string)$_GET['error']) : '';
     .p-reservation-form_head { display:flex; justify-content:space-between; gap:20px; align-items:start; margin-bottom:clamp(24px,4vw,36px); padding-bottom:20px; border-bottom:1px solid var(--color-border); }
     .p-reservation-form_title { font-size:clamp(20px,2.5vw,28px); font-weight:400; line-height:1.5; color:var(--color-text); letter-spacing:0; }
     .p-reservation-form_note { max-width:360px; font-size:13px; line-height:1.9; color:var(--color-text-sub); }
+    .p-reservation-closed-note { margin:0 0 26px; padding:18px 20px; border:1px solid rgba(201,123,141,0.32); border-radius:12px; background:#fff9fa; color:var(--color-text-sub); font-size:13px; line-height:1.9; }
+    .p-reservation-closed-note strong { display:block; margin-bottom:4px; color:var(--color-text); font-size:14px; font-weight:500; }
+    .p-reservation-closed-note a { color:var(--color-accent-d); text-decoration:underline; text-underline-offset:3px; }
     .p-reservation-error { border:1px solid rgba(168,92,112,0.35); border-left:4px solid var(--color-accent-d); background:var(--color-accent-pale); color:var(--color-text); border-radius:8px; padding:14px 16px; margin-bottom:22px; font-size:14px; line-height:1.8; }
     .p-reservation-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
     .p-reservation-field { display:flex; flex-direction:column; gap:8px; }
@@ -44,6 +54,7 @@ $error = isset($_GET['error']) ? trim((string)$_GET['error']) : '';
     .p-reservation-field textarea { min-height:140px; resize:vertical; line-height:1.8; }
     .p-reservation-field input:focus, .p-reservation-field select:focus, .p-reservation-field textarea:focus { outline:none; border-color:var(--color-accent); box-shadow:0 0 0 4px rgba(201,123,141,0.14); }
     .p-reservation-help { font-size:12px; line-height:1.7; color:var(--color-text-sub); }
+    .p-reservation-date-error { min-height:1.7em; color:#a34258; font-size:12px; line-height:1.7; }
     .p-reservation-privacy { display:flex; gap:12px; align-items:flex-start; background:var(--color-bg-alt); border:1px solid var(--color-border); border-radius:8px; padding:16px; }
     .p-reservation-privacy input { width:18px; height:18px; margin-top:3px; flex:0 0 auto; }
     .p-reservation-privacy a { text-decoration:underline; text-underline-offset:3px; }
@@ -118,12 +129,16 @@ $error = isset($_GET['error']) ? trim((string)$_GET['error']) : '';
             <div><p class="p-reservation-form_label">Reservation Form</p><h2 class="p-reservation-form_title" id="reservation-form-title">予約内容を入力してください</h2></div>
             <p class="p-reservation-form_note">日程調整のため、希望日・時間帯・連絡先は必ず入力してください。</p>
           </div>
+          <div class="p-reservation-closed-note" id="reservation-closed-note">
+            <strong>土日祝のご予約について</strong>
+            土日祝は原則休業のため、通常の予約は受け付けておりません。やむを得ず土日祝の対応をご希望の場合は、<a href="contact.html">お問い合わせページ</a>から事前にご相談ください。対応可否を確認のうえ、別途特別対応費用をご案内します。
+          </div>
           <?php if ($error !== ''): ?><div class="p-reservation-error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div><?php endif; ?>
 
           <div class="p-reservation-grid">
-            <div class="p-reservation-field"><label for="preferred_date_1">第一希望日<span class="p-reservation-required">必須</span></label><input type="date" id="preferred_date_1" name="preferred_date_1" min="<?php echo htmlspecialchars($today, ENT_QUOTES, 'UTF-8'); ?>" required></div>
-            <div class="p-reservation-field"><label for="preferred_date_2">第二希望日</label><input type="date" id="preferred_date_2" name="preferred_date_2" min="<?php echo htmlspecialchars($today, ENT_QUOTES, 'UTF-8'); ?>"></div>
-            <div class="p-reservation-field"><label for="preferred_date_3">第三希望日</label><input type="date" id="preferred_date_3" name="preferred_date_3" min="<?php echo htmlspecialchars($today, ENT_QUOTES, 'UTF-8'); ?>"></div>
+            <div class="p-reservation-field"><label for="preferred_date_1">第一希望日<span class="p-reservation-required">必須</span></label><input type="date" id="preferred_date_1" name="preferred_date_1" min="<?php echo htmlspecialchars($today, ENT_QUOTES, 'UTF-8'); ?>" aria-describedby="preferred_date_1_error reservation-closed-note" data-business-day-input required><p class="p-reservation-date-error" id="preferred_date_1_error" aria-live="polite"></p></div>
+            <div class="p-reservation-field"><label for="preferred_date_2">第二希望日</label><input type="date" id="preferred_date_2" name="preferred_date_2" min="<?php echo htmlspecialchars($today, ENT_QUOTES, 'UTF-8'); ?>" aria-describedby="preferred_date_2_error reservation-closed-note" data-business-day-input><p class="p-reservation-date-error" id="preferred_date_2_error" aria-live="polite"></p></div>
+            <div class="p-reservation-field"><label for="preferred_date_3">第三希望日</label><input type="date" id="preferred_date_3" name="preferred_date_3" min="<?php echo htmlspecialchars($today, ENT_QUOTES, 'UTF-8'); ?>" aria-describedby="preferred_date_3_error reservation-closed-note" data-business-day-input><p class="p-reservation-date-error" id="preferred_date_3_error" aria-live="polite"></p></div>
             <div class="p-reservation-field"><label for="time_slot">希望時間<span class="p-reservation-required">必須</span></label><select id="time_slot" name="time_slot" required><option value="">選択してください</option><option value="10:00|11:00">10:00 - 11:00</option><option value="11:00|12:00">11:00 - 12:00</option><option value="13:00|14:00">13:00 - 14:00</option><option value="14:00|15:00">14:00 - 15:00</option><option value="15:00|16:00">15:00 - 16:00</option><option value="16:00|17:00">16:00 - 17:00</option><option value="17:00|18:00">17:00 - 18:00</option></select></div>
             <div class="p-reservation-field"><label for="meeting_type">相談方法<span class="p-reservation-required">必須</span></label><select id="meeting_type" name="meeting_type" required><option value="">選択してください</option><option value="来店相談">来店相談</option><option value="オンライン相談">オンライン相談</option><option value="電話相談">電話相談</option><option value="オンサイトサポート">オンサイトサポート</option><option value="初回診断">初回診断</option><option value="現地調査">現地調査</option></select></div>
             <div class="p-reservation-field"><label for="participant_count">参加人数<span class="p-reservation-required">必須</span></label><select id="participant_count" name="participant_count" required><option value="">選択してください</option><option value="1">1名</option><option value="2">2名</option><option value="3">3名</option><option value="4">4名</option><option value="5">5名</option><option value="6">6名以上</option></select><p class="p-reservation-help">来店・オンライン相談に参加される人数を選択してください。</p></div>
@@ -168,5 +183,41 @@ $error = isset($_GET['error']) ? trim((string)$_GET['error']) : '';
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    (() => {
+      const holidays = new Set(<?php echo json_encode($holidayDates, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); ?>);
+      const inputs = document.querySelectorAll('[data-business-day-input]');
+
+      inputs.forEach((input) => {
+        const error = document.getElementById(input.id + '_error');
+        input.addEventListener('change', () => {
+          input.setCustomValidity('');
+          error.textContent = '';
+          if (!input.value) return;
+
+          const selected = new Date(input.value + 'T00:00:00Z');
+          const day = selected.getUTCDay();
+          let reason = '';
+          if (day === 0) reason = '日曜日';
+          if (day === 6) reason = '土曜日';
+          if (!reason && holidays.has(input.value)) reason = '祝日';
+          if (!reason) return;
+
+          const message = reason + 'は通常予約を受け付けていません。平日を選択してください。';
+          input.value = '';
+          input.setCustomValidity(message);
+          error.textContent = message;
+          input.reportValidity();
+        });
+
+        input.addEventListener('input', () => {
+          if (input.value) {
+            input.setCustomValidity('');
+            error.textContent = '';
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
