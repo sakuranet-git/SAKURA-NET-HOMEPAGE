@@ -2435,3 +2435,12 @@ HPB・・BM繝帙・繝繝壹・繧ｸ繝薙Ν繝繝ｼ・峨♀繧医・ W
 | ファイル | 配置先 |
 |---|---|
 | `shop/config.php` | `/home/sakura-nets/www/shop/config.php` |
+## [v3.4.3] - 2026-10-19 - SAKURA BLOOM service-card image
+
+- Replace only the homepage BLOOM inline SVG with the approved sakura-tone 3D illustration.
+- Use the existing 16:9 card frame and contain sizing to preserve the complete artwork and title.
+- Add optimized WebP; retain PNG source. Other cards, links and shared styles are unchanged.
+- Backup: `backups/v3.4.3-bloom-image-20261019/`.
+- Deployment: `index.html` and `img/card_sakura_bloom_v1.webp` only.
+- Verified desktop card-frame alignment, loaded images and 390px mobile without horizontal overflow. WebP: 88,506 bytes (PNG: 1,725,351 bytes).
+- Production pre-deploy HTML SHA-256 matches the local backup; unrelated privacy.html edits excluded.
