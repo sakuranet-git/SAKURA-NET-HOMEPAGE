@@ -239,10 +239,8 @@
           var badgeLabel = 'お知らせ';
           if (post.type === 'faq') badgeLabel = 'FAQ';
 
-          // 本文（改行→<br>）
-          var contentHtml = post.content
-            ? post.content.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')
-            : '';
+          // Keep article HTML inert; link only validated web URLs.
+          var contentHtml = renderNewsText(post.content || '');
 
           var dateHtml = dateStr
             ? '<div class="article-date-row"><span class="article-badge">' + badgeLabel + '</span><span class="article-date-text"><time datetime="' + dateAttr + '">' + dateStr + '</time></span></div>'
@@ -266,6 +264,36 @@
           container.innerHTML = '<p class="article-error">データの取得に失敗しました。</p>';
         });
     })();
+
+    function renderNewsText(value) {
+      function escapeText(text) {
+        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;').replace(/\n/g, '<br>');
+      }
+      var text = String(value);
+      var pattern = /https?:\/\/[^\s<>"'\u3000-\u303f\uff00-\uffef]+/gi;
+      var result = '';
+      var offset = 0;
+      var match;
+      while ((match = pattern.exec(text)) !== null) {
+        var raw = match[0];
+        var candidate = raw.replace(/[.,;:!?\)\]\}]+$/, '');
+        result += escapeText(text.slice(offset, match.index));
+        try {
+          var url = new URL(candidate);
+          if (!/^https?:$/.test(url.protocol) || !url.hostname || url.username || url.password) {
+            throw new Error('Not a public web URL');
+          }
+          result += '<a href="' + escapeText(url.href) + '" target="_blank" rel="noopener noreferrer">'
+            + escapeText(candidate) + '</a>' + escapeText(raw.slice(candidate.length));
+        } catch (error) {
+          result += escapeText(raw);
+        }
+        offset = match.index + raw.length;
+      }
+      return result + escapeText(text.slice(offset));
+    }
   </script>
 
   <script src="../js/main.js"></script>
