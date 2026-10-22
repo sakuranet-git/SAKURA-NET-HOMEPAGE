@@ -13,6 +13,7 @@ if (empty($_SESSION['checkout_csrf'])) {
     $_SESSION['checkout_csrf'] = bin2hex(random_bytes(32));
 }
 
+$productsRevision = hash_file('sha256', checkout_products_path());
 $products = checkout_products();
 $message = (string) ($_SESSION['checkout_message'] ?? '');
 $error = (string) ($_SESSION['checkout_error'] ?? '');
@@ -83,6 +84,7 @@ function h(string $value): string
 
         <form class="card" method="post" action="save.php" enctype="multipart/form-data">
             <input type="hidden" name="csrf" value="<?php echo h((string) $_SESSION['checkout_csrf']); ?>">
+            <input type="hidden" name="products_revision" value="<?php echo h((string) $productsRevision); ?>">
             <input type="hidden" name="MAX_FILE_SIZE" value="5242880">
             <datalist id="category-list">
                 <?php foreach (array_keys($categories) as $category): ?>
@@ -164,7 +166,22 @@ function h(string $value): string
                 <button type="submit">商品を保存</button>
                 <span class="sub">IDは英数字、ハイフン、アンダースコアのみ。画像ファイルは jpg / png / webp、5MB以下です。</span>
             </div>
+            <input type="hidden" name="form_complete" value="1">
         </form>
     </main>
+<script>
+// Keep the scalar input count below PHP max_input_vars even for large catalogs.
+document.querySelector('form[action="save.php"]').addEventListener('formdata', function (event) {
+    const data = event.formData;
+    const rows = {};
+    for (const [name, value] of Array.from(data.entries())) {
+        const match = name.match(/^products\[(\d+)\]\[([a-z_]+)\]$/);
+        if (!match || match[2] === 'image_file') continue;
+        (rows[match[1]] ||= {})[match[2]] = value;
+        data.delete(name);
+    }
+    data.set('products_payload', JSON.stringify(rows));
+});
+</script>
 </body>
 </html>

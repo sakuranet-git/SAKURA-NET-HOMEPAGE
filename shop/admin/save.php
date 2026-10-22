@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 session_start();
 require_once dirname(__DIR__) . '/config.php';
+require_once dirname(__DIR__) . '/storage_integrity.php';
 
 if (empty($_SESSION['checkout_admin'])) {
     header('Location: login.php');
@@ -108,7 +109,13 @@ function checkout_save_uploaded_image(int|string $index, string $productId): ?st
 }
 
 try {
-    $submitted = $_POST['products'] ?? [];
+    $revision = (string) ($_POST['products_revision'] ?? '');
+    if (!preg_match('/^[a-f0-9]{64}$/', $revision) || ($_POST['form_complete'] ?? '') !== '1') {
+        throw new InvalidArgumentException('送信データが不足しています。画面を再読み込みして再度保存してください。');
+    }
+    $submitted = isset($_POST['products_payload'])
+        ? json_decode((string) $_POST['products_payload'], true, 512, JSON_THROW_ON_ERROR)
+        : ($_POST['products'] ?? []);
     if (!is_array($submitted)) {
         throw new InvalidArgumentException('Invalid product payload.');
     }
@@ -123,10 +130,20 @@ try {
 
     $products = [];
     $seen = [];
+    $deletes = [];
 
     foreach ($submitted as $index => $row) {
-        if (!is_array($row) || !empty($row['delete'])) {
+        if (!is_array($row)) {
+            throw new InvalidArgumentException('Invalid product row.');
+        }
+        if (!empty($row['delete'])) {
+            $deletes[] = (string) ($row['id'] ?? '');
             continue;
+        }
+        foreach (['id', 'name', 'description', 'amount', 'category', 'image', 'status'] as $field) {
+            if (!array_key_exists($field, $row) || !is_scalar($row[$field])) {
+                throw new InvalidArgumentException('商品情報が欠けています。保存せず再読み込みしてください。');
+            }
         }
 
         $id = trim((string) ($row['id'] ?? ''));
@@ -186,7 +203,13 @@ try {
         ];
     }
 
-    checkout_save_products($products);
+    shop_update_records(checkout_products_path(), static function (array $existing) use ($products, $deletes, $revision): array {
+        $currentRevision = hash_file('sha256', checkout_products_path());
+        if (!is_string($currentRevision) || !hash_equals($revision, $currentRevision)) {
+            throw new RuntimeException('商品が別の操作で更新されています。画面を再読み込みしてください。');
+        }
+        return shop_merge_products($existing, $products, $deletes);
+    });
     $_SESSION['checkout_message'] = '商品を保存しました。';
 } catch (Throwable $e) {
     $_SESSION['checkout_error'] = $e->getMessage();

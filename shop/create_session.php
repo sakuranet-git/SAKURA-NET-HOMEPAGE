@@ -4,6 +4,7 @@ declare(strict_types=1);
 session_start();
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/checkout_rules.php';
+require_once __DIR__ . '/storage_integrity.php';
 
 function checkout_h(string $value): string
 {
@@ -141,18 +142,18 @@ function checkout_generate_order_id(): string
 function checkout_ensure_orders_storage(): void
 {
     $dir = checkout_orders_dir();
-    if (!is_dir($dir) && !mkdir($dir, 0755, true)) {
-        throw new RuntimeException('Order data directory could not be created.');
+    if (!is_dir($dir)) {
+        throw new RuntimeException('Order storage is missing. Please contact support.');
     }
 
     $htaccess = $dir . '/.htaccess';
     if (!is_file($htaccess)) {
-        file_put_contents($htaccess, "Require all denied\n", LOCK_EX);
+        throw new RuntimeException('Order storage protection is missing.');
     }
 
     $path = checkout_orders_path();
     if (!is_file($path)) {
-        file_put_contents($path, "[]\n", LOCK_EX);
+        throw new RuntimeException('Order history is missing. Existing data will not be reset.');
     }
 }
 
@@ -160,40 +161,10 @@ function checkout_save_order_record(array $record): void
 {
     checkout_ensure_orders_storage();
 
-    $path = checkout_orders_path();
-    $handle = fopen($path, 'c+');
-    if ($handle === false) {
-        throw new RuntimeException('Order history could not be opened.');
-    }
-
-    try {
-        if (!flock($handle, LOCK_EX)) {
-            throw new RuntimeException('Order history could not be locked.');
-        }
-
-        $contents = stream_get_contents($handle);
-        $orders = [];
-        if (is_string($contents) && trim($contents) !== '') {
-            $decoded = json_decode($contents, true);
-            if (is_array($decoded)) {
-                $orders = array_is_list($decoded) ? $decoded : array_values($decoded);
-            }
-        }
-
+    shop_update_records(checkout_orders_path(), static function (array $orders) use ($record): array {
         $orders[] = $record;
-        $json = json_encode($orders, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-        if ($json === false) {
-            throw new RuntimeException('Order history could not be encoded.');
-        }
-
-        ftruncate($handle, 0);
-        rewind($handle);
-        fwrite($handle, $json . PHP_EOL);
-        fflush($handle);
-        flock($handle, LOCK_UN);
-    } finally {
-        fclose($handle);
-    }
+        return $orders;
+    });
 }
 
 function checkout_error_page(string $message): void
@@ -297,6 +268,8 @@ try {
         ],
     ];
 
+    checkout_ensure_orders_storage();
+    shop_read_records(checkout_orders_path());
     $session = checkout_create_session($payload);
     if (empty($session['url'])) {
         throw new RuntimeException('Stripe Checkout URL was not returned.');
