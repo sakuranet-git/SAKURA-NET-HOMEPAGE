@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320" role="img">
+  <title>SAKURA-NET Annual Service</title>
+  <rect width="480" height="320" rx="24" fill="#fbf0f3"/>
+  <circle cx="240" cy="138" r="92" fill="#f5e1e8"/>
+  <g stroke="#73334b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="172" y="86" width="136" height="112" rx="15" fill="#fff"/>
+    <path d="M173 116h134m-102-43v25m70-25v25" fill="none"/>
+  </g>
+  <g fill="#e9a9bf">
+    <ellipse cx="240" cy="143" rx="8" ry="13"/>
+    <ellipse cx="240" cy="143" rx="8" ry="13" transform="rotate(72 240 154)"/>
+    <ellipse cx="240" cy="143" rx="8" ry="13" transform="rotate(144 240 154)"/>
+    <ellipse cx="240" cy="143" rx="8" ry="13" transform="rotate(216 240 154)"/>
+    <ellipse cx="240" cy="143" rx="8" ry="13" transform="rotate(288 240 154)"/>
+  </g>
+  <circle cx="240" cy="154" r="4" fill="#a34d70"/>
+  <text x="240" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#73334b">SAKURA ANNUAL</text>
+</svg>

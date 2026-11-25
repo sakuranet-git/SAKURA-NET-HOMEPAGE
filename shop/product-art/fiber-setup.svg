@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320" role="img">
+  <title>SAKURA-NET Fiber Setup</title>
+  <rect width="480" height="320" rx="24" fill="#fbf1f3"/>
+  <circle cx="240" cy="138" r="92" fill="#f5e3e9"/>
+  <rect x="92" y="97" width="296" height="82" rx="16" fill="#fff" stroke="#ead0da" stroke-width="2"/>
+  <svg x="115" y="118" width="250" height="40" viewBox="0 0 250 40" fill="none">
+    <path d="M4 32 L16 10 L24 10 L12 32 Z" fill="#a85c70" opacity="0.85"/>
+    <path d="M10 22 C18 14, 32 10, 38 18 C40 22, 34 28, 24 32 C14 34, 4 28, 10 22 Z" fill="#c97b8d"/>
+    <text x="48" y="27" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-weight="700" font-size="20" fill="#2f2a2a" letter-spacing="1">SAKURA-NET</text>
+    <text x="194" y="26" font-family="'Noto Sans JP', 'Yu Gothic', Meiryo, sans-serif" font-weight="600" font-size="18" fill="#8b7d7f">&#20809;</text>
+  </svg>
+  <text x="240" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#73334b">FIBER SETUP</text>
+</svg>

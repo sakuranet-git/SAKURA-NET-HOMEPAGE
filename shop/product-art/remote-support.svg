@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320" role="img">
+  <title>SAKURA-NET Remote Support</title>
+  <rect width="480" height="320" rx="24" fill="#eef5ff"/>
+  <circle cx="240" cy="138" r="92" fill="#e0ecff"/>
+  <g stroke="#173a70" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="162" y="81" width="156" height="102" rx="14" fill="#fff"/>
+    <path d="M208 202h64m-32-19v19" fill="none"/>
+    <path d="M213 139c13-15 41-15 54 0m-45 9c9-9 27-9 36 0" stroke="#2768cd" fill="none"/>
+  </g>
+  <circle cx="240" cy="158" r="4" fill="#2768cd"/>
+  <circle cx="314" cy="89" r="21" fill="#2768cd"/>
+  <path d="m305 89 6 6 12-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="240" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#173a70">REMOTE SUPPORT</text>
+</svg>

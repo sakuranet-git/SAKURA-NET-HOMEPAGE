@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320" role="img">
+  <title>SAKURA-NET Maintenance Plan</title>
+  <rect width="480" height="320" rx="24" fill="#f1f2ff"/>
+  <circle cx="240" cy="138" r="92" fill="#e5e7fc"/>
+  <path d="M240 62c20 14 40 23 61 27v47c0 31-22 56-61 75-39-19-61-44-61-75V89c21-4 41-13 61-27Z" fill="#fff" stroke="#393877" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="240" cy="134" r="30" fill="#e8e8ff"/>
+  <path d="m225 134 10 10 20-21" fill="none" stroke="#504ca2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M311 158h16m-8-8v16" stroke="#504ca2" stroke-width="4" stroke-linecap="round"/>
+  <text x="240" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#393877">MAINTENANCE</text>
+</svg>
