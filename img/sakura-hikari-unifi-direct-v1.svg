@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="544" viewBox="0 0 432 544" role="img" aria-labelledby="title desc">
+  <title id="title">SAKURA-NET光をUDM-Proに直接接続する構成例</title>
+  <desc id="desc">光回線をONUで終端し、ONUからLANケーブルでUDM-ProのWANポートへ。社内LANやWi-Fiにつなぎます。この構成ではXG-100NEなどのホームゲートウェイを経由しません。</desc>
+  <rect x="1" y="1" width="430" height="542" rx="18" fill="#fffdfd" stroke="#ead8dd"/>
+  <g font-family="'Yu Gothic','Meiryo',sans-serif" fill="#382c32">
+    <text x="26" y="34" fill="#91415b" font-size="13" font-weight="700" letter-spacing="1.4">SAKURA-NET 光  /  UniFi</text>
+    <text x="24" y="72" font-size="25" font-weight="700">ONUからUDM-Proへ直結</text>
+    <text x="25" y="99" font-size="15">対応する回線構成の例</text>
+    <path d="M25 118H407" stroke="#ead8dd"/>
+    <g fill="none" stroke="#a85c70" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M75 174v25m-5-6 5 6 5-6M75 263v39m-5-6 5 6 5-6M75 361v34m-5-6 5 6 5-6"/>
+    </g>
+    <!-- Optical fibre and connector -->
+    <g fill="none" stroke="#843f56" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M36 142c14 0 11 14 25 14h10m-35-7c9 0 10 13 25 13h10"/>
+      <rect x="71" y="148" width="30" height="19" rx="4" fill="#fae8ed"/>
+      <path d="M101 153h11v9h-11m-21-9v9"/>
+    </g>
+    <text x="144" y="153" font-size="19" font-weight="700">SAKURA-NET光</text>
+    <text x="144" y="176" font-size="15">オフィスへの光回線</text>
+    <!-- Optical network unit -->
+    <g stroke="#52424a" stroke-width="2.5" stroke-linejoin="round">
+      <path d="m58 215 30-6 8 5v41l-8 5-30-4z" fill="#f9f1f3"/>
+      <path d="m58 215 30 3 8-4m-8 4v42" fill="none"/>
+      <path d="M54 257h40" stroke-linecap="round"/>
+      <path d="M65 226h7m-7 7h7m-7 7h7" stroke="#a85c70"/>
+    </g>
+    <text x="144" y="231" font-size="19" font-weight="700">ONU（回線終端装置）</text>
+    <text x="144" y="254" font-size="15">光回線をここで受けます</text>
+    <rect x="98" y="272" width="202" height="27" rx="13" fill="#f7e8ed"/>
+    <text x="111" y="291" fill="#79374d" font-size="14" font-weight="700">LANケーブルでWANポートへ</text>
+    <!-- Generic rack gateway, front view -->
+    <g stroke="#51424a" stroke-width="2.5" stroke-linejoin="round">
+      <path d="m32 328 10-12h66l11 12v23H32z" fill="#f8f2f4"/>
+      <path d="M32 328h87" fill="none"/>
+      <rect x="39" y="334" width="10" height="9" rx="2" fill="#b8798c" stroke="none"/>
+      <path d="M66 334h9v5h-9zm14 0h9v5h-9zm14 0h9v5h-9z" fill="#fff"/>
+    </g>
+    <text x="144" y="331" font-size="19" font-weight="700">UniFi Gateway</text>
+    <text x="144" y="354" font-size="15">UDM-Proなどがルーターに</text>
+    <g stroke="#51424a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="43" y="406" width="50" height="31" rx="3" fill="#faf2f5"/>
+      <path d="M69 438v6m-13 0h26m10-39q11-12 23 0m-17 5q6-6 12 0" fill="none"/>
+      <circle cx="104" cy="415" r="2" fill="#a85c70" stroke="none"/>
+    </g>
+    <text x="144" y="419" font-size="19" font-weight="700">社内LAN・Wi-Fiへ</text>
+    <text x="144" y="442" font-size="15">スイッチやアクセスポイントに接続</text>
+    <rect x="14" y="465" width="404" height="65" rx="10" fill="#f8f2f4"/>
+    <text x="26" y="490" font-size="15" font-weight="700">この構成ではXG-100NEなどのHGWは不要です。</text>
+    <text x="26" y="515" font-size="14">ひかり電話などのご利用条件により構成は異なります。</text>
+  </g>
+</svg>

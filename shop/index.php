@@ -76,6 +76,8 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .info{margin:clamp(32px,5vw,56px) 0;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(20px,3vw,32px);background:var(--tile)}.info h2{margin:0 0 16px;font-size:20px;letter-spacing:-.02em}.info-row{display:grid;grid-template-columns:minmax(120px,.32fr) 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:14px}.info-row:first-of-type{border-top:0}.info-row strong{color:var(--text)}.info-row span{color:var(--muted)}.info-row a{color:var(--primary);text-decoration:none}
         footer{border-top:1px solid var(--border);padding:28px 0 48px;color:var(--muted);font-size:13px}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}footer a{color:var(--muted);text-decoration:none}
         @media(max-width:560px){.topbar{align-items:flex-start;flex-wrap:wrap;padding:12px 16px}.brand{font-size:18px;line-height:1.35}.topnav{width:100%;overflow-x:auto;padding-bottom:2px}.topnav a{flex:0 0 auto;padding:7px 10px;font-size:12px}.recommend-head{align-items:flex-start;flex-direction:column}.recommend-grid{grid-template-columns:1fr}.cart-form{grid-template-columns:76px 1fr}.info-row{grid-template-columns:1fr;gap:4px}}
+        .gateway-guide{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,4vw,48px);margin-bottom:24px;padding:clamp(16px,3vw,32px);border:1px solid var(--border);border-radius:var(--radius);background:var(--tile)}
+        .gateway-guide div{flex:1 1 230px;min-width:0}.gateway-guide h3{margin:0 0 12px}.gateway-guide img{display:block;width:min(100%,320px);height:auto}.gateway-guide a{color:var(--primary);font-weight:700}
     </style>
 </head>
 <body>
@@ -148,6 +150,16 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
                         <h2><?php echo sh($categoryName); ?></h2>
                         <span class="cat-count"><?php echo count($items); ?> 商品</span>
                     </div>
+                    <?php if ($categoryName === 'Cloud Gateways'): ?>
+                    <aside class="gateway-guide" aria-labelledby="gateway-guide-title">
+                        <div>
+                            <h3 id="gateway-guide-title">SAKURA-NET光を、UniFiに直結。</h3>
+                            <p>対応する回線構成では、XG-100NEなどのホームゲートウェイを挟まず、ONUからUDM-Proへ直接接続できます。ひかり電話などをご利用の場合は構成が異なります。</p>
+                            <a href="<?php echo sh($site); ?>/sakura-net-hikari.html#unifi-direct">光回線の詳細と接続条件を見る</a>
+                        </div>
+                        <img src="product-art/sakura-hikari-unifi-direct-v1.svg" alt="SAKURA-NET光 → ONU → UDM-ProのWANポート → 社内LAN・Wi-Fi" width="432" height="544" loading="lazy">
+                    </aside>
+                    <?php endif; ?>
                     <div class="grid">
                         <?php foreach ($items as $product): ?>
                             <?php $available = checkout_is_product_available($product); ?>
