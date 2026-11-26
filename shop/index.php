@@ -76,6 +76,8 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         .info{margin:clamp(32px,5vw,56px) 0;border:1px solid var(--border);border-radius:var(--radius);padding:clamp(20px,3vw,32px);background:var(--tile)}.info h2{margin:0 0 16px;font-size:20px;letter-spacing:-.02em}.info-row{display:grid;grid-template-columns:minmax(120px,.32fr) 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--border);font-size:14px}.info-row:first-of-type{border-top:0}.info-row strong{color:var(--text)}.info-row span{color:var(--muted)}.info-row a{color:var(--primary);text-decoration:none}
         footer{border-top:1px solid var(--border);padding:28px 0 48px;color:var(--muted);font-size:13px}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}footer a{color:var(--muted);text-decoration:none}
         @media(max-width:560px){.topbar{align-items:flex-start;flex-wrap:wrap;padding:12px 16px}.brand{font-size:18px;line-height:1.35}.topnav{width:100%;overflow-x:auto;padding-bottom:2px}.topnav a{flex:0 0 auto;padding:7px 10px;font-size:12px}.recommend-head{align-items:flex-start;flex-direction:column}.recommend-grid{grid-template-columns:1fr}.cart-form{grid-template-columns:76px 1fr}.info-row{grid-template-columns:1fr;gap:4px}}
+        .unifi-partner-badge{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;width:fit-content;max-width:100%;margin:0 0 16px;padding:10px 14px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-size:.875rem;line-height:1.5}
+        .unifi-partner-badge img{width:78px;height:auto}.unifi-partner-badge strong{overflow-wrap:anywhere}
         .gateway-guide{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(16px,4vw,48px);margin-bottom:24px;padding:clamp(16px,3vw,32px);border:1px solid var(--border);border-radius:var(--radius);background:var(--tile)}
         .gateway-guide div{flex:1 1 230px;min-width:0}.gateway-guide h3{margin:0 0 12px}.gateway-guide img{display:block;width:min(100%,320px);height:auto}.gateway-guide a{color:var(--primary);font-weight:700}
     </style>
@@ -95,6 +97,10 @@ $added = (string) ($_GET['cart_added'] ?? '') === '1';
         <div class="wrap">
             <div class="eyebrow">SAKURA-NET STORE</div>
             <h1>オンラインショップ</h1>
+            <div class="unifi-partner-badge">
+                <img src="unifi-logo.svg" alt="" width="163" height="50" decoding="async">
+                <strong>UniFiパートナープログラム 正式登録</strong>
+            </div>
             <p>株式会社さくらねっとのサポート・保守サービスをオンライン決済できます。UniFi機器・回線・その他商品は、お問い合わせ後にお見積り・納期・保証条件をご案内します。</p>
             <div class="member-note" role="note">
                 <strong>ご利用対象について</strong>

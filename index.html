@@ -105,6 +105,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .unifi-partner-badge {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 12px;
+      width: fit-content;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin: 0.75rem 0;
+      padding: 8px 12px;
+      border: 1px solid #ead8dd;
+      border-radius: 8px;
+      background: #fff;
+      color: #2f2a2a;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .unifi-partner-badge img { width: 65px; height: auto; }
+    .unifi-partner-badge strong { overflow-wrap: anywhere; }
+  </style>
 </head>
 
 <body class="is-loading" id="page-home">
@@ -370,6 +391,10 @@
             <div class="c-figure_body">
               <span class="c-figure_tag">Network</span>
               <h3 class="c-figure_name">UniFi ネットワーク構築</h3>
+              <div class="unifi-partner-badge">
+                <img src="img/unifi-logo.svg" alt="" width="163" height="50" decoding="async">
+                <strong>UniFiパートナープログラム 正式登録</strong>
+              </div>
               <p class="c-figure_caption">Ubiquiti UniFiによる企業グレードのWi-Fi・LAN環境。単一ダッシュボードで全拠点を一括管理。</p>
               <a href="unifi-network.html" class="c-figure_link">詳細を見る</a>
               <p><a href="sakura-net-hikari.html#unifi-direct" class="c-figure_link">SAKURA-NET光との接続図を見る</a></p>
